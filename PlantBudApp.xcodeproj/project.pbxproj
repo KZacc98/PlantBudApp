@@ -8,65 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		EFBA2875292986510034DCA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA2874292986510034DCA9 /* AppDelegate.swift */; };
-		EFBA2877292986510034DCA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA2876292986510034DCA9 /* SceneDelegate.swift */; };
 		EFBA2879292986510034DCA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA2878292986510034DCA9 /* ViewController.swift */; };
-		EFBA287C292986510034DCA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFBA287A292986510034DCA9 /* Main.storyboard */; };
 		EFBA287E292986520034DCA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFBA287D292986520034DCA9 /* Assets.xcassets */; };
 		EFBA2881292986520034DCA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFBA287F292986520034DCA9 /* LaunchScreen.storyboard */; };
-		EFBA288C292986530034DCA9 /* PlantBudAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA288B292986530034DCA9 /* PlantBudAppTests.swift */; };
-		EFBA2896292986530034DCA9 /* PlantBudAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA2895292986530034DCA9 /* PlantBudAppUITests.swift */; };
-		EFBA2898292986530034DCA9 /* PlantBudAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA2897292986530034DCA9 /* PlantBudAppUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		EFBA2888292986530034DCA9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EFBA2869292986510034DCA9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EFBA2870292986510034DCA9;
-			remoteInfo = PlantBudApp;
-		};
-		EFBA2892292986530034DCA9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EFBA2869292986510034DCA9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EFBA2870292986510034DCA9;
-			remoteInfo = PlantBudApp;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		EFBA2871292986510034DCA9 /* PlantBudApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantBudApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFBA2874292986510034DCA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EFBA2876292986510034DCA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EFBA2878292986510034DCA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EFBA287B292986510034DCA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFBA287D292986520034DCA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFBA2880292986520034DCA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFBA2882292986520034DCA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EFBA2887292986530034DCA9 /* PlantBudAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantBudAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFBA288B292986530034DCA9 /* PlantBudAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantBudAppTests.swift; sourceTree = "<group>"; };
-		EFBA2891292986530034DCA9 /* PlantBudAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantBudAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFBA2895292986530034DCA9 /* PlantBudAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantBudAppUITests.swift; sourceTree = "<group>"; };
-		EFBA2897292986530034DCA9 /* PlantBudAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantBudAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EFBA286E292986510034DCA9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EFBA2884292986530034DCA9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EFBA288E292986530034DCA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -80,8 +37,6 @@
 			isa = PBXGroup;
 			children = (
 				EFBA2873292986510034DCA9 /* PlantBudApp */,
-				EFBA288A292986530034DCA9 /* PlantBudAppTests */,
-				EFBA2894292986530034DCA9 /* PlantBudAppUITests */,
 				EFBA2872292986510034DCA9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,8 +45,6 @@
 			isa = PBXGroup;
 			children = (
 				EFBA2871292986510034DCA9 /* PlantBudApp.app */,
-				EFBA2887292986530034DCA9 /* PlantBudAppTests.xctest */,
-				EFBA2891292986530034DCA9 /* PlantBudAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -100,31 +53,12 @@
 			isa = PBXGroup;
 			children = (
 				EFBA2874292986510034DCA9 /* AppDelegate.swift */,
-				EFBA2876292986510034DCA9 /* SceneDelegate.swift */,
 				EFBA2878292986510034DCA9 /* ViewController.swift */,
-				EFBA287A292986510034DCA9 /* Main.storyboard */,
 				EFBA287D292986520034DCA9 /* Assets.xcassets */,
 				EFBA287F292986520034DCA9 /* LaunchScreen.storyboard */,
 				EFBA2882292986520034DCA9 /* Info.plist */,
 			);
 			path = PlantBudApp;
-			sourceTree = "<group>";
-		};
-		EFBA288A292986530034DCA9 /* PlantBudAppTests */ = {
-			isa = PBXGroup;
-			children = (
-				EFBA288B292986530034DCA9 /* PlantBudAppTests.swift */,
-			);
-			path = PlantBudAppTests;
-			sourceTree = "<group>";
-		};
-		EFBA2894292986530034DCA9 /* PlantBudAppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EFBA2895292986530034DCA9 /* PlantBudAppUITests.swift */,
-				EFBA2897292986530034DCA9 /* PlantBudAppUITestsLaunchTests.swift */,
-			);
-			path = PlantBudAppUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,42 +81,6 @@
 			productReference = EFBA2871292986510034DCA9 /* PlantBudApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EFBA2886292986530034DCA9 /* PlantBudAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EFBA289E292986530034DCA9 /* Build configuration list for PBXNativeTarget "PlantBudAppTests" */;
-			buildPhases = (
-				EFBA2883292986530034DCA9 /* Sources */,
-				EFBA2884292986530034DCA9 /* Frameworks */,
-				EFBA2885292986530034DCA9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EFBA2889292986530034DCA9 /* PBXTargetDependency */,
-			);
-			name = PlantBudAppTests;
-			productName = PlantBudAppTests;
-			productReference = EFBA2887292986530034DCA9 /* PlantBudAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		EFBA2890292986530034DCA9 /* PlantBudAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EFBA28A1292986530034DCA9 /* Build configuration list for PBXNativeTarget "PlantBudAppUITests" */;
-			buildPhases = (
-				EFBA288D292986530034DCA9 /* Sources */,
-				EFBA288E292986530034DCA9 /* Frameworks */,
-				EFBA288F292986530034DCA9 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EFBA2893292986530034DCA9 /* PBXTargetDependency */,
-			);
-			name = PlantBudAppUITests;
-			productName = PlantBudAppUITests;
-			productReference = EFBA2891292986530034DCA9 /* PlantBudAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -195,14 +93,6 @@
 				TargetAttributes = {
 					EFBA2870292986510034DCA9 = {
 						CreatedOnToolsVersion = 14.1;
-					};
-					EFBA2886292986530034DCA9 = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = EFBA2870292986510034DCA9;
-					};
-					EFBA2890292986530034DCA9 = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = EFBA2870292986510034DCA9;
 					};
 				};
 			};
@@ -220,8 +110,6 @@
 			projectRoot = "";
 			targets = (
 				EFBA2870292986510034DCA9 /* PlantBudApp */,
-				EFBA2886292986530034DCA9 /* PlantBudAppTests */,
-				EFBA2890292986530034DCA9 /* PlantBudAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -233,21 +121,6 @@
 			files = (
 				EFBA2881292986520034DCA9 /* LaunchScreen.storyboard in Resources */,
 				EFBA287E292986520034DCA9 /* Assets.xcassets in Resources */,
-				EFBA287C292986510034DCA9 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EFBA2885292986530034DCA9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EFBA288F292986530034DCA9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,51 +133,12 @@
 			files = (
 				EFBA2879292986510034DCA9 /* ViewController.swift in Sources */,
 				EFBA2875292986510034DCA9 /* AppDelegate.swift in Sources */,
-				EFBA2877292986510034DCA9 /* SceneDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EFBA2883292986530034DCA9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EFBA288C292986530034DCA9 /* PlantBudAppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EFBA288D292986530034DCA9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EFBA2898292986530034DCA9 /* PlantBudAppUITestsLaunchTests.swift in Sources */,
-				EFBA2896292986530034DCA9 /* PlantBudAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		EFBA2889292986530034DCA9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EFBA2870292986510034DCA9 /* PlantBudApp */;
-			targetProxy = EFBA2888292986530034DCA9 /* PBXContainerItemProxy */;
-		};
-		EFBA2893292986530034DCA9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EFBA2870292986510034DCA9 /* PlantBudApp */;
-			targetProxy = EFBA2892292986530034DCA9 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		EFBA287A292986510034DCA9 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EFBA287B292986510034DCA9 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EFBA287F292986520034DCA9 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,7 +276,6 @@
 				INFOPLIST_FILE = PlantBudApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +303,6 @@
 				INFOPLIST_FILE = PlantBudApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -483,82 +315,6 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		EFBA289F292986530034DCA9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GGJL3D3J9M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KamilZachara.PlantBudAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlantBudApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PlantBudApp";
-			};
-			name = Debug;
-		};
-		EFBA28A0292986530034DCA9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GGJL3D3J9M;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KamilZachara.PlantBudAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PlantBudApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PlantBudApp";
-			};
-			name = Release;
-		};
-		EFBA28A2292986530034DCA9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GGJL3D3J9M;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KamilZachara.PlantBudAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PlantBudApp;
-			};
-			name = Debug;
-		};
-		EFBA28A3292986530034DCA9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GGJL3D3J9M;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = KamilZachara.PlantBudAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PlantBudApp;
 			};
 			name = Release;
 		};
@@ -579,24 +335,6 @@
 			buildConfigurations = (
 				EFBA289C292986530034DCA9 /* Debug */,
 				EFBA289D292986530034DCA9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EFBA289E292986530034DCA9 /* Build configuration list for PBXNativeTarget "PlantBudAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EFBA289F292986530034DCA9 /* Debug */,
-				EFBA28A0292986530034DCA9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EFBA28A1292986530034DCA9 /* Build configuration list for PBXNativeTarget "PlantBudAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EFBA28A2292986530034DCA9 /* Debug */,
-				EFBA28A3292986530034DCA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
