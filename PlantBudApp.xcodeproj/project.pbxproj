@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		EF15767D29354BFE0015FCEE /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */; };
 		EF77D8BC293FC91F00F5807F /* LottieProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = EF77D8BB293FC91F00F5807F /* LottieProgressHUD */; };
+		EF77D8C3293FD5E700F5807F /* filler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77D8C2293FD5E700F5807F /* filler.swift */; };
+		EF77D8C5293FD5FD00F5807F /* networkfiller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77D8C4293FD5FD00F5807F /* networkfiller.swift */; };
+		EF77D8C7293FD60600F5807F /* managerfiller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77D8C6293FD60600F5807F /* managerfiller.swift */; };
+		EF77D8C9293FD61D00F5807F /* templatesfiller in Resources */ = {isa = PBXBuildFile; fileRef = EF77D8C8293FD61D00F5807F /* templatesfiller */; };
+		EF77D8CB293FD62700F5807F /* datafiller in Resources */ = {isa = PBXBuildFile; fileRef = EF77D8CA293FD62700F5807F /* datafiller */; };
+		EF77D8CF293FD65B00F5807F /* loginworker in Resources */ = {isa = PBXBuildFile; fileRef = EF77D8CE293FD65B00F5807F /* loginworker */; };
+		EF77D8D1293FD68E00F5807F /* filler in Resources */ = {isa = PBXBuildFile; fileRef = EF77D8D0293FD68E00F5807F /* filler */; };
+		EF77D8D3293FD6A400F5807F /* filler in Resources */ = {isa = PBXBuildFile; fileRef = EF77D8D2293FD6A400F5807F /* filler */; };
+		EF77D8D5293FD6B600F5807F /* filler in Resources */ = {isa = PBXBuildFile; fileRef = EF77D8D4293FD6B600F5807F /* filler */; };
 		EF9CFD722932467500FD0239 /* AnimationHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFD712932467500FD0239 /* AnimationHeaderData.swift */; };
 		EF9CFD7529324A7100FD0239 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFD7429324A7100FD0239 /* BaseTableViewController.swift */; };
 		EF9CFD7729324AB400FD0239 /* BaseTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFD7629324AB400FD0239 /* BaseTableViewDataSource.swift */; };
@@ -117,6 +126,15 @@
 
 /* Begin PBXFileReference section */
 		EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
+		EF77D8C2293FD5E700F5807F /* filler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filler.swift; sourceTree = "<group>"; };
+		EF77D8C4293FD5FD00F5807F /* networkfiller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = networkfiller.swift; sourceTree = "<group>"; };
+		EF77D8C6293FD60600F5807F /* managerfiller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = managerfiller.swift; sourceTree = "<group>"; };
+		EF77D8C8293FD61D00F5807F /* templatesfiller */ = {isa = PBXFileReference; lastKnownFileType = text; path = templatesfiller; sourceTree = "<group>"; };
+		EF77D8CA293FD62700F5807F /* datafiller */ = {isa = PBXFileReference; lastKnownFileType = text; path = datafiller; sourceTree = "<group>"; };
+		EF77D8CE293FD65B00F5807F /* loginworker */ = {isa = PBXFileReference; lastKnownFileType = text; path = loginworker; sourceTree = "<group>"; };
+		EF77D8D0293FD68E00F5807F /* filler */ = {isa = PBXFileReference; lastKnownFileType = text; path = filler; sourceTree = "<group>"; };
+		EF77D8D2293FD6A400F5807F /* filler */ = {isa = PBXFileReference; lastKnownFileType = text; path = filler; sourceTree = "<group>"; };
+		EF77D8D4293FD6B600F5807F /* filler */ = {isa = PBXFileReference; lastKnownFileType = text; path = filler; sourceTree = "<group>"; };
 		EF9CFD712932467500FD0239 /* AnimationHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHeaderData.swift; sourceTree = "<group>"; };
 		EF9CFD7429324A7100FD0239 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		EF9CFD7629324AB400FD0239 /* BaseTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -529,6 +547,7 @@
 		EFAA5B70293E7DA90082484D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EF77D8D0293FD68E00F5807F /* filler */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -572,6 +591,7 @@
 		EFAA5B7A293E84F50082484D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EF77D8D2293FD6A400F5807F /* filler */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -615,6 +635,7 @@
 		EFAA5B87293E86A40082484D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EF77D8D4293FD6B600F5807F /* filler */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -653,6 +674,7 @@
 		EFBA28A429298F2A0034DCA9 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				EF77D8C2293FD5E700F5807F /* filler.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -695,6 +717,7 @@
 		EFBA28A8292993EA0034DCA9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				EF77D8CA293FD62700F5807F /* datafiller */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -702,6 +725,7 @@
 		EFBA28A9292993F40034DCA9 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				EF77D8C8293FD61D00F5807F /* templatesfiller */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -774,6 +798,7 @@
 		EFBA28B8292998790034DCA9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				EF77D8C4293FD5FD00F5807F /* networkfiller.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -781,6 +806,7 @@
 		EFBA28B9292998810034DCA9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				EF77D8C6293FD60600F5807F /* managerfiller.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -823,6 +849,7 @@
 		EFBA28BE292998B40034DCA9 /* Worker */ = {
 			isa = PBXGroup;
 			children = (
+				EF77D8CE293FD65B00F5807F /* loginworker */,
 			);
 			path = Worker;
 			sourceTree = "<group>";
@@ -1046,7 +1073,13 @@
 				EFAA5B62293E6FA20082484D /* NoticiaText-Bold.ttf in Resources */,
 				EFAA5B60293E6FA20082484D /* NoticiaText-Italic.ttf in Resources */,
 				EFBA28AE292995260034DCA9 /* Localizable.strings in Resources */,
+				EF77D8D5293FD6B600F5807F /* filler in Resources */,
+				EF77D8CF293FD65B00F5807F /* loginworker in Resources */,
+				EF77D8D3293FD6A400F5807F /* filler in Resources */,
 				EFBA287E292986520034DCA9 /* Assets.xcassets in Resources */,
+				EF77D8C9293FD61D00F5807F /* templatesfiller in Resources */,
+				EF77D8CB293FD62700F5807F /* datafiller in Resources */,
+				EF77D8D1293FD68E00F5807F /* filler in Resources */,
 				EFFA5926292A6481003A8F23 /* plant_walking.json in Resources */,
 				EF9CFDE3293293DA00FD0239 /* schema.json in Resources */,
 				EFAA5B61293E6FA20082484D /* NoticiaText-BoldItalic.ttf in Resources */,
@@ -1120,6 +1153,7 @@
 				EF9CFE012934091400FD0239 /* HomeMenuViewController.swift in Sources */,
 				EF9CFDF02934058200FD0239 /* TabBarItemCoordinator.swift in Sources */,
 				EF9CFDE12932900600FD0239 /* Network.swift in Sources */,
+				EF77D8C3293FD5E700F5807F /* filler.swift in Sources */,
 				EF9CFD7C29324C0500FD0239 /* SingleColumnViewInterface.swift in Sources */,
 				EF9CFD722932467500FD0239 /* AnimationHeaderData.swift in Sources */,
 				EFAA5B6E293E7D1F0082484D /* PlantsViewControllerFactory.swift in Sources */,
@@ -1138,6 +1172,7 @@
 				EFAA5B89293E86BF0082484D /* CommunityViewController.swift in Sources */,
 				EF9CFDB7293274D900FD0239 /* ValidationResult.swift in Sources */,
 				EF9CFD8729324CE600FD0239 /* SectionSequence.swift in Sources */,
+				EF77D8C5293FD5FD00F5807F /* networkfiller.swift in Sources */,
 				EF9CFDBC2932754B00FD0239 /* TextValidator.swift in Sources */,
 				EFFA594A292A71C4003A8F23 /* UIViewController+Extension.swift in Sources */,
 				EF9CFDAF293273D700FD0239 /* TextInputCellData.swift in Sources */,
@@ -1174,6 +1209,7 @@
 				EF9CFDBA2932750500FD0239 /* ValidatorInterface.swift in Sources */,
 				EF9CFD992932646E00FD0239 /* MainButtonCellConfigurator.swift in Sources */,
 				EF9CFDF2293405D800FD0239 /* AppearanceViewController.swift in Sources */,
+				EF77D8C7293FD60600F5807F /* managerfiller.swift in Sources */,
 				EF9CFD8929324D0700FD0239 /* SectionInterface.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
