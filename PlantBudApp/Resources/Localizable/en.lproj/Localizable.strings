@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  PlantBudApp
+
+  Created by Kamil Zachara on 19/11/2022.
+  
+*/
+
+"login" = "Login";
+
+// TabBar
+"tabBarOptionHome" = "Home";
+"tabBarOptionLeaf" = "Plants";
+"tabBarOptionPlus" = "Add";
+"tabBarOptionBadge" = "Badges";
+"tabBarOptionCommunity" = "Communities";
