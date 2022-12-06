@@ -7,3 +7,10 @@
 */
 
 "login" = "Login";
+
+// TabBar
+"tabBarOptionHome" = "Home";
+"tabBarOptionLeaf" = "Plants";
+"tabBarOptionPlus" = "Add";
+"tabBarOptionBadge" = "Badges";
+"tabBarOptionCommunity" = "Communities";

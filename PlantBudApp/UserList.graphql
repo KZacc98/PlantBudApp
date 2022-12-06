@@ -1,0 +1,13 @@
+query UserList {
+  User {
+    id
+    name
+  }
+}
+
+query FetchUser($email: String, $password: String) {
+  User(where: {email: {_eq: $email}, password: {_eq: $password}}) {
+    id
+    name
+  }
+}

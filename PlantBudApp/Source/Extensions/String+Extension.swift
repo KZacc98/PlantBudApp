@@ -24,5 +24,9 @@ extension String: LocalizedError {
         
       return NSLocalizedString(self, comment: "")
     }
+    
+    var asNSString: NSString {
+        return self as NSString
+    }
 }
 
