@@ -32,12 +32,16 @@ final class PlantsViewController: BaseTableViewController {
         setupNavigationBar()
         setupEmptyDataView()
         setupTableView()
+        viewModel.loadData()
         bindViewModel()
-        viewModel.buildSections()
         
     }
     
     // MARK: - Selectors
+    
+    override func refreshData(_ refreshControl: UIRefreshControl) {
+        viewModel.loadData()
+    }
 
 }
 
@@ -54,7 +58,13 @@ extension PlantsViewController {
                 self?.refreshControl.endRefreshing()
             }
         }
+        
+//        viewModel.onFetchSuccess = { [weak self] in
+//            self?.viewModel.buildSections()
+//        }
     }
+    
+    
 }
 
 //MARK: - Setup
@@ -72,6 +82,7 @@ extension PlantsViewController {
 //        userButtonBar.accessibilityLabel = "userSideMenuAccessibilityLabel".localized
 //        userButtonBar.tintColor = Color.brandGreen
 //        navigationItem.rightBarButtonItem = userButtonBar
+        title = "Plants"
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {

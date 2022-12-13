@@ -73,7 +73,7 @@ extension AppDelegate {
             //            applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: tabBarOption,
             //                                                           completion: completion)
             //        } else {
-            //            applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ
+//                        applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ
             applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: .home)
             //        }
         }
@@ -82,7 +82,7 @@ extension AppDelegate {
         //        if UserContext.shared.loggedIn {
         //            UserContext.shared.logout(loginSettings: loginSettings)
         //        } else {
-        //            applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ
+//                    applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ
         applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: .home)
         //        }
     }

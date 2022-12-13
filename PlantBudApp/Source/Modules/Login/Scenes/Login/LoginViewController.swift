@@ -76,6 +76,7 @@ extension LoginViewController {
             self?.viewModel.validate { [weak self] errors, indexPaths in
                 self?.tableView.reloadRows(at: indexPaths, with: .none)
                 if errors.isEmpty {
+//                    UIAppDelegate?.showLoadingIndicator()
                     self?.viewModel.authenticate()
                 } else if let firstIndexPath = indexPaths.first {
                     self?.tableView.scrollToRow(at: firstIndexPath, at: .middle, animated: true)
@@ -85,6 +86,7 @@ extension LoginViewController {
 
         viewModel.onLoginSuccess = { [weak self] name in
             self?.onLoginSuccess?()
+            UIAppDelegate?.hideLoadingIndicator()
             self?.makeToast(with: name)
         }
 

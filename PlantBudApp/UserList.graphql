@@ -11,3 +11,5 @@ query FetchUser($email: String, $password: String) {
     name
   }
 }
+
+

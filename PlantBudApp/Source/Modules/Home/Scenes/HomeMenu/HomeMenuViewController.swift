@@ -34,7 +34,7 @@ final class HomeMenuViewController: BaseTableViewController {
         setupEmptyDataView()
         setupTableView()
         bindViewModel()
-        viewModel.buildSections()
+        viewModel.loadData()
         
         
 //        addObservers()
@@ -74,7 +74,12 @@ extension HomeMenuViewController {
 //                }
             }
         }
+        
+        viewModel.onFetchSuccess = {[weak self] res in
+            self?.makeToast(with: res)
+        }
     }
+    
 //
 //        viewModel.onError = { [weak self] error in
 //            self?.setupEmptyDataView(with: EmptyDataType(error: error,

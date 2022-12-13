@@ -1,0 +1,50 @@
+query FetchPlantTypes {
+  PlantType {
+    id
+    species
+    description
+    type
+    createdAt
+    updatedAt
+  }
+}
+
+query FetchUserPlants($userId: Int) {
+  Plant(where: {userId: {_eq: $userId}}) {
+    id
+    plantName
+    plantState
+    plantPlacement
+    plantImage
+    plantTypeId
+    createdAt
+    updatedAt
+  }
+}
+
+query FetchPlantCareRoutine($plantId: Int) {
+  CareRoutine(where: {plantId: {_eq: $plantId}}) {
+    id
+    plantId
+    isActive
+    isCompleted
+    isShared
+    flag
+    createdAt
+    updatedAt
+  }
+}
+
+query FetchPlantCareRoutineSteps($careRoutineId: Int) {
+  RoutineStep(where: {careRoutineId: {_eq: $careRoutineId}}) {
+    id
+    careRoutineId
+    description
+    stepFrequency
+    otherFrequency
+    isCompleted
+    createdAt
+    completedAt
+    updatedAt
+  }
+}
