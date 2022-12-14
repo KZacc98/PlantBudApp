@@ -28,6 +28,11 @@ final class PlantsViewModel {
             buildSections()
         }
     }
+    
+    private var careRoutineDomains: [CareRoutineDomain]?
+    private var careRoutines: [CareRoutine] = []
+    private var routineSteps: [RoutineStepDomain]?
+    
     private var plantTypes: [PlantTypeDomain]?
     let placeholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"
     
@@ -91,13 +96,39 @@ final class PlantsViewModel {
                 switch result {
                 case .success(let GQLResult):
                     //                self.onFetchSuccess?()
-                    Logger.info("\(GQLResult.data?.careRoutine.first?.id)")
-                    Network.shared.apollo.fetch(query: FetchPlantCareRoutineStepsQuery(careRoutineId: GQLResult.data?.careRoutine.first?.id)) { result in
+//                    Logger.info("\(GQLResult.data?.careRoutine.first?.id)")
+                    
+                    self.careRoutineDomains = GQLResult.data?.careRoutine.map({ careRoutine in
+                        CareRoutineDomain(remote: CareRoutineRemote(
+                            id: careRoutine.id,
+                            plantId: careRoutine.plantId,
+                            isActive: careRoutine.isActive,
+                            isCompleted: careRoutine.isCompleted,
+                            isShared: careRoutine.isShared,
+                            flag: careRoutine.flag,
+                            createdAt: careRoutine.createdAt,
+                            updatedAt: careRoutine.updatedAt
+                        ))
+                    })
+                    
+                    Network.shared.apollo.fetch(query: FetchCareRoutineStepsQuery(careRoutineId: GQLResult.data?.careRoutine.first?.id)) { result in
                         switch result {
                         case .success(let GQLResult):
                             //                self.onFetchSuccess?()
-                            Logger.info("\(GQLResult.data?.routineStep)")
-
+//                            Logger.info("\(GQLResult.data?.routineStep)")
+                            self.routineSteps = GQLResult.data?.routineStep.map({ routineStep in
+                                RoutineStepDomain(remote: RoutineStepRemote(
+                                    id: routineStep.id,
+                                    careRoutineId: routineStep.careRoutineId,
+                                    stepFrequency: routineStep.stepFrequency,
+                                    otherFrequency: routineStep.otherFrequency,
+                                    description: routineStep.description,
+                                    isCompleted: routineStep.isCompleted,
+                                    completedAt: routineStep.completedAt,
+                                    createdAt: routineStep.createdAt,
+                                    updatedAt: routineStep.updatedAt
+                                ))
+                            })
 
                             UIAppDelegate?.hideLoadingIndicator()
                         case .failure(let error):
@@ -113,7 +144,11 @@ final class PlantsViewModel {
                 }
                 
             }
-            
+            let test = self.plants
+            let salkdj = self.careRoutineDomains
+            let test2 = self.careRoutines
+            let sakhd = self.routineSteps
+            Logger.info("DUPA")
             
         }
     }

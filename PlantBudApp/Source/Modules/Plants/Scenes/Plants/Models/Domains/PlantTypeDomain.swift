@@ -14,9 +14,9 @@ struct PlantTypeDomain {
     
     init(remote: PlantTypeRemote) {
         self.id = remote.id
-        self.species = remote.species
-        self.description = remote.description
-        self.type = remote.type
+        self.species = remote.species ?? ""
+        self.description = remote.description ?? ""
+        self.type = remote.type ?? ""
         self.createdAt = remote.createdAt
     }
 }

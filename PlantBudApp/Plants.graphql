@@ -35,16 +35,16 @@ query FetchPlantCareRoutine($plantId: Int) {
   }
 }
 
-query FetchPlantCareRoutineSteps($careRoutineId: Int) {
+query FetchCareRoutineSteps($careRoutineId: Int) {
   RoutineStep(where: {careRoutineId: {_eq: $careRoutineId}}) {
     id
     careRoutineId
-    description
     stepFrequency
     otherFrequency
+    description
     isCompleted
-    createdAt
     completedAt
+    createdAt
     updatedAt
   }
 }

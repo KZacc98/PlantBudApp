@@ -488,27 +488,27 @@ public final class FetchPlantCareRoutineQuery: GraphQLQuery {
   }
 }
 
-public final class FetchPlantCareRoutineStepsQuery: GraphQLQuery {
+public final class FetchCareRoutineStepsQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query FetchPlantCareRoutineSteps($careRoutineId: Int) {
+    query FetchCareRoutineSteps($careRoutineId: Int) {
       RoutineStep(where: {careRoutineId: {_eq: $careRoutineId}}) {
         __typename
         id
         careRoutineId
-        description
         stepFrequency
         otherFrequency
+        description
         isCompleted
-        createdAt
         completedAt
+        createdAt
         updatedAt
       }
     }
     """
 
-  public let operationName: String = "FetchPlantCareRoutineSteps"
+  public let operationName: String = "FetchCareRoutineSteps"
 
   public var careRoutineId: Int?
 
@@ -557,12 +557,12 @@ public final class FetchPlantCareRoutineStepsQuery: GraphQLQuery {
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("id", type: .nonNull(.scalar(Int.self))),
           GraphQLField("careRoutineId", type: .nonNull(.scalar(Int.self))),
-          GraphQLField("description", type: .scalar(String.self)),
           GraphQLField("stepFrequency", type: .nonNull(.scalar(String.self))),
           GraphQLField("otherFrequency", type: .scalar(String.self)),
+          GraphQLField("description", type: .scalar(String.self)),
           GraphQLField("isCompleted", type: .nonNull(.scalar(Bool.self))),
-          GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
           GraphQLField("completedAt", type: .scalar(String.self)),
+          GraphQLField("createdAt", type: .nonNull(.scalar(String.self))),
           GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
         ]
       }
@@ -573,8 +573,8 @@ public final class FetchPlantCareRoutineStepsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: Int, careRoutineId: Int, description: String? = nil, stepFrequency: String, otherFrequency: String? = nil, isCompleted: Bool, createdAt: String, completedAt: String? = nil, updatedAt: String) {
-        self.init(unsafeResultMap: ["__typename": "RoutineStep", "id": id, "careRoutineId": careRoutineId, "description": description, "stepFrequency": stepFrequency, "otherFrequency": otherFrequency, "isCompleted": isCompleted, "createdAt": createdAt, "completedAt": completedAt, "updatedAt": updatedAt])
+      public init(id: Int, careRoutineId: Int, stepFrequency: String, otherFrequency: String? = nil, description: String? = nil, isCompleted: Bool, completedAt: String? = nil, createdAt: String, updatedAt: String) {
+        self.init(unsafeResultMap: ["__typename": "RoutineStep", "id": id, "careRoutineId": careRoutineId, "stepFrequency": stepFrequency, "otherFrequency": otherFrequency, "description": description, "isCompleted": isCompleted, "completedAt": completedAt, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -604,15 +604,6 @@ public final class FetchPlantCareRoutineStepsQuery: GraphQLQuery {
         }
       }
 
-      public var description: String? {
-        get {
-          return resultMap["description"] as? String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "description")
-        }
-      }
-
       public var stepFrequency: String {
         get {
           return resultMap["stepFrequency"]! as! String
@@ -631,6 +622,15 @@ public final class FetchPlantCareRoutineStepsQuery: GraphQLQuery {
         }
       }
 
+      public var description: String? {
+        get {
+          return resultMap["description"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "description")
+        }
+      }
+
       public var isCompleted: Bool {
         get {
           return resultMap["isCompleted"]! as! Bool
@@ -640,21 +640,21 @@ public final class FetchPlantCareRoutineStepsQuery: GraphQLQuery {
         }
       }
 
-      public var createdAt: String {
-        get {
-          return resultMap["createdAt"]! as! String
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "createdAt")
-        }
-      }
-
       public var completedAt: String? {
         get {
           return resultMap["completedAt"] as? String
         }
         set {
           resultMap.updateValue(newValue, forKey: "completedAt")
+        }
+      }
+
+      public var createdAt: String {
+        get {
+          return resultMap["createdAt"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "createdAt")
         }
       }
 

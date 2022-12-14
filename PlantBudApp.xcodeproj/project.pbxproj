@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		EF15767D29354BFE0015FCEE /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */; };
+		EF68F74229490DE700B2A08E /* CareRoutineRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F74129490DE700B2A08E /* CareRoutineRemote.swift */; };
+		EF68F74429490E7E00B2A08E /* CareRoutineDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F74329490E7E00B2A08E /* CareRoutineDomain.swift */; };
+		EF68F747294910FB00B2A08E /* CareRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F746294910FB00B2A08E /* CareRoutine.swift */; };
+		EF68F7492949113400B2A08E /* RoutineStepRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F7482949113400B2A08E /* RoutineStepRemote.swift */; };
+		EF68F74B294912AC00B2A08E /* RoutineStepDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F74A294912AC00B2A08E /* RoutineStepDomain.swift */; };
 		EF6947C92948EE2D006E56F1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6947C82948EE2D006E56F1 /* API.swift */; };
 		EF77D8BC293FC91F00F5807F /* LottieProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = EF77D8BB293FC91F00F5807F /* LottieProgressHUD */; };
 		EF77D8C3293FD5E700F5807F /* filler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77D8C2293FD5E700F5807F /* filler.swift */; };
@@ -130,6 +135,11 @@
 
 /* Begin PBXFileReference section */
 		EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
+		EF68F74129490DE700B2A08E /* CareRoutineRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRoutineRemote.swift; sourceTree = "<group>"; };
+		EF68F74329490E7E00B2A08E /* CareRoutineDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRoutineDomain.swift; sourceTree = "<group>"; };
+		EF68F746294910FB00B2A08E /* CareRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRoutine.swift; sourceTree = "<group>"; };
+		EF68F7482949113400B2A08E /* RoutineStepRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepRemote.swift; sourceTree = "<group>"; };
+		EF68F74A294912AC00B2A08E /* RoutineStepDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepDomain.swift; sourceTree = "<group>"; };
 		EF6947C82948EE2D006E56F1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		EF77D8C2293FD5E700F5807F /* filler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filler.swift; sourceTree = "<group>"; };
 		EF77D8C4293FD5FD00F5807F /* networkfiller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = networkfiller.swift; sourceTree = "<group>"; };
@@ -268,6 +278,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF68F745294910DE00B2A08E /* CareRoutine */ = {
+			isa = PBXGroup;
+			children = (
+				EF68F746294910FB00B2A08E /* CareRoutine.swift */,
+			);
+			path = CareRoutine;
+			sourceTree = "<group>";
+		};
 		EF9CFD702932466200FD0239 /* AnimationHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +534,7 @@
 		EFA7B17629452346008EE8E9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EF68F745294910DE00B2A08E /* CareRoutine */,
 				EFA7B17829452353008EE8E9 /* Domains */,
 				EFA7B1772945234D008EE8E9 /* Remotes */,
 			);
@@ -527,6 +546,8 @@
 			children = (
 				EFA7B17B2945237A008EE8E9 /* PlantRemote.swift */,
 				EFA7B18229464050008EE8E9 /* PlantTypeRemote.swift */,
+				EF68F74129490DE700B2A08E /* CareRoutineRemote.swift */,
+				EF68F7482949113400B2A08E /* RoutineStepRemote.swift */,
 			);
 			path = Remotes;
 			sourceTree = "<group>";
@@ -536,6 +557,8 @@
 			children = (
 				EFA7B17D294523D3008EE8E9 /* PlantDomain.swift */,
 				EFA7B184294640AC008EE8E9 /* PlantTypeDomain.swift */,
+				EF68F74329490E7E00B2A08E /* CareRoutineDomain.swift */,
+				EF68F74A294912AC00B2A08E /* RoutineStepDomain.swift */,
 			);
 			path = Domains;
 			sourceTree = "<group>";
@@ -1190,6 +1213,7 @@
 				EF9CFDFF293407F200FD0239 /* HomeMenuViewModel.swift in Sources */,
 				EF9CFD7729324AB400FD0239 /* BaseTableViewDataSource.swift in Sources */,
 				EF9CFDA8293272CD00FD0239 /* LoginTextInputCellConfigurator.swift in Sources */,
+				EF68F74B294912AC00B2A08E /* RoutineStepDomain.swift in Sources */,
 				EFFA5945292A7000003A8F23 /* Assets.swift in Sources */,
 				EFA7B16C2944D703008EE8E9 /* PlantCell.swift in Sources */,
 				EF9CFDCB29327A3000FD0239 /* LoginCredentials.swift in Sources */,
@@ -1240,12 +1264,15 @@
 				EF9CFD9E2932670F00FD0239 /* LoadingButton.swift in Sources */,
 				EFAA5B89293E86BF0082484D /* CommunityViewController.swift in Sources */,
 				EF9CFDB7293274D900FD0239 /* ValidationResult.swift in Sources */,
+				EF68F747294910FB00B2A08E /* CareRoutine.swift in Sources */,
 				EF9CFD8729324CE600FD0239 /* SectionSequence.swift in Sources */,
 				EF77D8C5293FD5FD00F5807F /* networkfiller.swift in Sources */,
 				EFA7B17C2945237A008EE8E9 /* PlantRemote.swift in Sources */,
 				EF9CFDBC2932754B00FD0239 /* TextValidator.swift in Sources */,
 				EFFA594A292A71C4003A8F23 /* UIViewController+Extension.swift in Sources */,
 				EF9CFDAF293273D700FD0239 /* TextInputCellData.swift in Sources */,
+				EF68F7492949113400B2A08E /* RoutineStepRemote.swift in Sources */,
+				EF68F74429490E7E00B2A08E /* CareRoutineDomain.swift in Sources */,
 				EFF52397292A53020014A32B /* UIView+Extension.swift in Sources */,
 				EFAA5B8D293E882B0082484D /* CommunityCoordinator.swift in Sources */,
 				EFF5238F292A52580014A32B /* NSLayoutConstraint+Extension.swift in Sources */,
@@ -1280,6 +1307,7 @@
 				EFBA2875292986510034DCA9 /* AppDelegate.swift in Sources */,
 				EF9CFD8529324CC400FD0239 /* SectionMapper.swift in Sources */,
 				EFF52393292A52C50014A32B /* UIColor+Extension.swift in Sources */,
+				EF68F74229490DE700B2A08E /* CareRoutineRemote.swift in Sources */,
 				EF9CFDBA2932750500FD0239 /* ValidatorInterface.swift in Sources */,
 				EF9CFD992932646E00FD0239 /* MainButtonCellConfigurator.swift in Sources */,
 				EF9CFDF2293405D800FD0239 /* AppearanceViewController.swift in Sources */,
