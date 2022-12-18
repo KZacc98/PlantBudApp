@@ -32,6 +32,7 @@ extension HelloHeaderCellConfigurator: ReusableViewConfiguratorInterface {
         
         view.selectionStyle = .none
         view.helloLabel.text = data.title
+        view.helloLabel.adjustsFontSizeToFitWidth = true
 //        view.didPressButton = data.didPressButton
     }
     

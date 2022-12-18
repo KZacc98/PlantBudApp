@@ -23,7 +23,9 @@ final class HomeMenuViewModel {
         }
     }
     
-    private var plants: [PlantDomain]? {
+    private var plants: [PlantDomain]?
+    
+    private var user: UserDomain? {
         didSet{
             buildSections()
         }
@@ -38,10 +40,11 @@ final class HomeMenuViewModel {
     public func loadData(refresh: Bool = false) {
         UIAppDelegate?.showLoadingIndicator()
         
-        Network.shared.apollo.fetch(query: FetchUserPlantsQuery(userId: 2)) { result in
+        Network.shared.apollo.fetch(query: FetchUserProfileQuery(userId: 2)) { result in
             switch result {
             case .success(let GQLResult):
                 //                self.onFetchSuccess?()
+                Logger.info("\(GQLResult)")
                 
                 self.plants = GQLResult.data?.plant.map({ res in
                     PlantDomain(remote: PlantRemote(
@@ -56,6 +59,22 @@ final class HomeMenuViewModel {
                     ))
                 })
                 
+                self.user = GQLResult.data?.user.first.map({ user in
+                    UserDomain(remote: UserRemote(
+                        id: user.id,
+                        name: user.name,
+                        userName: user.userName,
+                        email: user.email,
+                        gender: user.gender,
+                        phoneNumber: user.phoneNumber,
+                        points: user.points,
+                        active: user.active,
+                        userType: user.userType,
+                        createdAt: user.createdAt,
+                        updatedAt: user.updatedAt)
+                    )
+                })
+                
                 UIAppDelegate?.hideLoadingIndicator()
             case .failure(let error):
                 UIAppDelegate?.hideLoadingIndicator()
@@ -67,16 +86,26 @@ final class HomeMenuViewModel {
     public func buildSections() {
         sectionSequence = SectionSequence(
             sections: [
-                makeHelloHeaderSection(),
+                makeUserProfileSection(name: user?.name ?? "TEST", points: user?.points.description ?? "250"),
+                makeHelloHeaderSection(title: String(user?.name ?? "TEST")),
+                makeHelloHeaderSection(title: String(user?.userName ?? "TEST")),
+                makeHelloHeaderSection(title: String(user?.userType.rawValue ?? "TEST")),
                 makePlantCountSection()
         ])
     }
 
     //MARK: - Private methods
 
-    private func makeHelloHeaderSection() -> SingleColumnSection {
+    private func makeHelloHeaderSection(title: String) -> SingleColumnSection {
 
-        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "Hello there"))
+        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: title))
+
+        return SingleColumnSection(cellConfigurators: [configurator])
+    }
+    
+    private func makeUserProfileSection(name: String, points: String) -> SingleColumnSection {
+
+        let configurator = UserProfileCellConfigurator(data: UserProfileCellData(name: "Hello \(name)", points: "+\(points)"))
 
         return SingleColumnSection(cellConfigurators: [configurator])
     }

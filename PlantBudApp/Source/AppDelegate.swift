@@ -100,10 +100,15 @@ extension AppDelegate {
             UINavigationBar.appearance().compactAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         }
-        UINavigationBar.appearance().prefersLargeTitles = true
+//        UINavigationBar.appearance().prefersLargeTitles = true
+//        UINavigationBar.appearance().isTranslucent = true
+//        UINavigationBar.appearance().layer.shadowColor = Color.darkGray.cgColor
+//        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 0, height: 1)
+//        UINavigationBar.appearance().backgroundColor = .gray
+//        UINavigationBar.appearance().barTintColor = .gray
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().layer.shadowColor = Color.darkGray.cgColor
-        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 0, height: 1)
+        UINavigationBar.appearance().layer.shadowColor = Color.brandGreen.cgColor
+        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 2, height: 3)
         UINavigationBar.appearance().backgroundColor = .gray
         UINavigationBar.appearance().barTintColor = .gray
         UINavigationBar.appearance().titleTextAttributes = [

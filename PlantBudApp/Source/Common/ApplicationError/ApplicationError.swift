@@ -21,7 +21,7 @@ public struct ApplicationError {
     }
     
     static var unknownError: Error {
-        return self.processingError(1005, [NSLocalizedDescriptionKey: "errorUnknown".localized])
+        return self.processingError(1005, [NSLocalizedDescriptionKey: "Jebło"])
     }
     
     // MARK: - Validation errors

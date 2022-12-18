@@ -1,0 +1,30 @@
+query FetchUserProfile($userId: Int) {
+  User(where: {id: {_eq: $userId}}) {
+    id
+    name
+    userName
+    email
+    gender
+    phoneNumber
+    points
+    active
+    userType
+    createdAt
+    updatedAt
+  }
+  Plant(where: {userId: {_eq: $userId}}) {
+    id
+    plantName
+    plantState
+    plantPlacement
+    plantImage
+    plantTypeId
+    createdAt
+    updatedAt
+  }
+  UserBadges(where: {userId: {_eq: $userId}}) {
+    badgeId
+    createdAt
+    updatedAt
+  }
+}

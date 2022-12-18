@@ -18,6 +18,12 @@ final class PlantCellConfigurator {
     init(data: PlantCellData) {
         self.data = data
     }
+    
+    // MARK: - Selectors
+    
+    @objc private func didTapPlant(tapGestureRecognizer: UITapGestureRecognizer) {
+        data.didTapPlant?()
+    }
 }
 
 // MARK: - ReusableViewConfiguratorInterface
@@ -33,8 +39,16 @@ extension PlantCellConfigurator: ReusableViewConfiguratorInterface {
         view.selectionStyle = .none
         view.plantNameLabel.text = data.plantName
         view.plantStateLabel.text = data.plantState.rawValue
-        view.plantImage.imageView.setImage(with: data.imageUrl)
-        view.plantInfoLabel.text = data.plantTypeInfo
+        view.plantImage.setImage(with: data.imageUrl)
+        view.plantInfoLabel.text = "data.plantTypeInfo"
+        view.mainBackgroundView.gestureRecognizers?.forEach {
+            view.mainBackgroundView.removeGestureRecognizer($0)
+        }
+        view.mainBackgroundView.addGestureRecognizer(
+            UITapGestureRecognizer(
+                target: self,
+                action: #selector(didTapPlant(tapGestureRecognizer:))))
+        
         //        view.plantImageView.imageView.setRoundedImage(with: data.imageUrl, cornerRadius: view.frame.size.width / 2)
         //        view.plantImageView.imageView.makeRounded()
         //        view.didPressButton = data.didPressButton
@@ -45,12 +59,6 @@ extension PlantCellConfigurator: ReusableViewConfiguratorInterface {
     }
 }
 
-struct PlantCellData {
-    let imageUrl: URL
-    let plantName: String
-    let plantState: PlantState
-    let plantTypeInfo: String
-    //    let didPre
-}
+
 
 

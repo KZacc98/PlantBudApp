@@ -1,0 +1,9 @@
+query FetchBadges {
+  Badge {
+    id
+    badgeName
+    points
+    createdAt
+    updatedAt
+  }
+}

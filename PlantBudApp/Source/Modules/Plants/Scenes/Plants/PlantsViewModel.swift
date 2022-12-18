@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import Apollo
 
 final class PlantsViewModel {
-
+    
     //MARK: - Binding closures
-
+    
     public var onSectionSequenceChange: ((SectionSequence) -> Void)?
     public var onFetchSuccess: (() -> Void)?
+    public var onPlantPressed: ((PlantDomain) -> Void)?
     public var onError: ((Error) -> ())?
-
+    
     //MARK: Private properties
     
     private var sectionSequence: SectionSequence = SectionSequence() {
@@ -23,188 +25,207 @@ final class PlantsViewModel {
         }
     }
     
-    private var plants: [PlantDomain]? {
+    private var plantDomains: [PlantDomain]? {
         didSet{
-            buildSections()
+            buildSections(plantDomains: plantDomains)
         }
     }
     
-    private var careRoutineDomains: [CareRoutineDomain]?
-    private var careRoutines: [CareRoutine] = []
-    private var routineSteps: [RoutineStepDomain]?
+//    private var careRoutineDomains: [CareRoutineDomain]?
+//    private var careRoutines: [CareRoutine] = []
+//    private var routineSteps: [RoutineStepDomain]?
     
     private var plantTypes: [PlantTypeDomain]?
     let placeholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"
     
     //MARK: - Initialization
     
+    
+    
     //MARK: - Access methods
+    
+    //    func fetchPlantsWithTypes() {
+    //        let dispatchGroup = DispatchGroup()
+    //        var plantTypes: [PlantTypeDomain]?
+    //        var plantDomains: [PlantDomain]?
+    //        var careRoutineDomains: [CareRoutineDomain]?
+    //
+    //        dispatchGroup.enter()
+    //        Network.fetchData(query: FetchPlantTypesQuery()) { result in
+    //            switch result {
+    //            case .success(let data):
+    //                plantTypes = data.plantType.map({ res in
+    //                    PlantTypeDomain(remote: PlantTypeRemote(
+    //                        id: res.id,
+    //                        species: res.species,
+    //                        description: res.description,
+    //                        type: res.type,
+    //                        createdAt: res.createdAt
+    //                    ))
+    //                })
+    //            case .failure(let error):
+    //                Logger.error("ERROR: \(error)")
+    //            }
+    //            dispatchGroup.leave()
+    //        }
+    //
+    //        dispatchGroup.enter()
+    //        #warning("Userid z contextu po zalogowaniu")
+    //        Network.fetchData(query: FetchUserPlantsQuery(userId: 2)) { result in
+    //            switch result {
+    //            case .success(let data):
+    //                plantDomains = data.plant.map({ res in
+    //                    PlantDomain(remote: PlantRemote(
+    //                        id: res.id,
+    //                        plantName: res.plantName,
+    //                        plantState: res.plantState,
+    //                        plantPlacement: res.plantPlacement,
+    //                        plantImage: res.plantImage,
+    //                        plantTypeId: res.plantTypeId,
+    //                        createdAt: res.createdAt,
+    //                        updatedAt: res.updatedAt
+    //                    ))
+    //                })
+    //            case .failure(let error):
+    //                Logger.error("ERROR: \(error)")
+    //            }
+    //            dispatchGroup.leave()
+    //        }
+    //
+    //        dispatchGroup.enter()
+    //        Network.fetchData(query: FetchPlantCareRoutineQuery(plantId: 1)) { result in
+    //            switch result {
+    //            case .success(let data):
+    //                careRoutineDomains = data.careRoutine.map({ res in
+    //                    CareRoutineDomain(remote: CareRoutineRemote(
+    //                        id: res.id,
+    //                        plantId: res.plantId,
+    //                        isActive: res.isActive,
+    //                        isCompleted: res.isCompleted,
+    //                        isShared: res.isShared,
+    //                        flag: res.flag,
+    //                        createdAt: res.createdAt,
+    //                        updatedAt: res.updatedAt
+    //                    ))
+    //                })
+    //            case .failure(let error):
+    //                Logger.error("ERROR: \(error)")
+    //            }
+    //            dispatchGroup.leave()
+    //        }
+    //
+    //        dispatchGroup.notify(queue: .main) {
+    //            self.plantTypes = plantTypes
+    //            self.plantDomains = plantDomains
+    //            self.careRoutineDomains = careRoutineDomains
+    //            UIAppDelegate?.hideLoadingIndicator()
+    //        }
+    //    }
+    
+    func fetchPlantsWithTypes() {
+        let dispatchGroup = DispatchGroup()
+        var plantTypes: [PlantTypeDomain] = []
+        var plantDomains: [PlantDomain] = []
+        
+        dispatchGroup.enter()
+        Network.fetchData(query: FetchPlantTypesQuery()) { result in
+            switch result {
+            case .success(let data):
+                plantTypes = data.plantType.map({ res in
+                    PlantTypeDomain(remote: PlantTypeRemote(
+                        id: res.id,
+                        species: res.species,
+                        description: res.description,
+                        type: res.type,
+                        createdAt: res.createdAt
+                    ))
+                })
+            case .failure(let error):
+                Logger.error("ERROR: \(error)")
+            }
+            dispatchGroup.leave()
+        }
+        
+        dispatchGroup.enter()
+        Network.fetchData(query: FetchUserPlantsQuery(userId: 2)) { result in
+            switch result {
+            case .success(let data):
+                plantDomains = data.plant.map({ res in
+                    PlantDomain(remote: PlantRemote(
+                        id: res.id,
+                        plantName: res.plantName,
+                        plantState: res.plantState,
+                        plantPlacement: res.plantPlacement,
+                        plantImage: res.plantImage,
+                        plantTypeId: res.plantTypeId,
+                        createdAt: res.createdAt,
+                        updatedAt: res.updatedAt
+                    ))
+                })
+            case .failure(let error):
+                Logger.error("ERROR: \(error)")
+            }
+            dispatchGroup.leave()
+        }
+    
+        
+        dispatchGroup.notify(queue: .main) {
+            self.plantTypes = plantTypes
+            self.plantDomains = plantDomains
+            UIAppDelegate?.hideLoadingIndicator()
+        }
+    }
     
     public func loadData(refresh: Bool = false) {
         UIAppDelegate?.showLoadingIndicator()
-        Network.shared.apollo.fetch(query: FetchPlantTypesQuery()) { result in
-            switch result {
-            case .success(let GQLResult):
-                //                self.onFetchSuccess?()
-                if GQLResult.data?.plantType.isEmpty == false {
-                    self.plantTypes = GQLResult.data?.plantType.map({ res in
-                        PlantTypeDomain(remote: PlantTypeRemote(
-                            id: res.id,
-                            species: res.species,
-                            description: res.description,
-                            type: res.type,
-                            createdAt: res.createdAt
-                        ))
-                    })
-                } else {
-                    Logger.error("Nie feczło typów")
-                }
-            case .failure(let error):
-                UIAppDelegate?.hideLoadingIndicator()
-                Logger.error("ERROR: \(error)")
-            }
-            
-            Network.shared.apollo.fetch(query: FetchUserPlantsQuery(userId: 2)) { result in
-                switch result {
-                case .success(let GQLResult):
-                    //                self.onFetchSuccess?()
-                    if GQLResult.data?.plant.isEmpty == false {
-                        self.plants = GQLResult.data?.plant.map({ res in
-                            PlantDomain(remote: PlantRemote(
-                                id: res.id,
-                                plantName: res.plantName,
-                                plantState: res.plantState,
-                                plantPlacement: res.plantPlacement,
-                                plantImage: res.plantImage,
-                                plantTypeId: res.plantTypeId,
-                                createdAt: res.createdAt,
-                                updatedAt: res.updatedAt
-                            ))
-                        })
-                    } else {
-                        self.buildEmptySections()
-                    }
-                    UIAppDelegate?.hideLoadingIndicator()
-                case .failure(let error):
-                    UIAppDelegate?.hideLoadingIndicator()
-                    Logger.error("ERROR: \(error)")
-                }
-                
-            }
-            
-            Network.shared.apollo.fetch(query: FetchPlantCareRoutineQuery(plantId: 1)) { result in
-                switch result {
-                case .success(let GQLResult):
-                    //                self.onFetchSuccess?()
-//                    Logger.info("\(GQLResult.data?.careRoutine.first?.id)")
-                    
-                    self.careRoutineDomains = GQLResult.data?.careRoutine.map({ careRoutine in
-                        CareRoutineDomain(remote: CareRoutineRemote(
-                            id: careRoutine.id,
-                            plantId: careRoutine.plantId,
-                            isActive: careRoutine.isActive,
-                            isCompleted: careRoutine.isCompleted,
-                            isShared: careRoutine.isShared,
-                            flag: careRoutine.flag,
-                            createdAt: careRoutine.createdAt,
-                            updatedAt: careRoutine.updatedAt
-                        ))
-                    })
-                    
-                    Network.shared.apollo.fetch(query: FetchCareRoutineStepsQuery(careRoutineId: GQLResult.data?.careRoutine.first?.id)) { result in
-                        switch result {
-                        case .success(let GQLResult):
-                            //                self.onFetchSuccess?()
-//                            Logger.info("\(GQLResult.data?.routineStep)")
-                            self.routineSteps = GQLResult.data?.routineStep.map({ routineStep in
-                                RoutineStepDomain(remote: RoutineStepRemote(
-                                    id: routineStep.id,
-                                    careRoutineId: routineStep.careRoutineId,
-                                    stepFrequency: routineStep.stepFrequency,
-                                    otherFrequency: routineStep.otherFrequency,
-                                    description: routineStep.description,
-                                    isCompleted: routineStep.isCompleted,
-                                    completedAt: routineStep.completedAt,
-                                    createdAt: routineStep.createdAt,
-                                    updatedAt: routineStep.updatedAt
-                                ))
-                            })
-
-                            UIAppDelegate?.hideLoadingIndicator()
-                        case .failure(let error):
-                            UIAppDelegate?.hideLoadingIndicator()
-                            Logger.error("ERROR: \(error)")
-                        }
-
-                    }
-                    UIAppDelegate?.hideLoadingIndicator()
-                case .failure(let error):
-                    UIAppDelegate?.hideLoadingIndicator()
-                    Logger.error("ERROR: \(error)")
-                }
-                
-            }
-            let test = self.plants
-            let salkdj = self.careRoutineDomains
-            let test2 = self.careRoutines
-            let sakhd = self.routineSteps
-            Logger.info("DUPA")
-            
-        }
+        
+        fetchPlantsWithTypes()
     }
-
-    public func buildSections() {
+    
+    public func buildSections(plantDomains: [PlantDomain]?) {
+        guard let plantDomains = plantDomains else { return }
+        let cellConfigurators = plantDomains.map {
+            PlantCellConfigurator(data: makePlantCellData(plant: $0))
+        }
+        
         sectionSequence = SectionSequence(
             sections: [
-//                makeHelloHeaderSection(),
-                makePlantsSection(plants: plants!)
-        ])
+                SingleColumnSection(cellConfigurators: cellConfigurators)
+                //                makeHelloHeaderSection(),
+                //                makePlantsSection(plantDomains: plantDomains!)
+            ])
     }
     
     public func buildEmptySections() {
         sectionSequence = SectionSequence(
             sections: [
                 makeHelloHeaderSection(),
-        ])
+            ])
     }
     
     //MARK: - Private methods
-
+    
     private func makeHelloHeaderSection() -> SingleColumnSection {
         let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "PLANTS"))
-
+        
         return SingleColumnSection(cellConfigurators: [configurator])
     }
     
-    private func makePlantsSection(plants: [PlantDomain]) -> SingleColumnSection {
-        
-        
-        let configurators = plants.map { plant in
-            
-            let data = PlantCellData(
-                imageUrl: URL(string: plant.plantImage) ?? URL(string: placeholder)!,
-                plantName: plant.plantName,
-                plantState: PlantState(rawValue: plant.plantState.rawValue) ?? .default,
-                plantTypeInfo: plantTypes?.filter({ planttype in
-                    planttype.id == plant.id
-                }).first?.description ?? "JEBŁO W CHUJ"
-            )
-            
-            return PlantCellConfigurator(data: data)
-            
+    private func makePlantCellData(plant: PlantDomain) -> PlantCellData {
+        let didTapPlant: () -> Void = { [weak self] in
+            guard let self = self else { return }
+            self.onPlantPressed?(plant)
         }
         
-
-//        let configurator = PlantCellConfigurator(
-//            data: PlantCellData(
-//                imageUrl: URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Monstera_Adansonii.jpg/800px-Monstera_Adansonii.jpg")!,
-//                plantName: "PLANTNAME",
-//                plantState: "FINE")
-//        )
+        let data = PlantCellData(
+            imageUrl: URL(string: plant.plantImage) ?? URL(string: placeholder)!,
+            plantName: plant.plantName,
+            plantState: PlantState(rawValue: plant.plantState.rawValue) ?? .default,
+            didTapPlant: didTapPlant)
         
-        return SingleColumnSection(cellConfigurators: configurators)
+        return data
     }
-
+    
     // MARK: - Selectors
-
+    
 }

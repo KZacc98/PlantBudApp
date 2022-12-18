@@ -22,6 +22,19 @@ query FetchUserPlants($userId: Int) {
   }
 }
 
+query FetchPlant($plantId: Int) {
+  Plant(where: {id: {_eq: $plantId}}) {
+    id
+    plantName
+    plantState
+    plantPlacement
+    plantImage
+    plantTypeId
+    createdAt
+    updatedAt
+  }
+}
+
 query FetchPlantCareRoutine($plantId: Int) {
   CareRoutine(where: {plantId: {_eq: $plantId}}) {
     id

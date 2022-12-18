@@ -22,13 +22,11 @@ final class PlantCell: UITableViewCell {
         return view
     }()
     
-    lazy var plantImage: PaddedImageView = {
-        let imageView = PaddedImageView()
-        imageView.imageViewSize.width = 100
-        imageView.imageViewSize.height = 100
-        imageView.imageView.layer.cornerRadius = 50
-        imageView.layer.borderWidth = 1
+    lazy var plantImage: UIImageView = {
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 50
+        imageView.clipsToBounds = true
         mainBackgroundView.addSubviewsUsingAutoLayout(imageView)
         
         return imageView
@@ -112,15 +110,14 @@ final class PlantCell: UITableViewCell {
         
         plantImage.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: 12)
         plantImage.bottomAnchor.constrain(anchor: stackView.topAnchor, constant: -12)
-//        plantImage.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor)
         plantImage.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -12)
+        
+        plantImage.widthAnchor.constrain(constant: 100)
+        plantImage.heightAnchor.constrain(anchor: plantImage.widthAnchor)
         
         stackView.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor)
         stackView.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor)
         stackView.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor)
-
-//        button.centerYAnchor.constrain(anchor: helloLabel.centerYAnchor)
-//        button.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -6)
     }
 }
 

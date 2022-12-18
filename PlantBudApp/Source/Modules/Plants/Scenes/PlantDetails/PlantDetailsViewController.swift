@@ -1,18 +1,18 @@
 //
-//  HomeMenuViewController.swift
+//  PlantDetailsViewController.swift
 //  PlantBudApp
 //
-//  Created by Kamil Zachara on 27/11/2022.
+//  Created by Kamil Zachara on 16/12/2022.
 //
 
 import UIKit
 
-final class HomeMenuViewController: BaseTableViewController {
+final class PlantDetailsViewController: BaseTableViewController {
     
     //MARK: - Public properties
     
 //    public var onOrdersDisabled: (() -> ())?
-    public var viewModel: HomeMenuViewModel!
+    public var viewModel: PlantDetailsViewModel!
     
     //MARK: - Private properties
     
@@ -59,7 +59,7 @@ final class HomeMenuViewController: BaseTableViewController {
 
 //MARK: - Data binding
 
-extension HomeMenuViewController {
+extension PlantDetailsViewController {
     private func bindViewModel() {
         viewModel.onSectionSequenceChange = { [weak self] sectionSequence in
             self?.dataSource.sections = sectionSequence.sections
@@ -115,7 +115,7 @@ extension HomeMenuViewController {
 
 //MARK: - Setup
 
-extension HomeMenuViewController {
+extension PlantDetailsViewController {
     private func setupView() {
         view.backgroundColor = .blue //kolor ViewControllera
     }
@@ -191,4 +191,5 @@ extension HomeMenuViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
     }
 }
+
 

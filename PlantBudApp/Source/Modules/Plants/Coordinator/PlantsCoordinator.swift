@@ -30,26 +30,39 @@ final class PlantsCoordinator: TabBarItemCoordinator {
     override func start(animated: Bool = false, completion: (() -> ())? = nil) {
         guard isStarted == false else { return }
         routeMenu(animated: animated)
-//        setupNavigationController()
+        //        setupNavigationController()
         super.start()
     }
     
     // MARK: - Public methods
-   
+    
     // MARK: - Private methods
     
-//    private func setupNavigationController() {
-//        navigationController?.delegate = self
-//    }
+    //    private func setupNavigationController() {
+    //        navigationController?.delegate = self
+    //    }
     
-        private func routeMenu(animated: Bool) {
-            let viewController = viewControllerFactory.makePlantsViewController()
-            navigationController?.setViewControllers([viewController], animated: animated)
-            }
+    private func routeMenu(animated: Bool) {
+        let viewController = viewControllerFactory.makePlantsViewController()
+        viewController.viewModel.onPlantPressed = { [weak self] plant in
+            Logger.error("PUSH VC with ID \(plant.id)")
+//            viewController.makeToast(with: "PlantID: \(plantId)")
+            self?.pushPlantDetails(plant: plant)
+            
+        }
+        
+        navigationController?.setViewControllers([viewController], animated: animated)
+    }
+    
+    private func pushPlantDetails(plant: PlantDomain) {
+        let viewController = viewControllerFactory.makePlantDetailsViewController(plant: plant)
+        
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
-//// MARK: - UINavigationControllerDelegate
-//
+/// MARK: - UINavigationControllerDelegate
+
 extension PlantsCoordinator: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         Logger.error("PLANTS")
