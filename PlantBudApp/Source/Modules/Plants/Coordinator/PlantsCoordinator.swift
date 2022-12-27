@@ -45,7 +45,7 @@ final class PlantsCoordinator: TabBarItemCoordinator {
     private func routeMenu(animated: Bool) {
         let viewController = viewControllerFactory.makePlantsViewController()
         viewController.viewModel.onPlantPressed = { [weak self] plant in
-            Logger.error("PUSH VC with ID \(plant.id)")
+            Logger.error("PUSH VC with PLANT \(plant)")
 //            viewController.makeToast(with: "PlantID: \(plantId)")
             self?.pushPlantDetails(plant: plant)
             
@@ -54,7 +54,7 @@ final class PlantsCoordinator: TabBarItemCoordinator {
         navigationController?.setViewControllers([viewController], animated: animated)
     }
     
-    private func pushPlantDetails(plant: PlantDomain) {
+    private func pushPlantDetails(plant: Plant) {
         let viewController = viewControllerFactory.makePlantDetailsViewController(plant: plant)
         
         navigationController?.pushViewController(viewController, animated: true)

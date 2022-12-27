@@ -61,3 +61,20 @@ query FetchCareRoutineSteps($careRoutineId: Int) {
     updatedAt
   }
 }
+
+
+mutation CareRoutineStepUpdate($stepId: Int, $_set: RoutineStep_set_input) {
+  update_RoutineStep(where: {id: {_eq: $stepId}}, _set: $_set) {
+    returning {
+      id
+      careRoutineId
+      isCompleted
+      stepFrequency
+      otherFrequency
+      description
+      completedAt
+      createdAt
+      updatedAt
+    }
+  }
+}

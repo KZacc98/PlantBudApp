@@ -72,6 +72,46 @@ class Network {
         }
     }
     
+    /// A utility function that performs a GraphQL mutation using a specified mutation object.
+    ///
+    /// Usage:
+    ///
+    ///     // Perform a mutation using the specified mutation object
+    ///     Network.performMutation(mutation: SomeMutation()) { result in
+    ///         // Handle the result of the mutation operation
+    ///         switch result {
+    ///         case .success(let data):
+    ///             // Use the `data` object to access the results of the mutation
+    ///         case .failure(let error):
+    ///             // Handle the error
+    ///         }
+    ///     }
+    ///
+    /// - Parameters:
+    ///     - mutation: A GraphQL mutation object.
+    ///     - completion:  A completion handler that is called when the mutation operation is complete.
+    ///       The completion handler takes a `Result` object as its parameter, which contains either the
+    ///       data returned by the mutation or an error that occurred during the mutation operation.
+    ///
+    /// - Returns: Void.
+    public static func performMutation<Mutation: GraphQLMutation>(mutation: Mutation, completion: @escaping (Result<Mutation.Data, Error>) -> Void) {
+        Network.shared.apollo.perform(mutation: mutation) { result in
+            switch result {
+            case .success(let graphQLResult):
+                if let errors = graphQLResult.errors {
+                    Logger.error(errors.debugDescription)
+                }
+                if let data = graphQLResult.data {
+                    completion(.success(data))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    
+    
     @MainActor
     public static func fetchData<T: GraphQLQuery>(query: T) async throws -> T.Data {
         try await withCheckedThrowingContinuation { continuation in

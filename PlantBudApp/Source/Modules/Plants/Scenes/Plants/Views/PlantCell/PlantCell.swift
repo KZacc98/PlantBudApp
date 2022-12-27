@@ -16,6 +16,7 @@ final class PlantCell: UITableViewCell {
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
+        view.setShadow(shadowOpacity: 0.5)
         view.layer.cornerRadius = 12
         contentView.addSubviewsUsingAutoLayout(view)
         
@@ -34,7 +35,7 @@ final class PlantCell: UITableViewCell {
     }()
     
     lazy var stackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [plantNameLabel, plantStateLabel, plantInfoLabel])
+        let view = UIStackView(arrangedSubviews: [plantNameLabel, plantStateLabel])
         view.distribution = .fill
         view.alignment = .fill
         view.spacing = 10
@@ -68,23 +69,6 @@ final class PlantCell: UITableViewCell {
         return label
     }()
     
-    public lazy var plantInfoLabel: UILabel = {
-        let label = UILabel()
-        label.font = Font.noticiaItalic(size: 8)
-        label.textColor = Color.brandBlack
-        label.textAlignment = .natural
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
-        
-        return label
-    }()
-    
-    // MARK: - Selectors
-    
-//    @objc private func didPressButton(_ sender: UIButton) {
-//        didPressButton?()
-//    }
-    
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -109,15 +93,15 @@ final class PlantCell: UITableViewCell {
         )
         
         plantImage.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: 12)
-        plantImage.bottomAnchor.constrain(anchor: stackView.topAnchor, constant: -12)
+        plantImage.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -12)
         plantImage.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -12)
         
         plantImage.widthAnchor.constrain(constant: 100)
         plantImage.heightAnchor.constrain(anchor: plantImage.widthAnchor)
         
-        stackView.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor)
-        stackView.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor)
-        stackView.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor)
+        stackView.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 12)
+        stackView.trailingAnchor.constrain(anchor: plantImage.trailingAnchor, constant: -12)
+        stackView.centerYAnchor.constrain(anchor: plantImage.centerYAnchor)
     }
 }
 

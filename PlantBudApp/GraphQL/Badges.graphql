@@ -7,3 +7,12 @@ query FetchBadges {
     updatedAt
   }
 }
+
+query FetchUserBadges($userId: Int) {
+  UserBadges(where: {userId: {_eq: $userId}}) {
+    userId
+    badgeId
+    createdAt
+    updatedAt
+  }
+}

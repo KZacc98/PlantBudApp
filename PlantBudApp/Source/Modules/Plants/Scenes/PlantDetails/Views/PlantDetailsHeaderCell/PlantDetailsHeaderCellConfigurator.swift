@@ -1,21 +1,21 @@
 //
-//  PlantCellConfigurator.swift
+//  PlantDetailsHeaderCellConfigurator.swift
 //  PlantBudApp
 //
-//  Created by Kamil Zachara on 10/12/2022.
+//  Created by Kamil Zachara on 25/12/2022.
 //
 
 import UIKit
 
-final class PlantCellConfigurator {
+final class PlantDetailsHeaderCellConfigurator {
     
     // MARK: - Private properties
     
-    private let data: PlantCellData
+    private let data: PlantDetailsCellData
     
     // MARK: - Initialization
     
-    init(data: PlantCellData) {
+    init(data: PlantDetailsCellData) {
         self.data = data
     }
     
@@ -28,23 +28,23 @@ final class PlantCellConfigurator {
 
 // MARK: - ReusableViewConfiguratorInterface
 
-extension PlantCellConfigurator: ReusableViewConfiguratorInterface {
+extension PlantDetailsHeaderCellConfigurator: ReusableViewConfiguratorInterface {
     var type: AnyClass {
-        return PlantCell.self
+        return PlantDetailsHeader.self
     }
     
     func configure(view: UIView) {
-        guard let view = view as? PlantCell else { return }
+        guard let view = view as? PlantDetailsHeader else { return }
         
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
         view.plantNameLabel.text = data.plantName
         view.plantStateLabel.text = data.plantState.rawValue
         view.plantImage.setImage(with: data.imageUrl)
-        view.mainBackgroundView.gestureRecognizers?.forEach {
-            view.mainBackgroundView.removeGestureRecognizer($0)
+        view.plantImage.gestureRecognizers?.forEach {
+            view.plantImage.removeGestureRecognizer($0)
         }
-        view.mainBackgroundView.addGestureRecognizer(
+        view.plantImage.addGestureRecognizer(
             UITapGestureRecognizer(
                 target: self,
                 action: #selector(didTapPlant(tapGestureRecognizer:))))
@@ -58,6 +58,7 @@ extension PlantCellConfigurator: ReusableViewConfiguratorInterface {
         return UITableView.automaticDimension
     }
 }
+
 
 
 

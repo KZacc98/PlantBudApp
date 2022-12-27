@@ -10,6 +10,10 @@
 		EF15767D29354BFE0015FCEE /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */; };
 		EF190C5B294CE34E0091573D /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C5A294CE34E0091573D /* Plant.swift */; };
 		EF190C5E294FC6EA0091573D /* Badges.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EF190C5D294FC6EA0091573D /* Badges.graphql */; };
+		EF190C64294FC9870091573D /* BadgeRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C63294FC9870091573D /* BadgeRemote.swift */; };
+		EF190C66294FC9E10091573D /* BadgeDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C65294FC9E10091573D /* BadgeDomain.swift */; };
+		EF190C68294FCE890091573D /* UserBadgeRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C67294FCE890091573D /* UserBadgeRemote.swift */; };
+		EF190C6A294FCEDD0091573D /* UserBadgeDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C69294FCEDD0091573D /* UserBadgeDomain.swift */; };
 		EF44C99A294BE56F00CD1075 /* PlantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF44C999294BE56F00CD1075 /* PlantDetailsViewController.swift */; };
 		EF44C99C294BE62300CD1075 /* PlantDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF44C99B294BE62300CD1075 /* PlantDetailsViewModel.swift */; };
 		EF68F74229490DE700B2A08E /* CareRoutineRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F74129490DE700B2A08E /* CareRoutineRemote.swift */; };
@@ -107,6 +111,18 @@
 		EFBA28AE292995260034DCA9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EFBA28B0292995260034DCA9 /* Localizable.strings */; };
 		EFBA28B22929957B0034DCA9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA28B12929957B0034DCA9 /* String+Extension.swift */; };
 		EFBA28C3292999B90034DCA9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBA28C2292999B90034DCA9 /* LoginViewModel.swift */; };
+		EFC1F9502958CF3000112EFC /* PlantDetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F94F2958CF3000112EFC /* PlantDetailsHeader.swift */; };
+		EFC1F9532958D45900112EFC /* PlantDetailsHeaderCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F9522958D45900112EFC /* PlantDetailsHeaderCellConfigurator.swift */; };
+		EFC1F9562959057700112EFC /* PlantDetailsCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F9552959057700112EFC /* PlantDetailsCellData.swift */; };
+		EFC1F95929591AE700112EFC /* PlantDetailsTypeInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F95829591AE700112EFC /* PlantDetailsTypeInfoCell.swift */; };
+		EFC1F95B29591F8600112EFC /* PlantDetailsTypeInfoCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F95A29591F8600112EFC /* PlantDetailsTypeInfoCellConfigurator.swift */; };
+		EFC1F96429592A1500112EFC /* MainSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96329592A1500112EFC /* MainSectionHeader.swift */; };
+		EFC1F96629592A5C00112EFC /* MainSectionConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96529592A5C00112EFC /* MainSectionConfigurator.swift */; };
+		EFC1F96929592A8800112EFC /* MainSectionHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96829592A8800112EFC /* MainSectionHeaderData.swift */; };
+		EFC1F96B29592C7800112EFC /* RoutineStepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96A29592C7800112EFC /* RoutineStepCell.swift */; };
+		EFC1F96D29592D5A00112EFC /* RoutineStepCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96C29592D5A00112EFC /* RoutineStepCellConfigurator.swift */; };
+		EFC1F970295A69CC00112EFC /* RoutineStepCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96F295A69CC00112EFC /* RoutineStepCellData.swift */; };
+		EFC1F974295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F973295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift */; };
 		EFDFF45D294B91DE00B4F5F1 /* PlantCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFF45C294B91DE00B4F5F1 /* PlantCellData.swift */; };
 		EFDFF45F294BADB100B4F5F1 /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EFDFF45E294BADB100B4F5F1 /* User.graphql */; };
 		EFDFF464294BB01D00B4F5F1 /* UserRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFF463294BB01D00B4F5F1 /* UserRemote.swift */; };
@@ -147,6 +163,10 @@
 		EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		EF190C5A294CE34E0091573D /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		EF190C5D294FC6EA0091573D /* Badges.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Badges.graphql; sourceTree = "<group>"; };
+		EF190C63294FC9870091573D /* BadgeRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeRemote.swift; sourceTree = "<group>"; };
+		EF190C65294FC9E10091573D /* BadgeDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeDomain.swift; sourceTree = "<group>"; };
+		EF190C67294FCE890091573D /* UserBadgeRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBadgeRemote.swift; sourceTree = "<group>"; };
+		EF190C69294FCEDD0091573D /* UserBadgeDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBadgeDomain.swift; sourceTree = "<group>"; };
 		EF44C999294BE56F00CD1075 /* PlantDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewController.swift; sourceTree = "<group>"; };
 		EF44C99B294BE62300CD1075 /* PlantDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewModel.swift; sourceTree = "<group>"; };
 		EF68F74129490DE700B2A08E /* CareRoutineRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRoutineRemote.swift; sourceTree = "<group>"; };
@@ -249,6 +269,18 @@
 		EFBA28B12929957B0034DCA9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		EFBA28B4292996400034DCA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EFBA28C2292999B90034DCA9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EFC1F94F2958CF3000112EFC /* PlantDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsHeader.swift; sourceTree = "<group>"; };
+		EFC1F9522958D45900112EFC /* PlantDetailsHeaderCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsHeaderCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC1F9552959057700112EFC /* PlantDetailsCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsCellData.swift; sourceTree = "<group>"; };
+		EFC1F95829591AE700112EFC /* PlantDetailsTypeInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsTypeInfoCell.swift; sourceTree = "<group>"; };
+		EFC1F95A29591F8600112EFC /* PlantDetailsTypeInfoCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsTypeInfoCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC1F96329592A1500112EFC /* MainSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionHeader.swift; sourceTree = "<group>"; };
+		EFC1F96529592A5C00112EFC /* MainSectionConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionConfigurator.swift; sourceTree = "<group>"; };
+		EFC1F96829592A8800112EFC /* MainSectionHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSectionHeaderData.swift; sourceTree = "<group>"; };
+		EFC1F96A29592C7800112EFC /* RoutineStepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepCell.swift; sourceTree = "<group>"; };
+		EFC1F96C29592D5A00112EFC /* RoutineStepCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC1F96F295A69CC00112EFC /* RoutineStepCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepCellData.swift; sourceTree = "<group>"; };
+		EFC1F973295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsTypeInfoCellData.swift; sourceTree = "<group>"; };
 		EFDFF45C294B91DE00B4F5F1 /* PlantCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCellData.swift; sourceTree = "<group>"; };
 		EFDFF45E294BADB100B4F5F1 /* User.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
 		EFDFF463294BB01D00B4F5F1 /* UserRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemote.swift; sourceTree = "<group>"; };
@@ -317,9 +349,68 @@
 			path = GraphQL;
 			sourceTree = "<group>";
 		};
+		EF190C5F294FC89C0091573D /* Badges */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Badges;
+			sourceTree = "<group>";
+		};
+		EF190C60294FC8BA0091573D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF190C62294FC9690091573D /* Remotes */,
+				EF190C61294FC9630091573D /* Domains */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EF190C61294FC9630091573D /* Domains */ = {
+			isa = PBXGroup;
+			children = (
+				EF190C65294FC9E10091573D /* BadgeDomain.swift */,
+				EF190C69294FCEDD0091573D /* UserBadgeDomain.swift */,
+			);
+			path = Domains;
+			sourceTree = "<group>";
+		};
+		EF190C62294FC9690091573D /* Remotes */ = {
+			isa = PBXGroup;
+			children = (
+				EF190C63294FC9870091573D /* BadgeRemote.swift */,
+				EF190C67294FCE890091573D /* UserBadgeRemote.swift */,
+			);
+			path = Remotes;
+			sourceTree = "<group>";
+		};
+		EF190C6B294FD33A0091573D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF190C6D294FD3530091573D /* Remotes */,
+				EF190C6C294FD3490091573D /* Domains */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EF190C6C294FD3490091573D /* Domains */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domains;
+			sourceTree = "<group>";
+		};
+		EF190C6D294FD3530091573D /* Remotes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Remotes;
+			sourceTree = "<group>";
+		};
 		EF44C998294BE55400CD1075 /* PlantDetails */ = {
 			isa = PBXGroup;
 			children = (
+				EFC1F9542959056A00112EFC /* Models */,
+				EFC1F94E2958CF1700112EFC /* Views */,
 				EF44C999294BE56F00CD1075 /* PlantDetailsViewController.swift */,
 				EF44C99B294BE62300CD1075 /* PlantDetailsViewModel.swift */,
 			);
@@ -706,6 +797,8 @@
 		EFAA5B77293E833D0082484D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EF190C60294FC8BA0091573D /* Models */,
+				EF190C5F294FC89C0091573D /* Badges */,
 				EFAA5B7A293E84F50082484D /* Views */,
 				EFAA5B7B293E85040082484D /* BadgesViewModel.swift */,
 				EFAA5B7D293E85420082484D /* BadgesViewController.swift */,
@@ -750,6 +843,7 @@
 		EFAA5B84293E868C0082484D /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EF190C6B294FD33A0091573D /* Models */,
 				EFAA5B87293E86A40082484D /* Views */,
 				EFAA5B88293E86BF0082484D /* CommunityViewController.swift */,
 				EFAA5B8A293E86C80082484D /* CommunityViewModel.swift */,
@@ -1025,6 +1119,87 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		EFC1F94E2958CF1700112EFC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F961295928F200112EFC /* CareRoutineCell */,
+				EFC1F95729591ACB00112EFC /* PlantDetailsTypeInfoCell */,
+				EFC1F9512958D43E00112EFC /* PlantDetailsHeaderCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EFC1F9512958D43E00112EFC /* PlantDetailsHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F94F2958CF3000112EFC /* PlantDetailsHeader.swift */,
+				EFC1F9522958D45900112EFC /* PlantDetailsHeaderCellConfigurator.swift */,
+			);
+			path = PlantDetailsHeaderCell;
+			sourceTree = "<group>";
+		};
+		EFC1F9542959056A00112EFC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F96E295A69AF00112EFC /* RoutineStepCellData */,
+				EFC1F95F2959282800112EFC /* PlantDetailsTypeInfoCell */,
+				EFC1F95E2959281400112EFC /* PlantDetailsCellData */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EFC1F95729591ACB00112EFC /* PlantDetailsTypeInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F95829591AE700112EFC /* PlantDetailsTypeInfoCell.swift */,
+				EFC1F95A29591F8600112EFC /* PlantDetailsTypeInfoCellConfigurator.swift */,
+			);
+			path = PlantDetailsTypeInfoCell;
+			sourceTree = "<group>";
+		};
+		EFC1F95E2959281400112EFC /* PlantDetailsCellData */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F9552959057700112EFC /* PlantDetailsCellData.swift */,
+			);
+			path = PlantDetailsCellData;
+			sourceTree = "<group>";
+		};
+		EFC1F95F2959282800112EFC /* PlantDetailsTypeInfoCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F973295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift */,
+			);
+			path = PlantDetailsTypeInfoCell;
+			sourceTree = "<group>";
+		};
+		EFC1F961295928F200112EFC /* CareRoutineCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F96A29592C7800112EFC /* RoutineStepCell.swift */,
+				EFC1F96C29592D5A00112EFC /* RoutineStepCellConfigurator.swift */,
+			);
+			path = CareRoutineCell;
+			sourceTree = "<group>";
+		};
+		EFC1F96229592A0200112EFC /* MainSectionHeader */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F96329592A1500112EFC /* MainSectionHeader.swift */,
+				EFC1F96529592A5C00112EFC /* MainSectionConfigurator.swift */,
+				EFC1F96829592A8800112EFC /* MainSectionHeaderData.swift */,
+			);
+			path = MainSectionHeader;
+			sourceTree = "<group>";
+		};
+		EFC1F96E295A69AF00112EFC /* RoutineStepCellData */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F96F295A69CC00112EFC /* RoutineStepCellData.swift */,
+			);
+			path = RoutineStepCellData;
+			sourceTree = "<group>";
+		};
 		EFDFF45A294B91C800B4F5F1 /* PlantCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1339,7 @@
 		EFFA594E292A7271003A8F23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EFC1F96229592A0200112EFC /* MainSectionHeader */,
 				EFA7B17129450D11008EE8E9 /* PaddedImageView */,
 				EF9CFDA9293272F600FD0239 /* TextInputCell */,
 				EF9CFDA32932711200FD0239 /* AppVersionLabel */,
@@ -1322,12 +1498,15 @@
 				EFFA5945292A7000003A8F23 /* Assets.swift in Sources */,
 				EFA7B16C2944D703008EE8E9 /* PlantCell.swift in Sources */,
 				EF9CFDCB29327A3000FD0239 /* LoginCredentials.swift in Sources */,
+				EFC1F974295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift in Sources */,
 				EFA7B17529450DD6008EE8E9 /* NSLayoutDimension+Extension.swift in Sources */,
 				EF9CFDA22932699C00FD0239 /* ApplicationCoordinator.swift in Sources */,
+				EFC1F9562959057700112EFC /* PlantDetailsCellData.swift in Sources */,
 				EFAA5B8F293E887A0082484D /* CommunityViewControllerFactory.swift in Sources */,
 				EFA7B18329464050008EE8E9 /* PlantTypeRemote.swift in Sources */,
 				EF9CFDC5293276C700FD0239 /* PasswordValidator.swift in Sources */,
 				EF190C5B294CE34E0091573D /* Plant.swift in Sources */,
+				EFC1F96429592A1500112EFC /* MainSectionHeader.swift in Sources */,
 				EFDFF466294BB0CE00B4F5F1 /* UserDomain.swift in Sources */,
 				EFFA5956292A737B003A8F23 /* LoginViewControllerFactory.swift in Sources */,
 				EFAA5B6C293E7CE40082484D /* PlantsCoordinator.swift in Sources */,
@@ -1335,6 +1514,7 @@
 				EFBA28C3292999B90034DCA9 /* LoginViewModel.swift in Sources */,
 				EFFA5940292A6E4C003A8F23 /* ErrorDialogInterface.swift in Sources */,
 				EFDFF45D294B91DE00B4F5F1 /* PlantCellData.swift in Sources */,
+				EFC1F9532958D45900112EFC /* PlantDetailsHeaderCellConfigurator.swift in Sources */,
 				EF9CFD9B2932649800FD0239 /* MainButtonCell.swift in Sources */,
 				EF9CFDC32932769B00FD0239 /* EmailValidator.swift in Sources */,
 				EF9CFDA52932712300FD0239 /* AppVersionLabel.swift in Sources */,
@@ -1356,19 +1536,24 @@
 				EF9CFDE12932900600FD0239 /* Network.swift in Sources */,
 				EFDFF46C294BB98A00B4F5F1 /* UserProfileCellConfigurator.swift in Sources */,
 				EF77D8C3293FD5E700F5807F /* filler.swift in Sources */,
+				EFC1F96B29592C7800112EFC /* RoutineStepCell.swift in Sources */,
 				EF9CFD7C29324C0500FD0239 /* SingleColumnViewInterface.swift in Sources */,
 				EF9CFD722932467500FD0239 /* AnimationHeaderData.swift in Sources */,
 				EFAA5B6E293E7D1F0082484D /* PlantsViewControllerFactory.swift in Sources */,
 				EFAA5B80293E85830082484D /* BadgesCoordinator.swift in Sources */,
+				EF190C66294FC9E10091573D /* BadgeDomain.swift in Sources */,
 				EF9CFD7529324A7100FD0239 /* BaseTableViewController.swift in Sources */,
 				EF9CFDC12932762000FD0239 /* ApplicationError.swift in Sources */,
 				EF9CFD7E29324C3900FD0239 /* SingleColumnViewControllerInterface.swift in Sources */,
 				EFFA5954292A7317003A8F23 /* BaseNavigationController.swift in Sources */,
 				EFFA592A292A6ADB003A8F23 /* LoginCoordinator.swift in Sources */,
 				EFFA593E292A6E28003A8F23 /* ConfirmationDialogInterface.swift in Sources */,
+				EFC1F9502958CF3000112EFC /* PlantDetailsHeader.swift in Sources */,
 				EFFA592D292A6BE9003A8F23 /* Coordinator.swift in Sources */,
 				EF9CFD8F2932573100FD0239 /* EmptyDataContentView.swift in Sources */,
+				EFC1F970295A69CC00112EFC /* RoutineStepCellData.swift in Sources */,
 				EFAA5B8B293E86C80082484D /* CommunityViewModel.swift in Sources */,
+				EFC1F96D29592D5A00112EFC /* RoutineStepCellConfigurator.swift in Sources */,
 				EFF52391292A52A60014A32B /* UIButton+Extension.swift in Sources */,
 				EF9CFD9E2932670F00FD0239 /* LoadingButton.swift in Sources */,
 				EFAA5B89293E86BF0082484D /* CommunityViewController.swift in Sources */,
@@ -1378,6 +1563,7 @@
 				EF9CFD8729324CE600FD0239 /* SectionSequence.swift in Sources */,
 				EF77D8C5293FD5FD00F5807F /* networkfiller.swift in Sources */,
 				EFA7B17C2945237A008EE8E9 /* PlantRemote.swift in Sources */,
+				EFC1F96929592A8800112EFC /* MainSectionHeaderData.swift in Sources */,
 				EF9CFDBC2932754B00FD0239 /* TextValidator.swift in Sources */,
 				EFFA594A292A71C4003A8F23 /* UIViewController+Extension.swift in Sources */,
 				EF9CFDAF293273D700FD0239 /* TextInputCellData.swift in Sources */,
@@ -1390,8 +1576,10 @@
 				EFA7B1702944D814008EE8E9 /* PlantCellConfigurator.swift in Sources */,
 				EFFA5951292A7281003A8F23 /* ToastView.swift in Sources */,
 				EFAA5B73293E7DBE0082484D /* PlantsViewModel.swift in Sources */,
+				EF190C6A294FCEDD0091573D /* UserBadgeDomain.swift in Sources */,
 				EFAA5B82293E85EC0082484D /* BadgesViewControllerFactory.swift in Sources */,
 				EFA7B185294640AC008EE8E9 /* PlantTypeDomain.swift in Sources */,
+				EF190C68294FCE890091573D /* UserBadgeRemote.swift in Sources */,
 				EF9CFD8D2932570200FD0239 /* EmptyDataView.swift in Sources */,
 				EFFA5930292A6C25003A8F23 /* Logger.swift in Sources */,
 				EFA7B17329450D22008EE8E9 /* PaddedImageView.swift in Sources */,
@@ -1401,16 +1589,19 @@
 				EFFA5939292A6D94003A8F23 /* TransitionHelper.swift in Sources */,
 				EFAA5B5B293E6C740082484D /* HelloHeaderCellConfigurator.swift in Sources */,
 				EFF52395292A52E10014A32B /* UIImageView+Extension.swift in Sources */,
+				EF190C64294FC9870091573D /* BadgeRemote.swift in Sources */,
 				EF9CFDB5293274B600FD0239 /* Validable.swift in Sources */,
 				EFAA5B7C293E85040082484D /* BadgesViewModel.swift in Sources */,
 				EF9CFD8329324CA900FD0239 /* ReusableViewConfiguratorInterface.swift in Sources */,
 				EF9CFDFC2934078A00FD0239 /* HomeViewControllerFactory.swift in Sources */,
 				EF6947C92948EE2D006E56F1 /* API.swift in Sources */,
+				EFC1F95B29591F8600112EFC /* PlantDetailsTypeInfoCellConfigurator.swift in Sources */,
 				EFFA594C292A7204003A8F23 /* Int+Extension.swift in Sources */,
 				EF9CFD8029324C5400FD0239 /* SingleColumnSection.swift in Sources */,
 				EFAA5B75293E7DCA0082484D /* PlantsViewController.swift in Sources */,
 				EFFA5934292A6D06003A8F23 /* BaseViewController.swift in Sources */,
 				EF44C99A294BE56F00CD1075 /* PlantDetailsViewController.swift in Sources */,
+				EFC1F95929591AE700112EFC /* PlantDetailsTypeInfoCell.swift in Sources */,
 				EFFA593C292A6DD2003A8F23 /* InformationDialogInterface.swift in Sources */,
 				EF9CFDEB2934037100FD0239 /* TabBarOption.swift in Sources */,
 				EF9CFDB32932749000FD0239 /* ValidationManager.swift in Sources */,
@@ -1419,6 +1610,7 @@
 				EFBA2875292986510034DCA9 /* AppDelegate.swift in Sources */,
 				EF9CFD8529324CC400FD0239 /* SectionMapper.swift in Sources */,
 				EFF52393292A52C50014A32B /* UIColor+Extension.swift in Sources */,
+				EFC1F96629592A5C00112EFC /* MainSectionConfigurator.swift in Sources */,
 				EF68F74229490DE700B2A08E /* CareRoutineRemote.swift in Sources */,
 				EF9CFDBA2932750500FD0239 /* ValidatorInterface.swift in Sources */,
 				EF9CFD992932646E00FD0239 /* MainButtonCellConfigurator.swift in Sources */,

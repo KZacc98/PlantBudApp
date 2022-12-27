@@ -6,13 +6,13 @@
 //
 
 struct CareRoutine {
-    let id: Int
+    let careRoutineId: Int
     let plantId: Int
     let isActive: Bool
     let isCompleted: Bool
     let isShared: Bool
     let flag: UserContentFlag
-    let routineSteps: [RoutineStepDomain]
+    let routineSteps: [RoutineStepDomain]?
     let createdAt: String
     let updatedAt: String?
 }

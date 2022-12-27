@@ -8,5 +8,11 @@
 struct Plant {
     let plantData: PlantDomain
     let plantTypeData: PlantTypeDomain
-    let plantCareRoutineId: Int
+    let plantCareRoutineId: Int?
+    
+    init(plantData: PlantDomain, plantTypeData: PlantTypeDomain, plantCareRoutineId: Int? = nil) {
+        self.plantData = plantData
+        self.plantTypeData = plantTypeData
+        self.plantCareRoutineId = plantCareRoutineId
+    }
 }

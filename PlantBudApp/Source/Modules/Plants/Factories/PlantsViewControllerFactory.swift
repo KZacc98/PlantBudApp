@@ -18,7 +18,7 @@ final class PlantsViewControllerFactory {
         return viewController
     }
     
-    func makePlantDetailsViewController(plant: PlantDomain) -> PlantDetailsViewController {
+    func makePlantDetailsViewController(plant: Plant) -> PlantDetailsViewController {
         let viewController = PlantDetailsViewController()
         viewController.viewModel = PlantDetailsViewModel(plant: plant)
         

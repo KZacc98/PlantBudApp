@@ -14,10 +14,13 @@ final class PlantsViewModel {
     
     public var onSectionSequenceChange: ((SectionSequence) -> Void)?
     public var onFetchSuccess: (() -> Void)?
-    public var onPlantPressed: ((PlantDomain) -> Void)?
+    public var onPlantPressed: ((Plant) -> Void)?
     public var onError: ((Error) -> ())?
     
     //MARK: Private properties
+    
+    private var plantDomains: [PlantDomain]?
+    private var plantTypes: [PlantTypeDomain]?
     
     private var sectionSequence: SectionSequence = SectionSequence() {
         didSet {
@@ -25,17 +28,13 @@ final class PlantsViewModel {
         }
     }
     
-    private var plantDomains: [PlantDomain]? {
+    private var plants: [Plant]? {
         didSet{
-            buildSections(plantDomains: plantDomains)
+            guard let plants = plants else { return }
+            buildSections(plants: plants)
         }
     }
     
-//    private var careRoutineDomains: [CareRoutineDomain]?
-//    private var careRoutines: [CareRoutine] = []
-//    private var routineSteps: [RoutineStepDomain]?
-    
-    private var plantTypes: [PlantTypeDomain]?
     let placeholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"
     
     //MARK: - Initialization
@@ -43,84 +42,6 @@ final class PlantsViewModel {
     
     
     //MARK: - Access methods
-    
-    //    func fetchPlantsWithTypes() {
-    //        let dispatchGroup = DispatchGroup()
-    //        var plantTypes: [PlantTypeDomain]?
-    //        var plantDomains: [PlantDomain]?
-    //        var careRoutineDomains: [CareRoutineDomain]?
-    //
-    //        dispatchGroup.enter()
-    //        Network.fetchData(query: FetchPlantTypesQuery()) { result in
-    //            switch result {
-    //            case .success(let data):
-    //                plantTypes = data.plantType.map({ res in
-    //                    PlantTypeDomain(remote: PlantTypeRemote(
-    //                        id: res.id,
-    //                        species: res.species,
-    //                        description: res.description,
-    //                        type: res.type,
-    //                        createdAt: res.createdAt
-    //                    ))
-    //                })
-    //            case .failure(let error):
-    //                Logger.error("ERROR: \(error)")
-    //            }
-    //            dispatchGroup.leave()
-    //        }
-    //
-    //        dispatchGroup.enter()
-    //        #warning("Userid z contextu po zalogowaniu")
-    //        Network.fetchData(query: FetchUserPlantsQuery(userId: 2)) { result in
-    //            switch result {
-    //            case .success(let data):
-    //                plantDomains = data.plant.map({ res in
-    //                    PlantDomain(remote: PlantRemote(
-    //                        id: res.id,
-    //                        plantName: res.plantName,
-    //                        plantState: res.plantState,
-    //                        plantPlacement: res.plantPlacement,
-    //                        plantImage: res.plantImage,
-    //                        plantTypeId: res.plantTypeId,
-    //                        createdAt: res.createdAt,
-    //                        updatedAt: res.updatedAt
-    //                    ))
-    //                })
-    //            case .failure(let error):
-    //                Logger.error("ERROR: \(error)")
-    //            }
-    //            dispatchGroup.leave()
-    //        }
-    //
-    //        dispatchGroup.enter()
-    //        Network.fetchData(query: FetchPlantCareRoutineQuery(plantId: 1)) { result in
-    //            switch result {
-    //            case .success(let data):
-    //                careRoutineDomains = data.careRoutine.map({ res in
-    //                    CareRoutineDomain(remote: CareRoutineRemote(
-    //                        id: res.id,
-    //                        plantId: res.plantId,
-    //                        isActive: res.isActive,
-    //                        isCompleted: res.isCompleted,
-    //                        isShared: res.isShared,
-    //                        flag: res.flag,
-    //                        createdAt: res.createdAt,
-    //                        updatedAt: res.updatedAt
-    //                    ))
-    //                })
-    //            case .failure(let error):
-    //                Logger.error("ERROR: \(error)")
-    //            }
-    //            dispatchGroup.leave()
-    //        }
-    //
-    //        dispatchGroup.notify(queue: .main) {
-    //            self.plantTypes = plantTypes
-    //            self.plantDomains = plantDomains
-    //            self.careRoutineDomains = careRoutineDomains
-    //            UIAppDelegate?.hideLoadingIndicator()
-    //        }
-    //    }
     
     func fetchPlantsWithTypes() {
         let dispatchGroup = DispatchGroup()
@@ -172,6 +93,18 @@ final class PlantsViewModel {
         dispatchGroup.notify(queue: .main) {
             self.plantTypes = plantTypes
             self.plantDomains = plantDomains
+            
+            guard let plantTypeDomains = self.plantTypes else { return }
+            let plantTypeDomainDict = Dictionary(uniqueKeysWithValues: plantTypeDomains.map { ($0.id, $0) })
+            let plants = plantDomains.map { plantDomain in
+                // Look up the corresponding PlantTypeDomain object using the plantTypeId property of the PlantDomain object
+                let plantTypeDomain = plantTypeDomainDict[plantDomain.plantTypeId]
+                return Plant(plantData: plantDomain, plantTypeData: plantTypeDomain!)
+            }
+            self.plants = plants
+            
+            
+            
             UIAppDelegate?.hideLoadingIndicator()
         }
     }
@@ -182,10 +115,9 @@ final class PlantsViewModel {
         fetchPlantsWithTypes()
     }
     
-    public func buildSections(plantDomains: [PlantDomain]?) {
-        guard let plantDomains = plantDomains else { return }
-        let cellConfigurators = plantDomains.map {
-            PlantCellConfigurator(data: makePlantCellData(plant: $0))
+    public func buildSections(plants: [Plant]) {
+        let cellConfigurators = plants.map { plant in
+            PlantCellConfigurator(data: makePlantCellData(plant: plant))
         }
         
         sectionSequence = SectionSequence(
@@ -211,16 +143,17 @@ final class PlantsViewModel {
         return SingleColumnSection(cellConfigurators: [configurator])
     }
     
-    private func makePlantCellData(plant: PlantDomain) -> PlantCellData {
+    private func makePlantCellData(plant: Plant) -> PlantCellData {
         let didTapPlant: () -> Void = { [weak self] in
             guard let self = self else { return }
             self.onPlantPressed?(plant)
         }
         
         let data = PlantCellData(
-            imageUrl: URL(string: plant.plantImage) ?? URL(string: placeholder)!,
-            plantName: plant.plantName,
-            plantState: PlantState(rawValue: plant.plantState.rawValue) ?? .default,
+            imageUrl: URL(string: plant.plantData.plantImage) ?? URL(string: placeholder)!,
+            plantName: plant.plantData.plantName,
+            plantState: PlantState(rawValue: plant.plantData.plantState.rawValue) ?? .default,
+            plantType: plant.plantTypeData,
             didTapPlant: didTapPlant)
         
         return data

@@ -1,20 +1,20 @@
 //
-//  PlantCellData.swift
+//  PlantDetailsCellData.swift
 //  PlantBudApp
 //
-//  Created by Kamil Zachara on 15/12/2022.
+//  Created by Kamil Zachara on 25/12/2022.
 //
 
 import Foundation
 
-struct PlantCellData {
+struct PlantDetailsCellData {
     let imageUrl: URL
     let plantName: String
     let plantState: PlantState
-    let plantType: PlantTypeDomain?
+    let plantType: PlantTypeDomain
     let didTapPlant: (() -> Void)?
     
-    init(imageUrl: URL, plantName: String, plantState: PlantState, plantType: PlantTypeDomain?, didTapPlant: (() -> Void)?) {
+    init(imageUrl: URL, plantName: String, plantState: PlantState, plantType: PlantTypeDomain, didTapPlant: (() -> Void)?) {
         self.imageUrl = imageUrl
         self.plantName = plantName
         self.plantState = plantState

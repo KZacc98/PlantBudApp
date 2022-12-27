@@ -33,6 +33,7 @@ final class BadgesViewController: BaseTableViewController {
         setupEmptyDataView()
         setupTableView()
         bindViewModel()
+        viewModel.loadData()
         viewModel.buildSections()
         
     }

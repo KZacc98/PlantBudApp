@@ -1,21 +1,21 @@
 //
-//  PlantCellConfigurator.swift
+//  PlantDetailsTypeInfoCellConfigurator.swift
 //  PlantBudApp
 //
-//  Created by Kamil Zachara on 10/12/2022.
+//  Created by Kamil Zachara on 26/12/2022.
 //
 
 import UIKit
 
-final class PlantCellConfigurator {
+final class PlantDetailsTypeInfoCellConfigurator {
     
     // MARK: - Private properties
     
-    private let data: PlantCellData
+    private let data: PlantDetailsTypeInfoCellData
     
     // MARK: - Initialization
     
-    init(data: PlantCellData) {
+    init(data: PlantDetailsTypeInfoCellData) {
         self.data = data
     }
     
@@ -28,26 +28,20 @@ final class PlantCellConfigurator {
 
 // MARK: - ReusableViewConfiguratorInterface
 
-extension PlantCellConfigurator: ReusableViewConfiguratorInterface {
+extension PlantDetailsTypeInfoCellConfigurator: ReusableViewConfiguratorInterface {
     var type: AnyClass {
-        return PlantCell.self
+        return PlantDetailsTypeInfoCell.self
     }
     
     func configure(view: UIView) {
-        guard let view = view as? PlantCell else { return }
+        guard let view = view as? PlantDetailsTypeInfoCell else { return }
         
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
-        view.plantNameLabel.text = data.plantName
-        view.plantStateLabel.text = data.plantState.rawValue
+        view.plantSpeciesLabel.text = data.plantType.species
+        view.plantTypeLabel.text = data.plantType.type
+        view.plantInfoLabel.text = data.plantType.description
         view.plantImage.setImage(with: data.imageUrl)
-        view.mainBackgroundView.gestureRecognizers?.forEach {
-            view.mainBackgroundView.removeGestureRecognizer($0)
-        }
-        view.mainBackgroundView.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(didTapPlant(tapGestureRecognizer:))))
         
         //        view.plantImageView.imageView.setRoundedImage(with: data.imageUrl, cornerRadius: view.frame.size.width / 2)
         //        view.plantImageView.imageView.makeRounded()
@@ -58,6 +52,8 @@ extension PlantCellConfigurator: ReusableViewConfiguratorInterface {
         return UITableView.automaticDimension
     }
 }
+
+
 
 
 
