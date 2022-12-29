@@ -26,19 +26,3 @@ struct PlantDomain {
         self.updatedAt = remote.updatedAt ?? ""
     }
 }
-
-enum PlantState: String, Codable {
-    case thriving = "thriving"
-    case good = "good"
-    case needsAttention = "needsAttention"
-    case thirsty = "thirsty"
-    case forgotten = "forgotten"
-    case dead = "dead"
-    case `default`
-}
-
-enum PlantPlacement: String, Codable {
-    case inside = "inside"
-    case outside = "outside"
-    case `default`
-}

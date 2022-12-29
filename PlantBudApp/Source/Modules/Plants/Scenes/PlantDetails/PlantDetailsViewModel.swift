@@ -233,10 +233,15 @@ final class PlantDetailsViewModel {
     private func setCheckbox(steps: RoutineStepDomain) {
         let dispatchGroup = DispatchGroup()
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let timestamp = dateFormatter.string(from: Date())
+        print(timestamp)  // Output: 2022-12-11T15:43:59.337Z
+        
         // Fetch data1
         dispatchGroup.enter()
         Network.shared.apollo.store.clearCache()
-        Network.performMutation(mutation: CareRoutineStepUpdateMutation(stepId: steps.id, _set: RoutineStep_set_input(isCompleted: !steps.isCompleted))) { result in
+        Network.performMutation(mutation: CareRoutineStepUpdateMutation(stepId: steps.id, _set: RoutineStep_set_input(completedAt: timestamp, isCompleted: !steps.isCompleted, updatedAt: timestamp))) { result in
             switch result {
             case .success(let data):
                 // Use the `data` object to access the results of the mutation

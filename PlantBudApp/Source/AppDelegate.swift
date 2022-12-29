@@ -66,25 +66,20 @@ extension AppDelegate {
 
 extension AppDelegate {
     private func setupMainInterface(
-        //        tabBarOption: TabBarOption,
         completion: (() -> ())? = nil) {
-            //        self.applicationCoordinator = ApplicationCoordinator(window: window)
-            //        if UserContext.shared.loggedIn {
-            //            applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: tabBarOption,
-            //                                                           completion: completion)
-            //        } else {
-//                        applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ
-            applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: .home)
-            //        }
+            if !UserContext.shared.loggedIn {
+                applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: .home)
+            } else {
+                applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ
+            }
         }
     
     private func setupMainInterface() {
-        //        if UserContext.shared.loggedIn {
-        //            UserContext.shared.logout(loginSettings: loginSettings)
-        //        } else {
-//                    applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ
-        applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: .home)
-        //        }
+        if !UserContext.shared.loggedIn {
+            applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: .home)
+        } else {
+            applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ
+        }
     }
     
     private func setupNavigationBar() {

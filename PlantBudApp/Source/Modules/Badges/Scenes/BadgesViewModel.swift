@@ -44,6 +44,8 @@ final class BadgesViewModel {
                         id: res.id,
                         badgeName: res.badgeName,
                         points: res.points,
+                        badgeDescription: res.badgeDescription,
+                        badgeImage: res.badgeImage ?? "",
                         createdAt: res.createdAt ?? "",
                         updatedAt: res.updatedAt ?? ""
                     ))
@@ -56,7 +58,7 @@ final class BadgesViewModel {
         
         // Fetch data2
         dispatchGroup.enter()
-        Network.fetchData(query: FetchUserBadgesQuery(userId: 2)) { result in
+        Network.fetchData(query: FetchUserBadgesQuery(userId: UserContext.shared.userId)) { result in
             switch result {
             case .success(let data):
                 data2 = data.userBadges.map({ res in

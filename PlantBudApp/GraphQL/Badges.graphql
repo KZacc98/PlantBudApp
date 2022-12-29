@@ -3,6 +3,8 @@ query FetchBadges {
     id
     badgeName
     points
+    badgeDescription
+    badgeImage
     createdAt
     updatedAt
   }

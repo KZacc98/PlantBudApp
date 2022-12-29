@@ -11,6 +11,7 @@ struct UserRemote: Codable {
     let id: Int
     let name: String
     let userName: String
+    let profilePicture: String?
     let email: String
     let gender: String
     let phoneNumber: String?

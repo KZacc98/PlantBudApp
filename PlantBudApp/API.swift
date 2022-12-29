@@ -114,6 +114,8 @@ public final class FetchBadgesQuery: GraphQLQuery {
         id
         badgeName
         points
+        badgeDescription
+        badgeImage
         createdAt
         updatedAt
       }
@@ -163,6 +165,8 @@ public final class FetchBadgesQuery: GraphQLQuery {
           GraphQLField("id", type: .nonNull(.scalar(Int.self))),
           GraphQLField("badgeName", type: .nonNull(.scalar(String.self))),
           GraphQLField("points", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("badgeDescription", type: .nonNull(.scalar(String.self))),
+          GraphQLField("badgeImage", type: .scalar(String.self)),
           GraphQLField("createdAt", type: .scalar(String.self)),
           GraphQLField("updatedAt", type: .scalar(String.self)),
         ]
@@ -174,8 +178,8 @@ public final class FetchBadgesQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: Int, badgeName: String, points: Int, createdAt: String? = nil, updatedAt: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Badge", "id": id, "badgeName": badgeName, "points": points, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: Int, badgeName: String, points: Int, badgeDescription: String, badgeImage: String? = nil, createdAt: String? = nil, updatedAt: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Badge", "id": id, "badgeName": badgeName, "points": points, "badgeDescription": badgeDescription, "badgeImage": badgeImage, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -211,6 +215,24 @@ public final class FetchBadgesQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "points")
+        }
+      }
+
+      public var badgeDescription: String {
+        get {
+          return resultMap["badgeDescription"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "badgeDescription")
+        }
+      }
+
+      public var badgeImage: String? {
+        get {
+          return resultMap["badgeImage"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "badgeImage")
         }
       }
 
@@ -1436,6 +1458,7 @@ public final class FetchUserProfileQuery: GraphQLQuery {
         id
         name
         userName
+        profilePicture
         email
         gender
         phoneNumber
@@ -1537,6 +1560,7 @@ public final class FetchUserProfileQuery: GraphQLQuery {
           GraphQLField("id", type: .nonNull(.scalar(Int.self))),
           GraphQLField("name", type: .nonNull(.scalar(String.self))),
           GraphQLField("userName", type: .nonNull(.scalar(String.self))),
+          GraphQLField("profilePicture", type: .scalar(String.self)),
           GraphQLField("email", type: .nonNull(.scalar(String.self))),
           GraphQLField("gender", type: .nonNull(.scalar(String.self))),
           GraphQLField("phoneNumber", type: .scalar(String.self)),
@@ -1554,8 +1578,8 @@ public final class FetchUserProfileQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: Int, name: String, userName: String, email: String, gender: String, phoneNumber: String? = nil, points: Int, active: Bool, userType: String, createdAt: String? = nil, updatedAt: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "userName": userName, "email": email, "gender": gender, "phoneNumber": phoneNumber, "points": points, "active": active, "userType": userType, "createdAt": createdAt, "updatedAt": updatedAt])
+      public init(id: Int, name: String, userName: String, profilePicture: String? = nil, email: String, gender: String, phoneNumber: String? = nil, points: Int, active: Bool, userType: String, createdAt: String? = nil, updatedAt: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "name": name, "userName": userName, "profilePicture": profilePicture, "email": email, "gender": gender, "phoneNumber": phoneNumber, "points": points, "active": active, "userType": userType, "createdAt": createdAt, "updatedAt": updatedAt])
       }
 
       public var __typename: String {
@@ -1591,6 +1615,15 @@ public final class FetchUserProfileQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "userName")
+        }
+      }
+
+      public var profilePicture: String? {
+        get {
+          return resultMap["profilePicture"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "profilePicture")
         }
       }
 

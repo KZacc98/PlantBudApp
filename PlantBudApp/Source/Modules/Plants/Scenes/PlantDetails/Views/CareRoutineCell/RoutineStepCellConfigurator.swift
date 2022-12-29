@@ -39,6 +39,7 @@ extension RoutineStepCellConfigurator: ReusableViewConfiguratorInterface {
         
         view.selectionStyle = .none
         view.stepLabel.text = data.title
+        view.backgroundColor = Color.brandWhite
         view.mainBackgroundView.backgroundColor = data.check ? Color.red : Color.brandGreen
         view.mainBackgroundView.gestureRecognizers?.forEach {
             view.mainBackgroundView.removeGestureRecognizer($0)

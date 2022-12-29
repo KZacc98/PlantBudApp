@@ -31,9 +31,11 @@ extension UserProfileCellConfigurator: ReusableViewConfiguratorInterface {
         guard let view = view as? UserProfileCell else { return }
         
         view.selectionStyle = .none
+        view.backgroundColor = Color.brandWhite
         view.helloLabel.text = data.name
-        view.pointsLabel.text = data.points
+        view.plantsNumberLabel.text = data.plantCount
         view.helloLabel.adjustsFontSizeToFitWidth = true
+        view.profilePictureImageView.setImage(with: URL(string: data.profilePictureUrl))
 //        view.didPressButton = data.didPressButton
     }
     
@@ -44,7 +46,8 @@ extension UserProfileCellConfigurator: ReusableViewConfiguratorInterface {
 
 struct UserProfileCellData {
     let name: String
-    let points: String
+    let plantCount: String
+    let profilePictureUrl: String
 }
 
 

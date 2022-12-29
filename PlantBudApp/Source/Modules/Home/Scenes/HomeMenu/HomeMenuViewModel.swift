@@ -23,13 +23,13 @@ final class HomeMenuViewModel {
         }
     }
     
-    private var plants: [PlantDomain]?
-    
-    private var user: UserDomain? {
+    private var plants: [PlantDomain]? {
         didSet{
             buildSections()
         }
     }
+    
+    private var user: UserDomain?
 
     //MARK: - Initialization
     
@@ -40,13 +40,20 @@ final class HomeMenuViewModel {
     public func loadData(refresh: Bool = false) {
         UIAppDelegate?.showLoadingIndicator()
         
-        Network.shared.apollo.fetch(query: FetchUserProfileQuery(userId: 2)) { result in
+        let dispatchGroup = DispatchGroup()
+        var plants: [PlantDomain]?
+        var user: UserDomain?
+        
+        // Fetch data1
+        dispatchGroup.enter()
+        
+        Network.shared.apollo.fetch(query: FetchUserProfileQuery(userId: UserContext.shared.userId)) { result in
             switch result {
             case .success(let GQLResult):
                 //                self.onFetchSuccess?()
                 Logger.info("\(GQLResult)")
                 
-                self.plants = GQLResult.data?.plant.map({ res in
+                plants = GQLResult.data?.plant.map({ res in
                     PlantDomain(remote: PlantRemote(
                         id: res.id,
                         plantName: res.plantName,
@@ -59,11 +66,12 @@ final class HomeMenuViewModel {
                     ))
                 })
                 
-                self.user = GQLResult.data?.user.first.map({ user in
+                user = GQLResult.data?.user.first.map({ user in
                     UserDomain(remote: UserRemote(
                         id: user.id,
                         name: user.name,
                         userName: user.userName,
+                        profilePicture: user.profilePicture,
                         email: user.email,
                         gender: user.gender,
                         phoneNumber: user.phoneNumber,
@@ -80,17 +88,26 @@ final class HomeMenuViewModel {
                 UIAppDelegate?.hideLoadingIndicator()
                 Logger.error("ERROR: \(error)")
             }
+            dispatchGroup.leave()
         }
+        
+        // Run a block of code when all requests are completed
+        dispatchGroup.notify(queue: .main) {
+            // Use data1, data2, and data3 here
+            self.user = user
+            self.plants = plants
+        }
+        
     }
 
     public func buildSections() {
+        
         sectionSequence = SectionSequence(
             sections: [
-                makeUserProfileSection(name: user?.name ?? "TEST", points: user?.points.description ?? "250"),
-                makeHelloHeaderSection(title: String(user?.name ?? "TEST")),
-                makeHelloHeaderSection(title: String(user?.userName ?? "TEST")),
-                makeHelloHeaderSection(title: String(user?.userType.rawValue ?? "TEST")),
-                makePlantCountSection()
+                makeUserProfileSection(name: user?.name ?? "TEST", plantCount: plants?.count.description ?? "no plants", profilePicture: user?.profilePicture),
+                makePlantsStatsSection(plants: self.plants),
+                makeMessageOfTheDaySection()
+                
         ])
     }
 
@@ -103,23 +120,44 @@ final class HomeMenuViewModel {
         return SingleColumnSection(cellConfigurators: [configurator])
     }
     
-    private func makeUserProfileSection(name: String, points: String) -> SingleColumnSection {
+    private func makeUserProfileSection(name: String, plantCount: String, profilePicture: String?) -> SingleColumnSection {
 
-        let configurator = UserProfileCellConfigurator(data: UserProfileCellData(name: "Hello \(name)", points: "+\(points)"))
+        let configurator = UserProfileCellConfigurator(
+            data: UserProfileCellData(
+                name: "Hello \(name)",
+                plantCount: plantCount,
+                profilePictureUrl: profilePicture ?? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
+            ))
 
         return SingleColumnSection(cellConfigurators: [configurator])
     }
     
-    private func makePlantCountSection() -> SingleColumnSection {
-        if let plantCount = plants?.count {
-            let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "Plant Count: \(plantCount)"))
+    private func makePlantsStatsSection(plants: [PlantDomain]?) -> SingleColumnSection {
+        if let plants = plants {
+            let headerData = MainSectionHeaderData(
+                title: "Your Plants stats", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+            let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
             
-            return SingleColumnSection(cellConfigurators: [configurator])
+            let configurator = PlantStatsCellConfigurator(data: PlantStatsCellData(title: "DUPA", plants: plants))
+            
+            return SingleColumnSection(cellConfigurators: [configurator], headerConfigurator: headerConfigurator)
         } else {
-            let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "JEBŁO"))
-            
+            let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "title"))
+
             return SingleColumnSection(cellConfigurators: [configurator])
         }
+    }
+    
+    private func makeMessageOfTheDaySection() -> SingleColumnSection {
+        
+        let headerData = MainSectionHeaderData(
+            title: "MessageOfTheDay", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+        let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
+        
+        let configurator = MessageOfTheDayCellConfigurator(data: "")
+        
+        return SingleColumnSection(cellConfigurators: [configurator], headerConfigurator: headerConfigurator)
+        
     }
 
     // MARK: - Selectors

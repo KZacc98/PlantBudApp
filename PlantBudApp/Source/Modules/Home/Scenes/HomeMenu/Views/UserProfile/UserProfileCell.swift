@@ -17,6 +17,8 @@ final class UserProfileCell: UITableViewCell {
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
+        view.setShadow(shadowOpacity: 0.5)
+        view.layer.cornerRadius = 12
         contentView.addSubviewsUsingAutoLayout(view)
         
         return view
@@ -26,7 +28,7 @@ final class UserProfileCell: UITableViewCell {
         let label = UILabel()
         label.font = Font.noticiaRegular(size: 24)
         label.textColor = Color.brandBlack
-        label.textAlignment = .natural
+        label.textAlignment = .center
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
         mainBackgroundView.addSubviewsUsingAutoLayout(label)
@@ -34,64 +36,48 @@ final class UserProfileCell: UITableViewCell {
         return label
     }()
     
-    public lazy var pointsContainer: UIView = {
-        let view = UIView()
-        view.layer.borderColor = Color.brandGreen.cgColor
-        view.layer.cornerRadius = 10
-        view.setShadow(shadowOpacity: 1, shadowColor: Color.brandGreen)
+    public lazy var plantsCountContainer: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [plantsCountLabel, plantsNumberLabel])
+        view.axis = .vertical
+        view.distribution = .fill
         mainBackgroundView.addSubviewsUsingAutoLayout(view)
         
         return view
     }()
     
-    public lazy var pointsLabel: UILabel = {
+    public lazy var plantsCountLabel: UILabel = {
         let label = UILabel()
-        label.font = Font.noticiaRegular(size: 18)
+        label.font = Font.noticiaRegular(size: 24)
         label.textColor = Color.brandBlack
-        label.textAlignment = .natural
+        label.text = "Plants"
+        label.textAlignment = .center
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
-        pointsContainer.addSubviewsUsingAutoLayout(label)
         
         return label
     }()
     
-    public lazy var profilePictureImageView: UIView = {
-        let imageView = UIView()
-        imageView.backgroundColor = Color.brandGreen
+    public lazy var plantsNumberLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.noticiaRegular(size: 36)
+        label.textColor = Color.brandBlack
+        label.textAlignment = .center
+        label.numberOfLines = 1
+        label.lineBreakMode = .byWordWrapping
+        
+        return label
+    }()
+    
+    lazy var profilePictureImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 50
-//        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         mainBackgroundView.addSubviewsUsingAutoLayout(imageView)
         
         return imageView
         
     }()
-    
-//    public lazy var button: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setShadow(
-//            cornerRadius: 4,
-//            shadowOpacity: 0.5,
-//            shadowRadius: 4,
-//            shadowOffset: .zero,
-//            shadowColor: Color.white
-//        )
-//        button.backgroundColor = Color.white
-//        button.setTitle("P".uppercased(), for: .normal)
-//        button.setTitleColor(Color.black, for: .normal)
-////        button.helloLabel?.font =
-////        button.addTarget(self, action: #selector(didPressButton(_:)), for: .touchUpInside)
-//        mainBackgroundView.addSubviewsUsingAutoLayout(button)
-//
-//        return button
-//    }()
-    
-    // MARK: - Selectors
-    
-//    @objc private func didPressButton(_ sender: UIButton) {
-//        didPressButton?()
-//    }
     
     // MARK: - Initialization
     
@@ -116,25 +102,21 @@ final class UserProfileCell: UITableViewCell {
             insets: UIEdgeInsets(top: 12, left: 12, bottom: -12, right: -12)
         )
         
-        profilePictureImageView.centerXAnchor.constrain(anchor: mainBackgroundView.centerXAnchor)
-//        profilePictureImageView.widthAnchor.constrain(constant: 100)
-//        profilePictureImageView.heightAnchor.constrain(anchor: profilePictureImageView.widthAnchor)
-        profilePictureImageView.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: 6)
+        profilePictureImageView.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 36)
+        profilePictureImageView.topAnchor.constrain(anchor: helloLabel.bottomAnchor, constant: 12)
+        profilePictureImageView.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -12)
         profilePictureImageView.widthAnchor.constrain(constant: 100)
         profilePictureImageView.heightAnchor.constrain(anchor: profilePictureImageView.widthAnchor)
 
-        
-        helloLabel.topAnchor.constrain(anchor: profilePictureImageView.bottomAnchor, constant: 6)
-        helloLabel.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -6)
-        helloLabel.centerXAnchor.constrain(anchor: profilePictureImageView.centerXAnchor)
+        helloLabel.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: 12)
+        helloLabel.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 12)
+        helloLabel.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -12)
 
-        pointsContainer.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -6)
-        pointsContainer.widthAnchor.constrain(constant: 30)
-        pointsContainer.heightAnchor.constrain(constant: 30)
-        pointsContainer.topAnchor.constrain(anchor: profilePictureImageView.topAnchor)
+        plantsCountContainer.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -36)
+        plantsCountContainer.topAnchor.constrain(anchor: helloLabel.bottomAnchor, constant: 12)
+        plantsCountContainer.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -12)
         
-        pointsLabel.centerXAnchor.constrain(anchor: pointsContainer.centerXAnchor)
-        pointsLabel.centerYAnchor.constrain(anchor: pointsContainer.centerYAnchor)
+
         
     }
 }

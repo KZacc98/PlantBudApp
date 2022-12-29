@@ -12,6 +12,7 @@ struct UserDomain {
     let id: Int
     let name: String
     let userName: String
+    let profilePicture: String
     let email: String
     let gender: Gender
     let phoneNumber: String
@@ -25,6 +26,7 @@ struct UserDomain {
         self.id = remote.id
         self.name = remote.name
         self.userName = remote.userName
+        self.profilePicture = remote.profilePicture ?? ""
         self.email = remote.email
         self.gender = Gender(rawValue: remote.gender) ?? .preferNotToTell
         self.phoneNumber = remote.phoneNumber ?? ""

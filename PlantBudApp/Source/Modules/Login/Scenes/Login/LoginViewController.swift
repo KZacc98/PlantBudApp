@@ -108,7 +108,7 @@ extension LoginViewController {
 
 extension LoginViewController {
     private func setupView() {
-        view.backgroundColor = Color.white
+        view.backgroundColor = Color.brandWhite
     }
     
     private func setupNavigationBar() {

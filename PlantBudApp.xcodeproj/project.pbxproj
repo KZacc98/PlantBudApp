@@ -123,6 +123,14 @@
 		EFC1F96D29592D5A00112EFC /* RoutineStepCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96C29592D5A00112EFC /* RoutineStepCellConfigurator.swift */; };
 		EFC1F970295A69CC00112EFC /* RoutineStepCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96F295A69CC00112EFC /* RoutineStepCellData.swift */; };
 		EFC1F974295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F973295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift */; };
+		EFC1F976295CC02900112EFC /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F975295CC02900112EFC /* UserContext.swift */; };
+		EFC1F979295CC38900112EFC /* PlantStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F978295CC38900112EFC /* PlantStatsCell.swift */; };
+		EFC1F97B295CC3E700112EFC /* PlantStatsCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F97A295CC3E700112EFC /* PlantStatsCellConfigurator.swift */; };
+		EFC1F97D295CD43B00112EFC /* monstera_leaf.json in Resources */ = {isa = PBXBuildFile; fileRef = EFC1F97C295CD43B00112EFC /* monstera_leaf.json */; };
+		EFC1F980295CE08400112EFC /* PlantState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F97F295CE08400112EFC /* PlantState.swift */; };
+		EFC1F982295CE0B600112EFC /* PlantPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F981295CE0B600112EFC /* PlantPlacement.swift */; };
+		EFC1F987295CF67400112EFC /* MessageOfTheDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F986295CF67400112EFC /* MessageOfTheDayCell.swift */; };
+		EFC1F989295CF73100112EFC /* MessageOfTheDayCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F988295CF73100112EFC /* MessageOfTheDayCellConfigurator.swift */; };
 		EFDFF45D294B91DE00B4F5F1 /* PlantCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFF45C294B91DE00B4F5F1 /* PlantCellData.swift */; };
 		EFDFF45F294BADB100B4F5F1 /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EFDFF45E294BADB100B4F5F1 /* User.graphql */; };
 		EFDFF464294BB01D00B4F5F1 /* UserRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFF463294BB01D00B4F5F1 /* UserRemote.swift */; };
@@ -281,6 +289,14 @@
 		EFC1F96C29592D5A00112EFC /* RoutineStepCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepCellConfigurator.swift; sourceTree = "<group>"; };
 		EFC1F96F295A69CC00112EFC /* RoutineStepCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepCellData.swift; sourceTree = "<group>"; };
 		EFC1F973295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsTypeInfoCellData.swift; sourceTree = "<group>"; };
+		EFC1F975295CC02900112EFC /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
+		EFC1F978295CC38900112EFC /* PlantStatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatsCell.swift; sourceTree = "<group>"; };
+		EFC1F97A295CC3E700112EFC /* PlantStatsCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatsCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC1F97C295CD43B00112EFC /* monstera_leaf.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = monstera_leaf.json; sourceTree = "<group>"; };
+		EFC1F97F295CE08400112EFC /* PlantState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantState.swift; sourceTree = "<group>"; };
+		EFC1F981295CE0B600112EFC /* PlantPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantPlacement.swift; sourceTree = "<group>"; };
+		EFC1F986295CF67400112EFC /* MessageOfTheDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOfTheDayCell.swift; sourceTree = "<group>"; };
+		EFC1F988295CF73100112EFC /* MessageOfTheDayCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOfTheDayCellConfigurator.swift; sourceTree = "<group>"; };
 		EFDFF45C294B91DE00B4F5F1 /* PlantCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCellData.swift; sourceTree = "<group>"; };
 		EFDFF45E294BADB100B4F5F1 /* User.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
 		EFDFF463294BB01D00B4F5F1 /* UserRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemote.swift; sourceTree = "<group>"; };
@@ -715,6 +731,8 @@
 		EFAA5B57293E6B6A0082484D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EFC1F985295CF65F00112EFC /* MessageOfTheDayCell */,
+				EFC1F977295CC37400112EFC /* PlantStats */,
 				EFDFF468294BB72700B4F5F1 /* UserProfile */,
 				EFDFF467294BB71C00B4F5F1 /* HelloHeader */,
 			);
@@ -943,6 +961,7 @@
 		EFBA28A729298F560034DCA9 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				EFC1F97C295CD43B00112EFC /* monstera_leaf.json */,
 				EFFA5925292A6481003A8F23 /* plant_walking.json */,
 				EFBA287D292986520034DCA9 /* Assets.xcassets */,
 			);
@@ -993,6 +1012,7 @@
 				EFFA5943292A6FF3003A8F23 /* Assets */,
 				EFFA592E292A6C14003A8F23 /* Logger */,
 				EFAA5B66293E70250082484D /* Font */,
+				EFC1F975295CC02900112EFC /* UserContext.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1200,6 +1220,33 @@
 			path = RoutineStepCellData;
 			sourceTree = "<group>";
 		};
+		EFC1F977295CC37400112EFC /* PlantStats */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F978295CC38900112EFC /* PlantStatsCell.swift */,
+				EFC1F97A295CC3E700112EFC /* PlantStatsCellConfigurator.swift */,
+			);
+			path = PlantStats;
+			sourceTree = "<group>";
+		};
+		EFC1F97E295CE07900112EFC /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F97F295CE08400112EFC /* PlantState.swift */,
+				EFC1F981295CE0B600112EFC /* PlantPlacement.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		EFC1F985295CF65F00112EFC /* MessageOfTheDayCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC1F986295CF67400112EFC /* MessageOfTheDayCell.swift */,
+				EFC1F988295CF73100112EFC /* MessageOfTheDayCellConfigurator.swift */,
+			);
+			path = MessageOfTheDayCell;
+			sourceTree = "<group>";
+		};
 		EFDFF45A294B91C800B4F5F1 /* PlantCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1211,6 +1258,7 @@
 		EFDFF460294BAFF800B4F5F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EFC1F97E295CE07900112EFC /* Enums */,
 				EFDFF462294BB01000B4F5F1 /* Domains */,
 				EFDFF461294BB00B00B4F5F1 /* Remotes */,
 			);
@@ -1441,6 +1489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFDFF45F294BADB100B4F5F1 /* User.graphql in Resources */,
+				EFC1F97D295CD43B00112EFC /* monstera_leaf.json in Resources */,
 				EFBA2881292986520034DCA9 /* LaunchScreen.storyboard in Resources */,
 				EFAA5B62293E6FA20082484D /* NoticiaText-Bold.ttf in Resources */,
 				EFAA5B60293E6FA20082484D /* NoticiaText-Italic.ttf in Resources */,
@@ -1532,6 +1581,7 @@
 				EF9CFDAD2932737800FD0239 /* TextInputCellConfigurator.swift in Sources */,
 				EFBA28B22929957B0034DCA9 /* String+Extension.swift in Sources */,
 				EF9CFE012934091400FD0239 /* HomeMenuViewController.swift in Sources */,
+				EFC1F976295CC02900112EFC /* UserContext.swift in Sources */,
 				EF9CFDF02934058200FD0239 /* TabBarItemCoordinator.swift in Sources */,
 				EF9CFDE12932900600FD0239 /* Network.swift in Sources */,
 				EFDFF46C294BB98A00B4F5F1 /* UserProfileCellConfigurator.swift in Sources */,
@@ -1565,7 +1615,9 @@
 				EFA7B17C2945237A008EE8E9 /* PlantRemote.swift in Sources */,
 				EFC1F96929592A8800112EFC /* MainSectionHeaderData.swift in Sources */,
 				EF9CFDBC2932754B00FD0239 /* TextValidator.swift in Sources */,
+				EFC1F987295CF67400112EFC /* MessageOfTheDayCell.swift in Sources */,
 				EFFA594A292A71C4003A8F23 /* UIViewController+Extension.swift in Sources */,
+				EFC1F989295CF73100112EFC /* MessageOfTheDayCellConfigurator.swift in Sources */,
 				EF9CFDAF293273D700FD0239 /* TextInputCellData.swift in Sources */,
 				EF68F7492949113400B2A08E /* RoutineStepRemote.swift in Sources */,
 				EF68F74429490E7E00B2A08E /* CareRoutineDomain.swift in Sources */,
@@ -1595,6 +1647,8 @@
 				EF9CFD8329324CA900FD0239 /* ReusableViewConfiguratorInterface.swift in Sources */,
 				EF9CFDFC2934078A00FD0239 /* HomeViewControllerFactory.swift in Sources */,
 				EF6947C92948EE2D006E56F1 /* API.swift in Sources */,
+				EFC1F97B295CC3E700112EFC /* PlantStatsCellConfigurator.swift in Sources */,
+				EFC1F979295CC38900112EFC /* PlantStatsCell.swift in Sources */,
 				EFC1F95B29591F8600112EFC /* PlantDetailsTypeInfoCellConfigurator.swift in Sources */,
 				EFFA594C292A7204003A8F23 /* Int+Extension.swift in Sources */,
 				EF9CFD8029324C5400FD0239 /* SingleColumnSection.swift in Sources */,
@@ -1608,6 +1662,7 @@
 				EFFA5958292A8124003A8F23 /* AnimationHeader.swift in Sources */,
 				EF9CFD7A29324BCD00FD0239 /* TableViewControllerInterface.swift in Sources */,
 				EFBA2875292986510034DCA9 /* AppDelegate.swift in Sources */,
+				EFC1F982295CE0B600112EFC /* PlantPlacement.swift in Sources */,
 				EF9CFD8529324CC400FD0239 /* SectionMapper.swift in Sources */,
 				EFF52393292A52C50014A32B /* UIColor+Extension.swift in Sources */,
 				EFC1F96629592A5C00112EFC /* MainSectionConfigurator.swift in Sources */,
@@ -1615,6 +1670,7 @@
 				EF9CFDBA2932750500FD0239 /* ValidatorInterface.swift in Sources */,
 				EF9CFD992932646E00FD0239 /* MainButtonCellConfigurator.swift in Sources */,
 				EF9CFDF2293405D800FD0239 /* AppearanceViewController.swift in Sources */,
+				EFC1F980295CE08400112EFC /* PlantState.swift in Sources */,
 				EF77D8C7293FD60600F5807F /* managerfiller.swift in Sources */,
 				EF9CFD8929324D0700FD0239 /* SectionInterface.swift in Sources */,
 			);

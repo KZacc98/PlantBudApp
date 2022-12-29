@@ -3,6 +3,7 @@ query FetchUserProfile($userId: Int) {
     id
     name
     userName
+    profilePicture
     email
     gender
     phoneNumber

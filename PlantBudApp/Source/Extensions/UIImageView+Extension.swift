@@ -55,9 +55,24 @@ extension UIImageView {
                 print("Job failed: \(error.localizedDescription)")
             }
         }
-        
-        
-//        self.kf.setImage(with: url, placeholder: nil, options: [.processor(processor)])
     }
+    
+    func setHexagonalMask() {
+            let path = UIBezierPath()
+            let sideLength = bounds.width / 2
+            let center = CGPoint(x: bounds.midX, y: bounds.midY)
+            let startPoint = CGPoint(x: center.x, y: center.y - sideLength)
+            path.move(to: startPoint)
+            path.addLine(to: CGPoint(x: center.x + sideLength, y: center.y - sideLength / 2))
+            path.addLine(to: CGPoint(x: center.x + sideLength, y: center.y + sideLength / 2))
+            path.addLine(to: CGPoint(x: center.x, y: center.y + sideLength))
+            path.addLine(to: CGPoint(x: center.x - sideLength, y: center.y + sideLength / 2))
+            path.addLine(to: CGPoint(x: center.x - sideLength, y: center.y - sideLength / 2))
+            path.close()
+
+            let maskLayer = CAShapeLayer()
+            maskLayer.path = path.cgPath
+            layer.mask = maskLayer
+        }
 }
 

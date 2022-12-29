@@ -68,7 +68,7 @@ final class PlantsViewModel {
         }
         
         dispatchGroup.enter()
-        Network.fetchData(query: FetchUserPlantsQuery(userId: 2)) { result in
+        Network.fetchData(query: FetchUserPlantsQuery(userId: UserContext.shared.userId)) { result in
             switch result {
             case .success(let data):
                 plantDomains = data.plant.map({ res in

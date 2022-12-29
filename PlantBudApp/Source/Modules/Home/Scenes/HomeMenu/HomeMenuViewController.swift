@@ -182,7 +182,6 @@ extension HomeMenuViewController {
     }
     
     private func setupTableView() {
-        tableView.backgroundColor = Color.brandBlack
         tableView.delegate  = self.dataSource
         tableView.dataSource = self.dataSource
         tableView.separatorStyle = .none

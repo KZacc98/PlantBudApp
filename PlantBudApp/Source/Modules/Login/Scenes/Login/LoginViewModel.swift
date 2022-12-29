@@ -141,7 +141,6 @@ class LoginViewModel {
     private lazy var textInputCellInputAccessoryView: UIToolbar = {
         let toolbar = UIToolbar(
             frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
-//        toolbar.setItems(makeTextInputToolbarItems(), animated: false)
 
         return toolbar
     }()
@@ -162,12 +161,6 @@ class LoginViewModel {
                                                                  loginButtonCellConfigurator],
                                              headerConfigurator: headerConfigurator)]
         
-//        if let orderUrl = URL(string: ConfigurationManager.orderWebsiteUrl) {
-//            sections.append(makeOrderOnWebsiteSection(orderUrl: orderUrl))
-//        }
-//
-//        sections.append(SingleColumnSection(cellConfigurators: [NumberVersionCellConfigurator()]))
-        
         sectionSequence = SectionSequence(sections: sections)
     }
     
@@ -186,6 +179,7 @@ class LoginViewModel {
                 GQLResult.data?.user.forEach{user in
                     Logger.debug("USERID: \(user.id)")
                     Logger.debug("USER NAME: \(user.name)")
+                    UserContext.shared.userId = user.id
                 }
             case .failure(let error):
                 Logger.error("ERROR: \(error)")
