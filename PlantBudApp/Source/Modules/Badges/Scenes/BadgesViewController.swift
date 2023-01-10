@@ -34,7 +34,7 @@ final class BadgesViewController: BaseTableViewController {
         setupTableView()
         bindViewModel()
         viewModel.loadData()
-        viewModel.buildSections()
+//        viewModel.buildSections()
         
     }
     
@@ -73,6 +73,7 @@ extension BadgesViewController {
 //        userButtonBar.accessibilityLabel = "userSideMenuAccessibilityLabel".localized
 //        userButtonBar.tintColor = Color.brandGreen
 //        navigationItem.rightBarButtonItem = userButtonBar
+        title = "Badges"
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {

@@ -26,7 +26,8 @@ class TextInputCell: UITableViewCell {
     public lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Color.brandGreen
-//        label.font =
+        label.textAlignment = .center
+        label.font = Font.noticiaRegular(size: 16)
         mainBackgroundView.addSubviewsUsingAutoLayout(label)
 
         return label
@@ -36,6 +37,8 @@ class TextInputCell: UITableViewCell {
         let textField = UITextField()
         textField.tintColor = Color.brandGreen
         textField.textColor = Color.black
+        textField.textAlignment = .center
+        textField.font = Font.noticiaRegular(size: 16)
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
 //        textField.font = 

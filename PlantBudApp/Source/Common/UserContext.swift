@@ -23,6 +23,7 @@ final class UserContext {
         }
     }
     
+    public var points: Int = 0
     
 }
 

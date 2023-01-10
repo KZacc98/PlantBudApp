@@ -48,7 +48,6 @@ final class PlantsCoordinator: TabBarItemCoordinator {
             Logger.error("PUSH VC with PLANT \(plant)")
 //            viewController.makeToast(with: "PlantID: \(plantId)")
             self?.pushPlantDetails(plant: plant)
-            
         }
         
         navigationController?.setViewControllers([viewController], animated: animated)
@@ -57,6 +56,9 @@ final class PlantsCoordinator: TabBarItemCoordinator {
     private func pushPlantDetails(plant: Plant) {
         let viewController = viewControllerFactory.makePlantDetailsViewController(plant: plant)
         
+        viewController.viewModel.onDeletePlantSuccess = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

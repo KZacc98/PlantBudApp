@@ -29,3 +29,15 @@ query FetchUserProfile($userId: Int) {
     updatedAt
   }
 }
+
+query FetchUserPoints($_in: [Int!]) {
+  Badge(where: {id: {_in: $_in}}) {
+    points
+  }
+}
+
+query fetchUserByUsername($userName: String) {
+  User(where: {userName: {_eq: $userName}}) {
+    id
+  }
+}

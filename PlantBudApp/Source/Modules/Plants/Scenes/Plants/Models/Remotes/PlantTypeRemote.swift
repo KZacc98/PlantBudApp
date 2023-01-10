@@ -9,6 +9,7 @@ struct PlantTypeRemote: Codable {
     let id: Int
     let species: String?
     let description: String?
+    let plantTypeImage: String?
     let type: String?
     let createdAt: String?
 }

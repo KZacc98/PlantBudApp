@@ -1,0 +1,75 @@
+query FetchCommunities {
+  Community {
+    id
+    communityName
+    communitySmallImage
+    communityBigImage
+    isActive
+    createdAt
+    updatedAt
+  }
+}
+
+query FetchCommunityContent($communityId: Int) {
+  CommunityUsers(where: {communityId: {_eq: $communityId}}) {
+    userId
+    createdAt
+    updatedAt
+  }
+  Post(where: {communityId: {_eq: $communityId}}) {
+    id
+    communityId
+    image
+    userName
+    postBody
+    isAnnouncement
+    points
+    flag
+    createdAt
+    updatedAt
+  }
+}
+
+query BatchFetchComments($postIds: [Int!]) {
+  Comment(where: {postId: {_in: $postIds}}){
+    id
+    postId
+    userName
+    commentBody
+    image
+    points
+    flag
+    createdAt
+    updatedAt
+  }
+}
+
+query FetchPostComments($postId: Int) {
+  Comment(where: {postId: {_eq: $postId}}) {
+    id
+    postId
+    userName
+    commentBody
+    image
+    points
+    flag
+    createdAt
+    updatedAt
+  }
+}
+
+query FetchUserContentData($userName: Int) {
+  User(where: {id: {_eq: $userName}}) {
+    userName
+    userType
+    profilePicture
+  }
+}
+
+query BatchFetchUserContentData($userIds: [Int!]) {
+  User(where: {id: {_in: $userIds}}) {
+    userName
+    userType
+    profilePicture
+  }
+}

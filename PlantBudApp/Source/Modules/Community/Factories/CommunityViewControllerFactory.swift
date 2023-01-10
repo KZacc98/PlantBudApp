@@ -11,9 +11,16 @@ final class CommunityViewControllerFactory {
     
     // MARK: - Factory methods
     
-    func makeCommunityViewController() -> CommunityViewController {
+    func makeCommunityListViewController() -> CommunityListViewController {
+        let viewController = CommunityListViewController()
+        viewController.viewModel = CommunityListViewModel()
+        
+        return viewController
+    }
+    
+    func makeCommunityViewController(communityDomain: CommunityDomain) -> CommunityViewController {
         let viewController = CommunityViewController()
-        viewController.viewModel = CommunityViewModel()
+        viewController.viewModel = CommunityViewModel(communityDomain: communityDomain)
         
         return viewController
     }

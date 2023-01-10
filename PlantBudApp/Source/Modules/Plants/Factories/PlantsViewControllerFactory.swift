@@ -11,9 +11,9 @@ final class PlantsViewControllerFactory {
     
     // MARK: - Factory methods
     
-    func makePlantsViewController() -> PlantsViewController {
-        let viewController = PlantsViewController()
-        viewController.viewModel = PlantsViewModel()
+    func makePlantsViewController() -> PlantListViewController {
+        let viewController = PlantListViewController()
+        viewController.viewModel = PlantListViewModel()
         
         return viewController
     }

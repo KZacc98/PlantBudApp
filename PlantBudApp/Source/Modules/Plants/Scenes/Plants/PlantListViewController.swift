@@ -6,12 +6,12 @@
 //
 
 import UIKit
-#warning("RENAME TO PlantListViewController, etc.....")
-final class PlantsViewController: BaseTableViewController {
+
+final class PlantListViewController: BaseTableViewController {
     
     //MARK: - Public properties
     
-    public var viewModel: PlantsViewModel!
+    public var viewModel: PlantListViewModel!
     
     //MARK: - Private properties
     
@@ -36,6 +36,11 @@ final class PlantsViewController: BaseTableViewController {
         bindViewModel()
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        Network.shared.apollo.store.clearCache()
+        viewModel.loadData()
+    }
     
     // MARK: - Selectors
     
@@ -47,7 +52,7 @@ final class PlantsViewController: BaseTableViewController {
 
 //MARK: - Data binding
 
-extension PlantsViewController {
+extension PlantListViewController {
     private func bindViewModel() {
         viewModel.onSectionSequenceChange = { [weak self] sectionSequence in
             self?.dataSource.sections = sectionSequence.sections
@@ -69,7 +74,7 @@ extension PlantsViewController {
 
 //MARK: - Setup
 
-extension PlantsViewController {
+extension PlantListViewController {
     private func setupView() {
         view.backgroundColor = .blue //kolor ViewControllera
     }

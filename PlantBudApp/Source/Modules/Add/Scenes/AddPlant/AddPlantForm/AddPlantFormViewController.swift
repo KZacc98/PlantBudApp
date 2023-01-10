@@ -1,17 +1,17 @@
 //
-//  CommunityViewController.swift
+//  AddPlantFormViewController.swift
 //  PlantBudApp
 //
-//  Created by Kamil Zachara on 05/12/2022.
+//  Created by Kamil Zachara on 08/01/2023.
 //
 
 import UIKit
 
-final class CommunityViewController: BaseTableViewController {
+final class AddPlantFormViewController: BaseTableViewController, TableViewControllerInterface {
     
     //MARK: - Public properties
     
-    public var viewModel: CommunityViewModel!
+    public var viewModel: AddPlantFormViewModel!
     
     //MARK: - Private properties
     
@@ -32,18 +32,23 @@ final class CommunityViewController: BaseTableViewController {
         setupNavigationBar()
         setupEmptyDataView()
         setupTableView()
+        viewModel.loadData()
         bindViewModel()
-        viewModel.buildSections()
+        viewModel.buildEmptySections()
         
     }
     
     // MARK: - Selectors
+    
+    override func refreshData(_ refreshControl: UIRefreshControl) {
+        viewModel.loadData()
+    }
 
 }
 
 //MARK: - Data binding
 
-extension CommunityViewController {
+extension AddPlantFormViewController {
     private func bindViewModel() {
         viewModel.onSectionSequenceChange = { [weak self] sectionSequence in
             self?.dataSource.sections = sectionSequence.sections
@@ -54,12 +59,26 @@ extension CommunityViewController {
                 self?.refreshControl.endRefreshing()
             }
         }
+        viewModel.onAddPlantRequestButtonPressed = { [weak self] plantName, plantType in
+            self?.view.endEditing(true)
+            self?.viewModel.validate { [weak self] errors, indexPaths in
+                self?.tableView.reloadRows(at: indexPaths, with: .none)
+                if errors.isEmpty {
+//                    UIAppDelegate?.showLoadingIndicator()
+                    self?.viewModel.makeAddPlantRequest(plantName: plantName, plantType: plantType)
+                } else if let firstIndexPath = indexPaths.first {
+                    self?.tableView.scrollToRow(at: firstIndexPath, at: .middle, animated: true)
+                }
+            }
+        }
     }
+    
+    
 }
 
 //MARK: - Setup
 
-extension CommunityViewController {
+extension AddPlantFormViewController {
     private func setupView() {
         view.backgroundColor = .blue //kolor ViewControllera
     }
@@ -72,6 +91,7 @@ extension CommunityViewController {
 //        userButtonBar.accessibilityLabel = "userSideMenuAccessibilityLabel".localized
 //        userButtonBar.tintColor = Color.brandGreen
 //        navigationItem.rightBarButtonItem = userButtonBar
+        title = "AddPlant"
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {
@@ -91,12 +111,13 @@ extension CommunityViewController {
         tableView.delegate  = self.dataSource
         tableView.dataSource = self.dataSource
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Color.red //KOLOR TŁA PO STARCIE
+        tableView.backgroundColor = Color.brandWhite //KOLOR TŁA PO STARCIE
         tableView.refreshControl = refreshControl
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
     }
 }
+
 
 
 

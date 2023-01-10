@@ -22,16 +22,34 @@ final class BadgesViewModel {
         }
     }
     
+    private var userBadges: [UserBadgeDomain]?
+    
+    private var badges: [BadgeDomain]? {
+        didSet{
+            buildSections()
+        }
+    }
+    
+    private var displayBadges: [BadgeDomain]? {
+        didSet{
+            badges = displayBadges?.filter{ displayBadge in
+                userBadges?.contains(where: {userBadge in
+                    userBadge.badgeId == displayBadge.id
+                }) ?? false
+            }
+        }
+    }
+    
     //MARK: - Initialization
     
     //MARK: - Access methods
     
     public func loadData(refresh: Bool = false) {
-        
+        UIAppDelegate?.showLoadingIndicator()
         
         let dispatchGroup = DispatchGroup()
-        var data1: [BadgeDomain]?
-        var data2: [UserBadgeDomain]?
+        var allBadges: [BadgeDomain]?
+        var userBadges: [UserBadgeDomain]?
 //        var data3: DataType3?
         
         // Fetch data1
@@ -39,7 +57,7 @@ final class BadgesViewModel {
         Network.fetchData(query: FetchBadgesQuery()) { result in
             switch result {
             case .success(let data):
-                data1 = data.badge.map({ res in
+                allBadges = data.badge.map({ res in
                     BadgeDomain(remote: BadgeRemote(
                         id: res.id,
                         badgeName: res.badgeName,
@@ -61,7 +79,7 @@ final class BadgesViewModel {
         Network.fetchData(query: FetchUserBadgesQuery(userId: UserContext.shared.userId)) { result in
             switch result {
             case .success(let data):
-                data2 = data.userBadges.map({ res in
+                userBadges = data.userBadges.map({ res in
                     UserBadgeDomain(remote: UserBadgeRemote(
                         userId: res.userId,
                         badgeId: res.badgeId,
@@ -74,41 +92,58 @@ final class BadgesViewModel {
             }
             dispatchGroup.leave()
         }
-//
-//        // Fetch data3
-//        dispatchGroup.enter()
-//        Network.fetchData(query: Query3()) { result in
-//            switch result {
-//            case .success(let data):
-//                data3 = data
-//            case .failure(let error):
-//                Logger.error("ERROR: \(error)")
-//            }
-//            dispatchGroup.leave()
-//        }
-        
+
         // Run a block of code when all requests are completed
         dispatchGroup.notify(queue: .main) {
             // Use data1, data2, and data3 here
-            Logger.info("\(data1)")
-            Logger.info("\(data2)")
+            self.userBadges = userBadges
+            self.displayBadges = allBadges
+            UIAppDelegate?.hideLoadingIndicator()
         }
 
     }
 
     public func buildSections() {
+        guard let badge = self.badges?.first, let badges = self.displayBadges else {return}
         sectionSequence = SectionSequence(
             sections: [
-                makeHelloHeaderSection()
+                makeCurrentBadgeSection(badge: badge),
+                makeBadgesSection(badges: badges)
         ])
     }
     
     //MARK: - Private methods
 
-    private func makeHelloHeaderSection() -> SingleColumnSection {
-        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "Badges"))
+    private func makeCurrentBadgeSection(badge: BadgeDomain) -> SingleColumnSection {
+        let headerData = MainSectionHeaderData(
+            title: "Newest Badge", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+        let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
+        let configurator = CurrentBadgeCellConfigurator(data: CurrentBadgeCellData(
+            points: badge.points,
+            badgeName: badge.badgeName,
+            imageUrl: badge.badgeImage
+        ))
 
-        return SingleColumnSection(cellConfigurators: [configurator])
+        return SingleColumnSection(cellConfigurators: [configurator], headerConfigurator: headerConfigurator)
+    }
+    
+    private func makeBadgesSection(badges: [BadgeDomain]) -> SingleColumnSection {
+        let headerData = MainSectionHeaderData(
+            title: "All Badges", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+        let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
+        let configurators = badges.map { badge in
+            BadgeCellConfigurator(data: BadgeCellData(
+                points: badge.points,
+                badgeName: badge.badgeName,
+                imageUrl: badge.badgeImage,
+                badgeInfo: badge.badgeDescription,
+                isCompleted: self.userBadges?.contains(where: { userBadge in
+                    userBadge.badgeId == badge.id
+                }) ?? false
+            ))
+        }
+
+        return SingleColumnSection(cellConfigurators: configurators, headerConfigurator: headerConfigurator)
     }
 
     // MARK: - Selectors

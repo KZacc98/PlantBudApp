@@ -13,6 +13,7 @@ final class PlantDetailsViewModel {
     
     public var onSectionSequenceChange: ((SectionSequence) -> Void)?
     public var onFetchSuccess: ((String) -> Void)?
+    public var onDeletePlantSuccess: (() -> Void)?
     public var onError: ((Error) -> ())?
     
     //MARK: Private properties
@@ -137,6 +138,54 @@ final class PlantDetailsViewModel {
         fetchData()
     }
     
+    private lazy var deletePlantButtonCellConfigurator: MainButtonCellConfigurator = {
+        let didPressButton: () -> () = { [weak self] in
+            Logger.info("DELETE PRESSED")
+            DialogManager.showConfirmationDialog(
+                title: "Delete plant",
+                message: "U really wanna delete this plant luv'",
+                cancelButtonTitle: "LEMME KEEP IT",
+                acceptBlock: {
+                    self?.deletePlant(plantId: self?.plant.plantData.id ?? -1)
+                },
+                rejectBlock: {
+                    Logger.info("nodelete plz")
+                }
+            )
+            
+        }
+        let buttonInsets = UIEdgeInsets(top: 24.deviceSizeAware,
+                                        left: 12,
+                                        bottom: -24.deviceSizeAware,
+                                        right: -12)
+        let data = MainButtonCellData(title: "DELETE PLANT".uppercased(),
+                                      buttonInsets: buttonInsets,
+                                      didPressButton: didPressButton)
+        
+        return MainButtonCellConfigurator(data: data)
+    }()
+    
+    private func deletePlant(plantId: Int) {
+        UIAppDelegate?.showLoadingIndicator()
+        Network.shared.apollo.store.clearCache()
+        Network.performMutation(mutation: DeletePlantMutation(_eq: plantId)) { result in
+            switch result {
+            case .success(let data):
+                // Use the `data` object to access the results of the mutation
+                Logger.info("TUTAJ KURWA ############################")
+                Logger.info("\(data.deletePlant.debugDescription)")
+                UIAppDelegate?.hideLoadingIndicator()
+                self.onDeletePlantSuccess?()
+            case .failure(let error):
+                // Handle the error
+                Logger.info("TUTAJ KURWA ############################")
+                Logger.info("Jebło \(error)")
+                DialogManager.showErrorDialog(with: error)
+                UIAppDelegate?.hideLoadingIndicator()
+            }
+        }
+    }
+    
     public func buildSections(steps: [RoutineStepDomain]?) {
         guard let routineSteps = steps else { return }
         let cellConfigurators = routineSteps.map {
@@ -149,11 +198,16 @@ final class PlantDetailsViewModel {
         let headerData = MainSectionHeaderData(
             title: "CareRoutine", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
+        
+        let deleteHeaderData = MainSectionHeaderData(
+            title: "DANGER ZONE", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+        let deleteHeaderConfigurator = MainSectionHeaderConfigurator(data: deleteHeaderData)
         sectionSequence = SectionSequence(
             sections: [
                 SingleColumnSection(cellConfigurators: [headerCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [typeInfoCellConfigurator]),
-                SingleColumnSection(cellConfigurators: cellConfigurators, headerConfigurator: headerConfigurator)
+                SingleColumnSection(cellConfigurators: cellConfigurators, headerConfigurator: headerConfigurator),
+                SingleColumnSection(cellConfigurators: [deletePlantButtonCellConfigurator], headerConfigurator: deleteHeaderConfigurator)
             ]
         )
         
@@ -169,12 +223,17 @@ final class PlantDetailsViewModel {
         let headerData = MainSectionHeaderData(
             title: "CareRoutine", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
+        
+        let deleteHeaderData = MainSectionHeaderData(
+            title: "DANGER ZONE", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+        let deleteHeaderConfigurator = MainSectionHeaderConfigurator(data: deleteHeaderData)
         sectionSequence = SectionSequence(
             sections: [
                 SingleColumnSection(cellConfigurators: [headerCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [typeInfoCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [], headerConfigurator: headerConfigurator),
-                makeEmptyDataSection()
+                makeEmptyDataSection(),
+                SingleColumnSection(cellConfigurators: [deletePlantButtonCellConfigurator], headerConfigurator: deleteHeaderConfigurator)
             ]
         )
     }
@@ -222,7 +281,7 @@ final class PlantDetailsViewModel {
         }
         
         let data = PlantDetailsTypeInfoCellData(
-            imageUrl: URL(string: "https://cdn.shopify.com/s/files/1/0330/4233/3835/products/5.0-MONSTERAADANSONII_MONKEYMASK_O12CM.jpg?v=1657546105") ?? URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png")!,
+            imageUrl: (URL(string: plant.plantTypeData.plantTypeImage) ?? URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"))! ,
             plantType: plant.plantTypeData,
             didTapPlant: didTapPlant
         )

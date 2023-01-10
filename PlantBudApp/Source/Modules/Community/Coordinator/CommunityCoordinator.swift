@@ -41,10 +41,21 @@ final class CommunityCoordinator: TabBarItemCoordinator {
 //        navigationController?.delegate = self
 //    }
     
-        private func routeMenu(animated: Bool) {
-            let viewController = viewControllerFactory.makeCommunityViewController()
-            navigationController?.setViewControllers([viewController], animated: animated)
-            }
+    private func routeMenu(animated: Bool) {
+        let viewController = viewControllerFactory.makeCommunityListViewController()
+        navigationController?.setViewControllers([viewController], animated: animated)
+        
+        viewController.viewModel.onCommunityTilePressed = { [weak self] communityDomain in
+            Logger.info("\(communityDomain.id)")
+            self?.pushCommunity(communityDomain: communityDomain)
+        }
+    }
+    
+    private func pushCommunity(communityDomain: CommunityDomain) {
+        let viewController = viewControllerFactory.makeCommunityViewController(communityDomain: communityDomain)
+        
+        navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 //// MARK: - UINavigationControllerDelegate

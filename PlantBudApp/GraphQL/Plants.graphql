@@ -3,6 +3,7 @@ query FetchPlantTypes {
     id
     species
     description
+    plantTypeImage
     type
     createdAt
     updatedAt
@@ -75,6 +76,28 @@ mutation CareRoutineStepUpdate($stepId: Int, $_set: RoutineStep_set_input) {
       completedAt
       createdAt
       updatedAt
+    }
+  }
+}
+
+
+mutation AddPlant($object: Plant_insert_input!) {
+  insert_Plant_one(object: $object) {
+    plantName
+    plantTypeId
+    plantImage
+    userId
+    createdAt
+    updatedAt
+  }
+}
+
+
+mutation DeletePlant($_eq: Int) {
+  delete_Plant(where: {id: {_eq: $_eq}}) {
+    returning {
+      id
+      plantName
     }
   }
 }

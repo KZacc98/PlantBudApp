@@ -8,7 +8,7 @@
 import UIKit
 import Apollo
 
-final class PlantsViewModel {
+final class PlantListViewModel {
     
     //MARK: - Binding closures
     
@@ -57,6 +57,7 @@ final class PlantsViewModel {
                         id: res.id,
                         species: res.species,
                         description: res.description,
+                        plantTypeImage: res.plantTypeImage,
                         type: res.type,
                         createdAt: res.createdAt
                     ))

@@ -30,6 +30,7 @@ final class HomeMenuViewModel {
     }
     
     private var user: UserDomain?
+    private var userPoints: Int?
 
     //MARK: - Initialization
     
@@ -43,6 +44,8 @@ final class HomeMenuViewModel {
         let dispatchGroup = DispatchGroup()
         var plants: [PlantDomain]?
         var user: UserDomain?
+        var userBadgesIdis: [Int]?
+        var points: Int = 0
         
         // Fetch data1
         dispatchGroup.enter()
@@ -83,6 +86,10 @@ final class HomeMenuViewModel {
                     )
                 })
                 
+                userBadgesIdis = GQLResult.data?.userBadges.compactMap{ res in
+                    res.badgeId
+                }
+                
                 UIAppDelegate?.hideLoadingIndicator()
             case .failure(let error):
                 UIAppDelegate?.hideLoadingIndicator()
@@ -91,11 +98,26 @@ final class HomeMenuViewModel {
             dispatchGroup.leave()
         }
         
+        
         // Run a block of code when all requests are completed
         dispatchGroup.notify(queue: .main) {
             // Use data1, data2, and data3 here
             self.user = user
             self.plants = plants
+            Network.fetchData(query: FetchUserPointsQuery(_in: userBadgesIdis)) { result in
+                switch result {
+                case .success(let data):
+                    let points = data.badge.reduce(0) { (result, badge) in
+                        return result + badge.points
+                    }
+                    UserContext.shared.points = points
+                case .failure(let error):
+                    Logger.error("ERROR: \(error)")
+                }
+            }
+            Logger.error("\(userBadgesIdis)")
+            
+            Logger.error("\(points)")
         }
         
     }

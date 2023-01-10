@@ -49,7 +49,7 @@ public enum TabBarOption: CaseIterable {
             return PlantsCoordinator(tabBarItem: tabBarItem)//MenuCoordinator(tabBarItem: tabBarItem)
         case .addPlant:
             Logger.info("HOME")
-            return HomeCoordinator(tabBarItem: tabBarItem)//OrdersCoordinator(tabBarItem: tabBarItem, navigationController: BaseNavigationController())
+            return AddCoordinator(tabBarItem: tabBarItem)//OrdersCoordinator(tabBarItem: tabBarItem, navigationController: BaseNavigationController())
         case .badges:
             Logger.info("BADGES")
             return BadgesCoordinator(tabBarItem: tabBarItem)//NewsCoordinator(tabBarItem: tabBarItem)
