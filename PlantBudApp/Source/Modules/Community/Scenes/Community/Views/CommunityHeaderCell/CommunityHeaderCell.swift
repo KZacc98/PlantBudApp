@@ -52,6 +52,29 @@ final class CommunityHeaderCell: UITableViewCell {
         return label
     }()
     
+    public lazy var communityDescriptionView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Color.brandWhite
+        view.layer.borderWidth = 0.2
+        view.layer.borderColor = Color.brandBlack.withAlphaComponent(0.5).cgColor
+        view.clipsToBounds = true
+        mainBackgroundView.addSubviewsUsingAutoLayout(view)
+        
+        return view
+    }()
+    
+    public lazy var communityDescriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.noticiaRegular(size: 12)
+        label.textColor = Color.brandBlack
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        communityDescriptionView.addSubviewsUsingAutoLayout(label)
+        
+        return label
+    }()
+    
     // MARK: - Selectors
     
 //    @objc private func didPressButton(_ sender: UIButton) {
@@ -92,7 +115,6 @@ final class CommunityHeaderCell: UITableViewCell {
         communityImage.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor)
         
         communityNameContainer.topAnchor.constrain(anchor: communityImage.bottomAnchor)
-        communityNameContainer.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor)
         communityNameContainer.leadingAnchor.constrain(anchor: communityImage.leadingAnchor)
         communityNameContainer.trailingAnchor.constrain(anchor: communityImage.trailingAnchor)
         communityNameContainer.heightAnchor.constrain(constant: 50)
@@ -100,6 +122,15 @@ final class CommunityHeaderCell: UITableViewCell {
         communityNameLabel.centerXAnchor.constrain(anchor: communityNameContainer.centerXAnchor)
         communityNameLabel.centerYAnchor.constrain(anchor: communityNameContainer.centerYAnchor)
         
+        communityDescriptionView.topAnchor.constrain(anchor: communityNameContainer.bottomAnchor)
+        communityDescriptionView.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor)
+        communityDescriptionView.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor)
+        communityDescriptionView.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor)
+        
+        communityDescriptionLabel.topAnchor.constrain(anchor: communityDescriptionView.topAnchor, constant: 12)
+        communityDescriptionLabel.bottomAnchor.constrain(anchor: communityDescriptionView.bottomAnchor,constant: -12)
+        communityDescriptionLabel.leadingAnchor.constrain(anchor: communityDescriptionView.leadingAnchor, constant: 12)
+        communityDescriptionLabel.trailingAnchor.constrain(anchor: communityDescriptionView.trailingAnchor, constant: -12)
     }
 }
 

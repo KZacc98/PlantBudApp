@@ -1,34 +1,28 @@
 //
-//  CommunityPostCellConfigurator.swift
+//  PostDetailsHeaderCellConfigurator.swift
 //  PlantBudApp
 //
-//  Created by Kamil Zachara on 09/01/2023.
+//  Created by Kamil Zachara on 11/01/2023.
 //
 
 import UIKit
 
-final class CommunityPostCellConfigurator {
+final class PostDetailsHeaderCellConfigurator {
     
     // MARK: - Private properties
     
-    private let data: CommunityPostCellData
+    private let data: PostDetailsHeaderCellData
     
     let profilePicturePlaceholder: String = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
     
     // MARK: - Initialization
     
-    init(data: CommunityPostCellData) {
+    init(data: PostDetailsHeaderCellData) {
         self.data = data
     }
     
     // MARK: - Selectors
     
-    @objc private func didPressComment(tapGestureRecognizer: UITapGestureRecognizer) {
-        data.didPressComment?()
-    }
-    @objc private func didPressPost(tapGestureRecognizer: UITapGestureRecognizer) {
-        data.didPressComment?()
-    }
     @objc private func didPressPostOptions(tapGestureRecognizer: UITapGestureRecognizer) {
         data.didPressPostOptions?()
     }
@@ -42,33 +36,21 @@ final class CommunityPostCellConfigurator {
     }
     
     @objc private func didPressUserHeader(tapGestureRecognizer: UITapGestureRecognizer) {
-        data.didPressComment?()
+//        data.didPressComment?()
+        Logger.info("UserHeader Pressed")
     }
 }
 
 // MARK: - ReusableViewConfiguratorInterface
 
-extension CommunityPostCellConfigurator: ReusableViewConfiguratorInterface {
+extension PostDetailsHeaderCellConfigurator: ReusableViewConfiguratorInterface {
     var type: AnyClass {
-        return CommunityPostCell.self
+        return PostDetailsHeaderCell.self
     }
     
     func configure(view: UIView) {
-        guard let view = view as? CommunityPostCell else { return }
+        guard let view = view as? PostDetailsHeaderCell else { return }
         let postPoints = data.postDomain.points
-        
-        if let bestComment = getBestComment(comments: data.comments) {
-            view.commentUsernameLabel.text = bestComment.userName
-            view.commentBodyLabel.text = bestComment.commentBody
-            view.commentBodyFillerLabel.isHidden = true
-        } else {
-            view.commentUsernameLabel.isHidden = true
-            view.commentBodyLabel.isHidden = true
-            view.commentUserProfileImageView.isHidden = true
-            view.commentBodyFillerLabel.isHidden = false
-            view.postCommentCountLabel.isHidden = true
-            view.commentCell.heightAnchor.constrain(constant: 30)
-        }
         
         if !(data.postDomain.image == "") {
             view.postImageView.setImage(with: URL(string: data.postDomain.image))
@@ -79,29 +61,9 @@ extension CommunityPostCellConfigurator: ReusableViewConfiguratorInterface {
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
         view.userProfileImageView.setImage(with: URL(string: profilePicturePlaceholder))
-        view.usernameLabel.text = data.postUser.userName
+        view.usernameLabel.text = data.postDomain.userName
         view.postBodyLabel.text = data.postDomain.postBody
         view.postPointsLabel.text = postPoints > 0 ? "Points: +\(postPoints)" : "Points: \(postPoints)"
-        view.postCommentCountLabel.text = "Comments: \(data.comments.count)"
-        view.commentUserProfileImageView.setImage(with: URL(string: profilePicturePlaceholder))
-        
-        view.commentCell.gestureRecognizers?.forEach {
-            view.commentCell.removeGestureRecognizer($0)
-        }
-        
-        view.commentCell.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(didPressComment(tapGestureRecognizer:))))
-        
-        view.mainBackgroundView.gestureRecognizers?.forEach {
-            view.mainBackgroundView.removeGestureRecognizer($0)
-        }
-        
-        view.mainBackgroundView.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(didPressPost(tapGestureRecognizer:))))
         
         view.userInfoHeader.gestureRecognizers?.forEach {
             view.userInfoHeader.removeGestureRecognizer($0)
@@ -146,19 +108,12 @@ extension CommunityPostCellConfigurator: ReusableViewConfiguratorInterface {
     func layoutHeight(relativeTo size: CGSize) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    func getBestComment(comments: [CommentDomain]) -> CommentDomain? {
-        comments.sorted { $0.points > $1.points }.first
-    }
 }
 
-struct CommunityPostCellData {
-    let postUser: UserContentDataDomain
+struct PostDetailsHeaderCellData {
     let postDomain: PostDomain
-    let commentUser: UserContentDataDomain
-    let comments: [CommentDomain]
-    let didPressComment: (() -> Void)?
     let didPressPostOptions: (() -> Void)?
     let didPressUpVote: (() -> Void)?
     let didPressDownVote: (() -> Void)?
 }
+

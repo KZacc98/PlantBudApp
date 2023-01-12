@@ -54,6 +54,17 @@ final class CommunityCoordinator: TabBarItemCoordinator {
     private func pushCommunity(communityDomain: CommunityDomain) {
         let viewController = viewControllerFactory.makeCommunityViewController(communityDomain: communityDomain)
         
+        viewController.viewModel.didPressPostDetails = { [weak self] postDomain, commentDomains in
+            Logger.info("PUSH POSTDETAILS")
+            self?.pushPostDetails(postDomain: postDomain, commentDomains: commentDomains)
+        }
+        
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func pushPostDetails(postDomain: PostDomain, commentDomains: [CommentDomain]) {
+        let viewController = viewControllerFactory.makePostDetailsViewController(postDomain: postDomain, commentDomains: commentDomains)
+        
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -10,6 +10,7 @@ import Foundation
 struct CommunityDomain {
     let id: Int
     let communityName: String
+    let communityDescription: String
     let communitySmallImage: String
     let communityBigImage: String
     let isActive: Bool
@@ -19,6 +20,7 @@ struct CommunityDomain {
     init(remote: CommunityRemote) {
         self.id = remote.id
         self.communityName = remote.communityName
+        self.communityDescription = remote.communityDescription
         self.communitySmallImage = remote.communitySmallImage
         self.communityBigImage = remote.communityBigImage
         self.isActive = remote.isActive

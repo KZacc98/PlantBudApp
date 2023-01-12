@@ -2,6 +2,7 @@ query FetchCommunities {
   Community {
     id
     communityName
+    communityDescription
     communitySmallImage
     communityBigImage
     isActive
@@ -71,5 +72,19 @@ query BatchFetchUserContentData($userIds: [Int!]) {
     userName
     userType
     profilePicture
+  }
+}
+
+query fetchPostPoints($postId: Int) {
+  Post(where: {id: {_eq: $postId}}) {
+    points
+  }
+}
+
+mutation upVotePost($postId: Int, $points: Int) {
+  update_Post(where: {id: {_eq: $postId}}, _set: {points: $points}) {
+    returning {
+      points
+    }
   }
 }

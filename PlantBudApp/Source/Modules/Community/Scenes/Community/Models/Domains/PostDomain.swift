@@ -31,6 +31,19 @@ struct PostDomain{
         self.createdAt = remote.createdAt ?? ""
         self.updatedAt = remote.updatedAt ?? ""
     }
+    
+    init(domain: PostDomain, points: Int) {
+        self.id = domain.id
+        self.communityId = domain.communityId
+        self.image = domain.image
+        self.userName = domain.userName
+        self.postBody = domain.postBody
+        self.isAnnouncement = domain.isAnnouncement
+        self.points = points
+        self.flag =  domain.flag
+        self.createdAt = domain.createdAt
+        self.updatedAt = domain.updatedAt
+    }
 }
 
 

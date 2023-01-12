@@ -38,8 +38,9 @@ extension CommunityHeaderCellConfigurator: ReusableViewConfiguratorInterface {
         
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
-        view.communityNameLabel.text = data.communityName
-        view.communityImage.setImage(with: URL(string: data.bigImage))
+        view.communityNameLabel.text = data.communityDomain.communityName
+        view.communityImage.setImage(with: URL(string: data.communityDomain.communityBigImage))
+        view.communityDescriptionLabel.text = data.communityDomain.communityDescription
 //        view.plantImage.gestureRecognizers?.forEach {
 //            view.plantImage.removeGestureRecognizer($0)
 //        }
@@ -59,8 +60,7 @@ extension CommunityHeaderCellConfigurator: ReusableViewConfiguratorInterface {
 }
 
 struct CommunityHeaderCellData {
-    let communityName: String
-    let bigImage: String
+    let communityDomain: CommunityDomain
 }
 
 

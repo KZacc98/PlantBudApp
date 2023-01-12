@@ -63,6 +63,7 @@ final class CommunityListViewModel {
                     CommunityDomain(remote: CommunityRemote(
                         id: community.id,
                         communityName: community.communityName,
+                        communityDescription: community.communityDescription,
                         communitySmallImage: community.communitySmallImage,
                         communityBigImage: community.communityBigImage,
                         isActive: community.isActive,
@@ -112,9 +113,7 @@ final class CommunityListViewModel {
         guard let communities = communities else { return SingleColumnSection(cellConfigurators: []) }
         let configurators = communities.map { community in
             CommunityCellConfigurator(data: CommunityCellData(
-                communityName: community.communityName,
-                bigImage: community.communityBigImage,
-                smallImage: community.communitySmallImage,
+                communityDomain: community,
                 didPressCommunityTile: {
                     Logger.info("\(community.communityName) TILE TAPPED")
                     self.onCommunityTilePressed?(community)

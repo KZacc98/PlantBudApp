@@ -31,7 +31,6 @@ final class CommunityCell: UITableViewCell {
         mainBackgroundView.addSubviewsUsingAutoLayout(imageView)
         
         return imageView
-        
     }()
     
     lazy var stackView: UIStackView = {

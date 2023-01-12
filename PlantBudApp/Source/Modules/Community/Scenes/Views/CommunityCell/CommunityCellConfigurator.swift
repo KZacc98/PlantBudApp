@@ -38,9 +38,9 @@ extension CommunityCellConfigurator: ReusableViewConfiguratorInterface {
         
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
-        view.communityNameLabel.text = data.communityName
+        view.communityNameLabel.text = data.communityDomain.communityName
         view.plantStateLabel.text = "data.plantState.rawValue"
-        view.communityImageView.setImage(with: URL(string: data.bigImage))
+        view.communityImageView.setImage(with: URL(string: data.communityDomain.communityBigImage))
         view.mainBackgroundView.gestureRecognizers?.forEach {
             view.mainBackgroundView.removeGestureRecognizer($0)
         }
@@ -56,9 +56,7 @@ extension CommunityCellConfigurator: ReusableViewConfiguratorInterface {
 }
 
 struct CommunityCellData {
-    let communityName: String
-    let bigImage: String
-    let smallImage: String
+    let communityDomain: CommunityDomain
     let didPressCommunityTile: (() -> Void)?
 }
 

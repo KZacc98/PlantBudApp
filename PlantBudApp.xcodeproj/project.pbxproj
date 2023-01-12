@@ -36,6 +36,12 @@
 		EF3E36E3296DF0930089186A /* UserContentDataDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E36E2296DF0930089186A /* UserContentDataDomain.swift */; };
 		EF44C99A294BE56F00CD1075 /* PlantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF44C999294BE56F00CD1075 /* PlantDetailsViewController.swift */; };
 		EF44C99C294BE62300CD1075 /* PlantDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF44C99B294BE62300CD1075 /* PlantDetailsViewModel.swift */; };
+		EF62CE84296F65EB002BABA4 /* PostDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62CE83296F65EB002BABA4 /* PostDetailsViewModel.swift */; };
+		EF62CE86296F65FA002BABA4 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62CE85296F65FA002BABA4 /* PostDetailsViewController.swift */; };
+		EF62CE89296F7177002BABA4 /* PostDetailsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62CE88296F7177002BABA4 /* PostDetailsHeaderCell.swift */; };
+		EF62CE8B296F725A002BABA4 /* PostDetailsHeaderCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62CE8A296F725A002BABA4 /* PostDetailsHeaderCellConfigurator.swift */; };
+		EF62CE8F296F7F0D002BABA4 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62CE8E296F7F0D002BABA4 /* CommentCell.swift */; };
+		EF62CE91296F7F19002BABA4 /* CommentCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62CE90296F7F19002BABA4 /* CommentCellConfigurator.swift */; };
 		EF68F74229490DE700B2A08E /* CareRoutineRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F74129490DE700B2A08E /* CareRoutineRemote.swift */; };
 		EF68F74429490E7E00B2A08E /* CareRoutineDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F74329490E7E00B2A08E /* CareRoutineDomain.swift */; };
 		EF68F747294910FB00B2A08E /* CareRoutine.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F746294910FB00B2A08E /* CareRoutine.swift */; };
@@ -238,6 +244,12 @@
 		EF3E36E2296DF0930089186A /* UserContentDataDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentDataDomain.swift; sourceTree = "<group>"; };
 		EF44C999294BE56F00CD1075 /* PlantDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewController.swift; sourceTree = "<group>"; };
 		EF44C99B294BE62300CD1075 /* PlantDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewModel.swift; sourceTree = "<group>"; };
+		EF62CE83296F65EB002BABA4 /* PostDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewModel.swift; sourceTree = "<group>"; };
+		EF62CE85296F65FA002BABA4 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
+		EF62CE88296F7177002BABA4 /* PostDetailsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsHeaderCell.swift; sourceTree = "<group>"; };
+		EF62CE8A296F725A002BABA4 /* PostDetailsHeaderCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsHeaderCellConfigurator.swift; sourceTree = "<group>"; };
+		EF62CE8E296F7F0D002BABA4 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		EF62CE90296F7F19002BABA4 /* CommentCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellConfigurator.swift; sourceTree = "<group>"; };
 		EF68F74129490DE700B2A08E /* CareRoutineRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRoutineRemote.swift; sourceTree = "<group>"; };
 		EF68F74329490E7E00B2A08E /* CareRoutineDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRoutineDomain.swift; sourceTree = "<group>"; };
 		EF68F746294910FB00B2A08E /* CareRoutine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareRoutine.swift; sourceTree = "<group>"; };
@@ -661,6 +673,43 @@
 			path = PlantDetails;
 			sourceTree = "<group>";
 		};
+		EF62CE82296F65DB002BABA4 /* PostDetails */ = {
+			isa = PBXGroup;
+			children = (
+				EF62CE87296F716C002BABA4 /* Views */,
+				EF62CE83296F65EB002BABA4 /* PostDetailsViewModel.swift */,
+				EF62CE85296F65FA002BABA4 /* PostDetailsViewController.swift */,
+			);
+			path = PostDetails;
+			sourceTree = "<group>";
+		};
+		EF62CE87296F716C002BABA4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF62CE8D296F7EFC002BABA4 /* CommentCell */,
+				EF62CE8C296F725E002BABA4 /* PostDetailsHeader */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EF62CE8C296F725E002BABA4 /* PostDetailsHeader */ = {
+			isa = PBXGroup;
+			children = (
+				EF62CE88296F7177002BABA4 /* PostDetailsHeaderCell.swift */,
+				EF62CE8A296F725A002BABA4 /* PostDetailsHeaderCellConfigurator.swift */,
+			);
+			path = PostDetailsHeader;
+			sourceTree = "<group>";
+		};
+		EF62CE8D296F7EFC002BABA4 /* CommentCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF62CE8E296F7F0D002BABA4 /* CommentCell.swift */,
+				EF62CE90296F7F19002BABA4 /* CommentCellConfigurator.swift */,
+			);
+			path = CommentCell;
+			sourceTree = "<group>";
+		};
 		EF68F745294910DE00B2A08E /* CareRoutine */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,6 +730,7 @@
 		EF8C999C296CAA8E00AEB012 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				EF62CE82296F65DB002BABA4 /* PostDetails */,
 				EF8C99A3296CB23D00AEB012 /* Models */,
 				EF8C99A1296CAEDB00AEB012 /* Views */,
 				EF8C999D296CAAFA00AEB012 /* CommunityViewModel.swift */,
@@ -1877,6 +1927,7 @@
 				EF9CFDA02932675000FD0239 /* MainButtonCellData.swift in Sources */,
 				EFA7B17E294523D3008EE8E9 /* PlantDomain.swift in Sources */,
 				EF9CFD9629325F8B00FD0239 /* CircularView.swift in Sources */,
+				EF62CE91296F7F19002BABA4 /* CommentCellConfigurator.swift in Sources */,
 				EFF5238D292A51730014A32B /* NSLayoutAnchor+Extension.swift in Sources */,
 				EF15767D29354BFE0015FCEE /* UITabBarController+Extension.swift in Sources */,
 				EF8C99B3296CC2CB00AEB012 /* CommunityHeaderCell.swift in Sources */,
@@ -1918,6 +1969,7 @@
 				EF9CFD9129325DA500FD0239 /* Double+Extension.swift in Sources */,
 				EF3E36DF296DEF9C0089186A /* CommentDomain.swift in Sources */,
 				EF9CFDC82932776700FD0239 /* InputInterface.swift in Sources */,
+				EF62CE8F296F7F0D002BABA4 /* CommentCell.swift in Sources */,
 				EF1D1804296A4B80000A12E4 /* AddButtonCell.swift in Sources */,
 				EF9CFDAB2932730B00FD0239 /* TextInputCell.swift in Sources */,
 				EFFA5948292A70AA003A8F23 /* Color.swift in Sources */,
@@ -1931,6 +1983,7 @@
 				EF1D180C296AFE48000A12E4 /* AddPlantViewController.swift in Sources */,
 				EFC1F993295E3D3200112EFC /* BadgeCellConfigurator.swift in Sources */,
 				EF8C9990296C7F6300AEB012 /* WindowManager.swift in Sources */,
+				EF62CE8B296F725A002BABA4 /* PostDetailsHeaderCellConfigurator.swift in Sources */,
 				EF9CFDFA2934074600FD0239 /* HomeCoordinator.swift in Sources */,
 				EF9CFDAD2932737800FD0239 /* TextInputCellConfigurator.swift in Sources */,
 				EFBA28B22929957B0034DCA9 /* String+Extension.swift in Sources */,
@@ -1980,6 +2033,7 @@
 				EFC1F989295CF73100112EFC /* MessageOfTheDayCellConfigurator.swift in Sources */,
 				EF1D17FC296A2D7E000A12E4 /* AddViewControllerFactory.swift in Sources */,
 				EF9CFDAF293273D700FD0239 /* TextInputCellData.swift in Sources */,
+				EF62CE86296F65FA002BABA4 /* PostDetailsViewController.swift in Sources */,
 				EF68F7492949113400B2A08E /* RoutineStepRemote.swift in Sources */,
 				EF68F74429490E7E00B2A08E /* CareRoutineDomain.swift in Sources */,
 				EF1D17FE296A4674000A12E4 /* AddViewModel.swift in Sources */,
@@ -2015,6 +2069,7 @@
 				EF9CFD8329324CA900FD0239 /* ReusableViewConfiguratorInterface.swift in Sources */,
 				EF8C9996296C8DC100AEB012 /* CommunityDomain.swift in Sources */,
 				EF9CFDFC2934078A00FD0239 /* HomeViewControllerFactory.swift in Sources */,
+				EF62CE89296F7177002BABA4 /* PostDetailsHeaderCell.swift in Sources */,
 				EF6947C92948EE2D006E56F1 /* API.swift in Sources */,
 				EFC1F97B295CC3E700112EFC /* PlantStatsCellConfigurator.swift in Sources */,
 				EFC1F979295CC38900112EFC /* PlantStatsCell.swift in Sources */,
@@ -2034,6 +2089,7 @@
 				EF8C9999296C961600AEB012 /* CommunityCell.swift in Sources */,
 				EF9CFDEB2934037100FD0239 /* TabBarOption.swift in Sources */,
 				EF3E36E3296DF0930089186A /* UserContentDataDomain.swift in Sources */,
+				EF62CE84296F65EB002BABA4 /* PostDetailsViewModel.swift in Sources */,
 				EF9CFDB32932749000FD0239 /* ValidationManager.swift in Sources */,
 				EFFA5958292A8124003A8F23 /* AnimationHeader.swift in Sources */,
 				EF9CFD7A29324BCD00FD0239 /* TableViewControllerInterface.swift in Sources */,

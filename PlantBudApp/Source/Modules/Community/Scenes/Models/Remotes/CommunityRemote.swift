@@ -10,6 +10,7 @@ import Foundation
 struct CommunityRemote {
     let id: Int
     let communityName: String
+    let communityDescription: String
     let communitySmallImage: String
     let communityBigImage: String
     let isActive: Bool

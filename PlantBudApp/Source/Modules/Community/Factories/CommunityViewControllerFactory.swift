@@ -24,6 +24,13 @@ final class CommunityViewControllerFactory {
         
         return viewController
     }
+    
+    func makePostDetailsViewController(postDomain: PostDomain, commentDomains: [CommentDomain]) -> PostDetailsViewController {
+        let viewController = PostDetailsViewController()
+        viewController.viewModel = PostDetailsViewModel(postDomain: postDomain, commentDomains: commentDomains, tableViewInterface: viewController)
+        
+        return viewController
+    }
   
 }
 
