@@ -74,27 +74,27 @@ extension PostDetailsHeaderCellConfigurator: ReusableViewConfiguratorInterface {
                 target: self,
                 action: #selector(didPressUserHeader(tapGestureRecognizer:))))
         
-        view.postUpVoteImageView.isUserInteractionEnabled = true
-        view.postUpVoteImageView.gestureRecognizers?.forEach {
-            view.postUpVoteImageView.removeGestureRecognizer($0)
-        }
-        
-        view.postUpVoteImageView.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(didPressUpVote(tapGestureRecognizer:))))
-        
-        view.postDownVoteImageView.isUserInteractionEnabled = true
-        view.postDownVoteImageView.gestureRecognizers?.forEach {
-            view.postDownVoteImageView.removeGestureRecognizer($0)
-        }
-        
-        view.postDownVoteImageView.addGestureRecognizer(
-            UITapGestureRecognizer(
-                target: self,
-                action: #selector(didPressDownVote(tapGestureRecognizer:))))
+//        view.postUpVoteImageView.isUserInteractionEnabled = true
+//        view.postUpVoteImageView.gestureRecognizers?.forEach {
+//            view.postUpVoteImageView.removeGestureRecognizer($0)
+//        }
+//
+//        view.postUpVoteImageView.addGestureRecognizer(
+//            UITapGestureRecognizer(
+//                target: self,
+//                action: #selector(didPressUpVote(tapGestureRecognizer:))))
+//
+//        view.postDownVoteImageView.isUserInteractionEnabled = true
+//        view.postDownVoteImageView.gestureRecognizers?.forEach {
+//            view.postDownVoteImageView.removeGestureRecognizer($0)
+//        }
+//
+//        view.postDownVoteImageView.addGestureRecognizer(
+//            UITapGestureRecognizer(
+//                target: self,
+//                action: #selector(didPressDownVote(tapGestureRecognizer:))))
         view.postOptionsImageView.isUserInteractionEnabled = true
-        
+
         view.postOptionsImageView.gestureRecognizers?.forEach {
             view.postOptionsImageView.removeGestureRecognizer($0)
         }

@@ -178,6 +178,19 @@
 		EFC1F98E295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F98D295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift */; };
 		EFC1F991295E3BB300112EFC /* BadgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F990295E3BB300112EFC /* BadgeCell.swift */; };
 		EFC1F993295E3D3200112EFC /* BadgeCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F992295E3D3200112EFC /* BadgeCellConfigurator.swift */; };
+		EFC93261297059A000B3057C /* PersonalizedTextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93260297059A000B3057C /* PersonalizedTextInputCell.swift */; };
+		EFC93263297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93262297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift */; };
+		EFC932662970886A00B3057C /* AnimationFillerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC932652970886900B3057C /* AnimationFillerCell.swift */; };
+		EFC93268297088E900B3057C /* AnimationFillerCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93267297088E900B3057C /* AnimationFillerCellConfigurator.swift */; };
+		EFC9326A2970904200B3057C /* people_talking.json in Resources */ = {isa = PBXBuildFile; fileRef = EFC932692970904200B3057C /* people_talking.json */; };
+		EFC9326C29709D1F00B3057C /* girl_community.json in Resources */ = {isa = PBXBuildFile; fileRef = EFC9326B29709D1F00B3057C /* girl_community.json */; };
+		EFC9326E2970A44B00B3057C /* app_login.json in Resources */ = {isa = PBXBuildFile; fileRef = EFC9326D2970A44B00B3057C /* app_login.json */; };
+		EFC932702970A55800B3057C /* LoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9326F2970A55800B3057C /* LoginCell.swift */; };
+		EFC932732970A5AC00B3057C /* LoginCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC932722970A5AC00B3057C /* LoginCellConfigurator.swift */; };
+		EFC932792970D45400B3057C /* ProfileViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC932782970D45400B3057C /* ProfileViewControllerFactory.swift */; };
+		EFC9327B2970D46600B3057C /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9327A2970D46600B3057C /* ProfileCoordinator.swift */; };
+		EFC9327D2970D48B00B3057C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9327C2970D48B00B3057C /* ProfileViewModel.swift */; };
+		EFC9327F2970D49700B3057C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9327E2970D49700B3057C /* ProfileViewController.swift */; };
 		EFDFF45D294B91DE00B4F5F1 /* PlantCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFF45C294B91DE00B4F5F1 /* PlantCellData.swift */; };
 		EFDFF45F294BADB100B4F5F1 /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EFDFF45E294BADB100B4F5F1 /* User.graphql */; };
 		EFDFF464294BB01D00B4F5F1 /* UserRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFF463294BB01D00B4F5F1 /* UserRemote.swift */; };
@@ -391,6 +404,19 @@
 		EFC1F98D295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBadgeCellConfigurator.swift; sourceTree = "<group>"; };
 		EFC1F990295E3BB300112EFC /* BadgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
 		EFC1F992295E3D3200112EFC /* BadgeCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC93260297059A000B3057C /* PersonalizedTextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedTextInputCell.swift; sourceTree = "<group>"; };
+		EFC93262297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedTextInputCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC932652970886900B3057C /* AnimationFillerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFillerCell.swift; sourceTree = "<group>"; };
+		EFC93267297088E900B3057C /* AnimationFillerCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFillerCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC932692970904200B3057C /* people_talking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people_talking.json; sourceTree = "<group>"; };
+		EFC9326B29709D1F00B3057C /* girl_community.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = girl_community.json; sourceTree = "<group>"; };
+		EFC9326D2970A44B00B3057C /* app_login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = app_login.json; sourceTree = "<group>"; };
+		EFC9326F2970A55800B3057C /* LoginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCell.swift; sourceTree = "<group>"; };
+		EFC932722970A5AC00B3057C /* LoginCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC932782970D45400B3057C /* ProfileViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerFactory.swift; sourceTree = "<group>"; };
+		EFC9327A2970D46600B3057C /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		EFC9327C2970D48B00B3057C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		EFC9327E2970D49700B3057C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EFDFF45C294B91DE00B4F5F1 /* PlantCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCellData.swift; sourceTree = "<group>"; };
 		EFDFF45E294BADB100B4F5F1 /* User.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
 		EFDFF463294BB01D00B4F5F1 /* UserRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemote.swift; sourceTree = "<group>"; };
@@ -1330,7 +1356,10 @@
 		EFBA28A729298F560034DCA9 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				EFC9326D2970A44B00B3057C /* app_login.json */,
+				EFC9326B29709D1F00B3057C /* girl_community.json */,
 				EFC1F97C295CD43B00112EFC /* monstera_leaf.json */,
+				EFC932692970904200B3057C /* people_talking.json */,
 				EFFA5925292A6481003A8F23 /* plant_walking.json */,
 				EFBA287D292986520034DCA9 /* Assets.xcassets */,
 			);
@@ -1409,6 +1438,7 @@
 		EFBA28B7292998700034DCA9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				EFC932742970D41D00B3057C /* Profile */,
 				EF1D17F5296A2C9D000A12E4 /* Add */,
 				EFAA5B83293E86850082484D /* Community */,
 				EFAA5B76293E83330082484D /* Badges */,
@@ -1495,6 +1525,7 @@
 		EFBA28C02929999D0034DCA9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EFC932712970A59A00B3057C /* LoginCell */,
 				EF9CFDA6293272B400FD0239 /* LoginTextInputCell */,
 				EFFA5959292A8914003A8F23 /* AnimationHeader */,
 			);
@@ -1634,6 +1665,68 @@
 				EFC1F992295E3D3200112EFC /* BadgeCellConfigurator.swift */,
 			);
 			path = BadgeCell;
+			sourceTree = "<group>";
+		};
+		EFC9325F2970597C00B3057C /* PersonalizedTextInputCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC93260297059A000B3057C /* PersonalizedTextInputCell.swift */,
+				EFC93262297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift */,
+			);
+			path = PersonalizedTextInputCell;
+			sourceTree = "<group>";
+		};
+		EFC932642970884D00B3057C /* AnimationFillerCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC932652970886900B3057C /* AnimationFillerCell.swift */,
+				EFC93267297088E900B3057C /* AnimationFillerCellConfigurator.swift */,
+			);
+			path = AnimationFillerCell;
+			sourceTree = "<group>";
+		};
+		EFC932712970A59A00B3057C /* LoginCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC9326F2970A55800B3057C /* LoginCell.swift */,
+				EFC932722970A5AC00B3057C /* LoginCellConfigurator.swift */,
+			);
+			path = LoginCell;
+			sourceTree = "<group>";
+		};
+		EFC932742970D41D00B3057C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				EFC932752970D42D00B3057C /* Factories */,
+				EFC932762970D43500B3057C /* Coordinator */,
+				EFC932772970D43B00B3057C /* Scenes */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		EFC932752970D42D00B3057C /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				EFC932782970D45400B3057C /* ProfileViewControllerFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		EFC932762970D43500B3057C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				EFC9327A2970D46600B3057C /* ProfileCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		EFC932772970D43B00B3057C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				EFC9327C2970D48B00B3057C /* ProfileViewModel.swift */,
+				EFC9327E2970D49700B3057C /* ProfileViewController.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		EFDFF45A294B91C800B4F5F1 /* PlantCell */ = {
@@ -1776,6 +1869,8 @@
 		EFFA594E292A7271003A8F23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EFC932642970884D00B3057C /* AnimationFillerCell */,
+				EFC9325F2970597C00B3057C /* PersonalizedTextInputCell */,
 				EFC1F96229592A0200112EFC /* MainSectionHeader */,
 				EFA7B17129450D11008EE8E9 /* PaddedImageView */,
 				EF9CFDA9293272F600FD0239 /* TextInputCell */,
@@ -1884,8 +1979,11 @@
 				EFAA5B62293E6FA20082484D /* NoticiaText-Bold.ttf in Resources */,
 				EFAA5B60293E6FA20082484D /* NoticiaText-Italic.ttf in Resources */,
 				EFBA28AE292995260034DCA9 /* Localizable.strings in Resources */,
+				EFC9326E2970A44B00B3057C /* app_login.json in Resources */,
 				EFBA287E292986520034DCA9 /* Assets.xcassets in Resources */,
 				EFFA5926292A6481003A8F23 /* plant_walking.json in Resources */,
+				EFC9326C29709D1F00B3057C /* girl_community.json in Resources */,
+				EFC9326A2970904200B3057C /* people_talking.json in Resources */,
 				EF190C5E294FC6EA0091573D /* Badges.graphql in Resources */,
 				EF9CFDE3293293DA00FD0239 /* schema.json in Resources */,
 				EFAA5B61293E6FA20082484D /* NoticiaText-BoldItalic.ttf in Resources */,
@@ -1931,6 +2029,7 @@
 				EFF5238D292A51730014A32B /* NSLayoutAnchor+Extension.swift in Sources */,
 				EF15767D29354BFE0015FCEE /* UITabBarController+Extension.swift in Sources */,
 				EF8C99B3296CC2CB00AEB012 /* CommunityHeaderCell.swift in Sources */,
+				EFC9327B2970D46600B3057C /* ProfileCoordinator.swift in Sources */,
 				EF9CFDFF293407F200FD0239 /* HomeMenuViewModel.swift in Sources */,
 				EF9CFD7729324AB400FD0239 /* BaseTableViewDataSource.swift in Sources */,
 				EFDFF46A294BB74500B4F5F1 /* UserProfileCell.swift in Sources */,
@@ -1967,6 +2066,7 @@
 				EFFA5942292A6ED9003A8F23 /* UIDevice+Extension.swift in Sources */,
 				EF9CFDF42934061000FD0239 /* AppearanceViewModel.swift in Sources */,
 				EF9CFD9129325DA500FD0239 /* Double+Extension.swift in Sources */,
+				EFC932662970886A00B3057C /* AnimationFillerCell.swift in Sources */,
 				EF3E36DF296DEF9C0089186A /* CommentDomain.swift in Sources */,
 				EF9CFDC82932776700FD0239 /* InputInterface.swift in Sources */,
 				EF62CE8F296F7F0D002BABA4 /* CommentCell.swift in Sources */,
@@ -2001,6 +2101,7 @@
 				EFAA5B80293E85830082484D /* BadgesCoordinator.swift in Sources */,
 				EF1D1827296B3DB0000A12E4 /* PlantTypeCellData.swift in Sources */,
 				EF190C66294FC9E10091573D /* BadgeDomain.swift in Sources */,
+				EFC93261297059A000B3057C /* PersonalizedTextInputCell.swift in Sources */,
 				EF1D182C296B5296000A12E4 /* AddPlantFormViewController.swift in Sources */,
 				EF9CFD7529324A7100FD0239 /* BaseTableViewController.swift in Sources */,
 				EF9CFDC12932762000FD0239 /* ApplicationError.swift in Sources */,
@@ -2019,11 +2120,14 @@
 				EF9CFD9E2932670F00FD0239 /* LoadingButton.swift in Sources */,
 				EFAA5B89293E86BF0082484D /* CommunityListViewController.swift in Sources */,
 				EF9CFDB7293274D900FD0239 /* ValidationResult.swift in Sources */,
+				EFC932732970A5AC00B3057C /* LoginCellConfigurator.swift in Sources */,
 				EF68F747294910FB00B2A08E /* CareRoutine.swift in Sources */,
+				EFC932702970A55800B3057C /* LoginCell.swift in Sources */,
 				EFC1F98C295DD9C500112EFC /* CurrentBadgeCell.swift in Sources */,
 				EFDFF464294BB01D00B4F5F1 /* UserRemote.swift in Sources */,
 				EF9CFD8729324CE600FD0239 /* SectionSequence.swift in Sources */,
 				EF77D8C5293FD5FD00F5807F /* networkfiller.swift in Sources */,
+				EFC93263297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift in Sources */,
 				EFC1F991295E3BB300112EFC /* BadgeCell.swift in Sources */,
 				EFA7B17C2945237A008EE8E9 /* PlantRemote.swift in Sources */,
 				EFC1F96929592A8800112EFC /* MainSectionHeaderData.swift in Sources */,
@@ -2031,6 +2135,7 @@
 				EFC1F987295CF67400112EFC /* MessageOfTheDayCell.swift in Sources */,
 				EFFA594A292A71C4003A8F23 /* UIViewController+Extension.swift in Sources */,
 				EFC1F989295CF73100112EFC /* MessageOfTheDayCellConfigurator.swift in Sources */,
+				EFC9327D2970D48B00B3057C /* ProfileViewModel.swift in Sources */,
 				EF1D17FC296A2D7E000A12E4 /* AddViewControllerFactory.swift in Sources */,
 				EF9CFDAF293273D700FD0239 /* TextInputCellData.swift in Sources */,
 				EF62CE86296F65FA002BABA4 /* PostDetailsViewController.swift in Sources */,
@@ -2046,11 +2151,14 @@
 				EFA7B1702944D814008EE8E9 /* PlantCellConfigurator.swift in Sources */,
 				EFFA5951292A7281003A8F23 /* ToastView.swift in Sources */,
 				EFAA5B73293E7DBE0082484D /* PlantListViewModel.swift in Sources */,
+				EFC9327F2970D49700B3057C /* ProfileViewController.swift in Sources */,
 				EF190C6A294FCEDD0091573D /* UserBadgeDomain.swift in Sources */,
+				EFC93268297088E900B3057C /* AnimationFillerCellConfigurator.swift in Sources */,
 				EFAA5B82293E85EC0082484D /* BadgesViewControllerFactory.swift in Sources */,
 				EFA7B185294640AC008EE8E9 /* PlantTypeDomain.swift in Sources */,
 				EF190C68294FCE890091573D /* UserBadgeRemote.swift in Sources */,
 				EF9CFD8D2932570200FD0239 /* EmptyDataView.swift in Sources */,
+				EFC932792970D45400B3057C /* ProfileViewControllerFactory.swift in Sources */,
 				EF1D182A296B528A000A12E4 /* AddPlantFormViewModel.swift in Sources */,
 				EFFA5930292A6C25003A8F23 /* Logger.swift in Sources */,
 				EFA7B17329450D22008EE8E9 /* PaddedImageView.swift in Sources */,
@@ -2261,7 +2369,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2271,7 +2379,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2288,7 +2396,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2298,7 +2406,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

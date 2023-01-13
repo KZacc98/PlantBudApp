@@ -88,3 +88,22 @@ mutation upVotePost($postId: Int, $points: Int) {
     }
   }
 }
+
+mutation AddComment($commentInput: Comment_insert_input!) {
+  insert_Comment_one(object: $commentInput) {
+    id
+    postId
+    commentBody
+    createdAt
+    userName
+  }
+}
+
+mutation AddPost($postInput: Post_insert_input!) {
+  insert_Post_one(object: $postInput) {
+    id
+    postBody
+    createdAt
+    userName
+  }
+}

@@ -27,15 +27,6 @@ class LoginTextInputCellConfigurator: NSObject {
     
     // MARK: - Private methods
     
-    private func roundCorners(view: TextInputCell) {
-            view.mainBackgroundView.layer.cornerRadius = 18
-            view.mainBackgroundView.layer.shadowRadius = 2
-            view.mainBackgroundView.layer.shadowColor = Color.black.cgColor
-            view.mainBackgroundView.layer.shadowOpacity = 0.05
-            view.mainBackgroundView.layer.shadowOffset = CGSize(width: 0, height: -2)
-            view.mainBackgroundViewTopContrain.constant = 8
-    }
-    
     private func setupAfterValidation(result: ValidationResult, view: TextInputCell) {
         switch result {
         case .failed(let error):
@@ -47,7 +38,7 @@ class LoginTextInputCellConfigurator: NSObject {
             view.validationLabel.isHidden = true
             view.validationLabel.text = nil
             view.titleLabel.textColor = Color.brandGreen
-            view.separatorView.backgroundColor = (data.text ?? "").isEmpty ? Color.darkGray : Color.brandGreen
+            view.separatorView.backgroundColor = (data.text ?? "").isEmpty ? Color.darkGray : Color.brandBlack
         }
     }
 }
@@ -68,10 +59,11 @@ extension LoginTextInputCellConfigurator: ReusableViewConfiguratorInterface {
             return view
         }
         
-        view.contentView.backgroundColor = .green
+        view.contentView.backgroundColor = Color.brandWhite
         view.mainBackgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.selectionStyle = .none
         view.titleLabel.text = data.title
+        view.titleLabel.textAlignment = .center
         view.textField.returnKeyType = data.returnKey
         view.textField.text = data.text
         view.textField.placeholder = data.placeHolder
@@ -80,7 +72,6 @@ extension LoginTextInputCellConfigurator: ReusableViewConfiguratorInterface {
         view.textField.delegate = self
         view.textField.inputAccessoryView = data.inputAccessoryView
         setupAfterValidation(result: validationResult, view: view)
-        roundCorners(view: view)
     }
     
     func layoutHeight(relativeTo size: CGSize) -> CGFloat {

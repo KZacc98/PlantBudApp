@@ -243,6 +243,14 @@ final class CommunityPostCell: UITableViewCell {
         setupAutoLayout()
     }
     
+    // MARK: - Lifecycle
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        postImageView.image = nil
+    }
+    
     // MARK: - Setup
     
     private func setupAutoLayout() {

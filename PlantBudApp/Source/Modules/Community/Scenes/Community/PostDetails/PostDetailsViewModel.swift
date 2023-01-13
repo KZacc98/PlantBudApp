@@ -25,11 +25,7 @@ final class PostDetailsViewModel {
         }
     }
     
-    private var post: PostDomain {
-        didSet {
-            buildSections()
-        }
-    }
+    private var post: PostDomain
     private var comments: [CommentDomain]
     private var commentContent: String?
     private weak var tableViewInterface: TableViewControllerInterface?
@@ -46,19 +42,48 @@ final class PostDetailsViewModel {
     //MARK: - Access methods
     
     public func loadData(refresh: Bool = false) {
-//        fetchData()
+        //        fetchData()
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        fetchComments {
+            dispatchGroup.leave()
+        }
+//        dispatchGroup.enter()
+//        updatePoints{
+//            dispatchGroup.leave()
+//        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.buildSections(post: self.post, comments: self.comments)
+        }
         
     }
 
-    public func buildSections() {
+    public func buildSections(post: PostDomain, comments: [CommentDomain]) {
+        
+        sectionSequence = SectionSequence(
+            sections: [
+                makePostHeaderSection(post: post),
+                makeCommentInputSection(),
+                makeCommentsSection(comments: comments),
+                makeAnimationFillerSection()
+        ])
+    }
+    private func makeAnimationFillerSection() -> SingleColumnSection {
+        let configurator = AnimationFillerCellConfigurator(data: AnimationFillerCellData(animationName: "people_talking"))
+
+        return SingleColumnSection(cellConfigurators: [configurator])
+    }
+    
+    private func makePostHeaderSection(post: PostDomain) -> SingleColumnSection {
         let didPressUpVote: () -> Void = { [weak self] in
             guard let self = self else { return }
-            self.postUpvote(postId: self.post.id)
+//            self.postUpvote(postId: post.id)
             Logger.info("UP")
         }
         let didPressDownVote: () -> Void = { [weak self] in
             guard let self = self else { return }
-            self.postDownVote(postId: self.post.id)
+//            self.postDownVote(postId: post.id)
             Logger.info("DOwn")
         }
         let didPressOptions: () -> Void = { [weak self] in
@@ -66,55 +91,61 @@ final class PostDetailsViewModel {
 //                self.didPressPostDetails?(post, postComments)
             Logger.info("Options")
         }
-        let configurator = PostDetailsHeaderCellConfigurator(data: PostDetailsHeaderCellData(postDomain: post, didPressPostOptions: didPressOptions, didPressUpVote: didPressUpVote, didPressDownVote: didPressDownVote))
-            
+        let configurator = PostDetailsHeaderCellConfigurator(data: PostDetailsHeaderCellData(
+            postDomain: post,
+            didPressPostOptions: didPressOptions,
+            didPressUpVote: didPressUpVote,
+            didPressDownVote: didPressDownVote))
         
-        let comments = self.comments.map { comment -> CommentCellConfigurator in
-            CommentCellConfigurator(data: CommentCellData(comment: comment))
-        }
-        sectionSequence = SectionSequence(
-            sections: [
-                SingleColumnSection(cellConfigurators: [configurator]),
-                SingleColumnSection(cellConfigurators: comments),
-                SingleColumnSection(cellConfigurators: [commentInputCellConfigurator])
-        ])
-    }
-    private func makeHelloHeaderSection() -> SingleColumnSection {
-        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: self.post.postBody))
-
         return SingleColumnSection(cellConfigurators: [configurator])
     }
     
-    private lazy var commentInputCellConfigurator: TextInputCellConfigurator = {
-        let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet.symbols)
-                                                          .union(CharacterSet.punctuationCharacters)
-                                                          .union(CharacterSet.whitespaces)
-        let validator = TextValidator(minimumLength: 4,
-                                      maximumLength: 254,
-                                      allowedCharacters: allowedCharacters)
-        let data = TextInputCellData(title: "",
-                                     placeHolder: "Comment...",
-                                     isSecureTextEntry: false,
-                                     validator: validator)
-        let configurator = TextInputCellConfigurator(data: data)
-        let textFieldDidEndEditing: (String?) -> () = { [weak self, weak configurator] text in
-            guard let configurator = configurator else { return }
-            configurator.data.text = text
-            self?.commentContent = text
-            Logger.info(text ?? "DEEWOsdlkjfhasdlkf")
-            ValidationManager.validate(validableInputViewConfigurator: configurator,
-                                       sectionSequence: self?.sectionSequence,
-                                       tableViewInterface: self?.tableViewInterface)
+    private func makeCommentsSection(comments: [CommentDomain]) -> SingleColumnSection {
+        let configurators = comments.map { comment -> CommentCellConfigurator in
+            CommentCellConfigurator(data: CommentCellData(comment: comment))
         }
-        configurator.data.textfieldDidEndEditing = textFieldDidEndEditing
-
-//        configurator.didBecomeFirstResponder = { [weak self] input in
-//            self?.currentFirstResponderInput = input
-//        }
-
-        return configurator
-    }()
+        
+        return SingleColumnSection(cellConfigurators: configurators)
+    }
+    
+    public func makeCommentInputSection() -> SingleColumnSection
+    {
+        let didPressAddComment: (String?) -> Void = { [weak self] text in
+            guard let self = self, let commentBody = text else { return }
+            self.addComment(commentBody: commentBody)
+            Logger.info("ADDPRESSED")
+        }
+        
+        let commentCellData = CommentTextFieldCellData(
+            text: "Comment...",
+            textViewHeight: 100.deviceSizeAware,
+            maximumCommentTextLength: 499,
+            returnTypeKey: .done,
+            didPressAddComment: didPressAddComment,
+            textViewDidChange: {text in Logger.error("\(text)")},
+            textViewDidEndEditing: {text in Logger.error("EDITING END \(text)")},
+            textViewShouldChangeInRange: makeTextViewShouldChangeInRange(commentTextLenght: 499))
+        let commentCellConfigurator = CommentTextFieldCellConfigurator(data: commentCellData)
+        
+        return SingleColumnSection(cellConfigurators: [commentCellConfigurator])
+    }
+    
+    public func makeTextViewShouldChangeInRange(commentTextLenght: Int) -> (UITextView, NSRange, String) -> (Bool) {
+        return { textView, range, text in
+            if text == "\n" {
+                textView.resignFirstResponder()
+                return false
+            }
+            
+            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+            let numberOfCharacters = newText.count
+            
+            return numberOfCharacters < commentTextLenght
+        }
+    }
     //MARK: - Private methods
+    
+    
     
     
 //    private func makeCommunityHeaderCell(communityDomain: CommunityDomain) -> SingleColumnSection {
@@ -142,7 +173,28 @@ final class PostDetailsViewModel {
 //            didPressDownVote: didPressDownVote
 //        )
 //    }
-    private func fetchComments() {
+    private func addComment(commentBody: String) {
+        UIAppDelegate?.showLoadingIndicator()
+        Network.shared.apollo.store.clearCache()
+        Network.performMutation(mutation: AddCommentMutation(commentInput: Comment_insert_input(
+            commentBody: commentBody,
+            postId: self.post.id,
+            userName: UserContext.shared.userProfile?.userName)
+        )) { result in
+            switch result {
+            case .success(let success):
+                Logger.info(success.insertCommentOne.debugDescription)
+//                self.fetchComments()
+                UIAppDelegate?.hideLoadingIndicator()
+                self.loadData()
+            case .failure(let failure):
+                Logger.error(failure.localizedDescription)
+                UIAppDelegate?.hideLoadingIndicator()
+            }
+        }
+    }
+    
+    private func fetchComments(completion: (() -> Void)? = nil) {
         let dispatchGroup = DispatchGroup()
         var comments: [CommentDomain]?
         
@@ -176,11 +228,12 @@ final class PostDetailsViewModel {
             // Use data1, data2, and data3 here
             guard let comments = comments else { return }
             self.comments = comments
+            completion?()
             UIAppDelegate?.hideLoadingIndicator()
         }
     }
     
-    private func updatePoints() {
+    private func updatePoints(completion: (() -> Void)? = nil) {
         let dispatchGroup = DispatchGroup()
         var postPoints: Int?
         
@@ -203,6 +256,7 @@ final class PostDetailsViewModel {
             guard let postPoints = postPoints else { return }
             let updatedPost = PostDomain(domain: self.post, points: postPoints)
             self.post = updatedPost
+            completion?()
             UIAppDelegate?.hideLoadingIndicator()
         }
     }
@@ -253,50 +307,51 @@ final class PostDetailsViewModel {
         }
     }
     
-    private func postDownVote(postId: Int) {
-        UIAppDelegate?.showLoadingIndicator()
-        let dispatchGroup = DispatchGroup()
-        var pointsBefore: Int?
-        var pointsAfter: Int?
-        var res: String?
-        
-        // Fetch data1
-        dispatchGroup.enter()
-        Network.fetchData(query: FetchPostPointsQuery(postId: postId)) { result in
-            switch result {
-            case .success(let data):
-                pointsBefore = data.post.first?.points
-            case .failure(let error):
-                Logger.error("ERROR: \(error)")
-            }
-            dispatchGroup.leave()
-        }
-        
-        // Run a block of code when all requests are completed
-        dispatchGroup.notify(queue: .main) {
-            // Use data1, data2, and data3 here
-            let dispatchGroup2 = DispatchGroup()
-            dispatchGroup2.enter()
-            guard let pointsBefore = pointsBefore else { return }
-            pointsAfter = pointsBefore - 1
-            Network.performMutation(mutation: UpVotePostMutation(postId: postId, points: pointsAfter)) { result in
-                switch result {
-                case .success(let data):
-                    Logger.debug("POSTAFTER\(data)")
-                    res = data.updatePost.debugDescription
-                case .failure(let failure):
-                    Logger.error("FAILIURE: \(failure)")
-                }
-                dispatchGroup2.leave()
-            }
-            dispatchGroup2.notify(queue: .main) {
-                Network.shared.apollo.store.clearCache()
-                UIAppDelegate?.hideLoadingIndicator()
-                self.updatePoints()
-                Logger.info("BEFORE: \(pointsBefore) -> AFTER: \(res)")
-            }
-        }
-    }
+//    private func postDownVote(postId: Int, completion: (() -> Void)? = nil) {
+//        UIAppDelegate?.showLoadingIndicator()
+//        let dispatchGroup = DispatchGroup()
+//        var pointsBefore: Int?
+//        var pointsAfter: Int?
+//        var res: String?
+//
+//        // Fetch data1
+//        dispatchGroup.enter()
+//        Network.fetchData(query: FetchPostPointsQuery(postId: postId)) { result in
+//            switch result {
+//            case .success(let data):
+//                pointsBefore = data.post.first?.points
+//            case .failure(let error):
+//                Logger.error("ERROR: \(error)")
+//            }
+//            dispatchGroup.leave()
+//        }
+//
+//        // Run a block of code when all requests are completed
+//        dispatchGroup.notify(queue: .main) {
+//            // Use data1, data2, and data3 here
+//            let dispatchGroup2 = DispatchGroup()
+//            dispatchGroup2.enter()
+//            guard let pointsBefore = pointsBefore else { return }
+//            pointsAfter = pointsBefore - 1
+//            Network.performMutation(mutation: UpVotePostMutation(postId: postId, points: pointsAfter)) { result in
+//                switch result {
+//                case .success(let data):
+//                    Logger.debug("POSTAFTER\(data)")
+//                    res = data.updatePost.debugDescription
+//                case .failure(let failure):
+//                    Logger.error("FAILIURE: \(failure)")
+//                }
+//                dispatchGroup2.leave()
+//            }
+//            dispatchGroup2.notify(queue: .main) {
+//                Network.shared.apollo.store.clearCache()
+//                UIAppDelegate?.hideLoadingIndicator()
+//                self.updatePoints()
+//                completion?()
+//                Logger.info("BEFORE: \(pointsBefore) -> AFTER: \(res)")
+//            }
+//        }
+//    }
 
     // MARK: - Selectors
 

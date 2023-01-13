@@ -11,7 +11,7 @@ final class HomeMenuViewController: BaseTableViewController {
     
     //MARK: - Public properties
     
-//    public var onOrdersDisabled: (() -> ())?
+    public var onUserProfileTapped: (() -> ())?
     public var viewModel: HomeMenuViewModel!
     
     //MARK: - Private properties
@@ -50,6 +50,7 @@ final class HomeMenuViewController: BaseTableViewController {
     
     @objc private func didPressUserButton(sender: UIBarButtonItem) {
         Logger.error("USER PRESSED")
+        self.onUserProfileTapped?()
     }
     
     override func refreshData(_ refreshControl: UIRefreshControl) {
@@ -117,7 +118,7 @@ extension HomeMenuViewController {
 
 extension HomeMenuViewController {
     private func setupView() {
-        view.backgroundColor = .blue //kolor ViewControllera
+        view.backgroundColor = Color.brandWhite //kolor ViewControllera
     }
     
     private func setupNavigationBar() {

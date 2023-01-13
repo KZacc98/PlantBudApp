@@ -49,9 +49,8 @@ final class CommunityViewModel {
     }
 
     public func buildSections(community: CommunityDomain, posts: [PostDomain], comments: [CommentDomain]) {
-        let sortedPosts = posts.sorted { post1, post2 in
-            return post1.points > post2.points
-        }
+        let sortedPosts = posts.sorted(by: sortPosts)
+        
         let configurators = sortedPosts.map { post -> CommunityPostCellConfigurator in
             let postComments = comments.filter { comment in comment.postId == post.id }
             let didPressUpVote: () -> Void = { [weak self] in
@@ -91,11 +90,27 @@ final class CommunityViewModel {
         sectionSequence = SectionSequence(
             sections: [
                 makeCommunityHeaderCell(communityDomain: community),
-                SingleColumnSection(cellConfigurators: configurators)
+                makeCommentInputSection(),
+                SingleColumnSection(cellConfigurators: configurators),
+                makeAnimationFillerSection()
         ])
     }
     
     //MARK: - Private methods
+    
+    private func sortPosts(post1: PostDomain, post2: PostDomain) -> Bool {
+        let currentDate = Date()
+        guard let oneWeekAgo = Calendar.current.date(byAdding: .day, value: -7, to: currentDate) else { return false }
+        
+        if post1.createdAt < oneWeekAgo && post2.createdAt < oneWeekAgo {
+            return post1.points > post2.points
+        } else if post1.createdAt > oneWeekAgo && post2.createdAt > oneWeekAgo {
+            return post1.createdAt > post2.createdAt
+        } else {
+            return post1.createdAt > post2.createdAt
+        }
+    }
+
     
     private func postUpvote(postId: Int) {
         UIAppDelegate?.showLoadingIndicator()
@@ -186,6 +201,25 @@ final class CommunityViewModel {
             }
         }
     }
+    
+
+    private func addPost(postBody: String) {
+        UIAppDelegate?.showLoadingIndicator()
+        Network.performMutation(mutation: AddPostMutation(postInput: Post_insert_input(
+            communityId: communityDomain.id,
+            postBody: postBody,
+            userName: UserContext.shared.userProfile?.userName))) { result in
+                switch result {
+                case .success(let success):
+                    Logger.info("\(success.insertPostOne.debugDescription)")
+                    UIAppDelegate?.hideLoadingIndicator()
+                case .failure(let failure):
+                    Logger.error(failure.localizedDescription)
+                    UIAppDelegate?.hideLoadingIndicator()
+                }
+            }
+    }
+    
     
     private func fetchData(communityId: Int) {
         let dispatchGroup = DispatchGroup()
@@ -303,6 +337,34 @@ final class CommunityViewModel {
         return SingleColumnSection(cellConfigurators: [configurator])
     }
     
+    public func makeCommentInputSection() -> SingleColumnSection
+    {
+        let didPressAddComment: (String?) -> Void = { [weak self] text in
+            guard let self = self, let postBody = text else { return }
+            self.addPost(postBody: postBody)
+            Logger.info("ADDPRESSED")
+        }
+        
+        let commentCellData = CommentTextFieldCellData(
+            text: "Comment...",
+            textViewHeight: 100.deviceSizeAware,
+            maximumCommentTextLength: 499,
+            returnTypeKey: .done,
+            didPressAddComment: didPressAddComment,
+            textViewDidChange: {text in Logger.error("\(text)")},
+            textViewDidEndEditing: {text in Logger.error("EDITING END \(text)")},
+            textViewShouldChangeInRange: makeTextViewShouldChangeInRange(commentTextLenght: 499))
+        let commentCellConfigurator = CommentTextFieldCellConfigurator(data: commentCellData)
+        
+        return SingleColumnSection(cellConfigurators: [commentCellConfigurator])
+    }
+    
+    private func makeAnimationFillerSection() -> SingleColumnSection {
+        let configurator = AnimationFillerCellConfigurator(data: AnimationFillerCellData(animationName: "girl_community"))
+
+        return SingleColumnSection(cellConfigurators: [configurator])
+    }
+    
     private func makeCommunityHeaderCell(communityDomain: CommunityDomain) -> SingleColumnSection {
         let configurator = CommunityHeaderCellConfigurator(data: CommunityHeaderCellData(communityDomain: communityDomain))
 
@@ -327,6 +389,20 @@ final class CommunityViewModel {
             didPressUpVote: didPressUpVote,
             didPressDownVote: didPressDownVote
         )
+    }
+    
+    public func makeTextViewShouldChangeInRange(commentTextLenght: Int) -> (UITextView, NSRange, String) -> (Bool) {
+        return { textView, range, text in
+            if text == "\n" {
+                textView.resignFirstResponder()
+                return false
+            }
+            
+            let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+            let numberOfCharacters = newText.count
+            
+            return numberOfCharacters < commentTextLenght
+        }
     }
 
     // MARK: - Selectors

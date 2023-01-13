@@ -61,7 +61,7 @@ extension CommunityListViewController {
 
 extension CommunityListViewController {
     private func setupView() {
-        view.backgroundColor = .blue //kolor ViewControllera
+        view.backgroundColor = Color.brandWhite//kolor ViewControllera
         title = "Communities"
     }
     

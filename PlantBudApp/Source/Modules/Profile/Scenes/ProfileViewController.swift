@@ -1,17 +1,17 @@
 //
-//  CommunityViewController.swift
+//  ProfileViewController.swift
 //  PlantBudApp
 //
-//  Created by Kamil Zachara on 09/01/2023.
+//  Created by Kamil Zachara on 13/01/2023.
 //
 
 import UIKit
 
-final class CommunityViewController: BaseTableViewController {
+final class ProfileViewController: BaseTableViewController {
     
     //MARK: - Public properties
     
-    public var viewModel: CommunityViewModel!
+    public var viewModel: ProfileViewModel!
     
     //MARK: - Private properties
     
@@ -34,16 +34,22 @@ final class CommunityViewController: BaseTableViewController {
         setupTableView()
         bindViewModel()
         viewModel.loadData()
-        
     }
     
     // MARK: - Selectors
-
+    
+    @objc private func didPressUserButton(sender: UIBarButtonItem) {
+        Logger.error("USER PRESSED")
+    }
+    
+    override func refreshData(_ refreshControl: UIRefreshControl) {
+        viewModel.loadData(refresh: true)
+    }
 }
 
 //MARK: - Data binding
 
-extension CommunityViewController {
+extension ProfileViewController {
     private func bindViewModel() {
         viewModel.onSectionSequenceChange = { [weak self] sectionSequence in
             self?.dataSource.sections = sectionSequence.sections
@@ -54,25 +60,23 @@ extension CommunityViewController {
                 self?.refreshControl.endRefreshing()
             }
         }
+        
+        viewModel.onFetchSuccess = {[weak self] res in
+            self?.makeToast(with: res)
+        }
     }
+    
 }
 
 //MARK: - Setup
 
-extension CommunityViewController {
+extension ProfileViewController {
     private func setupView() {
         view.backgroundColor = Color.brandWhite //kolor ViewControllera
-        title = "Communities"
     }
     
     private func setupNavigationBar() {
-//        let userButtonBar = UIBarButtonItem(image: Assets.Common.user,
-//                                            style: .plain,
-//                                            target: self,
-//                                            action: #selector(didPressUserButton(sender:)))
-//        userButtonBar.accessibilityLabel = "userSideMenuAccessibilityLabel".localized
-//        userButtonBar.tintColor = Color.brandGreen
-//        navigationItem.rightBarButtonItem = userButtonBar
+        navigationItem.title = "Profile"
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {
@@ -98,8 +102,6 @@ extension CommunityViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
     }
 }
-
-
 
 
 

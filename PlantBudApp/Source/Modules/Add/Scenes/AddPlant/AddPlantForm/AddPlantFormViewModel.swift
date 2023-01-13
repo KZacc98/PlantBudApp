@@ -24,6 +24,7 @@ final class AddPlantFormViewModel {
             onSectionSequenceChange?(sectionSequence)
         }
     }
+    private let defaults = UserDefaults.standard
     private var plantName: String?
     private var plantTypeDomain: PlantTypeDomain
     private weak var tableViewInterface: TableViewControllerInterface?
@@ -148,7 +149,7 @@ final class AddPlantFormViewModel {
             plantState: "default",
             plantTypeId: plantType.id,
             updatedAt: timestamp,
-            userId: UserContext.shared.userId
+            userId: defaults.integer(forKey: "userId")
         ))) { result in
             switch result {
             case .success(let data):

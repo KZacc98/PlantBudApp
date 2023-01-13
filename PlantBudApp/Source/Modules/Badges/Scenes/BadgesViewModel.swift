@@ -23,6 +23,7 @@ final class BadgesViewModel {
     }
     
     private var userBadges: [UserBadgeDomain]?
+    private let defaults = UserDefaults.standard
     
     private var badges: [BadgeDomain]? {
         didSet{
@@ -76,7 +77,7 @@ final class BadgesViewModel {
         
         // Fetch data2
         dispatchGroup.enter()
-        Network.fetchData(query: FetchUserBadgesQuery(userId: UserContext.shared.userId)) { result in
+        Network.fetchData(query: FetchUserBadgesQuery(userId: defaults.integer(forKey: "userId"))) { result in
             switch result {
             case .success(let data):
                 userBadges = data.userBadges.map({ res in

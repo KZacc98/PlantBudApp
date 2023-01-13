@@ -35,8 +35,8 @@ class TextInputCellConfigurator: NSObject {
         default:
             view.validationLabel.isHidden = true
             view.validationLabel.text = nil
-            view.titleLabel.textColor = Color.brandGreen
-            view.separatorView.backgroundColor = (data.text ?? "").isEmpty ? Color.darkGray : Color.brandGreen
+            view.titleLabel.textColor = Color.brandBlack
+            view.separatorView.backgroundColor = (data.text ?? "").isEmpty ? Color.darkGray : Color.brandBlack
         }
     }
 }

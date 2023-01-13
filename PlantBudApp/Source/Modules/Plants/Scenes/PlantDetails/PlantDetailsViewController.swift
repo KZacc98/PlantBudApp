@@ -117,18 +117,11 @@ extension PlantDetailsViewController {
 
 extension PlantDetailsViewController {
     private func setupView() {
-        view.backgroundColor = .blue //kolor ViewControllera
+        view.backgroundColor = Color.brandWhite //kolor ViewControllera
     }
     
     private func setupNavigationBar() {
-        let userButtonBar = UIBarButtonItem(image: UIImage(systemName: "person"),
-                                            style: .plain,
-                                            target: self,
-                                            action: #selector(didPressUserButton(sender:)))
-        userButtonBar.tintColor = Color.brandGreen
-        navigationItem.rightBarButtonItem = userButtonBar
-//        UINavigationBar.setItems([userButtonBar], animated: true)
-        navigationItem.title = "Hello"
+        navigationItem.title = "Plant Details"
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {

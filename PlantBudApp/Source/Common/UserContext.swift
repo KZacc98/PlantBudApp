@@ -13,17 +13,9 @@ final class UserContext {
     
     public static var shared = UserContext()
     
-    public var loggedIn: Bool {
-        return false //zmien warunek przy logowaniu bo jest na odwrot
-    }
-    
-    public var userId: Int = 2 {
-        didSet{
-            Logger.info("USTAWIŁO USERID \(userId)")
-        }
-    }
-    
     public var points: Int = 0
+    
+    public var userProfile: UserDomain?
     
 }
 

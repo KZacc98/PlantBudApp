@@ -65,9 +65,11 @@ extension AppDelegate {
 //MARK: - Setup
 
 extension AppDelegate {
+    
     private func setupMainInterface(
         completion: (() -> ())? = nil) {
-            if !UserContext.shared.loggedIn {
+            let defaults = UserDefaults.standard
+            if defaults.bool(forKey: "loggedIn") {
                 applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: .home)
             } else {
                 applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ
@@ -75,7 +77,8 @@ extension AppDelegate {
         }
     
     private func setupMainInterface() {
-        if !UserContext.shared.loggedIn {
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "loggedIn") {
             applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: .home)
         } else {
             applicationCoordinator?.startLoginCoordinator()//TODO: TU LOGIN WYŁACZYŁEŚ

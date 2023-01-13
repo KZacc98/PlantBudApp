@@ -14,6 +14,8 @@ class LoginViewModel {
     public var onSectionSequenceChange: ((SectionSequence) -> Void)?
     public var onLoginButtonPressed: (() -> ())?
     public var onLoginSuccess: ((String) -> ())?
+    public var onLoginFailure: (() -> ())?
+
     //public var onTextItemPressed: ((ContentCode) -> ())?
     public var hideKeyboard: (() -> ())?
     public var onRecoverPassword: (() -> ())?
@@ -23,6 +25,7 @@ class LoginViewModel {
 
     private var loginCredentials: LoginCredentials
     private weak var tableViewInterface: TableViewControllerInterface?
+    private let defaults = UserDefaults.standard
     
     private var sectionSequence: SectionSequence = SectionSequence() {
         didSet {
@@ -34,17 +37,17 @@ class LoginViewModel {
         return [loginInputCellConfigurator, passwordInputCellConfigurator]
     }
     
-    private var currentFirstResponderInput: InputInterface? {
-        didSet {
-            guard let items = textInputCellInputAccessoryView.items,
-                items.indices.contains(0), items.indices.contains(1) else {
-                    return
-            }
-            let currentFirstResponderIsInput = currentFirstResponderInput === loginInputCellConfigurator
-            textInputCellInputAccessoryView.items?[0].isEnabled = !currentFirstResponderIsInput
-            textInputCellInputAccessoryView.items?[1].isEnabled = currentFirstResponderIsInput
-        }
-    }
+//    private var currentFirstResponderInput: InputInterface? {
+//        didSet {
+//            guard let items = textInputCellInputAccessoryView.items,
+//                items.indices.contains(0), items.indices.contains(1) else {
+//                    return
+//            }
+//            let currentFirstResponderIsInput = currentFirstResponderInput === loginInputCellConfigurator
+////            textInputCellInputAccessoryView.items?[0].isEnabled = !currentFirstResponderIsInput
+////            textInputCellInputAccessoryView.items?[1].isEnabled = currentFirstResponderIsInput
+//        }
+//    }
     
     // MARK: - Form items
 
@@ -71,8 +74,7 @@ class LoginViewModel {
                                      isSecureTextEntry: false,
                                      validator: TextValidator(minimumLength: 3,
                                                               maximumLength: 254,
-                                                              allowedCharacters: allowedCharacters),
-                                     inputAccessoryView: textInputCellInputAccessoryView)
+                                                              allowedCharacters: allowedCharacters))
         let configurator = LoginTextInputCellConfigurator(data: data)
         let textFieldDidEndEditing: (String?) -> () = { [weak self, weak configurator] text in
             guard let configurator = configurator else { return }
@@ -86,7 +88,7 @@ class LoginViewModel {
         configurator.data.textfieldDidEndEditing = textFieldDidEndEditing
 
         configurator.didBecomeFirstResponder = { [weak self] input in
-            self?.currentFirstResponderInput = input
+//            self?.currentFirstResponderInput = input
         }
 
         return configurator
@@ -103,8 +105,7 @@ class LoginViewModel {
                                      placeHolder: "loginPasswordPlaceHolder".localized,
                                      text: loginCredentials.password,
                                      isSecureTextEntry: true,
-                                     validator: validator,
-                                     inputAccessoryView: textInputCellInputAccessoryView)
+                                     validator: validator)
         let configurator = TextInputCellConfigurator(data: data)
         let textFieldDidEndEditing: (String?) -> () = { [weak self, weak configurator] text in
             guard let configurator = configurator else { return }
@@ -117,7 +118,7 @@ class LoginViewModel {
         configurator.data.textfieldDidEndEditing = textFieldDidEndEditing
 
         configurator.didBecomeFirstResponder = { [weak self] input in
-            self?.currentFirstResponderInput = input
+            //self?.currentFirstResponderInput = input
         }
 
         return configurator
@@ -138,12 +139,12 @@ class LoginViewModel {
         return MainButtonCellConfigurator(data: data)
     }()
 
-    private lazy var textInputCellInputAccessoryView: UIToolbar = {
-        let toolbar = UIToolbar(
-            frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
-
-        return toolbar
-    }()
+//    private lazy var textInputCellInputAccessoryView: UIToolbar = {
+//        let toolbar = UIToolbar(
+//            frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+//
+//        return toolbar
+//    }()
 
     // MARK: - Initialization
 
@@ -158,33 +159,42 @@ class LoginViewModel {
     public func buildSections() {
         var sections  = [SingleColumnSection(cellConfigurators: [loginInputCellConfigurator,
                                                                  passwordInputCellConfigurator,
-                                                                 loginButtonCellConfigurator],
+                                                                 loginButtonCellConfigurator,
+                                                                 ],
                                              headerConfigurator: headerConfigurator)]
-        
+        sections.append(makeAnimationFillerSection())
         sectionSequence = SectionSequence(sections: sections)
     }
     
+    private func makeAnimationFillerSection() -> SingleColumnSection {
+        let configurator = AnimationFillerCellConfigurator(data: AnimationFillerCellData(animationName: "plant_walking"))
+
+        return SingleColumnSection(cellConfigurators: [configurator])
+    }
+    
     public func authenticate() {
-//        guard let username = loginCredentials.username,
-//            let password = loginCredentials.password else {
-//                return
-//        }
-//
-        Network.shared.apollo.fetch(query: FetchUserQuery(email: loginCredentials.username, password: loginCredentials.password)) { result in
+        guard let username = loginCredentials.username,
+            let password = loginCredentials.password else {
+                return
+        }
+        UIAppDelegate?.showLoadingIndicator()
+        Network.fetchData(query: FetchUserQuery(email: username, password: password)) { result in
             switch result {
-            case .success(let GQLResult):
-                Logger.info("SUCCESS")
-                Logger.debug("\(GQLResult)")
-                self.onLoginSuccess?(GQLResult.data?.user.first?.name ?? "TEST")
-                GQLResult.data?.user.forEach{user in
-                    Logger.debug("USERID: \(user.id)")
-                    Logger.debug("USER NAME: \(user.name)")
-                    UserContext.shared.userId = user.id
+            case .success(let success):
+                if success.user.first?.name == nil {
+                    self.onLoginFailure?()
+                    Logger.error("JEBŁ LOGIN")
+                    return
                 }
-            case .failure(let error):
-                Logger.error("ERROR: \(error)")
+                UIAppDelegate?.hideLoadingIndicator()
+                guard let user = success.user.first else { return }
+                self.onLoginSuccess?(user.name)
+                self.defaults.set(user.id, forKey: "userId")
+                self.defaults.set(true, forKey: "loggedIn")
+            case .failure(let failure):
+                Logger.error("ERROR: \(failure)")
+                UIAppDelegate?.hideLoadingIndicator()
             }
-        
         }
         Logger.error("AUTH")
         

@@ -16,8 +16,11 @@ final class CommentCell: UITableViewCell {
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
-        view.setShadow(shadowOpacity: 0.5)
-        view.layer.cornerRadius = 12
+        view.setShadow(cornerRadius: 12,
+                       shadowOpacity: 0.1,
+                       shadowRadius: 4,
+                       shadowOffset: .zero,
+                       shadowColor: Color.black)
         contentView.addSubviewsUsingAutoLayout(view)
         
         return view

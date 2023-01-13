@@ -57,7 +57,7 @@ final class PostDetailsHeaderCell: UITableViewCell {
     }()
     
     lazy var postContentSctackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [postImageView, postBodyLabel, postCommentCountLabel])
+        let view = UIStackView(arrangedSubviews: [postImageView, postBodyLabel])
         view.distribution = .fill
         view.alignment = .fill
         view.spacing = 10
@@ -81,10 +81,8 @@ final class PostDetailsHeaderCell: UITableViewCell {
     public lazy var postChinView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
-        view.layer.cornerRadius = 12
         view.layer.borderWidth = 0.2
         view.layer.borderColor = Color.brandBlack.withAlphaComponent(0.5).cgColor
-        view.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         mainBackgroundView.addSubviewsUsingAutoLayout(view)
         
         return view
@@ -104,32 +102,32 @@ final class PostDetailsHeaderCell: UITableViewCell {
     }()
     
     
-    lazy var postUpVoteImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "arrow.up.circle.fill")
-        imageView.tintColor = Color.brandBlack
-        imageView.widthAnchor.constrain(constant: 30)
-        imageView.heightAnchor.constrain(constant: 30)
-        postChinView.addSubviewsUsingAutoLayout(imageView)
-        
-        return imageView
-    }()
-    
-    lazy var postDownVoteImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "arrow.down.circle.fill")
-        imageView.tintColor = Color.brandBlack
-        imageView.widthAnchor.constrain(constant: 30)
-        imageView.heightAnchor.constrain(constant: 30)
-        postChinView.addSubviewsUsingAutoLayout(imageView)
-        
-        return imageView
-    }()
+//    lazy var postUpVoteImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.clipsToBounds = true
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.image = UIImage(systemName: "arrow.up.circle.fill")
+//        imageView.tintColor = Color.brandBlack
+//        imageView.widthAnchor.constrain(constant: 30)
+//        imageView.heightAnchor.constrain(constant: 30)
+//        postChinView.addSubviewsUsingAutoLayout(imageView)
+//
+//        return imageView
+//    }()
+//
+//    lazy var postDownVoteImageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.image = UIImage(systemName: "arrow.down.circle.fill")
+//        imageView.tintColor = Color.brandBlack
+//        imageView.widthAnchor.constrain(constant: 30)
+//        imageView.heightAnchor.constrain(constant: 30)
+//        postChinView.addSubviewsUsingAutoLayout(imageView)
+//
+//        return imageView
+//    }()
     
     lazy var postOptionsImageView: UIImageView = {
         let imageView = UIImageView()
@@ -221,15 +219,15 @@ final class PostDetailsHeaderCell: UITableViewCell {
         
         postOptionsImageView.topAnchor.constrain(anchor: postChinView.topAnchor)
         postOptionsImageView.bottomAnchor.constrain(anchor: postChinView.bottomAnchor)
-        postOptionsImageView.centerXAnchor.constrain(anchor: postChinView.centerXAnchor)
+        postOptionsImageView.trailingAnchor.constrain(anchor: postChinView.trailingAnchor, constant: -12)
         
-        postUpVoteImageView.topAnchor.constrain(anchor: postChinView.topAnchor)
-        postUpVoteImageView.bottomAnchor.constrain(anchor: postChinView.bottomAnchor)
-        postUpVoteImageView.leadingAnchor.constrain(anchor: postOptionsImageView.trailingAnchor, constant: 40)
-        
-        postDownVoteImageView.topAnchor.constrain(anchor: postChinView.topAnchor)
-        postDownVoteImageView.bottomAnchor.constrain(anchor: postChinView.bottomAnchor)
-        postDownVoteImageView.trailingAnchor.constrain(anchor: postChinView.trailingAnchor, constant: -25)
+//        postUpVoteImageView.topAnchor.constrain(anchor: postChinView.topAnchor)
+//        postUpVoteImageView.bottomAnchor.constrain(anchor: postChinView.bottomAnchor)
+//        postUpVoteImageView.leadingAnchor.constrain(anchor: postOptionsImageView.trailingAnchor, constant: 40)
+//
+//        postDownVoteImageView.topAnchor.constrain(anchor: postChinView.topAnchor)
+//        postDownVoteImageView.bottomAnchor.constrain(anchor: postChinView.bottomAnchor)
+//        postDownVoteImageView.trailingAnchor.constrain(anchor: postChinView.trailingAnchor, constant: -25)
         
         postImageView.widthAnchor.constrain(constant: UIScreen.main.bounds.width - 24)
         postImageView.heightAnchor.constrain(anchor: postImageView.widthAnchor)

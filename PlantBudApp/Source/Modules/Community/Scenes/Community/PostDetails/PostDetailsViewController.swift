@@ -34,8 +34,10 @@ final class PostDetailsViewController: BaseTableViewController, TableViewControl
         setupTableView()
         bindViewModel()
         viewModel.loadData()
-        viewModel.buildSections()
-        
+    }
+    
+    override func refreshData(_ refreshControl: UIRefreshControl) {
+        viewModel.loadData()
     }
     
     // MARK: - Selectors
@@ -62,7 +64,7 @@ extension PostDetailsViewController {
 
 extension PostDetailsViewController {
     private func setupView() {
-        view.backgroundColor = .blue //kolor ViewControllera
+        view.backgroundColor = Color.brandWhite//kolor ViewControllera
         title = "Post Details"
     }
     

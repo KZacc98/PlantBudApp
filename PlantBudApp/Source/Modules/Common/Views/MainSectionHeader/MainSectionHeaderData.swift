@@ -13,7 +13,7 @@ struct MainSectionHeaderData {
     let insets: UIEdgeInsets
     
     init(title: String,
-         containerBackgroundColor: UIColor = Color.white,
+         containerBackgroundColor: UIColor = Color.brandWhite,
          insets: UIEdgeInsets = UIEdgeInsets(top: 18, left: 0, bottom: 0, right: 0)) {
         
         self.title = title

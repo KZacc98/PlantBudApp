@@ -12,12 +12,17 @@ class TextInputCell: UITableViewCell {
     //MARK: - Public properties
     
     public lazy var mainBackgroundViewTopContrain: NSLayoutConstraint = {
-        return mainBackgroundView.topAnchor.constrain(anchor: contentView.topAnchor, isActive: false)
+        return mainBackgroundView.topAnchor.constrain(anchor: contentView.topAnchor, constant: 12, isActive: false)
     }()
     
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = Color.white
+        view.backgroundColor = Color.brandWhite
+        view.setShadow(cornerRadius: 12,
+                       shadowOpacity: 0.1,
+                       shadowRadius: 4,
+                       shadowOffset: .zero,
+                       shadowColor: Color.black)
         contentView.addSubviewsUsingAutoLayout(view)
         
         return view
@@ -122,13 +127,13 @@ class TextInputCell: UITableViewCell {
     
     private func setupMainbackgroundLayout() {
         mainBackgroundViewTopContrain.isActive = true
-        mainBackgroundView.bottomAnchor.constrain(anchor: contentView.bottomAnchor)
-        mainBackgroundView.leadingAnchor.constrain(anchor: contentView.leadingAnchor)
-        mainBackgroundView.trailingAnchor.constrain(anchor: contentView.trailingAnchor)
+        mainBackgroundView.bottomAnchor.constrain(anchor: contentView.bottomAnchor, constant: -12)
+        mainBackgroundView.leadingAnchor.constrain(anchor: contentView.leadingAnchor, constant: 30)
+        mainBackgroundView.trailingAnchor.constrain(anchor: contentView.trailingAnchor, constant: -30)
     }
     
     private func setupTitleLabelConstraints() {
-        titleLabel.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: 24.deviceSizeAware)
+        titleLabel.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: 12.deviceSizeAware)
         titleLabel.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: LayoutConstants.leading)
         titleLabel.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: LayoutConstants.trailing)
     }
@@ -149,7 +154,7 @@ class TextInputCell: UITableViewCell {
         validationLabel.topAnchor.constrain(anchor: separatorView.bottomAnchor, constant: 4.deviceSizeAware)
         validationLabel.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: LayoutConstants.leading)
         validationLabel.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: LayoutConstants.trailing)
-        validationLabel.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor)
+        validationLabel.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -12)
     }
 }
 

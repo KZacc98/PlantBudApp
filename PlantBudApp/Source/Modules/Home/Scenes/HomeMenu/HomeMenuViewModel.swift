@@ -16,7 +16,7 @@ final class HomeMenuViewModel {
     public var onError: ((Error) -> ())?
 
     //MARK: Private properties
-    
+    private let defaults = UserDefaults.standard
     private var sectionSequence: SectionSequence = SectionSequence() {
         didSet {
             onSectionSequenceChange?(sectionSequence)
@@ -29,7 +29,11 @@ final class HomeMenuViewModel {
         }
     }
     
-    private var user: UserDomain?
+    private var user: UserDomain? {
+        didSet {
+            UserContext.shared.userProfile = user
+        }
+    }
     private var userPoints: Int?
 
     //MARK: - Initialization
@@ -50,7 +54,7 @@ final class HomeMenuViewModel {
         // Fetch data1
         dispatchGroup.enter()
         
-        Network.shared.apollo.fetch(query: FetchUserProfileQuery(userId: UserContext.shared.userId)) { result in
+        Network.shared.apollo.fetch(query: FetchUserProfileQuery(userId: defaults.integer(forKey: "userId"))) { result in
             switch result {
             case .success(let GQLResult):
                 //                self.onFetchSuccess?()

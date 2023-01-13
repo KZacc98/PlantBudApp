@@ -4,6 +4,216 @@
 import Apollo
 import Foundation
 
+/// input type for inserting data into table "Comment"
+public struct Comment_insert_input: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - commentBody
+  ///   - createdAt
+  ///   - flag
+  ///   - id
+  ///   - image
+  ///   - points
+  ///   - postId
+  ///   - updatedAt
+  ///   - userName
+  public init(commentBody: Swift.Optional<String?> = nil, createdAt: Swift.Optional<String?> = nil, flag: Swift.Optional<String?> = nil, id: Swift.Optional<Int?> = nil, image: Swift.Optional<String?> = nil, points: Swift.Optional<Int?> = nil, postId: Swift.Optional<Int?> = nil, updatedAt: Swift.Optional<String?> = nil, userName: Swift.Optional<String?> = nil) {
+    graphQLMap = ["commentBody": commentBody, "createdAt": createdAt, "flag": flag, "id": id, "image": image, "points": points, "postId": postId, "updatedAt": updatedAt, "userName": userName]
+  }
+
+  public var commentBody: Swift.Optional<String?> {
+    get {
+      return graphQLMap["commentBody"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "commentBody")
+    }
+  }
+
+  public var createdAt: Swift.Optional<String?> {
+    get {
+      return graphQLMap["createdAt"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "createdAt")
+    }
+  }
+
+  public var flag: Swift.Optional<String?> {
+    get {
+      return graphQLMap["flag"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "flag")
+    }
+  }
+
+  public var id: Swift.Optional<Int?> {
+    get {
+      return graphQLMap["id"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var image: Swift.Optional<String?> {
+    get {
+      return graphQLMap["image"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "image")
+    }
+  }
+
+  public var points: Swift.Optional<Int?> {
+    get {
+      return graphQLMap["points"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "points")
+    }
+  }
+
+  public var postId: Swift.Optional<Int?> {
+    get {
+      return graphQLMap["postId"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "postId")
+    }
+  }
+
+  public var updatedAt: Swift.Optional<String?> {
+    get {
+      return graphQLMap["updatedAt"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "updatedAt")
+    }
+  }
+
+  public var userName: Swift.Optional<String?> {
+    get {
+      return graphQLMap["userName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "userName")
+    }
+  }
+}
+
+/// input type for inserting data into table "Post"
+public struct Post_insert_input: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  /// - Parameters:
+  ///   - communityId
+  ///   - createdAt
+  ///   - flag
+  ///   - id
+  ///   - image
+  ///   - isAnnouncement
+  ///   - points
+  ///   - postBody
+  ///   - updatedAt
+  ///   - userName
+  public init(communityId: Swift.Optional<Int?> = nil, createdAt: Swift.Optional<String?> = nil, flag: Swift.Optional<String?> = nil, id: Swift.Optional<Int?> = nil, image: Swift.Optional<String?> = nil, isAnnouncement: Swift.Optional<Bool?> = nil, points: Swift.Optional<Int?> = nil, postBody: Swift.Optional<String?> = nil, updatedAt: Swift.Optional<String?> = nil, userName: Swift.Optional<String?> = nil) {
+    graphQLMap = ["communityId": communityId, "createdAt": createdAt, "flag": flag, "id": id, "image": image, "isAnnouncement": isAnnouncement, "points": points, "postBody": postBody, "updatedAt": updatedAt, "userName": userName]
+  }
+
+  public var communityId: Swift.Optional<Int?> {
+    get {
+      return graphQLMap["communityId"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "communityId")
+    }
+  }
+
+  public var createdAt: Swift.Optional<String?> {
+    get {
+      return graphQLMap["createdAt"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "createdAt")
+    }
+  }
+
+  public var flag: Swift.Optional<String?> {
+    get {
+      return graphQLMap["flag"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "flag")
+    }
+  }
+
+  public var id: Swift.Optional<Int?> {
+    get {
+      return graphQLMap["id"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var image: Swift.Optional<String?> {
+    get {
+      return graphQLMap["image"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "image")
+    }
+  }
+
+  public var isAnnouncement: Swift.Optional<Bool?> {
+    get {
+      return graphQLMap["isAnnouncement"] as? Swift.Optional<Bool?> ?? Swift.Optional<Bool?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "isAnnouncement")
+    }
+  }
+
+  public var points: Swift.Optional<Int?> {
+    get {
+      return graphQLMap["points"] as? Swift.Optional<Int?> ?? Swift.Optional<Int?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "points")
+    }
+  }
+
+  public var postBody: Swift.Optional<String?> {
+    get {
+      return graphQLMap["postBody"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "postBody")
+    }
+  }
+
+  public var updatedAt: Swift.Optional<String?> {
+    get {
+      return graphQLMap["updatedAt"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "updatedAt")
+    }
+  }
+
+  public var userName: Swift.Optional<String?> {
+    get {
+      return graphQLMap["userName"] as? Swift.Optional<String?> ?? Swift.Optional<String?>.none
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "userName")
+    }
+  }
+}
+
 /// input type for updating data in table "RoutineStep"
 public struct RoutineStep_set_input: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
@@ -1740,6 +1950,271 @@ public final class UpVotePostMutation: GraphQLMutation {
           set {
             resultMap.updateValue(newValue, forKey: "points")
           }
+        }
+      }
+    }
+  }
+}
+
+public final class AddCommentMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation AddComment($commentInput: Comment_insert_input!) {
+      insert_Comment_one(object: $commentInput) {
+        __typename
+        id
+        postId
+        commentBody
+        createdAt
+        userName
+      }
+    }
+    """
+
+  public let operationName: String = "AddComment"
+
+  public var commentInput: Comment_insert_input
+
+  public init(commentInput: Comment_insert_input) {
+    self.commentInput = commentInput
+  }
+
+  public var variables: GraphQLMap? {
+    return ["commentInput": commentInput]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["mutation_root"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("insert_Comment_one", arguments: ["object": GraphQLVariable("commentInput")], type: .object(InsertCommentOne.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(insertCommentOne: InsertCommentOne? = nil) {
+      self.init(unsafeResultMap: ["__typename": "mutation_root", "insert_Comment_one": insertCommentOne.flatMap { (value: InsertCommentOne) -> ResultMap in value.resultMap }])
+    }
+
+    /// insert a single row into the table: "Comment"
+    public var insertCommentOne: InsertCommentOne? {
+      get {
+        return (resultMap["insert_Comment_one"] as? ResultMap).flatMap { InsertCommentOne(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "insert_Comment_one")
+      }
+    }
+
+    public struct InsertCommentOne: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Comment"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("postId", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("commentBody", type: .nonNull(.scalar(String.self))),
+          GraphQLField("createdAt", type: .scalar(String.self)),
+          GraphQLField("userName", type: .nonNull(.scalar(String.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: Int, postId: Int, commentBody: String, createdAt: String? = nil, userName: String) {
+        self.init(unsafeResultMap: ["__typename": "Comment", "id": id, "postId": postId, "commentBody": commentBody, "createdAt": createdAt, "userName": userName])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: Int {
+        get {
+          return resultMap["id"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var postId: Int {
+        get {
+          return resultMap["postId"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "postId")
+        }
+      }
+
+      public var commentBody: String {
+        get {
+          return resultMap["commentBody"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "commentBody")
+        }
+      }
+
+      public var createdAt: String? {
+        get {
+          return resultMap["createdAt"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var userName: String {
+        get {
+          return resultMap["userName"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "userName")
+        }
+      }
+    }
+  }
+}
+
+public final class AddPostMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation AddPost($postInput: Post_insert_input!) {
+      insert_Post_one(object: $postInput) {
+        __typename
+        id
+        postBody
+        createdAt
+        userName
+      }
+    }
+    """
+
+  public let operationName: String = "AddPost"
+
+  public var postInput: Post_insert_input
+
+  public init(postInput: Post_insert_input) {
+    self.postInput = postInput
+  }
+
+  public var variables: GraphQLMap? {
+    return ["postInput": postInput]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["mutation_root"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("insert_Post_one", arguments: ["object": GraphQLVariable("postInput")], type: .object(InsertPostOne.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(insertPostOne: InsertPostOne? = nil) {
+      self.init(unsafeResultMap: ["__typename": "mutation_root", "insert_Post_one": insertPostOne.flatMap { (value: InsertPostOne) -> ResultMap in value.resultMap }])
+    }
+
+    /// insert a single row into the table: "Post"
+    public var insertPostOne: InsertPostOne? {
+      get {
+        return (resultMap["insert_Post_one"] as? ResultMap).flatMap { InsertPostOne(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "insert_Post_one")
+      }
+    }
+
+    public struct InsertPostOne: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Post"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(Int.self))),
+          GraphQLField("postBody", type: .scalar(String.self)),
+          GraphQLField("createdAt", type: .scalar(String.self)),
+          GraphQLField("userName", type: .nonNull(.scalar(String.self))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: Int, postBody: String? = nil, createdAt: String? = nil, userName: String) {
+        self.init(unsafeResultMap: ["__typename": "Post", "id": id, "postBody": postBody, "createdAt": createdAt, "userName": userName])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: Int {
+        get {
+          return resultMap["id"]! as! Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var postBody: String? {
+        get {
+          return resultMap["postBody"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "postBody")
+        }
+      }
+
+      public var createdAt: String? {
+        get {
+          return resultMap["createdAt"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "createdAt")
+        }
+      }
+
+      public var userName: String {
+        get {
+          return resultMap["userName"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "userName")
         }
       }
     }

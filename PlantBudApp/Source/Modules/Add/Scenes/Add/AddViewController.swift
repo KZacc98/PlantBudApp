@@ -72,7 +72,7 @@ extension AddViewController {
 
 extension AddViewController {
     private func setupView() {
-        view.backgroundColor = .blue //kolor ViewControllera
+        view.backgroundColor = Color.brandWhite//kolor ViewControllera
     }
     
     private func setupNavigationBar() {

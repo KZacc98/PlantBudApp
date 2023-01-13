@@ -58,6 +58,15 @@ class LoginViewController: BaseTableViewController, TableViewControllerInterface
         viewModel.buildSections()
     }
     
+    override func setupAutoLayout() {
+        NSLayoutConstraint.activate(
+            [tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)]
+        )
+    }
+    
     // MARK: - Override methods
 }
 
@@ -88,6 +97,11 @@ extension LoginViewController {
             self?.onLoginSuccess?()
             UIAppDelegate?.hideLoadingIndicator()
             self?.makeToast(with: name)
+        }
+        
+        viewModel.onLoginFailure = { [weak self] in
+            UIAppDelegate?.hideLoadingIndicator()
+            self?.showInformationDialog(message: "Incorrect login credentials", dismissBlock: {Logger.info("dismiss")})
         }
 
 //        viewModel.onTextItemPressed = { [weak self] code in
@@ -122,6 +136,7 @@ extension LoginViewController {
         tableView.dataSource = self.dataSource
         tableView.bounces = false
         tableView.estimatedRowHeight = 68.75
+//        tableView.isScrollEnabled = false
         let safeAreaHeight: CGFloat = view.safeAreaLayoutGuide.layoutFrame.size.height
         let isSmallDevice: Bool = (self.isSmallDevice || UIDevice.current.screenType == .iPhones_6_6s_7_8)
         tableView.estimatedSectionHeaderHeight = isSmallDevice ? safeAreaHeight * 0.4 : safeAreaHeight * 0.467

@@ -24,14 +24,14 @@ final class MessageOfTheDayCell: UITableViewCell {
         return view
     }()
     
-//    public lazy var animationView: LottieAnimationView = {
-//        let animationView = LottieAnimationView(name: "monstera_leaf")
-//        animationView.loopMode = .playOnce
-//        mainBackgroundView.addSubviewsUsingAutoLayout(animationView)
-//        animationView.play()
-//        
-//        return animationView
-//    }()
+    public lazy var animationView: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "monstera_leaf")
+        animationView.loopMode = .playOnce
+        mainBackgroundView.addSubviewsUsingAutoLayout(animationView)
+        animationView.play()
+        
+        return animationView
+    }()
     
     public lazy var plantsMeanStateCommentLabel: UILabel = {
         let label = UILabel()

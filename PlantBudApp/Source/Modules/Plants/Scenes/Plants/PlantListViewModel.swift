@@ -21,6 +21,7 @@ final class PlantListViewModel {
     
     private var plantDomains: [PlantDomain]?
     private var plantTypes: [PlantTypeDomain]?
+    private let defaults = UserDefaults.standard
     
     private var sectionSequence: SectionSequence = SectionSequence() {
         didSet {
@@ -69,7 +70,7 @@ final class PlantListViewModel {
         }
         
         dispatchGroup.enter()
-        Network.fetchData(query: FetchUserPlantsQuery(userId: UserContext.shared.userId)) { result in
+        Network.fetchData(query: FetchUserPlantsQuery(userId: defaults.integer(forKey: "userId"))) { result in
             switch result {
             case .success(let data):
                 plantDomains = data.plant.map({ res in

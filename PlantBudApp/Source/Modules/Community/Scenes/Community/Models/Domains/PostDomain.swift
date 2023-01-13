@@ -16,10 +16,13 @@ struct PostDomain{
     let isAnnouncement: Bool
     let points: Int
     let flag: UserContentFlag
-    let createdAt: String
+    let createdAt: Date
     let updatedAt: String
     
     init(remote: PostRemote) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         self.id = remote.id
         self.communityId = remote.communityId
         self.image = remote.image ?? ""
@@ -28,7 +31,7 @@ struct PostDomain{
         self.isAnnouncement = remote.isAnnouncement
         self.points = remote.points
         self.flag = UserContentFlag(rawValue: remote.flag) ?? .default
-        self.createdAt = remote.createdAt ?? ""
+        self.createdAt = dateFormatter.date(from: remote.createdAt ?? "2020-01-10T20:51:20.851") ?? Date()
         self.updatedAt = remote.updatedAt ?? ""
     }
     

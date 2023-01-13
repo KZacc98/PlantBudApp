@@ -25,7 +25,7 @@ final class AppearanceViewController: UIViewController {
     //MARK: - Setup
     
     private func setupView() {
-        view.backgroundColor = Color.red
+        view.backgroundColor = Color.brandWhite
     }
 }
 
