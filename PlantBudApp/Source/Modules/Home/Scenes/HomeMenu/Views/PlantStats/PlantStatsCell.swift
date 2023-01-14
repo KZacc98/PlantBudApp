@@ -61,7 +61,7 @@ final class PlantStatsCell: UITableViewCell {
     
     public lazy var plantsMeanStateCommentLabel: UILabel = {
         let label = UILabel()
-        label.font = Font.noticiaRegular(size: 12)
+        label.font = Font.noticiaRegular(size: 14)
         label.textColor = Color.brandWhite
         label.text = "CurrentPlantMeanState"
         label.textAlignment = .natural

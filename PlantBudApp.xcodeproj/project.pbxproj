@@ -36,6 +36,7 @@
 		EF3E36E3296DF0930089186A /* UserContentDataDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E36E2296DF0930089186A /* UserContentDataDomain.swift */; };
 		EF44C99A294BE56F00CD1075 /* PlantDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF44C999294BE56F00CD1075 /* PlantDetailsViewController.swift */; };
 		EF44C99C294BE62300CD1075 /* PlantDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF44C99B294BE62300CD1075 /* PlantDetailsViewModel.swift */; };
+		EF4B901429730D3800D43E36 /* PlantDetailsTypeInfoCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4B901329730D3800D43E36 /* PlantDetailsTypeInfoCellData.swift */; };
 		EF62CE84296F65EB002BABA4 /* PostDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62CE83296F65EB002BABA4 /* PostDetailsViewModel.swift */; };
 		EF62CE86296F65FA002BABA4 /* PostDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62CE85296F65FA002BABA4 /* PostDetailsViewController.swift */; };
 		EF62CE89296F7177002BABA4 /* PostDetailsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF62CE88296F7177002BABA4 /* PostDetailsHeaderCell.swift */; };
@@ -165,7 +166,6 @@
 		EFC1F96B29592C7800112EFC /* RoutineStepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96A29592C7800112EFC /* RoutineStepCell.swift */; };
 		EFC1F96D29592D5A00112EFC /* RoutineStepCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96C29592D5A00112EFC /* RoutineStepCellConfigurator.swift */; };
 		EFC1F970295A69CC00112EFC /* RoutineStepCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F96F295A69CC00112EFC /* RoutineStepCellData.swift */; };
-		EFC1F974295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F973295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift */; };
 		EFC1F976295CC02900112EFC /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F975295CC02900112EFC /* UserContext.swift */; };
 		EFC1F979295CC38900112EFC /* PlantStatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F978295CC38900112EFC /* PlantStatsCell.swift */; };
 		EFC1F97B295CC3E700112EFC /* PlantStatsCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F97A295CC3E700112EFC /* PlantStatsCellConfigurator.swift */; };
@@ -257,6 +257,7 @@
 		EF3E36E2296DF0930089186A /* UserContentDataDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentDataDomain.swift; sourceTree = "<group>"; };
 		EF44C999294BE56F00CD1075 /* PlantDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewController.swift; sourceTree = "<group>"; };
 		EF44C99B294BE62300CD1075 /* PlantDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsViewModel.swift; sourceTree = "<group>"; };
+		EF4B901329730D3800D43E36 /* PlantDetailsTypeInfoCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsTypeInfoCellData.swift; sourceTree = "<group>"; };
 		EF62CE83296F65EB002BABA4 /* PostDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewModel.swift; sourceTree = "<group>"; };
 		EF62CE85296F65FA002BABA4 /* PostDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsViewController.swift; sourceTree = "<group>"; };
 		EF62CE88296F7177002BABA4 /* PostDetailsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailsHeaderCell.swift; sourceTree = "<group>"; };
@@ -391,7 +392,6 @@
 		EFC1F96A29592C7800112EFC /* RoutineStepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepCell.swift; sourceTree = "<group>"; };
 		EFC1F96C29592D5A00112EFC /* RoutineStepCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepCellConfigurator.swift; sourceTree = "<group>"; };
 		EFC1F96F295A69CC00112EFC /* RoutineStepCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepCellData.swift; sourceTree = "<group>"; };
-		EFC1F973295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailsTypeInfoCellData.swift; sourceTree = "<group>"; };
 		EFC1F975295CC02900112EFC /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
 		EFC1F978295CC38900112EFC /* PlantStatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatsCell.swift; sourceTree = "<group>"; };
 		EFC1F97A295CC3E700112EFC /* PlantStatsCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatsCellConfigurator.swift; sourceTree = "<group>"; };
@@ -574,7 +574,7 @@
 		EF1D17F8296A2CBE000A12E4 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EF1D1813296B03DE000A12E4 /* AddCareRoutine */,
+				EF4B901529730D8A00D43E36 /* AddCareRoutine */,
 				EF1D1808296AFE1D000A12E4 /* AddPlant */,
 				EF1D1807296AFDF2000A12E4 /* Add */,
 			);
@@ -618,15 +618,6 @@
 				EF1D180B296AFE48000A12E4 /* AddPlantViewController.swift */,
 			);
 			path = AddPlant;
-			sourceTree = "<group>";
-		};
-		EF1D1813296B03DE000A12E4 /* AddCareRoutine */ = {
-			isa = PBXGroup;
-			children = (
-				EF1D1816296B03DE000A12E4 /* AddCareRoutineViewModel.swift */,
-				EF1D1817296B03DE000A12E4 /* AddCareRoutineViewController.swift */,
-			);
-			path = AddCareRoutine;
 			sourceTree = "<group>";
 		};
 		EF1D181E296B3D13000A12E4 /* Views */ = {
@@ -697,6 +688,15 @@
 				EF44C99B294BE62300CD1075 /* PlantDetailsViewModel.swift */,
 			);
 			path = PlantDetails;
+			sourceTree = "<group>";
+		};
+		EF4B901529730D8A00D43E36 /* AddCareRoutine */ = {
+			isa = PBXGroup;
+			children = (
+				EF1D1816296B03DE000A12E4 /* AddCareRoutineViewModel.swift */,
+				EF1D1817296B03DE000A12E4 /* AddCareRoutineViewController.swift */,
+			);
+			path = AddCareRoutine;
 			sourceTree = "<group>";
 		};
 		EF62CE82296F65DB002BABA4 /* PostDetails */ = {
@@ -1590,7 +1590,7 @@
 		EFC1F95F2959282800112EFC /* PlantDetailsTypeInfoCell */ = {
 			isa = PBXGroup;
 			children = (
-				EFC1F973295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift */,
+				EF4B901329730D3800D43E36 /* PlantDetailsTypeInfoCellData.swift */,
 			);
 			path = PlantDetailsTypeInfoCell;
 			sourceTree = "<group>";
@@ -2039,7 +2039,6 @@
 				EFA7B16C2944D703008EE8E9 /* PlantCell.swift in Sources */,
 				EF1D1823296B3D37000A12E4 /* PlantTypeCellConfigurator.swift in Sources */,
 				EF9CFDCB29327A3000FD0239 /* LoginCredentials.swift in Sources */,
-				EFC1F974295A742B00112EFC /* PlantDetailsTypeInfoCellData.swift in Sources */,
 				EFA7B17529450DD6008EE8E9 /* NSLayoutDimension+Extension.swift in Sources */,
 				EF8C9994296C8D6A00AEB012 /* CommunityRemote.swift in Sources */,
 				EF9CFDA22932699C00FD0239 /* ApplicationCoordinator.swift in Sources */,
@@ -2120,6 +2119,7 @@
 				EF9CFD9E2932670F00FD0239 /* LoadingButton.swift in Sources */,
 				EFAA5B89293E86BF0082484D /* CommunityListViewController.swift in Sources */,
 				EF9CFDB7293274D900FD0239 /* ValidationResult.swift in Sources */,
+				EF4B901429730D3800D43E36 /* PlantDetailsTypeInfoCellData.swift in Sources */,
 				EFC932732970A5AC00B3057C /* LoginCellConfigurator.swift in Sources */,
 				EF68F747294910FB00B2A08E /* CareRoutine.swift in Sources */,
 				EFC932702970A55800B3057C /* LoginCell.swift in Sources */,

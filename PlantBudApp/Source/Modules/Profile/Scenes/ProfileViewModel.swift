@@ -34,6 +34,7 @@ final class ProfileViewModel {
     
     public func loadData(refresh: Bool = false) {
 //        UIAppDelegate?.showLoadingIndicator()
+        buildSections()
     }
     
     public func buildSections() {
@@ -48,7 +49,7 @@ final class ProfileViewModel {
     //MARK: - Private methods
     
     private func makeEmptyDataSection() -> SingleColumnSection {
-        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "NO DATA"))
+        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: UserContext.shared.userProfile?.name ?? "JEB"))
         
         return SingleColumnSection(cellConfigurators: [configurator])
         

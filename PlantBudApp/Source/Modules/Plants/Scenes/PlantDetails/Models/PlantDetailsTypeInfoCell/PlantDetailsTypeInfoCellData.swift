@@ -2,7 +2,7 @@
 //  PlantDetailsTypeInfoCellData.swift
 //  PlantBudApp
 //
-//  Created by Kamil Zachara on 27/12/2022.
+//  Created by Kamil Zachara on 14/01/2023.
 //
 
 import Foundation
