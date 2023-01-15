@@ -26,7 +26,7 @@ struct UserDomain {
         self.id = remote.id
         self.name = remote.name
         self.userName = remote.userName
-        self.profilePicture = remote.profilePicture ?? ""
+        self.profilePicture = remote.profilePicture ?? "https://pbs.twimg.com/media/DcRh4f7XcAAa3D-?format=jpg&name=360x360"
         self.email = remote.email
         self.gender = Gender(rawValue: remote.gender) ?? .preferNotToTell
         self.phoneNumber = remote.phoneNumber ?? ""
@@ -35,6 +35,20 @@ struct UserDomain {
         self.userType = UserType(rawValue: remote.userType) ?? .user
         self.createdAt = remote.createdAt ?? ""
         self.updatedAt = remote.updatedAt ?? ""
+    }
+    init(id: Int, name: String, userName: String, profilePicture: String, email: String, gender: Gender, phoneNumber: String, points: Int, active: Bool, userType: UserType, createdAt: String, updatedAt: String) {
+        self.id = id
+        self.name = name
+        self.userName = userName
+        self.profilePicture = profilePicture
+        self.email = email
+        self.gender = gender
+        self.phoneNumber = phoneNumber
+        self.points = points
+        self.active = active
+        self.userType = userType
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
     }
 }
 

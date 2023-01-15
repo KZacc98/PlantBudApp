@@ -337,8 +337,7 @@ final class CommunityViewModel {
         return SingleColumnSection(cellConfigurators: [configurator])
     }
     
-    public func makeCommentInputSection() -> SingleColumnSection
-    {
+    public func makeCommentInputSection() -> SingleColumnSection {
         let didPressAddComment: (String?) -> Void = { [weak self] text in
             guard let self = self, let postBody = text else { return }
             self.addPost(postBody: postBody)

@@ -7,7 +7,16 @@
 
 import Foundation
 
-struct PlantDetailsTypeInfoCellData {
+struct PlantDetailsTypeInfoCellData: Equatable {
+    static func == (lhs: PlantDetailsTypeInfoCellData, rhs: PlantDetailsTypeInfoCellData) -> Bool {
+        if lhs.imageUrl == rhs.imageUrl &&
+            lhs.plantType.description == rhs.plantType.description {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     let imageUrl: URL
     let plantType: PlantTypeDomain
     let didTapPlant: (() -> Void)?

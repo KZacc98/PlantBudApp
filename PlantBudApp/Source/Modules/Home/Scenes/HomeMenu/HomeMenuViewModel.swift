@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HomeMenuViewModel {
+class HomeMenuViewModel {
 
     //MARK: - Binding closures
 
@@ -45,6 +45,11 @@ final class HomeMenuViewModel {
     public func loadData(refresh: Bool = false) {
         UIAppDelegate?.showLoadingIndicator()
         
+        self.fetchUserProfile(userId: defaults.integer(forKey: "userId"))
+        
+    }
+    
+    public func fetchUserProfile(userId: Int) {
         let dispatchGroup = DispatchGroup()
         var plants: [PlantDomain]?
         var user: UserDomain?
@@ -53,14 +58,10 @@ final class HomeMenuViewModel {
         
         // Fetch data1
         dispatchGroup.enter()
-        
-        Network.shared.apollo.fetch(query: FetchUserProfileQuery(userId: defaults.integer(forKey: "userId"))) { result in
+        Network.fetchData(query: FetchUserProfileQuery(userId: userId)) { result in
             switch result {
-            case .success(let GQLResult):
-                //                self.onFetchSuccess?()
-                Logger.info("\(GQLResult)")
-                
-                plants = GQLResult.data?.plant.map({ res in
+            case .success(let data):
+                plants = data.plant.map { res in
                     PlantDomain(remote: PlantRemote(
                         id: res.id,
                         plantName: res.plantName,
@@ -71,9 +72,9 @@ final class HomeMenuViewModel {
                         createdAt: res.createdAt,
                         updatedAt: res.updatedAt
                     ))
-                })
+                }
                 
-                user = GQLResult.data?.user.first.map({ user in
+                user = data.user.first.map { user in
                     UserDomain(remote: UserRemote(
                         id: user.id,
                         name: user.name,
@@ -88,21 +89,16 @@ final class HomeMenuViewModel {
                         createdAt: user.createdAt,
                         updatedAt: user.updatedAt)
                     )
-                })
-                
-                userBadgesIdis = GQLResult.data?.userBadges.compactMap{ res in
-                    res.badgeId
                 }
                 
-                UIAppDelegate?.hideLoadingIndicator()
+                userBadgesIdis = data.userBadges.compactMap{ res in
+                    res.badgeId
+                }
             case .failure(let error):
-                UIAppDelegate?.hideLoadingIndicator()
                 Logger.error("ERROR: \(error)")
             }
             dispatchGroup.leave()
         }
-        
-        
         // Run a block of code when all requests are completed
         dispatchGroup.notify(queue: .main) {
             // Use data1, data2, and data3 here
@@ -119,19 +115,21 @@ final class HomeMenuViewModel {
                     Logger.error("ERROR: \(error)")
                 }
             }
+            UIAppDelegate?.hideLoadingIndicator()
             Logger.error("\(userBadgesIdis)")
             
             Logger.error("\(points)")
         }
-        
     }
+    
+    
 
     public func buildSections() {
-        
+        guard let user = self.user, let plants = self.plants else { return }
         sectionSequence = SectionSequence(
             sections: [
-                makeUserProfileSection(name: user?.name ?? "TEST", plantCount: plants?.count.description ?? "no plants", profilePicture: user?.profilePicture),
-                makePlantsStatsSection(plants: self.plants),
+                makeUserProfileSection(user: user, plants: plants),
+                makePlantsStatsSection(plants: plants),
                 makeMessageOfTheDaySection()
                 
         ])
@@ -146,20 +144,20 @@ final class HomeMenuViewModel {
         return SingleColumnSection(cellConfigurators: [configurator])
     }
     
-    private func makeUserProfileSection(name: String, plantCount: String, profilePicture: String?) -> SingleColumnSection {
+    private func makeUserProfileSection(user: UserDomain, plants: [PlantDomain]) -> SingleColumnSection {
 
         let configurator = UserProfileCellConfigurator(
             data: UserProfileCellData(
-                name: "Hello \(name)",
-                plantCount: plantCount,
-                profilePictureUrl: profilePicture ?? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
+                name: "Hello \(user.name)",
+                plantCount: plants.count.description,
+                profilePictureUrl: user.profilePicture
             ))
 
         return SingleColumnSection(cellConfigurators: [configurator])
     }
     
-    private func makePlantsStatsSection(plants: [PlantDomain]?) -> SingleColumnSection {
-        if let plants = plants {
+    private func makePlantsStatsSection(plants: [PlantDomain]) -> SingleColumnSection {
+        if plants.count != 0 {
             let headerData = MainSectionHeaderData(
                 title: "Your Plants stats", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
             let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
@@ -174,7 +172,7 @@ final class HomeMenuViewModel {
         }
     }
     
-    private func makeMessageOfTheDaySection() -> SingleColumnSection {
+    func makeMessageOfTheDaySection() -> SingleColumnSection {
         
         let headerData = MainSectionHeaderData(
             title: "MessageOfTheDay", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
