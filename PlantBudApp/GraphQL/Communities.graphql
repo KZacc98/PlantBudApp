@@ -11,6 +11,21 @@ query FetchCommunities {
   }
 }
 
+query FetchUserCommunities($userId: Int!) {
+  CommunityUsers(where: {userId: {_eq: $userId}}) {
+    communityId
+  }
+}
+
+mutation JoinCommunity($joinComunityInput: CommunityUsers_insert_input!) {
+  insert_CommunityUsers_one(object: $joinComunityInput) {
+    communityId
+    userId
+    createdAt
+    updatedAt
+  }
+}
+
 query FetchCommunityContent($communityId: Int) {
   CommunityUsers(where: {communityId: {_eq: $communityId}}) {
     userId

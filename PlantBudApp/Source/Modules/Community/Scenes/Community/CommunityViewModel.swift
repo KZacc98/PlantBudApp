@@ -35,6 +35,33 @@ final class CommunityViewModel {
         }
     }
     
+    private lazy var joinCommunityButton: MainButtonCellConfigurator = {
+        let didPressButton: () -> () = { [weak self] in
+            DialogManager.showConfirmationDialog(
+                title: "Join community",
+                message: "U really wanna Join this community",
+                cancelButtonTitle: "nah",
+                acceptBlock: {
+                    guard let communityId = self?.communityDomain.id else { return }
+                    Logger.info("JoinCommunity request")
+                    self?.joinCommunity(communityId: communityId)
+                },
+                rejectBlock: {
+                    Logger.info("go back")
+                }
+            )
+            
+        }
+        let buttonInsets = UIEdgeInsets(top: 24.deviceSizeAware,
+                                        left: 12,
+                                        bottom: -24.deviceSizeAware,
+                                        right: -12)
+        let data = MainButtonCellData(title: "Join Community".uppercased(),
+                                      buttonInsets: buttonInsets,
+                                      didPressButton: didPressButton)
+        
+        return MainButtonCellConfigurator(data: data)
+    }()
     
     //MARK: - Initialization
     init(communityDomain: CommunityDomain) {
@@ -49,51 +76,63 @@ final class CommunityViewModel {
     }
 
     public func buildSections(community: CommunityDomain, posts: [PostDomain], comments: [CommentDomain]) {
-        let sortedPosts = posts.sorted(by: sortPosts)
-        
-        let configurators = sortedPosts.map { post -> CommunityPostCellConfigurator in
-            let postComments = comments.filter { comment in comment.postId == post.id }
-            let didPressUpVote: () -> Void = { [weak self] in
-                guard let self = self else { return }
-                self.postUpvote(postId: post.id)
-            }
-            let didPressDownVote: () -> Void = { [weak self] in
-                guard let self = self else { return }
-                self.postDownVote(postId: post.id)
-            }
-            let didPressComment: () -> Void = { [weak self] in
-                guard let self = self else { return }
-                self.didPressPostDetails?(post, postComments)
-            }
+        if let userId = UserContext.shared.userProfile?.id, let communityContent = self.communityContent,
+           communityContent.communityUsers.filter({ communityUserDomain in
+               communityUserDomain.userId == userId
+           }).isEmpty{
+            sectionSequence = SectionSequence(
+                sections: [
+                    makeCommunityHeaderCell(communityDomain: community),
+                    SingleColumnSection(cellConfigurators: [joinCommunityButton]),
+                    makeAnimationFillerSection()
+                ])
+        } else {
+            let sortedPosts = posts.sorted(by: sortPosts)
             
-            return CommunityPostCellConfigurator(data: makeCommunityPostCellData(
-                postDomain: post,
-                comment: postComments,
-                didPressComment: didPressComment,
-                didPressPostOptions: {
-                    DialogManager.showConfirmationDialog(
-                        title: "OPTIONS",
-                        message: "post options below",
-                        cancelButtonTitle: "Back",
-                        otherButtonTitles: ["Report inappropriate content"],
-                        acceptBlock: {
-                            Logger.info("OPTION1")
-                        },
-                        rejectBlock: {
-                            Logger.info("OPTION2")
-                        })
-                },
-                didPressUpVote: didPressUpVote,
-                didPressDownVote: didPressDownVote
-            ))
+            let configurators = sortedPosts.map { post -> CommunityPostCellConfigurator in
+                let postComments = comments.filter { comment in comment.postId == post.id }
+                let didPressUpVote: () -> Void = { [weak self] in
+                    guard let self = self else { return }
+                    self.postUpvote(postId: post.id)
+                }
+                let didPressDownVote: () -> Void = { [weak self] in
+                    guard let self = self else { return }
+                    self.postDownVote(postId: post.id)
+                }
+                let didPressComment: () -> Void = { [weak self] in
+                    guard let self = self else { return }
+                    self.didPressPostDetails?(post, postComments)
+                }
+                
+                return CommunityPostCellConfigurator(data: makeCommunityPostCellData(
+                    postDomain: post,
+                    comment: postComments,
+                    didPressComment: didPressComment,
+                    didPressPostOptions: {
+                        DialogManager.showConfirmationDialog(
+                            title: "OPTIONS",
+                            message: "post options below",
+                            cancelButtonTitle: "Back",
+                            otherButtonTitles: ["Report inappropriate content"],
+                            acceptBlock: {
+                                Logger.info("OPTION1")
+                            },
+                            rejectBlock: {
+                                Logger.info("OPTION2")
+                            })
+                    },
+                    didPressUpVote: didPressUpVote,
+                    didPressDownVote: didPressDownVote
+                ))
+            }
+            sectionSequence = SectionSequence(
+                sections: [
+                    makeCommunityHeaderCell(communityDomain: community),
+                    makeCommentInputSection(),
+                    SingleColumnSection(cellConfigurators: configurators),
+                    makeAnimationFillerSection()
+                ])
         }
-        sectionSequence = SectionSequence(
-            sections: [
-                makeCommunityHeaderCell(communityDomain: community),
-                makeCommentInputSection(),
-                SingleColumnSection(cellConfigurators: configurators),
-                makeAnimationFillerSection()
-        ])
     }
     
     //MARK: - Private methods
@@ -205,6 +244,7 @@ final class CommunityViewModel {
 
     private func addPost(postBody: String) {
         UIAppDelegate?.showLoadingIndicator()
+        Network.shared.apollo.store.clearCache()
         Network.performMutation(mutation: AddPostMutation(postInput: Post_insert_input(
             communityId: communityDomain.id,
             postBody: postBody,
@@ -213,11 +253,31 @@ final class CommunityViewModel {
                 case .success(let success):
                     Logger.info("\(success.insertPostOne.debugDescription)")
                     UIAppDelegate?.hideLoadingIndicator()
+                    self.fetchData(communityId: self.communityDomain.id)
                 case .failure(let failure):
                     Logger.error(failure.localizedDescription)
                     UIAppDelegate?.hideLoadingIndicator()
                 }
             }
+    }
+    
+    private func joinCommunity(communityId: Int) {
+        let timestamp = Network.getTimestamp()
+        UIAppDelegate?.showLoadingIndicator()
+        Network.shared.apollo.store.clearCache()
+        Network.performMutation(mutation: JoinCommunityMutation(joinComunityInput: CommunityUsers_insert_input(
+            communityId: communityId,
+            updatedAt: timestamp,
+            userId: UserContext.shared.userProfile?.id
+        ))) { result in
+            switch result {
+            case .success(let success):
+                Logger.info(success.insertCommunityUsersOne.debugDescription)
+                self.fetchData(communityId: self.communityDomain.id)
+            case .failure(let failure):
+                Logger.error(failure.localizedDescription)
+            }
+        }
     }
     
     
@@ -259,30 +319,6 @@ final class CommunityViewModel {
             }
             dispatchGroup.leave()
         }
-        
-//        // Fetch data2
-//        dispatchGroup.enter()
-//        Network.fetchData(query: fe()) { result in
-//            switch result {
-//            case .success(let data):
-//                data2 = data
-//            case .failure(let error):
-//                Logger.error("ERROR: \(error)")
-//            }
-//            dispatchGroup.leave()
-//        }
-//
-//        // Fetch data3
-//        dispatchGroup.enter()
-//        Network.fetchData(query: Query3()) { result in
-//            switch result {
-//            case .success(let data):
-//                data3 = data
-//            case .failure(let error):
-//                Logger.error("ERROR: \(error)")
-//            }
-//            dispatchGroup.leave()
-//        }
         
         // Run a block of code when all requests are completed
         dispatchGroup.notify(queue: .main) {

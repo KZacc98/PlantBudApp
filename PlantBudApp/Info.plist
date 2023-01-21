@@ -9,5 +9,7 @@
 		<string>NoticiaText-Italic.ttf</string>
 		<string>NoticiaText-Regular.ttf</string>
 	</array>
+    <key>UIUserInterfaceStyle</key>
+    <string>Light</string>
 </dict>
 </plist>

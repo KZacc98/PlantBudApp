@@ -53,7 +53,14 @@ final class PlantDetailsViewController: BaseTableViewController {
     }
     
     override func refreshData(_ refreshControl: UIRefreshControl) {
-        viewModel.loadData(refresh: true)
+//        viewModel.loadData(refresh: true)
+        Logger.info(viewModel.routineSteps?.debugDescription ?? "")
+        viewModel.prepareSteps(steps: viewModel.routineSteps ?? [])
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchData()
     }
 }
 

@@ -60,6 +60,10 @@ extension AddCareRoutineViewController {
             }
         }
         
+        viewModel.hideKeyboard = { [weak self] in
+            self?.view.endEditing(true)
+        }
+        
 //        viewModel.onFetchSuccess = { [weak self] in
 //            self?.viewModel.buildSections()
 //        }

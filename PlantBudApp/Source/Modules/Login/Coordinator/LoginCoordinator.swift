@@ -35,30 +35,23 @@ class LoginCoordinator: Coordinator {
             UIAppDelegate?.applicationCoordinator?.startTabBarCoordinator(initiallySelectedOption: .home)
         }
         
-//        viewController.viewModel.onRecoverPassword = { [weak self] in
-//            self?.pushRecoverPassword()
-//        }
+        viewController.viewModel.onRegisterButtonPressed = { [weak self] in
+            self?.pushRegister()
+        }
         
         navigationController?.setViewControllers([viewController], animated: false)
     }
     
-//    private func pushRecoverPassword() {
-//        let viewController = viewControllerFactory.makeRecoverViewController(type: .email)
-//
-//        viewController.viewModel.onNextPressed = { [weak self] in
-//            self?.pushNewPassword(recoveryType: .email)
-//        }
-//
-//        viewController.viewModel.onChooseCatering = { [weak self] cateringCompanies, delegate in
-//            self?.pushChooseCatering(cateringCompanies: cateringCompanies, delegate: delegate)
-//        }
-//
-//        (viewController.viewModel as? RecoverPasswordEmailViewModel)?.onSmsPressed = { [weak self] in
-//            self?.pushSmsRecoverPassword()
-//        }
-//
-//        navigationController?.pushViewController(viewController, animated: true)
-//    }
+    private func pushRegister() {
+        let viewController = viewControllerFactory.makeRegisterViewController()
+
+        viewController.viewModel.onRegisterSuccess = { [weak self] loginCredentials in
+            self?.navigationController?.popViewController(animated: true)
+        }
+
+
+        navigationController?.pushViewController(viewController, animated: true)
+    }
     
 //    private func pushSmsRecoverPassword() {
 //        let viewController = viewControllerFactory.makeRecoverViewController(type: .sms)

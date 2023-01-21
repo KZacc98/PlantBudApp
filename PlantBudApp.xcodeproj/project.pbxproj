@@ -14,6 +14,12 @@
 		EF190C66294FC9E10091573D /* BadgeDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C65294FC9E10091573D /* BadgeDomain.swift */; };
 		EF190C68294FCE890091573D /* UserBadgeRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C67294FCE890091573D /* UserBadgeRemote.swift */; };
 		EF190C6A294FCEDD0091573D /* UserBadgeDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C69294FCEDD0091573D /* UserBadgeDomain.swift */; };
+		EF194C4729746F8D00A8734A /* StepFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF194C4629746F8D00A8734A /* StepFrequency.swift */; };
+		EF194C4A297485B200A8734A /* AddRoutineStepCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF194C49297485B200A8734A /* AddRoutineStepCell.swift */; };
+		EF194C4C29748B5B00A8734A /* AddRoutineStepCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF194C4B29748B5B00A8734A /* AddRoutineStepCellConfigurator.swift */; };
+		EF194C502974AFD400A8734A /* StepFrequencyPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF194C4F2974AFD400A8734A /* StepFrequencyPickerCell.swift */; };
+		EF194C522974AFE900A8734A /* StepFrequencyPickerCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF194C512974AFE900A8734A /* StepFrequencyPickerCellConfigurator.swift */; };
+		EF194C542974BA3F00A8734A /* CareRoutines.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EF194C532974BA3F00A8734A /* CareRoutines.graphql */; };
 		EF1D17FA296A2CD9000A12E4 /* AddCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D17F9296A2CD9000A12E4 /* AddCoordinator.swift */; };
 		EF1D17FC296A2D7E000A12E4 /* AddViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D17FB296A2D7E000A12E4 /* AddViewControllerFactory.swift */; };
 		EF1D17FE296A4674000A12E4 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D17FD296A4674000A12E4 /* AddViewModel.swift */; };
@@ -30,6 +36,11 @@
 		EF1D182A296B528A000A12E4 /* AddPlantFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D1829296B528A000A12E4 /* AddPlantFormViewModel.swift */; };
 		EF1D182C296B5296000A12E4 /* AddPlantFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D182B296B5296000A12E4 /* AddPlantFormViewController.swift */; };
 		EF1D1830296B59B7000A12E4 /* NewPlantFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D182F296B59B7000A12E4 /* NewPlantFormCell.swift */; };
+		EF215983297A03D00062712D /* SquareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF215982297A03D00062712D /* SquareButton.swift */; };
+		EF215985297A11A40062712D /* FrequencyPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF215984297A11A40062712D /* FrequencyPickerDelegate.swift */; };
+		EF215988297A124E0062712D /* FormPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF215987297A124E0062712D /* FormPickerView.swift */; };
+		EF21598B297A12B30062712D /* PickerInputCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF21598A297A12B30062712D /* PickerInputCellConfigurator.swift */; };
+		EF21598D297A12CD0062712D /* PickerInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF21598C297A12CD0062712D /* PickerInputCell.swift */; };
 		EF3E36DD296DEF590089186A /* CommentRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E36DC296DEF590089186A /* CommentRemote.swift */; };
 		EF3E36DF296DEF9C0089186A /* CommentDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E36DE296DEF9C0089186A /* CommentDomain.swift */; };
 		EF3E36E1296DF0460089186A /* UserContentDataRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E36E0296DF0460089186A /* UserContentDataRemote.swift */; };
@@ -70,6 +81,13 @@
 		EF8C99B5296CC5E500AEB012 /* CommunityHeaderCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C99B4296CC5E500AEB012 /* CommunityHeaderCellConfigurator.swift */; };
 		EF8C99B8296CC99900AEB012 /* CommunityPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C99B7296CC99900AEB012 /* CommunityPostCell.swift */; };
 		EF8C99BA296CC9A500AEB012 /* CommunityPostCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C99B9296CC9A500AEB012 /* CommunityPostCellConfigurator.swift */; };
+		EF9824DF297B6C5900924460 /* ProfilePictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9824DE297B6C5900924460 /* ProfilePictureCell.swift */; };
+		EF9824E1297B6CE100924460 /* ProfilePictureCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9824E0297B6CE100924460 /* ProfilePictureCellConfigurator.swift */; };
+		EF9824E4297C2BBE00924460 /* AppIconHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9824E3297C2BBE00924460 /* AppIconHeaderCell.swift */; };
+		EF9824E6297C2BC500924460 /* AppIconHeaderCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9824E5297C2BC500924460 /* AppIconHeaderCellConfigurator.swift */; };
+		EF9824E9297C2FE100924460 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9824E8297C2FE100924460 /* RegisterViewModel.swift */; };
+		EF9824EC297C2FF100924460 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9824EB297C2FF100924460 /* RegisterViewController.swift */; };
+		EF9824EE297C41B600924460 /* RegisterCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9824ED297C41B600924460 /* RegisterCredentials.swift */; };
 		EF9CFD722932467500FD0239 /* AnimationHeaderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFD712932467500FD0239 /* AnimationHeaderData.swift */; };
 		EF9CFD7529324A7100FD0239 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFD7429324A7100FD0239 /* BaseTableViewController.swift */; };
 		EF9CFD7729324AB400FD0239 /* BaseTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFD7629324AB400FD0239 /* BaseTableViewDataSource.swift */; };
@@ -107,7 +125,7 @@
 		EF9CFDC82932776700FD0239 /* InputInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFDC72932776700FD0239 /* InputInterface.swift */; };
 		EF9CFDCB29327A3000FD0239 /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFDCA29327A3000FD0239 /* LoginCredentials.swift */; };
 		EF9CFDD6293286F600FD0239 /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = EF9CFDD5293286F600FD0239 /* Apollo */; };
-		EF9CFDD82932878A00FD0239 /* UserList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EF9CFDD72932878A00FD0239 /* UserList.graphql */; };
+		EF9CFDD82932878A00FD0239 /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EF9CFDD72932878A00FD0239 /* Login.graphql */; };
 		EF9CFDE12932900600FD0239 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFDE02932900600FD0239 /* Network.swift */; };
 		EF9CFDE3293293DA00FD0239 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = EF9CFDE2293293DA00FD0239 /* schema.json */; };
 		EF9CFDEB2934037100FD0239 /* TabBarOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFDEA2934037100FD0239 /* TabBarOption.swift */; };
@@ -178,8 +196,8 @@
 		EFC1F98E295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F98D295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift */; };
 		EFC1F991295E3BB300112EFC /* BadgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F990295E3BB300112EFC /* BadgeCell.swift */; };
 		EFC1F993295E3D3200112EFC /* BadgeCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F992295E3D3200112EFC /* BadgeCellConfigurator.swift */; };
-		EFC93261297059A000B3057C /* PersonalizedTextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93260297059A000B3057C /* PersonalizedTextInputCell.swift */; };
-		EFC93263297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93262297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift */; };
+		EFC93261297059A000B3057C /* CommentTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93260297059A000B3057C /* CommentTextFieldCell.swift */; };
+		EFC93263297059AD00B3057C /* CommentTextFieldCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93262297059AD00B3057C /* CommentTextFieldCellConfigurator.swift */; };
 		EFC932662970886A00B3057C /* AnimationFillerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC932652970886900B3057C /* AnimationFillerCell.swift */; };
 		EFC93268297088E900B3057C /* AnimationFillerCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93267297088E900B3057C /* AnimationFillerCellConfigurator.swift */; };
 		EFC9326A2970904200B3057C /* people_talking.json in Resources */ = {isa = PBXBuildFile; fileRef = EFC932692970904200B3057C /* people_talking.json */; };
@@ -235,6 +253,12 @@
 		EF190C65294FC9E10091573D /* BadgeDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeDomain.swift; sourceTree = "<group>"; };
 		EF190C67294FCE890091573D /* UserBadgeRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBadgeRemote.swift; sourceTree = "<group>"; };
 		EF190C69294FCEDD0091573D /* UserBadgeDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBadgeDomain.swift; sourceTree = "<group>"; };
+		EF194C4629746F8D00A8734A /* StepFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFrequency.swift; sourceTree = "<group>"; };
+		EF194C49297485B200A8734A /* AddRoutineStepCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineStepCell.swift; sourceTree = "<group>"; };
+		EF194C4B29748B5B00A8734A /* AddRoutineStepCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineStepCellConfigurator.swift; sourceTree = "<group>"; };
+		EF194C4F2974AFD400A8734A /* StepFrequencyPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFrequencyPickerCell.swift; sourceTree = "<group>"; };
+		EF194C512974AFE900A8734A /* StepFrequencyPickerCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFrequencyPickerCellConfigurator.swift; sourceTree = "<group>"; };
+		EF194C532974BA3F00A8734A /* CareRoutines.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CareRoutines.graphql; sourceTree = "<group>"; };
 		EF1D17F9296A2CD9000A12E4 /* AddCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoordinator.swift; sourceTree = "<group>"; };
 		EF1D17FB296A2D7E000A12E4 /* AddViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewControllerFactory.swift; sourceTree = "<group>"; };
 		EF1D17FD296A4674000A12E4 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
@@ -251,6 +275,11 @@
 		EF1D1829296B528A000A12E4 /* AddPlantFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantFormViewModel.swift; sourceTree = "<group>"; };
 		EF1D182B296B5296000A12E4 /* AddPlantFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantFormViewController.swift; sourceTree = "<group>"; };
 		EF1D182F296B59B7000A12E4 /* NewPlantFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlantFormCell.swift; sourceTree = "<group>"; };
+		EF215982297A03D00062712D /* SquareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareButton.swift; sourceTree = "<group>"; };
+		EF215984297A11A40062712D /* FrequencyPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrequencyPickerDelegate.swift; sourceTree = "<group>"; };
+		EF215987297A124E0062712D /* FormPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPickerView.swift; sourceTree = "<group>"; };
+		EF21598A297A12B30062712D /* PickerInputCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerInputCellConfigurator.swift; sourceTree = "<group>"; };
+		EF21598C297A12CD0062712D /* PickerInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerInputCell.swift; sourceTree = "<group>"; };
 		EF3E36DC296DEF590089186A /* CommentRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentRemote.swift; sourceTree = "<group>"; };
 		EF3E36DE296DEF9C0089186A /* CommentDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDomain.swift; sourceTree = "<group>"; };
 		EF3E36E0296DF0460089186A /* UserContentDataRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContentDataRemote.swift; sourceTree = "<group>"; };
@@ -295,6 +324,13 @@
 		EF8C99B4296CC5E500AEB012 /* CommunityHeaderCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityHeaderCellConfigurator.swift; sourceTree = "<group>"; };
 		EF8C99B7296CC99900AEB012 /* CommunityPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityPostCell.swift; sourceTree = "<group>"; };
 		EF8C99B9296CC9A500AEB012 /* CommunityPostCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityPostCellConfigurator.swift; sourceTree = "<group>"; };
+		EF9824DE297B6C5900924460 /* ProfilePictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureCell.swift; sourceTree = "<group>"; };
+		EF9824E0297B6CE100924460 /* ProfilePictureCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureCellConfigurator.swift; sourceTree = "<group>"; };
+		EF9824E3297C2BBE00924460 /* AppIconHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHeaderCell.swift; sourceTree = "<group>"; };
+		EF9824E5297C2BC500924460 /* AppIconHeaderCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHeaderCellConfigurator.swift; sourceTree = "<group>"; };
+		EF9824E8297C2FE100924460 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		EF9824EB297C2FF100924460 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		EF9824ED297C41B600924460 /* RegisterCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCredentials.swift; sourceTree = "<group>"; };
 		EF9CFD712932467500FD0239 /* AnimationHeaderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationHeaderData.swift; sourceTree = "<group>"; };
 		EF9CFD7429324A7100FD0239 /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		EF9CFD7629324AB400FD0239 /* BaseTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewDataSource.swift; sourceTree = "<group>"; };
@@ -331,7 +367,7 @@
 		EF9CFDC4293276C700FD0239 /* PasswordValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidator.swift; sourceTree = "<group>"; };
 		EF9CFDC72932776700FD0239 /* InputInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputInterface.swift; sourceTree = "<group>"; };
 		EF9CFDCA29327A3000FD0239 /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
-		EF9CFDD72932878A00FD0239 /* UserList.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserList.graphql; sourceTree = "<group>"; };
+		EF9CFDD72932878A00FD0239 /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
 		EF9CFDE02932900600FD0239 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EF9CFDE2293293DA00FD0239 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		EF9CFDEA2934037100FD0239 /* TabBarOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarOption.swift; sourceTree = "<group>"; };
@@ -404,8 +440,8 @@
 		EFC1F98D295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBadgeCellConfigurator.swift; sourceTree = "<group>"; };
 		EFC1F990295E3BB300112EFC /* BadgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
 		EFC1F992295E3D3200112EFC /* BadgeCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCellConfigurator.swift; sourceTree = "<group>"; };
-		EFC93260297059A000B3057C /* PersonalizedTextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedTextInputCell.swift; sourceTree = "<group>"; };
-		EFC93262297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedTextInputCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC93260297059A000B3057C /* CommentTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextFieldCell.swift; sourceTree = "<group>"; };
+		EFC93262297059AD00B3057C /* CommentTextFieldCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextFieldCellConfigurator.swift; sourceTree = "<group>"; };
 		EFC932652970886900B3057C /* AnimationFillerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFillerCell.swift; sourceTree = "<group>"; };
 		EFC93267297088E900B3057C /* AnimationFillerCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFillerCellConfigurator.swift; sourceTree = "<group>"; };
 		EFC932692970904200B3057C /* people_talking.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people_talking.json; sourceTree = "<group>"; };
@@ -477,11 +513,12 @@
 		EF190C5C294FC6C90091573D /* GraphQL */ = {
 			isa = PBXGroup;
 			children = (
-				EF9CFDD72932878A00FD0239 /* UserList.graphql */,
+				EF9CFDD72932878A00FD0239 /* Login.graphql */,
 				EFA7B1692944D2EF008EE8E9 /* Plants.graphql */,
 				EFDFF45E294BADB100B4F5F1 /* User.graphql */,
 				EF190C5D294FC6EA0091573D /* Badges.graphql */,
 				EF8C9991296C8CE800AEB012 /* Communities.graphql */,
+				EF194C532974BA3F00A8734A /* CareRoutines.graphql */,
 			);
 			path = GraphQL;
 			sourceTree = "<group>";
@@ -545,12 +582,48 @@
 			path = Remotes;
 			sourceTree = "<group>";
 		};
+		EF194C4529746F8100A8734A /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				EF194C4629746F8D00A8734A /* StepFrequency.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		EF194C482974859B00A8734A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF215989297A129F0062712D /* PickerInputCell */,
+				EF194C4E2974AF8B00A8734A /* StepFrequencyPickerCell */,
+				EF194C4D2974AF7B00A8734A /* AddRoutineStepCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EF194C4D2974AF7B00A8734A /* AddRoutineStepCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF194C49297485B200A8734A /* AddRoutineStepCell.swift */,
+				EF194C4B29748B5B00A8734A /* AddRoutineStepCellConfigurator.swift */,
+			);
+			path = AddRoutineStepCell;
+			sourceTree = "<group>";
+		};
+		EF194C4E2974AF8B00A8734A /* StepFrequencyPickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF194C4F2974AFD400A8734A /* StepFrequencyPickerCell.swift */,
+				EF194C512974AFE900A8734A /* StepFrequencyPickerCellConfigurator.swift */,
+			);
+			path = StepFrequencyPickerCell;
+			sourceTree = "<group>";
+		};
 		EF1D17F5296A2C9D000A12E4 /* Add */ = {
 			isa = PBXGroup;
 			children = (
+				EF1D17F8296A2CBE000A12E4 /* Scenes */,
 				EF1D17F7296A2CB5000A12E4 /* Coordinator */,
 				EF1D17F6296A2CAD000A12E4 /* Factories */,
-				EF1D17F8296A2CBE000A12E4 /* Scenes */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -679,6 +752,31 @@
 			path = NewPlantFormCell;
 			sourceTree = "<group>";
 		};
+		EF215981297A03BE0062712D /* SquareButton */ = {
+			isa = PBXGroup;
+			children = (
+				EF215982297A03D00062712D /* SquareButton.swift */,
+			);
+			path = SquareButton;
+			sourceTree = "<group>";
+		};
+		EF215986297A12410062712D /* FormPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				EF215987297A124E0062712D /* FormPickerView.swift */,
+			);
+			path = FormPickerView;
+			sourceTree = "<group>";
+		};
+		EF215989297A129F0062712D /* PickerInputCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF21598A297A12B30062712D /* PickerInputCellConfigurator.swift */,
+				EF21598C297A12CD0062712D /* PickerInputCell.swift */,
+			);
+			path = PickerInputCell;
+			sourceTree = "<group>";
+		};
 		EF44C998294BE55400CD1075 /* PlantDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,7 +791,9 @@
 		EF4B901529730D8A00D43E36 /* AddCareRoutine */ = {
 			isa = PBXGroup;
 			children = (
+				EF194C482974859B00A8734A /* Views */,
 				EF1D1816296B03DE000A12E4 /* AddCareRoutineViewModel.swift */,
+				EF215984297A11A40062712D /* FrequencyPickerDelegate.swift */,
 				EF1D1817296B03DE000A12E4 /* AddCareRoutineViewController.swift */,
 			);
 			path = AddCareRoutine;
@@ -830,6 +930,50 @@
 				EF8C99B9296CC9A500AEB012 /* CommunityPostCellConfigurator.swift */,
 			);
 			path = CommunityPostCell;
+			sourceTree = "<group>";
+		};
+		EF9824DC297B6C1F00924460 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF9824DD297B6C4700924460 /* ProfilePictureCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EF9824DD297B6C4700924460 /* ProfilePictureCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF9824DE297B6C5900924460 /* ProfilePictureCell.swift */,
+				EF9824E0297B6CE100924460 /* ProfilePictureCellConfigurator.swift */,
+			);
+			path = ProfilePictureCell;
+			sourceTree = "<group>";
+		};
+		EF9824E2297C2BAB00924460 /* AppIconHeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				EF9824E3297C2BBE00924460 /* AppIconHeaderCell.swift */,
+				EF9824E5297C2BC500924460 /* AppIconHeaderCellConfigurator.swift */,
+			);
+			path = AppIconHeaderCell;
+			sourceTree = "<group>";
+		};
+		EF9824E7297C2FCF00924460 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				EF9824EF297C41BA00924460 /* Models */,
+				EF9824E8297C2FE100924460 /* RegisterViewModel.swift */,
+				EF9824EB297C2FF100924460 /* RegisterViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		EF9824EF297C41BA00924460 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EF9824ED297C41B600924460 /* RegisterCredentials.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EF9CFD702932466200FD0239 /* AnimationHeader */ = {
@@ -1404,6 +1548,7 @@
 		EFBA28B52929984B0034DCA9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EF194C4529746F8100A8734A /* Enums */,
 				EF9CFDC62932775100FD0239 /* Interfaces */,
 				EF9CFDBF2932760B00FD0239 /* ApplicationError */,
 				EFFA5946292A70A0003A8F23 /* Color */,
@@ -1498,6 +1643,7 @@
 		EFBA28BD292998AE0034DCA9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EF9824E7297C2FCF00924460 /* Register */,
 				EFBA28BF292998CA0034DCA9 /* Login */,
 			);
 			path = Scenes;
@@ -1525,6 +1671,7 @@
 		EFBA28C02929999D0034DCA9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EF9824E2297C2BAB00924460 /* AppIconHeaderCell */,
 				EFC932712970A59A00B3057C /* LoginCell */,
 				EF9CFDA6293272B400FD0239 /* LoginTextInputCell */,
 				EFFA5959292A8914003A8F23 /* AnimationHeader */,
@@ -1667,13 +1814,13 @@
 			path = BadgeCell;
 			sourceTree = "<group>";
 		};
-		EFC9325F2970597C00B3057C /* PersonalizedTextInputCell */ = {
+		EFC9325F2970597C00B3057C /* CommentTextFieldCell */ = {
 			isa = PBXGroup;
 			children = (
-				EFC93260297059A000B3057C /* PersonalizedTextInputCell.swift */,
-				EFC93262297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift */,
+				EFC93260297059A000B3057C /* CommentTextFieldCell.swift */,
+				EFC93262297059AD00B3057C /* CommentTextFieldCellConfigurator.swift */,
 			);
-			path = PersonalizedTextInputCell;
+			path = CommentTextFieldCell;
 			sourceTree = "<group>";
 		};
 		EFC932642970884D00B3057C /* AnimationFillerCell */ = {
@@ -1723,6 +1870,7 @@
 		EFC932772970D43B00B3057C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EF9824DC297B6C1F00924460 /* Views */,
 				EFC9327C2970D48B00B3057C /* ProfileViewModel.swift */,
 				EFC9327E2970D49700B3057C /* ProfileViewController.swift */,
 			);
@@ -1869,8 +2017,10 @@
 		EFFA594E292A7271003A8F23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EF215986297A12410062712D /* FormPickerView */,
+				EF215981297A03BE0062712D /* SquareButton */,
 				EFC932642970884D00B3057C /* AnimationFillerCell */,
-				EFC9325F2970597C00B3057C /* PersonalizedTextInputCell */,
+				EFC9325F2970597C00B3057C /* CommentTextFieldCell */,
 				EFC1F96229592A0200112EFC /* MainSectionHeader */,
 				EFA7B17129450D11008EE8E9 /* PaddedImageView */,
 				EF9CFDA9293272F600FD0239 /* TextInputCell */,
@@ -1988,7 +2138,8 @@
 				EF9CFDE3293293DA00FD0239 /* schema.json in Resources */,
 				EFAA5B61293E6FA20082484D /* NoticiaText-BoldItalic.ttf in Resources */,
 				EFAA5B63293E6FA20082484D /* NoticiaText-Regular.ttf in Resources */,
-				EF9CFDD82932878A00FD0239 /* UserList.graphql in Resources */,
+				EF9CFDD82932878A00FD0239 /* Login.graphql in Resources */,
+				EF194C542974BA3F00A8734A /* CareRoutines.graphql in Resources */,
 				EFA7B16A2944D2EF008EE8E9 /* Plants.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2044,6 +2195,7 @@
 				EF9CFDA22932699C00FD0239 /* ApplicationCoordinator.swift in Sources */,
 				EFC1F9562959057700112EFC /* PlantDetailsCellData.swift in Sources */,
 				EFAA5B8F293E887A0082484D /* CommunityViewControllerFactory.swift in Sources */,
+				EF9824E4297C2BBE00924460 /* AppIconHeaderCell.swift in Sources */,
 				EFA7B18329464050008EE8E9 /* PlantTypeRemote.swift in Sources */,
 				EF1D1821296B3D2B000A12E4 /* PlantTypeCell.swift in Sources */,
 				EF9CFDC5293276C700FD0239 /* PasswordValidator.swift in Sources */,
@@ -2072,6 +2224,7 @@
 				EF1D1804296A4B80000A12E4 /* AddButtonCell.swift in Sources */,
 				EF9CFDAB2932730B00FD0239 /* TextInputCell.swift in Sources */,
 				EFFA5948292A70AA003A8F23 /* Color.swift in Sources */,
+				EF194C4C29748B5B00A8734A /* AddRoutineStepCellConfigurator.swift in Sources */,
 				EF8C999E296CAAFA00AEB012 /* CommunityViewModel.swift in Sources */,
 				EF9CFD9329325DE700FD0239 /* EmptyDataType.swift in Sources */,
 				EFA7B181294538F3008EE8E9 /* PlantsWorker.swift in Sources */,
@@ -2080,13 +2233,17 @@
 				EF1D1806296A4CE5000A12E4 /* AddButtonCellConfigurator.swift in Sources */,
 				EFBA2879292986510034DCA9 /* LoginViewController.swift in Sources */,
 				EF1D180C296AFE48000A12E4 /* AddPlantViewController.swift in Sources */,
+				EF194C502974AFD400A8734A /* StepFrequencyPickerCell.swift in Sources */,
 				EFC1F993295E3D3200112EFC /* BadgeCellConfigurator.swift in Sources */,
 				EF8C9990296C7F6300AEB012 /* WindowManager.swift in Sources */,
+				EF9824E6297C2BC500924460 /* AppIconHeaderCellConfigurator.swift in Sources */,
 				EF62CE8B296F725A002BABA4 /* PostDetailsHeaderCellConfigurator.swift in Sources */,
 				EF9CFDFA2934074600FD0239 /* HomeCoordinator.swift in Sources */,
 				EF9CFDAD2932737800FD0239 /* TextInputCellConfigurator.swift in Sources */,
 				EFBA28B22929957B0034DCA9 /* String+Extension.swift in Sources */,
 				EF9CFE012934091400FD0239 /* HomeMenuViewController.swift in Sources */,
+				EF194C4A297485B200A8734A /* AddRoutineStepCell.swift in Sources */,
+				EF194C4729746F8D00A8734A /* StepFrequency.swift in Sources */,
 				EFC1F976295CC02900112EFC /* UserContext.swift in Sources */,
 				EF9CFDF02934058200FD0239 /* TabBarItemCoordinator.swift in Sources */,
 				EFC1F98E295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift in Sources */,
@@ -2100,7 +2257,7 @@
 				EFAA5B80293E85830082484D /* BadgesCoordinator.swift in Sources */,
 				EF1D1827296B3DB0000A12E4 /* PlantTypeCellData.swift in Sources */,
 				EF190C66294FC9E10091573D /* BadgeDomain.swift in Sources */,
-				EFC93261297059A000B3057C /* PersonalizedTextInputCell.swift in Sources */,
+				EFC93261297059A000B3057C /* CommentTextFieldCell.swift in Sources */,
 				EF1D182C296B5296000A12E4 /* AddPlantFormViewController.swift in Sources */,
 				EF9CFD7529324A7100FD0239 /* BaseTableViewController.swift in Sources */,
 				EF9CFDC12932762000FD0239 /* ApplicationError.swift in Sources */,
@@ -2111,11 +2268,14 @@
 				EFFA593E292A6E28003A8F23 /* ConfirmationDialogInterface.swift in Sources */,
 				EFC1F9502958CF3000112EFC /* PlantDetailsHeader.swift in Sources */,
 				EFFA592D292A6BE9003A8F23 /* Coordinator.swift in Sources */,
+				EF194C522974AFE900A8734A /* StepFrequencyPickerCellConfigurator.swift in Sources */,
+				EF9824E1297B6CE100924460 /* ProfilePictureCellConfigurator.swift in Sources */,
 				EF9CFD8F2932573100FD0239 /* EmptyDataContentView.swift in Sources */,
 				EFC1F970295A69CC00112EFC /* RoutineStepCellData.swift in Sources */,
 				EFAA5B8B293E86C80082484D /* CommunityListViewModel.swift in Sources */,
 				EFC1F96D29592D5A00112EFC /* RoutineStepCellConfigurator.swift in Sources */,
 				EFF52391292A52A60014A32B /* UIButton+Extension.swift in Sources */,
+				EF9824EC297C2FF100924460 /* RegisterViewController.swift in Sources */,
 				EF9CFD9E2932670F00FD0239 /* LoadingButton.swift in Sources */,
 				EFAA5B89293E86BF0082484D /* CommunityListViewController.swift in Sources */,
 				EF9CFDB7293274D900FD0239 /* ValidationResult.swift in Sources */,
@@ -2127,11 +2287,12 @@
 				EFDFF464294BB01D00B4F5F1 /* UserRemote.swift in Sources */,
 				EF9CFD8729324CE600FD0239 /* SectionSequence.swift in Sources */,
 				EF77D8C5293FD5FD00F5807F /* networkfiller.swift in Sources */,
-				EFC93263297059AD00B3057C /* PersonalizedTextInputCellConfigurator.swift in Sources */,
+				EFC93263297059AD00B3057C /* CommentTextFieldCellConfigurator.swift in Sources */,
 				EFC1F991295E3BB300112EFC /* BadgeCell.swift in Sources */,
 				EFA7B17C2945237A008EE8E9 /* PlantRemote.swift in Sources */,
 				EFC1F96929592A8800112EFC /* MainSectionHeaderData.swift in Sources */,
 				EF9CFDBC2932754B00FD0239 /* TextValidator.swift in Sources */,
+				EF215988297A124E0062712D /* FormPickerView.swift in Sources */,
 				EFC1F987295CF67400112EFC /* MessageOfTheDayCell.swift in Sources */,
 				EFFA594A292A71C4003A8F23 /* UIViewController+Extension.swift in Sources */,
 				EFC1F989295CF73100112EFC /* MessageOfTheDayCellConfigurator.swift in Sources */,
@@ -2139,6 +2300,7 @@
 				EF1D17FC296A2D7E000A12E4 /* AddViewControllerFactory.swift in Sources */,
 				EF9CFDAF293273D700FD0239 /* TextInputCellData.swift in Sources */,
 				EF62CE86296F65FA002BABA4 /* PostDetailsViewController.swift in Sources */,
+				EF9824E9297C2FE100924460 /* RegisterViewModel.swift in Sources */,
 				EF68F7492949113400B2A08E /* RoutineStepRemote.swift in Sources */,
 				EF68F74429490E7E00B2A08E /* CareRoutineDomain.swift in Sources */,
 				EF1D17FE296A4674000A12E4 /* AddViewModel.swift in Sources */,
@@ -2149,11 +2311,13 @@
 				EFF5238F292A52580014A32B /* NSLayoutConstraint+Extension.swift in Sources */,
 				EF1D17FA296A2CD9000A12E4 /* AddCoordinator.swift in Sources */,
 				EFA7B1702944D814008EE8E9 /* PlantCellConfigurator.swift in Sources */,
+				EF21598B297A12B30062712D /* PickerInputCellConfigurator.swift in Sources */,
 				EFFA5951292A7281003A8F23 /* ToastView.swift in Sources */,
 				EFAA5B73293E7DBE0082484D /* PlantListViewModel.swift in Sources */,
 				EFC9327F2970D49700B3057C /* ProfileViewController.swift in Sources */,
 				EF190C6A294FCEDD0091573D /* UserBadgeDomain.swift in Sources */,
 				EFC93268297088E900B3057C /* AnimationFillerCellConfigurator.swift in Sources */,
+				EF21598D297A12CD0062712D /* PickerInputCell.swift in Sources */,
 				EFAA5B82293E85EC0082484D /* BadgesViewControllerFactory.swift in Sources */,
 				EFA7B185294640AC008EE8E9 /* PlantTypeDomain.swift in Sources */,
 				EF190C68294FCE890091573D /* UserBadgeRemote.swift in Sources */,
@@ -2171,6 +2335,8 @@
 				EF8C99A9296CB33F00AEB012 /* PostRemote.swift in Sources */,
 				EFF52395292A52E10014A32B /* UIImageView+Extension.swift in Sources */,
 				EF8C99AF296CB3DD00AEB012 /* PostDomain.swift in Sources */,
+				EF215985297A11A40062712D /* FrequencyPickerDelegate.swift in Sources */,
+				EF9824DF297B6C5900924460 /* ProfilePictureCell.swift in Sources */,
 				EF190C64294FC9870091573D /* BadgeRemote.swift in Sources */,
 				EF9CFDB5293274B600FD0239 /* Validable.swift in Sources */,
 				EFAA5B7C293E85040082484D /* BadgesViewModel.swift in Sources */,
@@ -2189,6 +2355,7 @@
 				EFAA5B75293E7DCA0082484D /* PlantListViewController.swift in Sources */,
 				EFFA5934292A6D06003A8F23 /* BaseViewController.swift in Sources */,
 				EF3E36E1296DF0460089186A /* UserContentDataRemote.swift in Sources */,
+				EF9824EE297C41B600924460 /* RegisterCredentials.swift in Sources */,
 				EF44C99A294BE56F00CD1075 /* PlantDetailsViewController.swift in Sources */,
 				EFC1F95929591AE700112EFC /* PlantDetailsTypeInfoCell.swift in Sources */,
 				EF1D1800296A47FA000A12E4 /* AddViewController.swift in Sources */,
@@ -2206,6 +2373,7 @@
 				EF8C998E296C7F4100AEB012 /* DialogManager.swift in Sources */,
 				EF9CFD8529324CC400FD0239 /* SectionMapper.swift in Sources */,
 				EF8C99B1296CB4A600AEB012 /* CommunityContent.swift in Sources */,
+				EF215983297A03D00062712D /* SquareButton.swift in Sources */,
 				EFF52393292A52C50014A32B /* UIColor+Extension.swift in Sources */,
 				EFC1F96629592A5C00112EFC /* MainSectionConfigurator.swift in Sources */,
 				EF68F74229490DE700B2A08E /* CareRoutineRemote.swift in Sources */,

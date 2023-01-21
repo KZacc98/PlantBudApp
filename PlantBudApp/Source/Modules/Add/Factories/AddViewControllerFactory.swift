@@ -25,12 +25,12 @@ final class AddViewControllerFactory {
         return viewController
     }
     
-    func makeAddCareRoutineViewController() -> AddCareRoutineViewController {
-        let viewController = AddCareRoutineViewController()
-        viewController.viewModel = AddCareRoutineViewModel()
-        
-        return viewController
-    }
+//    func makeAddCareRoutineViewController() -> AddCareRoutineViewController {
+//        let viewController = AddCareRoutineViewController()
+//        viewController.viewModel = AddCareRoutineViewModel()
+//        
+//        return viewController
+//    }
     
     func makeAddPlantFormViewController(plantType: PlantTypeDomain) -> AddPlantFormViewController {
         let viewController = AddPlantFormViewController()

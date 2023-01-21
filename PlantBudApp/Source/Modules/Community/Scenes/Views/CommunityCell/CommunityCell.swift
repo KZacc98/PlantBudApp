@@ -34,7 +34,7 @@ final class CommunityCell: UITableViewCell {
     }()
     
     lazy var stackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [communityNameLabel, plantStateLabel])
+        let view = UIStackView(arrangedSubviews: [communityNameLabel, communityDescriptionLabel])
         view.distribution = .fill
         view.alignment = .fill
         view.spacing = 10
@@ -57,12 +57,12 @@ final class CommunityCell: UITableViewCell {
         return label
     }()
     
-    public lazy var plantStateLabel: UILabel = {
+    public lazy var communityDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = Font.noticiaRegular(size: 24)
+        label.font = Font.noticiaRegular(size: 12)
         label.textColor = Color.brandBlack
-        label.textAlignment = .natural
-        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.numberOfLines = 3
         label.lineBreakMode = .byWordWrapping
         
         return label

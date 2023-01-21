@@ -38,16 +38,12 @@ final class ProfileCoordinator: TabBarItemCoordinator {
     
     // MARK: - Private methods
     
-    //    private func setupNavigationController() {
-    //        navigationController?.delegate = self
-    //    }
-    
     private func routeMenu(animated: Bool) {
         let viewController = viewControllerFactory.makeProfileViewController()
         
         navigationController?.setViewControllers([viewController], animated: animated)
     }
-//    
+//
 //    private func pushPlantDetails(plant: Plant) {
 //        let viewController = viewControllerFactory.makePlantDetailsViewController(plant: plant)
 //        

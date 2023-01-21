@@ -122,7 +122,7 @@ extension HomeMenuViewController {
     }
     
     private func setupNavigationBar() {
-        let userButtonBar = UIBarButtonItem(image: UIImage(systemName: "person"),
+        let userButtonBar = UIBarButtonItem(image: UIImage(systemName: "person.circle.fill"),
                                             style: .plain,
                                             target: self,
                                             action: #selector(didPressUserButton(sender:)))

@@ -57,9 +57,9 @@ final class AddCoordinator: TabBarItemCoordinator {
     }
     
     private func pushAddCareRoutine() {
-        let viewController = viewControllerFactory.makeAddCareRoutineViewController()
-
-        navigationController?.pushViewController(viewController, animated: true)
+//        let viewController = viewControllerFactory.makeAddCareRoutineViewController()
+//
+//        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func pushAddPlant() {

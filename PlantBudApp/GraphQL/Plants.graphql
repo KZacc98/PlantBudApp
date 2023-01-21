@@ -92,6 +92,21 @@ mutation AddPlant($object: Plant_insert_input!) {
   }
 }
 
+mutation DeleteCareRoutine($careRoutineId: Int!, $plantId: Int!) {
+  delete_RoutineStep(where: {careRoutineId: {_eq: $careRoutineId}}) {
+    affected_rows
+    returning {
+      id
+    }
+
+  }
+  delete_CareRoutine(where: {plantId: {_eq: $plantId}}) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
 
 mutation DeletePlant($_eq: Int) {
   delete_Plant(where: {id: {_eq: $_eq}}) {

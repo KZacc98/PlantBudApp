@@ -23,7 +23,9 @@ final class CommunityListViewModel {
         }
     }
     
-    private var communityDomains: [CommunityDomain]?{
+    private var communityDomains: [CommunityDomain]?
+    
+    private var userCommunityIds: [Int]?{
         didSet{
             buildSections()
         }
@@ -40,9 +42,18 @@ final class CommunityListViewModel {
     }
 
     public func buildSections() {
+        guard let userCommunityIds = self.userCommunityIds else { return }
+        let userCommunities = self.communityDomains?.filter { communityDomain in
+            userCommunityIds.contains(where: {$0 == communityDomain.id}) &&
+            communityDomain.isActive == true
+        }
+        let allCommunities = self.communityDomains?.filter { communityDomain in
+            communityDomain.isActive == true
+        }
         sectionSequence = SectionSequence(
             sections: [
-                makeAllCommunitiesSection(communities: self.communityDomains)
+                makeUserCommunitiesSection(communities: userCommunities),
+                makeAllCommunitiesSection(communities: allCommunities)
         ])
     }
     
@@ -51,7 +62,7 @@ final class CommunityListViewModel {
         UIAppDelegate?.showLoadingIndicator()
         let dispatchGroup = DispatchGroup()
         var communityDomains: [CommunityDomain]?
-//        var data2: DataType2?
+        var userCommunityIds: [Int]?
 //        var data3: DataType3?
         
         // Fetch data1
@@ -77,17 +88,23 @@ final class CommunityListViewModel {
             dispatchGroup.leave()
         }
         
-//        // Fetch data2
-//        dispatchGroup.enter()
-//        Network.fetchData(query: Query2()) { result in
-//            switch result {
-//            case .success(let data):
-//                data2 = data
-//            case .failure(let error):
-//                Logger.error("ERROR: \(error)")
-//            }
-//            dispatchGroup.leave()
-//        }
+        // Fetch data2
+        dispatchGroup.enter()
+        guard let userId = UserContext.shared.userProfile?.id else {
+            dispatchGroup.leave()
+            return
+        }
+        Network.fetchData(query: FetchUserCommunitiesQuery(userId: userId)) { result in
+            switch result {
+            case .success(let data):
+                userCommunityIds = data.communityUsers.map({ res in
+                    res.communityId
+                })
+            case .failure(let error):
+                Logger.error("ERROR: \(error)")
+            }
+            dispatchGroup.leave()
+        }
 //
 //        // Fetch data3
 //        dispatchGroup.enter()
@@ -105,22 +122,48 @@ final class CommunityListViewModel {
         dispatchGroup.notify(queue: .main) {
             // Use data1, data2, and data3 here
             self.communityDomains = communityDomains
+            self.userCommunityIds = userCommunityIds
             UIAppDelegate?.hideLoadingIndicator()
         }
     }
-
-    private func makeAllCommunitiesSection(communities: [CommunityDomain]?) -> SingleColumnSection {
+    
+    private func makeUserCommunitiesSection(communities: [CommunityDomain]?) -> SingleColumnSection {
         guard let communities = communities else { return SingleColumnSection(cellConfigurators: []) }
+        let headerData = MainSectionHeaderData(
+            title: "Your Communities", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+        let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
         let configurators = communities.map { community in
             CommunityCellConfigurator(data: CommunityCellData(
                 communityDomain: community,
+                tileColor: Color.brandGreen,
+                textColor: Color.brandWhite,
                 didPressCommunityTile: {
                     Logger.info("\(community.communityName) TILE TAPPED")
                     self.onCommunityTilePressed?(community)
                 }))
         }
 
-        return SingleColumnSection(cellConfigurators: configurators)
+        return SingleColumnSection(cellConfigurators: configurators, headerConfigurator: headerConfigurator)
+    }
+
+
+    private func makeAllCommunitiesSection(communities: [CommunityDomain]?) -> SingleColumnSection {
+        guard let communities = communities else { return SingleColumnSection(cellConfigurators: []) }
+        let headerData = MainSectionHeaderData(
+            title: "All Communities", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+        let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
+        let configurators = communities.map { community in
+            CommunityCellConfigurator(data: CommunityCellData(
+                communityDomain: community,
+                tileColor: Color.brandWhite,
+                textColor: Color.brandBlack,
+                didPressCommunityTile: {
+                    Logger.info("\(community.communityName) TILE TAPPED")
+                    self.onCommunityTilePressed?(community)
+                }))
+        }
+
+        return SingleColumnSection(cellConfigurators: configurators, headerConfigurator: headerConfigurator)
     }
 
     // MARK: - Selectors

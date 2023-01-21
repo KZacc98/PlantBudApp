@@ -14,6 +14,7 @@ final class PlantDetailsViewModel {
     public var onSectionSequenceChange: ((SectionSequence) -> Void)?
     public var onFetchSuccess: ((String) -> Void)?
     public var onDeletePlantSuccess: (() -> Void)?
+    public var onAddCareRoutinePressed: ((Int, Bool) -> Void)?
     public var onError: ((Error) -> ())?
     
     //MARK: Private properties
@@ -38,7 +39,7 @@ final class PlantDetailsViewModel {
         }
     }
     
-    private var routineSteps: [RoutineStepDomain]? {
+    var routineSteps: [RoutineStepDomain]? {
         didSet{
             guard let careRoutineDomain = careRoutineDomain, let routineSteps = routineSteps
             else { return }
@@ -60,6 +61,7 @@ final class PlantDetailsViewModel {
         var routineSteps: [RoutineStepDomain]?
 
         // Fetch data1
+        Network.shared.apollo.store.clearCache()
         dispatchGroup.enter()
         Network.fetchData(query: FetchPlantCareRoutineQuery(plantId: plant.plantData.id)) { result in
             switch result {
@@ -110,7 +112,6 @@ final class PlantDetailsViewModel {
                 }
                 dispatchGroup.leave()
             }
-            
         }
     }
     
@@ -146,7 +147,8 @@ final class PlantDetailsViewModel {
                 message: "U really wanna delete this plant luv'",
                 cancelButtonTitle: "LEMME KEEP IT",
                 acceptBlock: {
-                    self?.deletePlant(plantId: self?.plant.plantData.id ?? -1)
+                    guard let plant = self?.plant, let careRoutineId = self?.careRoutine?.careRoutineId else { return }
+                    self?.deletePlant(plant: plant, careRoutineId: careRoutineId)
                 },
                 rejectBlock: {
                     Logger.info("nodelete plz")
@@ -165,23 +167,61 @@ final class PlantDetailsViewModel {
         return MainButtonCellConfigurator(data: data)
     }()
     
-    private func deletePlant(plantId: Int) {
+    private lazy var addCareRoutineButtonCellConfigurator: MainButtonCellConfigurator = {
+        let didPressButton: () -> () = { [weak self] in
+            Logger.info("ADD ROUTINE PRESSED")
+            guard let self = self else { return }
+            if self.routineSteps != nil {
+                self.onAddCareRoutinePressed?(self.plant.plantData.id, true)
+            } else {
+                self.onAddCareRoutinePressed?(self.plant.plantData.id, false)
+            }
+            
+        }
+        let buttonInsets = UIEdgeInsets(top: 24.deviceSizeAware,
+                                        left: 12,
+                                        bottom: -24.deviceSizeAware,
+                                        right: -12)
+        let data = MainButtonCellData(title: self.routineSteps != nil ? "Add routine step".uppercased() : "Add care routine".uppercased(),
+                                      buttonInsets: buttonInsets,
+                                      didPressButton: didPressButton)
+        
+        return MainButtonCellConfigurator(data: data)
+    }()
+    
+    private func deletePlant(plant: Plant, careRoutineId: Int) {
+        let dispatchGroup = DispatchGroup()
         UIAppDelegate?.showLoadingIndicator()
+        
         Network.shared.apollo.store.clearCache()
-        Network.performMutation(mutation: DeletePlantMutation(_eq: plantId)) { result in
-            switch result {
-            case .success(let data):
-                // Use the `data` object to access the results of the mutation
-                Logger.info("TUTAJ KURWA ############################")
-                Logger.info("\(data.deletePlant.debugDescription)")
-                UIAppDelegate?.hideLoadingIndicator()
-                self.onDeletePlantSuccess?()
-            case .failure(let error):
-                // Handle the error
-                Logger.info("TUTAJ KURWA ############################")
-                Logger.info("Jebło \(error)")
-                DialogManager.showErrorDialog(with: error)
-                UIAppDelegate?.hideLoadingIndicator()
+        dispatchGroup.enter()
+        Network.performMutation(mutation: DeleteCareRoutineMutation(
+            careRoutineId: careRoutineId,
+            plantId: plant.plantData.id)) { result in
+                switch result {
+                case .success(let success):
+                    Logger.info("\(success.deleteRoutineStep.debugDescription)")
+                    Logger.info("\(success.deleteCareRoutine.debugDescription)")
+                case .failure(let failure):
+                    Logger.error("\(failure)")
+                }
+                dispatchGroup.leave()
+            }
+        
+        // Run a block of code when all requests are completed
+        dispatchGroup.notify(queue: .main) {
+            Network.performMutation(mutation: DeletePlantMutation(_eq: plant.plantData.id)) { result in
+                switch result {
+                case .success(let data):
+                    Logger.info("\(data.deletePlant.debugDescription)")
+                    UIAppDelegate?.hideLoadingIndicator()
+                    self.onDeletePlantSuccess?()
+                case .failure(let error):
+                    Logger.info("Jebło \(error)")
+                    DialogManager.showErrorDialog(with: error)
+                    UIAppDelegate?.hideLoadingIndicator()
+                }
+                
             }
         }
     }
@@ -189,7 +229,7 @@ final class PlantDetailsViewModel {
     public func buildSections(steps: [RoutineStepDomain]?) {
         guard let routineSteps = steps else { return }
         let cellConfigurators = routineSteps.map {
-            RoutineStepCellConfigurator(data: makeRoutineStepCellData(steps: $0))
+            RoutineStepCellConfigurator(data: makeRoutineStepCellData(step: $0))
         }
         let headerCellConfigurator = PlantDetailsHeaderCellConfigurator(data: makePlantDetailsCellData(plant: self.plant))
         
@@ -207,12 +247,10 @@ final class PlantDetailsViewModel {
                 SingleColumnSection(cellConfigurators: [headerCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [typeInfoCellConfigurator]),
                 SingleColumnSection(cellConfigurators: cellConfigurators, headerConfigurator: headerConfigurator),
+                SingleColumnSection(cellConfigurators: [addCareRoutineButtonCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [deletePlantButtonCellConfigurator], headerConfigurator: deleteHeaderConfigurator)
             ]
         )
-        
-        
-        
     }
     
     public func buildEmptySections() {
@@ -232,7 +270,7 @@ final class PlantDetailsViewModel {
                 SingleColumnSection(cellConfigurators: [headerCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [typeInfoCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [], headerConfigurator: headerConfigurator),
-                makeEmptyDataSection(),
+                SingleColumnSection(cellConfigurators: [addCareRoutineButtonCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [deletePlantButtonCellConfigurator], headerConfigurator: deleteHeaderConfigurator)
             ]
         )
@@ -247,15 +285,19 @@ final class PlantDetailsViewModel {
         
     }
     
-    private func makeRoutineStepCellData(steps: RoutineStepDomain) -> RoutineStepCellData {
+    private func makeRoutineStepCellData(step: RoutineStepDomain) -> RoutineStepCellData {
         let didPressCheckbox: () -> Void = { [weak self] in
             UIAppDelegate?.showLoadingIndicator()
             Logger.info("TAP")
-            self?.setCheckbox(steps: steps)
+            self?.setCheckbox(steps: step)
 
         }
         
-        let data = RoutineStepCellData(title: steps.description, didPressCheckbox: didPressCheckbox, check: steps.isCompleted)
+        let didHoldCell: () -> Void = { [weak self] in
+            DialogManager.showConfirmationDialog(message: "test edit")
+        }
+        
+        let data = RoutineStepCellData(step: step, didPressCheckbox: didPressCheckbox, didHoldCell: didHoldCell)
         
         return data
     }
@@ -289,13 +331,38 @@ final class PlantDetailsViewModel {
         return data
     }
     
+    func prepareSteps(steps: [RoutineStepDomain]){
+        let currentDate = Date()
+        let filteredArray = steps.filter { $0.completedAt.addingTimeInterval(TimeInterval($0.stepFrequency.days * 24 * 60 * 60)) <= currentDate }
+        let ids = filteredArray.map { $0.id }
+        let dispatchGroup = DispatchGroup()
+        // Fetch data1
+        dispatchGroup.enter()
+        Network.shared.apollo.store.clearCache()
+        Network.performMutation(mutation: UpdateRoutineStepStatusMutation(_in: ids, isCompleted: false)) { result in
+            switch result {
+            case .success(let success):
+                Logger.info(success.jsonObject.debugDescription)
+            case .failure(let failure):
+                Logger.error(failure.localizedDescription)
+            }
+            dispatchGroup.leave()
+        }
+        
+        // Run a block of code when all requests are completed
+        dispatchGroup.notify(queue: .main) {
+            self.loadData()
+        }
+        
+    }
+    
     private func setCheckbox(steps: RoutineStepDomain) {
         let dispatchGroup = DispatchGroup()
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         let timestamp = dateFormatter.string(from: Date())
-        print(timestamp)  // Output: 2022-12-11T15:43:59.337Z
         
         // Fetch data1
         dispatchGroup.enter()

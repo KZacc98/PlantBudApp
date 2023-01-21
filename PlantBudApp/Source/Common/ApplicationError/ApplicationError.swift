@@ -31,7 +31,7 @@ public struct ApplicationError {
     }
     
     static var validationInvalidValueError: Error {
-        return self.validationError(2002, [NSLocalizedDescriptionKey: "validationInvalidValue".localized])
+        return self.validationError(2002, [NSLocalizedDescriptionKey: "Podana wartośc jest nieprawidłowa"])
     }
     
     static var validationTooShortValueError: Error {

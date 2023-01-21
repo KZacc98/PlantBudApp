@@ -5,6 +5,8 @@
 //  Created by Kamil Zachara on 13/12/2022.
 //
 
+import Foundation
+
 struct RoutineStepDomain {
     let id: Int
     let careRoutineId: Int
@@ -12,37 +14,22 @@ struct RoutineStepDomain {
     let otherFrequency: String?
     let description: String
     let isCompleted: Bool
-    let completedAt: String?
-    let createdAt: String
-    let updatedAt: String?
+    let completedAt: Date
+    let createdAt: Date
+    let updatedAt: Date?
     
     init(remote: RoutineStepRemote) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         self.id = remote.id
         self.careRoutineId = remote.careRoutineId
         self.stepFrequency = StepFrequency(rawValue: remote.stepFrequency) ?? .default
         self.otherFrequency = remote.otherFrequency
         self.description = remote.description ?? ""
         self.isCompleted = remote.isCompleted
-        self.completedAt = remote.completedAt
-        self.createdAt = remote.createdAt
-        self.updatedAt = remote.updatedAt
+        self.completedAt = dateFormatter.date(from: remote.completedAt ?? Date().description) ?? Date()
+        self.createdAt = dateFormatter.date(from: remote.createdAt) ?? Date()
+        self.updatedAt = dateFormatter.date(from: remote.updatedAt ?? Date().description)
     }
-}
-
-enum StepFrequency: String, Codable {
-    case threeTimesADay = "threeTimesADay"
-    case twoTimesADay = "twoTimesADay"
-    case daily = "daily"
-    case everyTwoDays = "everyTwoDays"
-    case everyThreeDays = "everyThreeDays"
-    case everyFourDays = "everyFourDays"
-    case everyFiveDays = "everyFiveDays"
-    case everySixDays = "everySixDays"
-    case weekly = "weekly"
-    case everyTwoWeeks = "everyTwoWeeks"
-    case everyThreeWeeks = "everyThreeWeeks"
-    case onceAMonth = "onceAMonth"
-    case onceAYear = "onceAYear"
-    case other = "other"
-    case `default`
 }

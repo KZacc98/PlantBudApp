@@ -10,7 +10,8 @@ import UIKit
 final class PlantListViewController: BaseTableViewController {
     
     //MARK: - Public properties
-    
+    public var onAddPlantTapped: (() -> ())?
+    public var onFirstOpen: (() -> ())?
     public var viewModel: PlantListViewModel!
     
     //MARK: - Private properties
@@ -36,16 +37,26 @@ final class PlantListViewController: BaseTableViewController {
         bindViewModel()
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         Network.shared.apollo.store.clearCache()
         viewModel.loadData()
     }
     
+//    override func view
+//        super.viewDidLayoutSubviews()
+//        self.onFirstOpen?()
+//    }
+    
     // MARK: - Selectors
     
     override func refreshData(_ refreshControl: UIRefreshControl) {
         viewModel.loadData()
+    }
+    @objc private func didPressAddPlantButton(sender: UIBarButtonItem) {
+        Logger.error("AddPlantPressed")
+        self.onAddPlantTapped?()
     }
 
 }
@@ -65,7 +76,7 @@ extension PlantListViewController {
         }
         
 //        viewModel.onFetchSuccess = { [weak self] in
-//            self?.viewModel.buildSections()
+//            self?.onFirstOpen?()
 //        }
     }
     
@@ -80,13 +91,12 @@ extension PlantListViewController {
     }
     
     private func setupNavigationBar() {
-//        let userButtonBar = UIBarButtonItem(image: Assets.Common.user,
-//                                            style: .plain,
-//                                            target: self,
-//                                            action: #selector(didPressUserButton(sender:)))
-//        userButtonBar.accessibilityLabel = "userSideMenuAccessibilityLabel".localized
-//        userButtonBar.tintColor = Color.brandGreen
-//        navigationItem.rightBarButtonItem = userButtonBar
+        let addPlantButtonBar = UIBarButtonItem(image: UIImage(systemName: "plus.rectangle.fill"),
+                                            style: .plain,
+                                            target: self,
+                                            action: #selector(didPressAddPlantButton(sender:)))
+        addPlantButtonBar.tintColor = Color.brandGreen
+        navigationItem.rightBarButtonItem = addPlantButtonBar
         title = "Plants"
     }
     

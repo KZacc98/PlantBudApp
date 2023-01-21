@@ -17,5 +17,15 @@ extension UIButton {
 
         return self
     }
+    
+    @discardableResult
+    public func setCustomStyle() -> UIButton {
+        backgroundColor = .systemRed
+        setTitleColor(Color.brandWhite, for: .normal)
+        setTitleColor(.gray, for: .disabled)
+        setShadow(cornerRadius: 25, shadowColor: Color.brandGreen)
+
+        return self
+    }
 }
 

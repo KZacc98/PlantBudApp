@@ -23,34 +23,36 @@ final class RoutineStepCell: UITableViewCell {
         return view
     }()
     
+    public lazy var dueDateStackView: UIStackView = {
+        let view = UIStackView(arrangedSubviews: [stepLabel, dueDateLabelLabel])
+        view.axis = .vertical
+        view.distribution = .fill
+        view.spacing = 6
+        mainBackgroundView.addSubviewsUsingAutoLayout(view)
+        
+        return view
+    }()
+    
     public lazy var stepLabel: UILabel = {
         let label = UILabel()
-        label.font = Font.noticiaRegular(size: 24)
-        label.textColor = Color.brandBlack
+        label.font = Font.noticiaRegular(size: 16)
+        label.textColor = Color.brandWhite
         label.textAlignment = .natural
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
-        label.adjustsFontSizeToFitWidth = true
-        mainBackgroundView.addSubviewsUsingAutoLayout(label)
         
         return label
     }()
     
-    public lazy var button: UIButton = {
-        let button = UIButton(type: .system)
-        button.setShadow(
-            cornerRadius: 4,
-            shadowOpacity: 0.5,
-            shadowRadius: 4,
-            shadowOffset: .zero,
-            shadowColor: Color.white
-        )
-        button.backgroundColor = Color.white
-        button.setTitle("V".uppercased(), for: .normal)
-        button.setTitleColor(Color.black, for: .normal)
-        mainBackgroundView.addSubviewsUsingAutoLayout(button)
-
-        return button
+    public lazy var dueDateLabelLabel: UILabel = {
+        let label = UILabel()
+        label.font = Font.noticiaRegular(size: 16)
+        label.textColor = Color.brandWhite
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        
+        return label
     }()
     
     // MARK: - Selectors
@@ -82,13 +84,12 @@ final class RoutineStepCell: UITableViewCell {
             insets: UIEdgeInsets(top: 12, left: 12, bottom: -12, right: -12)
         )
         
-        stepLabel.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: 6)
-        stepLabel.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 6)
-        stepLabel.trailingAnchor.constrain(anchor: button.trailingAnchor)
-        stepLabel.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -6)
-
-        button.centerYAnchor.constrain(anchor: stepLabel.centerYAnchor)
-        button.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -6)
+        dueDateStackView.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: 12)
+        dueDateStackView.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -12)
+        dueDateStackView.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 12)
+        dueDateStackView.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -12)
+        
+        
     }
 }
 

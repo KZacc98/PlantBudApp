@@ -38,10 +38,16 @@ public class ApplicationCoordinator {
         let navigationController: BaseNavigationController = BaseNavigationController()
         let coordinator = LoginCoordinator(navigationController: navigationController)
         childCoordinator = coordinator
-        coordinator.start()
+        coordinator.start(animated: true)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         window?.rootViewController?.view.backgroundColor = Color.brandWhite
+    }
+    
+    public func logout() {
+        UserContext.shared.userProfile = nil
+        UserDefaults.standard.removePersistentDomain(forName: Bundle.main.bundleIdentifier!)
+        startLoginCoordinator()
     }
     
     public func startTabBarCoordinator(

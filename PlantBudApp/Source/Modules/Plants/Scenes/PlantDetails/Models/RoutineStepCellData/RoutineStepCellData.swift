@@ -6,13 +6,17 @@
 //
 
 struct RoutineStepCellData {
-    let title: String
+    let step: RoutineStepDomain
     let didPressCheckbox: (() -> Void)?
-    let check: Bool
+    let didHoldCell: (() -> Void)?
     
-    init(title: String, didPressCheckbox: (() -> Void)?, check: Bool) {
-        self.title = title
+    init(step: RoutineStepDomain,
+         didPressCheckbox: (() -> Void)?,
+         didHoldCell: (() -> Void)?
+    ) {
+        self.step = step
         self.didPressCheckbox = didPressCheckbox
-        self.check = check
+        self.didHoldCell = didHoldCell
+
     }
 }

@@ -37,6 +37,11 @@ final class CommunityListViewController: BaseTableViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadData()
+    }
+    
     // MARK: - Selectors
 
 }

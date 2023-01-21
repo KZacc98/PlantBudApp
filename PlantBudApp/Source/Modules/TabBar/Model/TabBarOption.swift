@@ -10,7 +10,7 @@ import UIKit
 public enum TabBarOption: CaseIterable {
     case home
     case myPlants
-    case addPlant
+//    case addPlant
     case badges
     case community
     
@@ -24,10 +24,10 @@ public enum TabBarOption: CaseIterable {
             return UITabBarItem(title: "tabBarOptionLeaf".localized,
                                 image: UIImage(systemName: "leaf"),
                                 selectedImage: nil)
-        case .addPlant:
-            return UITabBarItem(title: "tabBarOptionPlus".localized,
-                                image: UIImage(systemName: "plus"),
-                                selectedImage: nil)
+//        case .addPlant:
+//            return UITabBarItem(title: "tabBarOptionPlus".localized,
+//                                image: UIImage(systemName: "plus"),
+//                                selectedImage: nil)
         case .badges:
             return UITabBarItem(title: "tabBarOptionBadge".localized,
                                 image: UIImage(systemName: "medal"),
@@ -47,9 +47,9 @@ public enum TabBarOption: CaseIterable {
         case .myPlants:
             Logger.info("PLANTS")
             return PlantsCoordinator(tabBarItem: tabBarItem)//MenuCoordinator(tabBarItem: tabBarItem)
-        case .addPlant:
-            Logger.info("HOME")
-            return AddCoordinator(tabBarItem: tabBarItem)//OrdersCoordinator(tabBarItem: tabBarItem, navigationController: BaseNavigationController())
+//        case .addPlant:
+//            Logger.info("HOME")
+//            return AddCoordinator(tabBarItem: tabBarItem)//OrdersCoordinator(tabBarItem: tabBarItem, navigationController: BaseNavigationController())
         case .badges:
             Logger.info("BADGES")
             return BadgesCoordinator(tabBarItem: tabBarItem)//NewsCoordinator(tabBarItem: tabBarItem)

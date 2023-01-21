@@ -12,4 +12,14 @@ query FetchUser($email: String, $password: String) {
   }
 }
 
+mutation RegisterUser($userInput: User_insert_input!) {
+  insert_User_one(object: $userInput) {
+    id
+    name
+    userName
+    email
+    userName
+    userType
+  }
+}
 

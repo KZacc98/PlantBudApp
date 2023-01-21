@@ -38,8 +38,11 @@ extension CommunityCellConfigurator: ReusableViewConfiguratorInterface {
         
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
+        view.mainBackgroundView.backgroundColor = data.tileColor
         view.communityNameLabel.text = data.communityDomain.communityName
-        view.plantStateLabel.text = "data.plantState.rawValue"
+        view.communityNameLabel.textColor = data.textColor
+        view.communityDescriptionLabel.text = data.communityDomain.communityDescription
+        view.communityDescriptionLabel.textColor = data.textColor
         view.communityImageView.setImage(with: URL(string: data.communityDomain.communityBigImage))
         view.mainBackgroundView.gestureRecognizers?.forEach {
             view.mainBackgroundView.removeGestureRecognizer($0)
@@ -57,6 +60,8 @@ extension CommunityCellConfigurator: ReusableViewConfiguratorInterface {
 
 struct CommunityCellData {
     let communityDomain: CommunityDomain
+    let tileColor: UIColor
+    let textColor: UIColor
     let didPressCommunityTile: (() -> Void)?
 }
 

@@ -13,6 +13,7 @@ class LoginViewModel {
     
     public var onSectionSequenceChange: ((SectionSequence) -> Void)?
     public var onLoginButtonPressed: (() -> ())?
+    public var onRegisterButtonPressed: (() -> ())?
     public var onLoginSuccess: ((String) -> ())?
     public var onLoginFailure: (() -> ())?
 
@@ -37,30 +38,10 @@ class LoginViewModel {
         return [loginInputCellConfigurator, passwordInputCellConfigurator]
     }
     
-//    private var currentFirstResponderInput: InputInterface? {
-//        didSet {
-//            guard let items = textInputCellInputAccessoryView.items,
-//                items.indices.contains(0), items.indices.contains(1) else {
-//                    return
-//            }
-//            let currentFirstResponderIsInput = currentFirstResponderInput === loginInputCellConfigurator
-////            textInputCellInputAccessoryView.items?[0].isEnabled = !currentFirstResponderIsInput
-////            textInputCellInputAccessoryView.items?[1].isEnabled = currentFirstResponderIsInput
-//        }
-//    }
-    
     // MARK: - Form items
 
-    private lazy var headerConfigurator: AnimationHeaderConfigurator = {
-        let data = AnimationHeaderData(animationName: "plant_walking")
-        
-        return AnimationHeaderConfigurator(data: data)
-//        let data = LoginHeaderData(backgroundColor: Color.loginBackground,
-//                                   imageUrl: URL(string: loginSettings?.logo ?? ""),
-//                                   helloTitle: loginSettings?.firstName,
-//                                   hideKeyboard: hideKeyboard)
-//
-//        return LoginHeaderConfigurator(data: data)
+    private lazy var headerConfigurator: AppIconHeaderCellConfigurator = {
+        return AppIconHeaderCellConfigurator(data: "data")
     }()
     
 
@@ -88,7 +69,6 @@ class LoginViewModel {
         configurator.data.textfieldDidEndEditing = textFieldDidEndEditing
 
         configurator.didBecomeFirstResponder = { [weak self] input in
-//            self?.currentFirstResponderInput = input
         }
 
         return configurator
@@ -130,7 +110,7 @@ class LoginViewModel {
         }
         let buttonInsets = UIEdgeInsets(top: 24.deviceSizeAware,
                                         left: 12,
-                                        bottom: -24.deviceSizeAware,
+                                        bottom: 0,
                                         right: -12)
         let data = MainButtonCellData(title: "loginButtonTitile".localized.uppercased(),
                                       buttonInsets: buttonInsets,
@@ -138,13 +118,22 @@ class LoginViewModel {
 
         return MainButtonCellConfigurator(data: data)
     }()
+    
+    private lazy var registerButtonCellConfigurator: MainButtonCellConfigurator = {
+        let didPressButton: () -> () = { [weak self] in
+            self?.onRegisterButtonPressed?()
+            Logger.error("REGISTER")
+        }
+        let buttonInsets = UIEdgeInsets(top: 0,
+                                        left: 12,
+                                        bottom: -24.deviceSizeAware,
+                                        right: -12)
+        let data = MainButtonCellData(title: "Register",
+                                      buttonInsets: buttonInsets,
+                                      didPressButton: didPressButton)
 
-//    private lazy var textInputCellInputAccessoryView: UIToolbar = {
-//        let toolbar = UIToolbar(
-//            frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
-//
-//        return toolbar
-//    }()
+        return MainButtonCellConfigurator(data: data)
+    }()
 
     // MARK: - Initialization
 
@@ -160,7 +149,7 @@ class LoginViewModel {
         var sections  = [SingleColumnSection(cellConfigurators: [loginInputCellConfigurator,
                                                                  passwordInputCellConfigurator,
                                                                  loginButtonCellConfigurator,
-                                                                 ],
+                                                                 registerButtonCellConfigurator],
                                              headerConfigurator: headerConfigurator)]
         sections.append(makeAnimationFillerSection())
         sectionSequence = SectionSequence(sections: sections)
@@ -197,17 +186,6 @@ class LoginViewModel {
             }
         }
         Logger.error("AUTH")
-        
-        
-//        UIAppDelegate?.showLoadingIndicator()
-//        worker.authenticate(username: username, password: password, success: { [weak self] in
-//            UIAppDelegate?.hideLoadingIndicator()
-//            AnalyticsEventLogger.logEvent(with: AnalyticsEvent(name: .login))
-//            self?.onLoginSuccess?()
-//        }) { error in
-//            UIAppDelegate?.hideLoadingIndicator()
-//            DialogManager.showErrorDialog(with: error)
-//        }
     }
 
     public func validate(completion: (([Error], [IndexPath]) -> Void)? = nil) {

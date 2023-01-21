@@ -12,8 +12,7 @@ final class ProfileViewModel {
     //MARK: - Binding closures
     
     public var onSectionSequenceChange: ((SectionSequence) -> Void)?
-    public var onFetchSuccess: ((String) -> Void)?
-    public var onDeletePlantSuccess: (() -> Void)?
+    public var onLogout: (() -> Void)?
     public var onError: ((Error) -> ())?
     
     //MARK: Private properties
@@ -23,6 +22,32 @@ final class ProfileViewModel {
             onSectionSequenceChange?(sectionSequence)
         }
     }
+    
+    private lazy var logoutButton: MainButtonCellConfigurator = {
+        let didPressButton: () -> () = { [weak self] in
+            DialogManager.showConfirmationDialog(
+                title: "Logout",
+                message: "U really wanna logout",
+                cancelButtonTitle: "nah",
+                acceptBlock: {
+                    UIAppDelegate?.applicationCoordinator?.logout()
+                },
+                rejectBlock: {
+                    Logger.info("stay logged in")
+                }
+            )
+            
+        }
+        let buttonInsets = UIEdgeInsets(top: 24.deviceSizeAware,
+                                        left: 12,
+                                        bottom: -24.deviceSizeAware,
+                                        right: -12)
+        let data = MainButtonCellData(title: "Logout".uppercased(),
+                                      buttonInsets: buttonInsets,
+                                      didPressButton: didPressButton)
+        
+        return MainButtonCellConfigurator(data: data)
+    }()
     
     //MARK: - Initialization
     
@@ -40,7 +65,8 @@ final class ProfileViewModel {
     public func buildSections() {
         sectionSequence = SectionSequence(
             sections: [
-                makeEmptyDataSection()
+                makeProfilePictureSection(),
+                SingleColumnSection(cellConfigurators: [logoutButton])
             ]
         )
     }
@@ -48,8 +74,8 @@ final class ProfileViewModel {
     
     //MARK: - Private methods
     
-    private func makeEmptyDataSection() -> SingleColumnSection {
-        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: UserContext.shared.userProfile?.name ?? "JEB"))
+    private func makeProfilePictureSection() -> SingleColumnSection {
+        let configurator = ProfilePictureCellConfigurator(imageUrl: UserContext.shared.userProfile?.profilePicture)
         
         return SingleColumnSection(cellConfigurators: [configurator])
         

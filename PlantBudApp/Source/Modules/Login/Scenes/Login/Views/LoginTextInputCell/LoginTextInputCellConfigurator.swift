@@ -60,7 +60,6 @@ extension LoginTextInputCellConfigurator: ReusableViewConfiguratorInterface {
         }
         
         view.contentView.backgroundColor = Color.brandWhite
-        view.mainBackgroundView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.selectionStyle = .none
         view.titleLabel.text = data.title
         view.titleLabel.textAlignment = .center

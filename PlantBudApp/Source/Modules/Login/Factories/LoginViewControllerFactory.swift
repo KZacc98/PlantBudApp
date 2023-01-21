@@ -18,4 +18,10 @@ class LoginViewControllerFactory {
         return viewController
     }
     
+    func makeRegisterViewController() -> RegisterViewController {
+        let viewController: RegisterViewController = RegisterViewController()
+        viewController.viewModel = RegisterViewModel(tableViewInterface: viewController)
+        
+        return viewController
+    }
 }

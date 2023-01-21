@@ -109,12 +109,12 @@ class TextInputCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        mainBackgroundView.layer.cornerRadius = 0
-        mainBackgroundView.layer.shadowRadius = 0
-        mainBackgroundView.layer.shadowColor = nil
-        mainBackgroundView.layer.shadowOpacity = 0
-        mainBackgroundView.layer.shadowOffset = CGSize.zero
-        mainBackgroundViewTopContrain.constant = 0
+//        mainBackgroundView.layer.cornerRadius = 0
+//        mainBackgroundView.layer.shadowRadius = 0
+//        mainBackgroundView.layer.shadowColor = nil
+//        mainBackgroundView.layer.shadowOpacity = 0
+//        mainBackgroundView.layer.shadowOffset = CGSize.zero
+//        mainBackgroundViewTopContrain.constant = 0
         separatorView.backgroundColor = Color.darkGray
         titleLabel.textColor = Color.brandGreen
         titleLabel.text = nil

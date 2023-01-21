@@ -1,0 +1,38 @@
+
+mutation CreateCareRoutine($plantId: Int!) {
+  insert_CareRoutine_one(object: {plantId: $plantId}) {
+    id
+  }
+}
+
+mutation AddRoutineStep($input: RoutineStep_insert_input!) {
+  insert_RoutineStep_one(object: $input) {
+    stepFrequency
+    description
+  }
+}
+
+query fetchPlantCareRoutineId($plantId: Int!) {
+  CareRoutine(where: {plantId: {_eq: $plantId}}) {
+    id
+    plantId
+  }
+}
+
+mutation UpdateRoutineStepStatus($_in: [Int!], $isCompleted: Boolean!) {
+  update_RoutineStep(where: {id: {_in: $_in}}, _set: {isCompleted: $isCompleted}) {
+    returning {
+      id
+      careRoutineId
+      stepFrequency
+      otherFrequency
+      description
+      isCompleted
+      completedAt
+      createdAt
+      updatedAt
+    }
+  }
+}
+
+

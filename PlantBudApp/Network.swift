@@ -100,6 +100,7 @@ class Network {
             case .success(let graphQLResult):
                 if let errors = graphQLResult.errors {
                     Logger.error(errors.debugDescription)
+                    completion(.failure(ApplicationError.unknownError))
                 }
                 if let data = graphQLResult.data {
                     completion(.success(data))
@@ -108,6 +109,14 @@ class Network {
                 completion(.failure(error))
             }
         }
+    }
+    
+    public static func getTimestamp() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        let timestamp = dateFormatter.string(from: Date())
+        
+        return timestamp
     }
     
     

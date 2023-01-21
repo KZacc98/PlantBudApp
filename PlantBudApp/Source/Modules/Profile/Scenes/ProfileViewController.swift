@@ -60,10 +60,6 @@ extension ProfileViewController {
                 self?.refreshControl.endRefreshing()
             }
         }
-        
-        viewModel.onFetchSuccess = {[weak self] res in
-            self?.makeToast(with: res)
-        }
     }
     
 }
