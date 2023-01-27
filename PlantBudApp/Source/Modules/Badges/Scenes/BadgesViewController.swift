@@ -73,7 +73,7 @@ extension BadgesViewController {
 //        userButtonBar.accessibilityLabel = "userSideMenuAccessibilityLabel".localized
 //        userButtonBar.tintColor = Color.brandGreen
 //        navigationItem.rightBarButtonItem = userButtonBar
-        title = "Badges"
+        title = "badgesTitle".localized
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {

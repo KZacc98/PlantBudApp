@@ -37,7 +37,7 @@ final class MessageOfTheDayCell: UITableViewCell {
         let label = UILabel()
         label.font = Font.noticiaRegular(size: 16)
         label.textColor = Color.brandBlack
-        label.text = "CurrentPlantMeanState"
+        label.text = "currentPlantMeanState".localized
         label.textAlignment = .center
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping

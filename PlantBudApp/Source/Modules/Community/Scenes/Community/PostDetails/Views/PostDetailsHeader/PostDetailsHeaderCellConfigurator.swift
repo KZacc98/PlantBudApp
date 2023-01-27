@@ -63,7 +63,7 @@ extension PostDetailsHeaderCellConfigurator: ReusableViewConfiguratorInterface {
         view.userProfileImageView.setImage(with: URL(string: profilePicturePlaceholder))
         view.usernameLabel.text = data.postDomain.userName
         view.postBodyLabel.text = data.postDomain.postBody
-        view.postPointsLabel.text = postPoints > 0 ? "Points: +\(postPoints)" : "Points: \(postPoints)"
+        view.postPointsLabel.text = postPoints > 0 ? "\("postPoints".localized)\(postPoints)" : "\("postPoints".localized)\(postPoints)"
         
         view.userInfoHeader.gestureRecognizers?.forEach {
             view.userInfoHeader.removeGestureRecognizer($0)

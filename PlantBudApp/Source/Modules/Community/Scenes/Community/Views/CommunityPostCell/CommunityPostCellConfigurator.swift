@@ -81,7 +81,7 @@ extension CommunityPostCellConfigurator: ReusableViewConfiguratorInterface {
         view.userProfileImageView.setImage(with: URL(string: profilePicturePlaceholder))
         view.usernameLabel.text = data.postUser.userName
         view.postBodyLabel.text = data.postDomain.postBody
-        view.postPointsLabel.text = postPoints > 0 ? "Points: +\(postPoints)" : "Points: \(postPoints)"
+        view.postPointsLabel.text = postPoints > 0 ? "\("postPoints".localized)\(postPoints)" : "\("postPoints".localized)\(postPoints)"
         view.postCommentCountLabel.text = "Comments: \(data.comments.count)"
         view.commentUserProfileImageView.setImage(with: URL(string: profilePicturePlaceholder))
         

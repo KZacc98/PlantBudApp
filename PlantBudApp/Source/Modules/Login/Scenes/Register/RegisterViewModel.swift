@@ -44,8 +44,8 @@ class RegisterViewModel {
         let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet.symbols)
                                                           .union(CharacterSet.punctuationCharacters)
                                                           .union(CharacterSet.whitespaces)
-        let data = TextInputCellData(title: "Name".uppercased(),
-                                     placeHolder: "Name",
+        let data = TextInputCellData(title: "nameInputText".localized,
+                                     placeHolder: "nameInputPlaceholder".localized,
                                      text: registerCredentials.name,
                                      isSecureTextEntry: false,
                                      validator: TextValidator(minimumLength: 3,
@@ -73,8 +73,8 @@ class RegisterViewModel {
         let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet.symbols)
                                                           .union(CharacterSet.punctuationCharacters)
                                                           .union(CharacterSet.whitespaces)
-        let data = TextInputCellData(title: "Username".uppercased(),
-                                     placeHolder: "Username",
+        let data = TextInputCellData(title: "usernameInputText".localized,
+                                     placeHolder: "usernameInputPlaceholder".localized,
                                      text: registerCredentials.username,
                                      isSecureTextEntry: false,
                                      validator: TextValidator(minimumLength: 3,
@@ -101,8 +101,8 @@ class RegisterViewModel {
     private lazy var emailInputCellConfigurator: LoginTextInputCellConfigurator = {
         let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet.symbols)
                                                           .union(CharacterSet.punctuationCharacters)
-        let data = TextInputCellData(title: "E-Mail".uppercased(),
-                                     placeHolder: "E-mail".localized,
+        let data = TextInputCellData(title: "emailInputText".localized,
+                                     placeHolder: "emailInputPlaceholder".localized,
                                      text: registerCredentials.email,
                                      isSecureTextEntry: false,
                                      validator: TextValidator(minimumLength: 3,
@@ -133,8 +133,8 @@ class RegisterViewModel {
         let validator = TextValidator(minimumLength: 4,
                                       maximumLength: 254,
                                       allowedCharacters: allowedCharacters)
-        let data = TextInputCellData(title: "loginPasswordTitleText".localized.uppercased(),
-                                     placeHolder: "loginPasswordPlaceHolder".localized,
+        let data = TextInputCellData(title: "passwordInputText".localized,
+                                     placeHolder: "passwordPlaceholder".localized,
                                      text: registerCredentials.password,
                                      isSecureTextEntry: true,
                                      validator: validator)
@@ -154,21 +154,6 @@ class RegisterViewModel {
         }
 
         return configurator
-    }()
-
-    private lazy var loginButtonCellConfigurator: MainButtonCellConfigurator = {
-        let didPressButton: () -> () = { [weak self] in
-//            self?.onLoginButtonPressed?()
-        }
-        let buttonInsets = UIEdgeInsets(top: 24.deviceSizeAware,
-                                        left: 12,
-                                        bottom: 0,
-                                        right: -12)
-        let data = MainButtonCellData(title: "loginButtonTitile".localized.uppercased(),
-                                      buttonInsets: buttonInsets,
-                                      didPressButton: didPressButton)
-
-        return MainButtonCellConfigurator(data: data)
     }()
     
     private lazy var registerButtonCellConfigurator: MainButtonCellConfigurator = {
@@ -202,7 +187,6 @@ class RegisterViewModel {
                                                                  userNameInputCellConfigurator,
                                                                  emailInputCellConfigurator,
                                                                  passwordInputCellConfigurator,
-                                                                 loginButtonCellConfigurator,
                                                                  registerButtonCellConfigurator],
                                              headerConfigurator: headerConfigurator)]
         sections.append(makeAnimationFillerSection())

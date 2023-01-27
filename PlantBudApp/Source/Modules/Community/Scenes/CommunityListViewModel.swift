@@ -130,7 +130,7 @@ final class CommunityListViewModel {
     private func makeUserCommunitiesSection(communities: [CommunityDomain]?) -> SingleColumnSection {
         guard let communities = communities else { return SingleColumnSection(cellConfigurators: []) }
         let headerData = MainSectionHeaderData(
-            title: "Your Communities", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+            title: "userCommunitiesHeaderTitle".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
         let configurators = communities.map { community in
             CommunityCellConfigurator(data: CommunityCellData(
@@ -150,7 +150,7 @@ final class CommunityListViewModel {
     private func makeAllCommunitiesSection(communities: [CommunityDomain]?) -> SingleColumnSection {
         guard let communities = communities else { return SingleColumnSection(cellConfigurators: []) }
         let headerData = MainSectionHeaderData(
-            title: "All Communities", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+            title: "allCommunitiesHeaderTitle".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
         let configurators = communities.map { community in
             CommunityCellConfigurator(data: CommunityCellData(

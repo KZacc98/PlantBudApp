@@ -382,7 +382,7 @@ final class CommunityViewModel {
         }
         
         let commentCellData = CommentTextFieldCellData(
-            text: "Comment...",
+            text: "",
             textViewHeight: 100.deviceSizeAware,
             maximumCommentTextLength: 499,
             returnTypeKey: .done,

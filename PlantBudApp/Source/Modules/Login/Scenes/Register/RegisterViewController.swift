@@ -119,7 +119,7 @@ extension RegisterViewController {
     }
     
     private func setupNavigationBar() {
-        title = "Login"
+        title = "registerTitle".localized
     }
     
     private func setupTableView() {

@@ -1,0 +1,144 @@
+/* 
+  Localizable.strings
+  PlantBudApp
+
+  Created by Kamil Zachara on 19/11/2022.
+  
+*/
+
+//Global
+"warning" = "Ostrzeżenie";
+"yes" = "Tak";
+"no" = "Nie";
+"done" = "Zakończ";
+
+//TabBar
+"tabBarOptionHome" = "Dom";
+"tabBarOptionLeaf" = "Rośliny";
+"tabBarOptionPlus" = "Dodaj";
+"tabBarOptionBadge" = "Odznaki";
+"tabBarOptionCommunity" = "Społeczności";
+
+//Login
+
+"loginButtonTitile" = "Zaloguj się";
+"loginTitle" = "Witaj";
+"loginInputText" = "E-Mail";
+"loginPlaceholder" = "example@mail.com";
+"passwordInputText" = "Hasło";
+"passwordPlaceholder" = "Twoje hasło";
+
+
+//Register
+
+"registerTitle" = "Zarejestruj się";
+"nameInputText" = "Name";
+"nameInputPlaceholder" = "Twoje imię i nazwisko";
+"usernameInputText" = "Nazwa użytkownika";
+"usernameInputPlaceholder" = "Twoja nazwa użytkownika";
+"emailInputText" = "E-Mail";
+"emailInputPlaceholder" = "example@mail.com";
+
+//Home
+
+"homeTitle" = "Strona główna";
+"userProfileCellName" = "Witaj %1$@";
+"userProfileCellPlantsLabel" = "Rośliny";
+"plantStatsHeaderLabel" = "Podsumowanie";
+"messageOfTheDayHeaderLabel" = "Wiadomość dnia";
+"currentPlantMeanState" = "Stan twoich roślin";
+
+//ScoreMessages
+"noMessage" = "Wystąpił błąd podczas pobierania wiadomości";
+
+    //Perfect
+
+    "perfectScore1" = "Twoje rośliny zawsze wyglądają tak zdrowo i żywo - widać, że masz prawdziwy zielony kciuk! Kontynuuj doskonałą pracę z ich pielęgnacją.";
+    "perfectScore2" = "Jestem nieustannie zdumiony troską i uwagą, jaką poświęcasz swoim roślinom. Twoja ciężka praca naprawdę się opłaca - wyglądają fantastycznie! Trzymaj się tej wspaniałej pracy.";
+    "perfectScore3" = "Muszę powiedzieć, że Twoje rośliny są jednymi z najbardziej zadbanych jakie kiedykolwiek widziałem. Twoje poświęcenie dla ich zdrowia naprawdę się opłaca - wyglądają niesamowicie! Trzymaj się fantastycznej pracy.";
+
+    //Thirsty
+
+    "thirsty1" = "Hej tam, tylko przyjazne przypomnienie, że Twoim roślinom przydałoby się trochę podlewania. Podziękują Ci za to zdrowym wzrostem!";
+    "thirsty2" = "Wygląda na to, że Twoim roślinom przydałoby się picie - nie zapomnij ich podlać, aby wyglądały jak najlepiej!";
+    "thirsty3" = "Hej, tylko szybka notatka, aby dać Ci znać, że Twoje rośliny wyglądają na nieco sparaliżowane. Upewnij się, że dasz im trochę wody, aby były szczęśliwe i zdrowe!";
+
+    //Forgotten
+
+    "forgotten1" = "Hej tam, wygląda na to, że Twoim roślinom przydałoby się trochę miłości i uwagi. Nie zapomnij ich podlewać i pielęgnować, aby mogły się rozwijać!";
+    "forgotten2" = "Zauważyłem, że Twoje rośliny wyglądają na nieco zaniedbane - nie zapomnij dać im opieki, której potrzebują, aby pozostać zdrowymi i szczęśliwymi!";
+    "forgotten3" = "Hej, tylko przyjazne przypomnienie, że Twoje rośliny potrzebują trochę uwagi. Upewnij się, że podlewasz je i dbasz o nie regularnie, aby wyglądały jak najlepiej.";
+
+    //Regular
+
+    "regular1" = "Zauważyłem, że ogólnie wykonujesz świetną pracę przy pielęgnacji swoich roślin, ale jest kilka obszarów, w których mógłbyś się poprawić. Czy próbowałeś używać różnych rodzajów gleby lub nawozów, aby zobaczyć co działa najlepiej dla Twoich roślin? Może to pomóc im rosnąć jeszcze zdrowiej i silniej.";
+    "regular2" = "Twoje rośliny wyglądają ogólnie świetnie, ale zauważyłem, że niektóre z nich stają się trochę legendarne. Czy rozważałeś ich przycinanie, aby zachęcić je do nowego wzrostu i utrzymać ich najlepszy wygląd? To prosty, ale skuteczny sposób na poprawę ich zdrowia i wyglądu.";
+    "regular3" = "Naprawdę doceniam troskę i uwagę, jaką poświęcasz swoim roślinom, ale czy pomyślałeś o ich rotacji, aby zapewnić im wszystkim równą ilość światła słonecznego? To może zrobić dużą różnicę w ich wzroście i ogólnym zdrowiu. Kontynuujcie wspaniałą pracę i nie bójcie się eksperymentować i próbować nowych rzeczy!";
+
+//MessageOfTheDay
+
+"messageOfTheDay1" = "Nasze rośliny może nie mówią, ale na pewno śpiewają \nKiedy dajemy im opiekę, która sprawia, że ich liście nabierają skrzydeł. \nPodlewamy i nawozimy, przycinamy i chronimy, aby nasze rośliny mogły się rozwijać, a nigdy nie zaniedbać.";
+"messageOfTheDay2" = "Nasze rośliny są jak nasze dzieci, potrzebują miłości i opieki, bez niej więdną i opadają, a to nie jest sprawiedliwe. \nWięc dbamy o nie codziennie, z wodą i światłem słonecznym i patrzymy jak rosną w siłę, to piękny widok.";
+"messageOfTheDay3" = "Nasze rośliny może nie mają głosów, ale mają serca, a kiedy się nimi dobrze opiekujemy, nigdy się nie rozpadają. \nPodlewamy je, przycinamy i dodajemy im trochę otuchy, aby mogły rosnąć wysokie i silne, przez cały rok.";
+
+//PlantList
+
+"plantListTitle" = "Rośliny";
+
+//AddPlant
+
+"chooseSpeciesTitle" = "Wybierz gatunek";
+"plantNameInput" = "Nazwa rośliny";
+"addPlantButtonTitle" = "Dodaj roślinę";
+
+//plantDetails
+
+"plantDetailsTitle" = "Szczegóły";
+"careRoutineHeaderLabel" = "Rutyna pielęgnacyjna";
+"deleteHeaderLabel" = "Strefa zagrożenia";
+"addRoutineStepButtonLabel" = "Dodaj krok";
+"addCareRoutineButtonLabel" = "Utwórz rutynę pielęgnacyjną";
+"deletePlantButtonTitle" = "Usuń roślinę";
+"deletePlantDialogMessage" = "Masz zamiar usunąć tę roślinę.\nTa czynność jest nieodwracalna! \nCzy chcesz kontynuować?";
+
+//AddRoutine
+
+"addCareRoutineTitle" = "Rutyna pielęgnacyjna";
+"routineStepDescriptionPlaceholder" = "Opis";
+"routineStepPickerTitle" = "Wybierz częstotliwość";
+"routineStepPickerPlaceholder" = "Częstotliwość kroku";
+"stepListEmpty" = "Lista częstotliwości kroków pusta";
+
+//stepFrequency
+
+"threeTimesADay" = "Trzy razy dziennie";
+"twoTimesADay" = "Dwa razy dziennie";
+"daily" = "Codziennie";
+"everyTwoDays" = "Co dwa dni";
+"everyThreeDays" = "Co trzy dni";
+"everyFourDays" = "Co cztery dni";
+"everyFiveDays" = "Co pięć dni";
+"everySixDays" = "Co sześć dni";
+"weekly" = "Tygodniowo";
+"everyTwoWeeks" = "Co dwa tygodnie";
+"everyThreeWeeks" = "Co trzy tygodnie";
+"onceAMonth" = "Raz w miesiącu";
+"onceAYear" = "Raz w roku";
+"other" = "Inne";
+
+//Badges
+
+"badgesTitle" = "Odznaki";
+"newestBadgeHeaderLabel" = "Najnowsza odznaka";
+"allBadgesHeaderLabel" = "Wszystkie odznaki";
+
+//Communities
+
+"communitiesListTitle" = "Społeczności";
+"userCommunitiesHeaderTitle" = "Twoje społeczności";
+"allCommunitiesHeaderTitle" = "Wszystkie społeczności";
+
+"noCommentsPlaceholder" = "Skomentuj jako pierwszy";
+"postPoints" = "Punkty: ";
+"postDetailsTitle" = "Szczegóły";
+

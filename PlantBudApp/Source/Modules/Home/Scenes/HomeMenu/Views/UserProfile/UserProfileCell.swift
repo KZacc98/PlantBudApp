@@ -49,7 +49,7 @@ final class UserProfileCell: UITableViewCell {
         let label = UILabel()
         label.font = Font.noticiaRegular(size: 24)
         label.textColor = Color.brandBlack
-        label.text = "Plants"
+        label.text = "userProfileCellPlantsLabel".localized
         label.textAlignment = .center
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping

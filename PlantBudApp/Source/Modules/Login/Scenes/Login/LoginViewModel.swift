@@ -49,8 +49,8 @@ class LoginViewModel {
         let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet.symbols)
                                                           .union(CharacterSet.punctuationCharacters)
                                                           .union(CharacterSet.whitespaces)
-        let data = TextInputCellData(title: "loginTitleText".localized.uppercased(),
-                                     placeHolder: "loginPlaceHolder".localized,
+        let data = TextInputCellData(title: "loginInputText".localized.uppercased(),
+                                     placeHolder: "loginPlaceholder".localized,
                                      text: loginCredentials.username,
                                      isSecureTextEntry: false,
                                      validator: TextValidator(minimumLength: 3,
@@ -81,7 +81,7 @@ class LoginViewModel {
         let validator = TextValidator(minimumLength: 4,
                                       maximumLength: 254,
                                       allowedCharacters: allowedCharacters)
-        let data = TextInputCellData(title: "loginPasswordTitleText".localized.uppercased(),
+        let data = TextInputCellData(title: "passwordInputText".localized,
                                      placeHolder: "loginPasswordPlaceHolder".localized,
                                      text: loginCredentials.password,
                                      isSecureTextEntry: true,
@@ -112,7 +112,7 @@ class LoginViewModel {
                                         left: 12,
                                         bottom: 0,
                                         right: -12)
-        let data = MainButtonCellData(title: "loginButtonTitile".localized.uppercased(),
+        let data = MainButtonCellData(title: "loginButtonTitile".localized,
                                       buttonInsets: buttonInsets,
                                       didPressButton: didPressButton)
 

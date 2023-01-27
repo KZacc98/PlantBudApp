@@ -38,8 +38,8 @@ final class AddPlantFormViewModel {
         let validator = TextValidator(minimumLength: 4,
                                       maximumLength: 254,
                                       allowedCharacters: allowedCharacters)
-        let data = TextInputCellData(title: "Plant Name".uppercased(),
-                                     placeHolder: "plant Name",
+        let data = TextInputCellData(title: "plantNameInput".localized.uppercased(),
+                                     placeHolder: "plantNameInput".localized,
                                      isSecureTextEntry: false,
                                      validator: validator)
         let configurator = TextInputCellConfigurator(data: data)
@@ -72,18 +72,12 @@ final class AddPlantFormViewModel {
                                         left: 12,
                                         bottom: -24.deviceSizeAware,
                                         right: -12)
-        let data = MainButtonCellData(title: "ADD PLANT".uppercased(),
+        let data = MainButtonCellData(title: "addPlantButtonTitle".localized,
                                       buttonInsets: buttonInsets,
                                       didPressButton: didPressButton)
 
         return MainButtonCellConfigurator(data: data)
     }()
-    
-    private func makeHelloHeaderSection() -> SingleColumnSection {
-        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "FORM HERE"))
-
-        return SingleColumnSection(cellConfigurators: [configurator])
-    }
     
     //MARK: - Initialization
 
@@ -125,7 +119,6 @@ final class AddPlantFormViewModel {
     public func buildEmptySections() {
         sectionSequence = SectionSequence(
             sections: [
-                makeHelloHeaderSection(),
                 SingleColumnSection(cellConfigurators: [plantNameInputCellConfigurator,addPlantButtonCellConfigurator])
             ])
     }

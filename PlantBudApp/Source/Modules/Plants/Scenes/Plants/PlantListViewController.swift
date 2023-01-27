@@ -97,7 +97,7 @@ extension PlantListViewController {
                                             action: #selector(didPressAddPlantButton(sender:)))
         addPlantButtonBar.tintColor = Color.brandGreen
         navigationItem.rightBarButtonItem = addPlantButtonBar
-        title = "Plants"
+        title = "plantListTitle".localized
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {

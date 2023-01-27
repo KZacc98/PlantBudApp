@@ -37,7 +37,7 @@ final class PlantStatsCell: UITableViewCell {
         let label = UILabel()
         label.font = Font.noticiaRegular(size: 24)
         label.textColor = Color.brandWhite
-        label.text = "CurrentPlantMeanState"
+        label.text = "currentPlantMeanState".localized
         label.textAlignment = .natural
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
@@ -50,7 +50,7 @@ final class PlantStatsCell: UITableViewCell {
         let label = UILabel()
         label.font = Font.noticiaRegular(size: 18)
         label.textColor = Color.brandWhite
-        label.text = "CurrentPlantMeanState"
+        label.text = "currentPlantMeanState".localized
         label.textAlignment = .natural
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
@@ -63,7 +63,7 @@ final class PlantStatsCell: UITableViewCell {
         let label = UILabel()
         label.font = Font.noticiaRegular(size: 14)
         label.textColor = Color.brandWhite
-        label.text = "CurrentPlantMeanState"
+        label.text = "currentPlantMeanState".localized
         label.textAlignment = .natural
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping

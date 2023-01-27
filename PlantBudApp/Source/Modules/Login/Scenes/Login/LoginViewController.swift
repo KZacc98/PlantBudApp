@@ -126,7 +126,7 @@ extension LoginViewController {
     }
     
     private func setupNavigationBar() {
-        title = "Login"
+        title = "loginTitle".localized
     }
     
     private func setupTableView() {

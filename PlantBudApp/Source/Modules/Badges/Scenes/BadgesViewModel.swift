@@ -70,7 +70,7 @@ final class BadgesViewModel {
                     ))
                 })
             case .failure(let error):
-                Logger.error("ERROR: \(error)")
+                Logger.error(error.localizedDescription)
             }
             dispatchGroup.leave()
         }
@@ -89,7 +89,7 @@ final class BadgesViewModel {
                     ))
                 })
             case .failure(let error):
-                Logger.error("ERROR: \(error)")
+                Logger.error(error.localizedDescription)
             }
             dispatchGroup.leave()
         }
@@ -117,7 +117,7 @@ final class BadgesViewModel {
 
     private func makeCurrentBadgeSection(badge: BadgeDomain) -> SingleColumnSection {
         let headerData = MainSectionHeaderData(
-            title: "Newest Badge", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+            title: "newestBadgeHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
         let configurator = CurrentBadgeCellConfigurator(data: CurrentBadgeCellData(
             points: badge.points,
@@ -130,7 +130,7 @@ final class BadgesViewModel {
     
     private func makeBadgesSection(badges: [BadgeDomain]) -> SingleColumnSection {
         let headerData = MainSectionHeaderData(
-            title: "All Badges", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+            title: "allBadgesHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
         let configurators = badges.map { badge in
             BadgeCellConfigurator(data: BadgeCellData(
