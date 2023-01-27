@@ -21,6 +21,7 @@ final class CommunityViewControllerFactory {
     func makeCommunityViewController(communityDomain: CommunityDomain) -> CommunityViewController {
         let viewController = CommunityViewController()
         viewController.viewModel = CommunityViewModel(communityDomain: communityDomain)
+        viewController.title = communityDomain.communityName
         
         return viewController
     }

@@ -223,7 +223,7 @@ final class CommunityPostCell: UITableViewCell {
         label.textAlignment = .natural
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
-        label.text = "Be the first to comment"
+        label.text = "noCommentsPlaceholder".localized
         commentCell.addSubviewsUsingAutoLayout(label)
         
         return label

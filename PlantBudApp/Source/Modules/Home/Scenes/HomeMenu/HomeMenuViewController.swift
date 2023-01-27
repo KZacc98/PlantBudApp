@@ -128,8 +128,7 @@ extension HomeMenuViewController {
                                             action: #selector(didPressUserButton(sender:)))
         userButtonBar.tintColor = Color.brandGreen
         navigationItem.rightBarButtonItem = userButtonBar
-//        UINavigationBar.setItems([userButtonBar], animated: true)
-        navigationItem.title = "Hello"
+        navigationItem.title = "homeTitle".localized
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {
@@ -141,43 +140,6 @@ extension HomeMenuViewController {
         case .noData:
             tableView.bounces = false
             let emptyDataView = EmptyDataView()
-            
-//            let onRefreshData: () -> () = { [weak self] in
-//                self?.viewModel.loadData(refresh: true)
-//            }
-//
-//            let buttonAction: () -> () = { [weak self] in
-//                if let ordersDisabled = UserContext.shared.userPanel?.company.continueOrdersDisabled, ordersDisabled == true {
-//                    self?.onOrdersDisabled?()
-//                } else {
-//                    let tabBarCoordinator = UIAppDelegate?.applicationCoordinator?.childCoordinator as? TabBarCoordinator
-//                    tabBarCoordinator?.selectTabBarItem(for: .orders)
-//                    (tabBarCoordinator?.childCoordinator as? OrdersCoordinator)?.pushNewOrder(order: nil, animated: false)
-//                }
-//            }
-//
-//            let didSelectItemAtIndexPath: (IndexPath) -> () = { [weak self] indexPath in
-//                self?.viewModel.didSelectDiscount(indexPath: indexPath)
-//            }
-//
-//            let descriptionText = "myDietEmptyDataLabelString".localized + "\n" + "myDietNoBoughtDietEmptyData".localized
-//            let company = UserContext.shared.userPanel?.company
-//            let companyInformation = company?.companyInfo?.infoDesktop
-//            let cellConfigurators = company?.discountList.map {
-//                DiscountCellConfigurator(data: DiscountCellData(remote: $0))
-//            }
-//            let companyImage = UserContext.shared.userPanel?.company.logo.landscapeImageForSize(._640x480)
-//            let data = MyDietEmptyData(
-//                companyImage: companyImage ?? "",
-//                description: descriptionText,
-//                companyInformation: companyInformation,
-//                buttonTitle: "myDietMakeAnOrder".localized.uppercased(),
-//                buttonAction: buttonAction,
-//                cellConfigurators: cellConfigurators ?? [],
-//                didSelectItemAtIndexPath: didSelectItemAtIndexPath,
-//                refreshControl: refreshControl,
-//                onRefreshData: onRefreshData)
-//            emptyDataView.configure(data: data)
             dataSource.emptyDataView = emptyDataView
         }
     }

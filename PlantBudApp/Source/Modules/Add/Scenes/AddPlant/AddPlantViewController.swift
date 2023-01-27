@@ -76,14 +76,7 @@ extension AddPlantViewController {
     }
     
     private func setupNavigationBar() {
-//        let userButtonBar = UIBarButtonItem(image: Assets.Common.user,
-//                                            style: .plain,
-//                                            target: self,
-//                                            action: #selector(didPressUserButton(sender:)))
-//        userButtonBar.accessibilityLabel = "userSideMenuAccessibilityLabel".localized
-//        userButtonBar.tintColor = Color.brandGreen
-//        navigationItem.rightBarButtonItem = userButtonBar
-        title = "AddPlant"
+        title = "chooseSpeciesTitle".localized
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {

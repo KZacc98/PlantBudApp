@@ -29,7 +29,6 @@ final class AddPlantFormViewController: BaseTableViewController, TableViewContro
         super.viewDidLoad()
         
         setupView()
-        setupNavigationBar()
         setupEmptyDataView()
         setupTableView()
         viewModel.loadData()
@@ -81,17 +80,6 @@ extension AddPlantFormViewController {
 extension AddPlantFormViewController {
     private func setupView() {
         view.backgroundColor = Color.brandWhite //kolor ViewControllera
-    }
-    
-    private func setupNavigationBar() {
-//        let userButtonBar = UIBarButtonItem(image: Assets.Common.user,
-//                                            style: .plain,
-//                                            target: self,
-//                                            action: #selector(didPressUserButton(sender:)))
-//        userButtonBar.accessibilityLabel = "userSideMenuAccessibilityLabel".localized
-//        userButtonBar.tintColor = Color.brandGreen
-//        navigationItem.rightBarButtonItem = userButtonBar
-        title = "AddPlant"
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {

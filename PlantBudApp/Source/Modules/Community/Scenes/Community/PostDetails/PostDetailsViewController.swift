@@ -65,7 +65,7 @@ extension PostDetailsViewController {
 extension PostDetailsViewController {
     private func setupView() {
         view.backgroundColor = Color.brandWhite//kolor ViewControllera
-        title = "Post Details"
+        title = "postDetailsTitle".localized
     }
     
     private func setupNavigationBar() {

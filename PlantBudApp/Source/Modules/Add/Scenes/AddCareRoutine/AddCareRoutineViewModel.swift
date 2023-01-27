@@ -69,7 +69,7 @@ final class AddCareRoutineViewModel {
         }
         
         let commentCellData = AddRoutineStepCellData(
-            text: "Description...",
+            text: "routineStepDescriptionPlaceholder".localized,
             textViewHeight: 75.deviceSizeAware,
             maximumCommentTextLength: 499,
             returnTypeKey: .done,
@@ -80,16 +80,6 @@ final class AddCareRoutineViewModel {
         let commentCellConfigurator = AddRoutineStepCellConfigurator(data: commentCellData)
         
         return SingleColumnSection(cellConfigurators: [commentCellConfigurator])
-    }
-    
-    public func makePickerCell() -> SingleColumnSection {
-        let configurator = StepFrequencyPickerCellConfigurator(data: StepFrequencyPickerCellData(
-            didPressDailyButton: {self.setFrequencyValue(for: .daily)},
-            didPressWeeklyButton: {self.setFrequencyValue(for: .weekly)},
-            didPressMonthlyButton: {self.setFrequencyValue(for: .onceAMonth)}
-        ))
-        
-        return SingleColumnSection(cellConfigurators: [configurator])
     }
     
     func setFrequencyValue(for case: StepFrequency) {
@@ -143,7 +133,7 @@ final class AddCareRoutineViewModel {
                                           target: nil,
                                           action: nil)
         
-        let doneButton = UIBarButtonItem(title: "Done".localized,
+        let doneButton = UIBarButtonItem(title: "done".localized,
                                          style: .plain,
                                          target: self,
                                          action: #selector(didTapDone(sender:)))
@@ -153,8 +143,8 @@ final class AddCareRoutineViewModel {
     }
 
     public lazy var frequencyPickerInputCellConfigurator: PickerInputCellConfigurator = {
-        let data = PickerInputCellData(title: "Pick step frqequency",
-                                       placeholder: "Step frequency",
+        let data = PickerInputCellData(title: "routineStepPickerTitle".localized,
+                                       placeholder: "routineStepPickerPlaceholder".localized,
                                        inputView: frequencyPickerView,
                                        toolbar: toolbar,
                                        returnKey: .done,
@@ -164,7 +154,7 @@ final class AddCareRoutineViewModel {
         
         cellConfigurator.data.textFieldShouldBeginEditing = { [weak self, weak cellConfigurator] _ in
             guard let shouldBegin = self?.onFrequencyListShouldBeginEditing?(), shouldBegin == true else {
-                DialogManager.showInformationDialog(message: "step frequency list empty")
+                DialogManager.showInformationDialog(message: "stepListEmpty".localized)
                 return false
             }
             
@@ -198,21 +188,8 @@ final class AddCareRoutineViewModel {
     
     
     public func loadData(refresh: Bool = false) {
-//        UIAppDelegate?.showLoadingIndicator()
-        
-//        fetchPlantsWithTypes()
+
     }
-    
-//    public func buildSections(plants: [Plant]) {
-//
-//
-//        sectionSequence = SectionSequence(
-//            sections: [
-//                SingleColumnSection(cellConfigurators: cellConfigurators)
-//                //                makeAddButton(),
-//                //                makePlantsSection(plantDomains: plantDomains!)
-//            ])
-//    }
     
     func addRoutine(plantId: Int, stepDescription: String, frequency: String) {
         UIAppDelegate?.showLoadingIndicator()
@@ -271,7 +248,7 @@ final class AddCareRoutineViewModel {
             case .success(let data):
                 careRoutineId = data.careRoutine.first?.id
             case .failure(let error):
-                Logger.error("ERROR: \(error)")
+                Logger.error(error.localizedDescription)
             }
             dispatchGroup.leave()
         }
@@ -279,9 +256,7 @@ final class AddCareRoutineViewModel {
         // Run a block of code when all requests are completed
         dispatchGroup.notify(queue: .main) {
             guard let careRoutineId = careRoutineId else { return }
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-            let timestamp = dateFormatter.string(from: Date())
+            let timestamp = Network.getTimestamp()
             
             Network.performMutation(mutation: AddRoutineStepMutation(input: RoutineStep_insert_input(
                 careRoutineId: careRoutineId,
@@ -292,12 +267,11 @@ final class AddCareRoutineViewModel {
             ))) { result in
                 switch result {
                 case .success(let success):
-//                    careRoutineId = success.insertCareRoutineOne?.id
-                    Logger.info("\(success.insertRoutineStepOne?.description)")
+                    Logger.info("\(success.insertRoutineStepOne?.description?.debugDescription)")
                     self.onRoutineAdded?()
                     UIAppDelegate?.hideLoadingIndicator()
                 case .failure(let failure):
-                    Logger.error("\(failure)")
+                    Logger.error(failure.localizedDescription)
                 }
                 
             }
@@ -315,33 +289,6 @@ final class AddCareRoutineViewModel {
     
     //MARK: - Private methods
     
-    private func makeAddButton() -> SingleColumnSection {
-        let didPressButton: () -> Void = { [weak self] in
-            guard let self = self else { return }
-            Logger.info("TAP ADD")
-            self.onAddPlantPressed?()
-        }
-        let configurator = AddButtonCellConfigurator(data: AddButtonCellData(SFSymbolName: "plus", buttonName: "Add plant", didPressButton: didPressButton))
-        
-        return SingleColumnSection(cellConfigurators: [configurator])
-    }
-    
-    private func makeAddCareRoutineButton() -> SingleColumnSection {
-        let didPressButton: () -> Void = { [weak self] in
-            guard let self = self else { return }
-            Logger.info("TAP ADD ROUTINE")
-            self.onAddCareRoutinePressed?()
-        }
-        let configurator = AddButtonCellConfigurator(data: AddButtonCellData(SFSymbolName: "checkmark.seal", buttonName: "Add care routine", didPressButton: didPressButton))
-        
-        return SingleColumnSection(cellConfigurators: [configurator])
-    }
-    
-    private func makeHelloHeaderSection() -> SingleColumnSection {
-        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "ADDRoutine"))
-
-        return SingleColumnSection(cellConfigurators: [configurator])
-    }
     
     // MARK: - Selectors
     

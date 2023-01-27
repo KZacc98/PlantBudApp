@@ -150,7 +150,7 @@ final class HomeMenuViewModel {
 
         let configurator = UserProfileCellConfigurator(
             data: UserProfileCellData(
-                name: "Hello \(name)",
+                name: String(format: "userProfileCellName".localized, name),
                 plantCount: plantCount,
                 profilePictureUrl: profilePicture ?? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
             ))
@@ -161,10 +161,10 @@ final class HomeMenuViewModel {
     private func makePlantsStatsSection(plants: [PlantDomain]?) -> SingleColumnSection {
         if let plants = plants {
             let headerData = MainSectionHeaderData(
-                title: "Your Plants stats", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+                title: "plantStatsHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
             let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
             
-            let configurator = PlantStatsCellConfigurator(data: PlantStatsCellData(title: "DUPA", plants: plants))
+            let configurator = PlantStatsCellConfigurator(data: PlantStatsCellData(plants: plants))
             
             return SingleColumnSection(cellConfigurators: [configurator], headerConfigurator: headerConfigurator)
         } else {
@@ -177,7 +177,7 @@ final class HomeMenuViewModel {
     private func makeMessageOfTheDaySection() -> SingleColumnSection {
         
         let headerData = MainSectionHeaderData(
-            title: "MessageOfTheDay", insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+            title: "messageOfTheDayHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
         
         let configurator = MessageOfTheDayCellConfigurator(data: "")

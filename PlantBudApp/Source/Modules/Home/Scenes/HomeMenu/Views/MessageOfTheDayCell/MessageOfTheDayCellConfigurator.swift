@@ -13,9 +13,9 @@ final class MessageOfTheDayCellConfigurator {
     
     private let data: String
     let messageOfTheDay = [
-        "Our plants may not speak, but they surely do sing / When we give them the care that makes their leaves take wing. \n We water and fertilize, prune and protect \n So that our plants can thrive, and never neglect.",
-        "Our plants are like our children, they need love and care \n Without it, they wilt and droop, and that just isn't fair. \n So we tend to them daily, with water and sunlight \n And watch them grow strong, it's a beautiful sight.",
-        "Our plants may not have voices, but they have hearts \n And when they're well taken care of, they never fall apart. \n We water and prune and give them some cheer \n So they can grow tall and strong, all throughout the year."
+        "messageOfTheDay1".localized,
+        "messageOfTheDay2".localized,
+        "messageOfTheDay3".localized
     ]
     
     // MARK: - Initialization

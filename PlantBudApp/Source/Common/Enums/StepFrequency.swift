@@ -49,20 +49,20 @@ extension StepFrequency {
 extension StepFrequency {
     var displayName: String {
         switch self {
-            case .threeTimesADay: return "Three times a Day"
-            case .twoTimesADay: return "Two times a day"
-            case .daily: return "Daily"
-            case .everyTwoDays: return "Every two days"
-            case .everyThreeDays: return "Every three days"
-            case .everyFourDays: return "Every four days"
-            case .everyFiveDays: return "Every five days"
-            case .everySixDays: return "Every six days"
-            case .weekly: return "Weekly"
-            case .everyTwoWeeks: return "Every two weeks"
-            case .everyThreeWeeks: return "Every three weeks"
-            case .onceAMonth: return "Once a month"
-            case .onceAYear: return "Once a year"
-            case .other: return "Other"
+            case .threeTimesADay: return "threeTimesADay".localized
+            case .twoTimesADay: return "twoTimesADay".localized
+            case .daily: return "daily".localized
+            case .everyTwoDays: return "everyTwoDays".localized
+            case .everyThreeDays: return "everyThreeDays".localized
+            case .everyFourDays: return "everyFourDays".localized
+            case .everyFiveDays: return "everyFiveDays".localized
+            case .everySixDays: return "everySixDays".localized
+            case .weekly: return "weekly".localized
+            case .everyTwoWeeks: return "everyTwoWeeks".localized
+            case .everyThreeWeeks: return "everyThreeWeeks".localized
+            case .onceAMonth: return "onceAMonth".localized
+            case .onceAYear: return "onceAYear".localized
+            case .other: return "other".localized
             case .default: return ""
         }
     }

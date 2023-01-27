@@ -86,38 +86,6 @@ extension PlantDetailsViewController {
             self?.makeToast(with: res)
         }
     }
-    
-//
-//        viewModel.onError = { [weak self] error in
-//            self?.setupEmptyDataView(with: EmptyDataType(error: error,
-//                                                         customTitle: "emptyDataMyDietError".localized))
-//            self?.showErrorDialog(with: error, dismissBlock: {
-//                self?.refreshControl.endRefreshing()
-//            })
-//        }
-//
-//        viewModel.onSetupNavigationBarTitle = { [weak self] title in
-//            self?.title = title
-//            self?.navigationItem.titleView = nil
-//        }
-//
-//        viewModel.onSetupNavigationBarView = { [weak self] view in
-//            self?.navigationItem.titleView = view
-//            self?.title = nil
-//        }
-//    }
-//
-//    private func addObservers() {
-//        UserContext.shared.userPanelObservable.addObserver(
-//        self, options: [.initial, .new]) { [weak self] userPanel, options in
-//            self?.viewModel.setupUserPanel(userPanel)
-//        }
-//
-//        UserContext.shared.userProfileObservable.addObserver(
-//        self, options: [.initial, .new]) { [weak self] userProfile, options in
-//            self?.viewModel.setupUserProfile(userProfile)
-//        }
-//    }
 }
 
 //MARK: - Setup
@@ -128,7 +96,7 @@ extension PlantDetailsViewController {
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Plant Details"
+        navigationItem.title = "plantDetailsTitle".localized
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {
@@ -140,43 +108,6 @@ extension PlantDetailsViewController {
         case .noData:
             tableView.bounces = false
             let emptyDataView = EmptyDataView()
-            
-//            let onRefreshData: () -> () = { [weak self] in
-//                self?.viewModel.loadData(refresh: true)
-//            }
-//
-//            let buttonAction: () -> () = { [weak self] in
-//                if let ordersDisabled = UserContext.shared.userPanel?.company.continueOrdersDisabled, ordersDisabled == true {
-//                    self?.onOrdersDisabled?()
-//                } else {
-//                    let tabBarCoordinator = UIAppDelegate?.applicationCoordinator?.childCoordinator as? TabBarCoordinator
-//                    tabBarCoordinator?.selectTabBarItem(for: .orders)
-//                    (tabBarCoordinator?.childCoordinator as? OrdersCoordinator)?.pushNewOrder(order: nil, animated: false)
-//                }
-//            }
-//
-//            let didSelectItemAtIndexPath: (IndexPath) -> () = { [weak self] indexPath in
-//                self?.viewModel.didSelectDiscount(indexPath: indexPath)
-//            }
-//
-//            let descriptionText = "myDietEmptyDataLabelString".localized + "\n" + "myDietNoBoughtDietEmptyData".localized
-//            let company = UserContext.shared.userPanel?.company
-//            let companyInformation = company?.companyInfo?.infoDesktop
-//            let cellConfigurators = company?.discountList.map {
-//                DiscountCellConfigurator(data: DiscountCellData(remote: $0))
-//            }
-//            let companyImage = UserContext.shared.userPanel?.company.logo.landscapeImageForSize(._640x480)
-//            let data = MyDietEmptyData(
-//                companyImage: companyImage ?? "",
-//                description: descriptionText,
-//                companyInformation: companyInformation,
-//                buttonTitle: "myDietMakeAnOrder".localized.uppercased(),
-//                buttonAction: buttonAction,
-//                cellConfigurators: cellConfigurators ?? [],
-//                didSelectItemAtIndexPath: didSelectItemAtIndexPath,
-//                refreshControl: refreshControl,
-//                onRefreshData: onRefreshData)
-//            emptyDataView.configure(data: data)
             dataSource.emptyDataView = emptyDataView
         }
     }
