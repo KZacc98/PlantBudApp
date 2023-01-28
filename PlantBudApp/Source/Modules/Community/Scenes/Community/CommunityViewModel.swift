@@ -110,15 +110,16 @@ final class CommunityViewModel {
                     didPressComment: didPressComment,
                     didPressPostOptions: {
                         DialogManager.showConfirmationDialog(
-                            title: "OPTIONS",
-                            message: "post options below",
-                            cancelButtonTitle: "Back",
-                            otherButtonTitles: ["Report inappropriate content"],
-                            acceptBlock: {
-                                Logger.info("OPTION1")
+                            title: "postOptionsDialogTitle".localized,
+                            message: "postOptionsDialogMessage".localized,
+                            cancelButtonTitle: "back".localized,
+                            otherButtonTitles: ["postOptionReport".localized],
+                            acceptBlock: { [weak self] in
+                                self?.reportPost(postId: post.id)
+                                Logger.info("\(posts.debugDescription) reported by: \(String(describing: UserContext.shared.userProfile?.id))")
                             },
                             rejectBlock: {
-                                Logger.info("OPTION2")
+                                Logger.info("Option dialog closed")
                             })
                     },
                     didPressUpVote: didPressUpVote,
@@ -150,6 +151,18 @@ final class CommunityViewModel {
         }
     }
 
+    private func reportPost(postId: Int) {
+        Network.performMutation(mutation: UpdatePostFlagMutation(postId: postId, flag: "offfensive")) { result in
+            switch result {
+            case .success(let success):
+                Logger.info("\(success)")
+            case .failure(let failure):
+                Logger.error("\(failure)")
+            }
+        }
+    }
+    
+    
     
     private func postUpvote(postId: Int) {
         UIAppDelegate?.showLoadingIndicator()

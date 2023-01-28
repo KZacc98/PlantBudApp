@@ -11,6 +11,7 @@
 "yes" = "Yes";
 "no" = "No";
 "done" = "Done";
+"back" = "Back";
 
 //TabBar
 "tabBarOptionHome" = "Home";
@@ -135,6 +136,9 @@
 "postPoints" = "Points: ";
 "postDetailsTitle" = "Szczegóły";
 
+"postOptionsDialogTitle" = "Options";
+"postOptionsDialogMessage" = "Pick an option";
+"postOptionReport" = "Report inappropriate content";
 
 
 
