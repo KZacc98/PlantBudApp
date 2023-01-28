@@ -1,17 +1,17 @@
 //
-//  ProfileViewController.swift
+//  UserProfileViewController.swift
 //  PlantBudApp
 //
-//  Created by Kamil Zachara on 13/01/2023.
+//  Created by Kamil Zachara on 28/01/2023.
 //
 
 import UIKit
 
-final class ProfileViewController: BaseTableViewController {
+final class UserProfileViewController: BaseTableViewController {
     
     //MARK: - Public properties
     
-    public var viewModel: ProfileViewModel!
+    public var viewModel: UserProfileViewModel!
     
     //MARK: - Private properties
     
@@ -29,10 +29,10 @@ final class ProfileViewController: BaseTableViewController {
         super.viewDidLoad()
         
         setupView()
-        setupNavigationBar()
         setupEmptyDataView()
         setupTableView()
         bindViewModel()
+        addBackButton()
         viewModel.loadData()
     }
     
@@ -49,7 +49,7 @@ final class ProfileViewController: BaseTableViewController {
 
 //MARK: - Data binding
 
-extension ProfileViewController {
+extension UserProfileViewController {
     private func bindViewModel() {
         viewModel.onSectionSequenceChange = { [weak self] sectionSequence in
             self?.dataSource.sections = sectionSequence.sections
@@ -66,13 +66,9 @@ extension ProfileViewController {
 
 //MARK: - Setup
 
-extension ProfileViewController {
+extension UserProfileViewController {
     private func setupView() {
         view.backgroundColor = Color.brandWhite //kolor ViewControllera
-    }
-    
-    private func setupNavigationBar() {
-        navigationItem.title = "Profile"
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {
@@ -98,6 +94,7 @@ extension ProfileViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
     }
 }
+
 
 
 

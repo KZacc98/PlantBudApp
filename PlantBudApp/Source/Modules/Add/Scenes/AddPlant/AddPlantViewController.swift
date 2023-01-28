@@ -32,9 +32,9 @@ final class AddPlantViewController: BaseTableViewController {
         setupNavigationBar()
         setupEmptyDataView()
         setupTableView()
-        viewModel.loadData()
         bindViewModel()
-//        viewModel.buildEmptySections()
+        addBackButton()
+        viewModel.loadData()
         
     }
     

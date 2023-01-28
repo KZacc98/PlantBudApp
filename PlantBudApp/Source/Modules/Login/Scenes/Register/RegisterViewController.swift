@@ -48,6 +48,7 @@ class RegisterViewController: BaseTableViewController, TableViewControllerInterf
         setupNavigationBar()
         setupTableView()
         bindViewModel()
+        addBackButton()
         viewModel.buildSections()
     }
     

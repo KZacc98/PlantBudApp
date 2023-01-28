@@ -18,9 +18,9 @@ final class HomeViewControllerFactory {
         return viewController
     }
  
-    func makeProfileViewController() -> ProfileViewController {
-        let viewController = ProfileViewController()
-        viewController.viewModel = ProfileViewModel()
+    func makeProfileViewController() -> YourProfileViewController {
+        let viewController = YourProfileViewController()
+        viewController.viewModel = YourProfileViewModel()
         
         return viewController
     }

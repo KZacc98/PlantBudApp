@@ -31,8 +31,9 @@ final class AddPlantFormViewController: BaseTableViewController, TableViewContro
         setupView()
         setupEmptyDataView()
         setupTableView()
-        viewModel.loadData()
         bindViewModel()
+        addBackButton()
+        viewModel.loadData()
         viewModel.buildEmptySections()
         
     }
