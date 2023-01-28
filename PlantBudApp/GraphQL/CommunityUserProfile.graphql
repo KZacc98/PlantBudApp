@@ -1,0 +1,17 @@
+
+query FetchCommunityUserProfile($username: String!) {
+  User(where: {userName: {_eq: $username}}) {
+    profilePicture
+    points
+    id
+  }
+}
+
+query FetchCommunityUserPlants($userId: Int_comparison_exp!) {
+  Plant(where: {userId: $userId}) {
+    plantImage
+    plantName
+    plantState
+  }
+}
+

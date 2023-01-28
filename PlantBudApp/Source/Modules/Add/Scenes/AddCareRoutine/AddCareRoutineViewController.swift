@@ -32,7 +32,7 @@ final class AddCareRoutineViewController: BaseTableViewController {
         setupNavigationBar()
         setupEmptyDataView()
         setupTableView()
-        viewModel.loadData()
+        addBackButton()
         bindViewModel()
         viewModel.buildEmptySections()
         

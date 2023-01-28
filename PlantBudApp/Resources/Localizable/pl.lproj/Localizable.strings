@@ -147,3 +147,12 @@
 "postOptionsDialogMessage" = "Wybierz opcje";
 "postOptionReport" = "Zgłoś nieodpowiednią zawartość";
 
+//YourProfile
+
+"yourProfileTitle" = "Twój profil";
+
+//CommunityUserProfile
+
+"communityUserPlantsHeader" = "Rośliny użytkownika";
+"communityUserNoPlants" = "Ten użytkownik nie posiada żadnych roślin";
+

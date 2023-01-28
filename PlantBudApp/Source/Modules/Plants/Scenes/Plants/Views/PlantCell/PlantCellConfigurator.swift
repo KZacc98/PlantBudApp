@@ -5,6 +5,7 @@
 //  Created by Kamil Zachara on 10/12/2022.
 //
 
+#warning("przenieś do common")
 import UIKit
 
 final class PlantCellConfigurator {
@@ -48,10 +49,6 @@ extension PlantCellConfigurator: ReusableViewConfiguratorInterface {
             UITapGestureRecognizer(
                 target: self,
                 action: #selector(didTapPlant(tapGestureRecognizer:))))
-        
-        //        view.plantImageView.imageView.setRoundedImage(with: data.imageUrl, cornerRadius: view.frame.size.width / 2)
-        //        view.plantImageView.imageView.makeRounded()
-        //        view.didPressButton = data.didPressButton
     }
     
     func layoutHeight(relativeTo size: CGSize) -> CGFloat {

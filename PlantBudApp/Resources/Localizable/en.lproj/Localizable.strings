@@ -80,7 +80,7 @@
 
 //AddPlant
 
-"addPlantTitle" = "Choose plant species";
+"chooseSpeciesTitle" = "Choose plant species";
 "plantNameInput" = "Plant name";
 "addPlantButtonTitle" = "Add plant";
 
@@ -140,6 +140,14 @@
 "postOptionsDialogMessage" = "Pick an option";
 "postOptionReport" = "Report inappropriate content";
 
+//YourProfile
+
+"yourProfileTitle" = "Your profile";
+
+//CommunityUserProfile
+
+"communityUserPlantsHeader" = "User's plants";
+"communityUserNoPlants" = "This user doesn't have any plants";
 
 
 

@@ -9,8 +9,8 @@ import UIKit
 
 final class Assets {
     struct Common {
-        static let backArrow: UIImage = UIImage(named: "chevron.left")!
-        static let chevronDown: UIImage = UIImage(named: "chevron.down")!
-        static let chevronUp: UIImage = UIImage(named: "chevron.up")!
+        static let backArrow: UIImage = UIImage(systemName: "chevron.left")!
+        static let chevronDown: UIImage = UIImage(systemName: "chevron.down")!
+        static let chevronUp: UIImage = UIImage(systemName: "chevron.up")!
     }
 }

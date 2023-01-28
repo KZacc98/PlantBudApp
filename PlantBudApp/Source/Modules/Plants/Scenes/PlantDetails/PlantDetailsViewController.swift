@@ -31,10 +31,12 @@ final class PlantDetailsViewController: BaseTableViewController {
         
         setupView()
         setupNavigationBar()
+        addBackButton()
         setupEmptyDataView()
         setupTableView()
         bindViewModel()
         viewModel.loadData()
+        
         
         
 //        addObservers()
@@ -60,6 +62,7 @@ final class PlantDetailsViewController: BaseTableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.backBarButtonItem?.tintColor = .red
         viewModel.fetchData()
     }
 }
