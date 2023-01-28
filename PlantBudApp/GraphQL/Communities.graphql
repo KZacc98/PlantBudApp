@@ -122,3 +122,12 @@ mutation AddPost($postInput: Post_insert_input!) {
     userName
   }
 }
+
+mutation UpdatePostFlag($postId: Int!, $flag: userContentFlag!) {
+  update_Post(where: {id: {_eq: $postId}}, _set: {flag: $flag}) {
+    returning {
+      id
+      flag
+    }
+  }
+}

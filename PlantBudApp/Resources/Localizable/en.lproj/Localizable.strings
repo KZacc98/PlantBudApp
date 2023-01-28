@@ -11,6 +11,7 @@
 "yes" = "Yes";
 "no" = "No";
 "done" = "Done";
+"back" = "Back";
 
 //TabBar
 "tabBarOptionHome" = "Home";
@@ -79,7 +80,7 @@
 
 //AddPlant
 
-"addPlantTitle" = "Choose plant species";
+"chooseSpeciesTitle" = "Choose plant species";
 "plantNameInput" = "Plant name";
 "addPlantButtonTitle" = "Add plant";
 
@@ -135,7 +136,18 @@
 "postPoints" = "Points: ";
 "postDetailsTitle" = "Szczegóły";
 
+"postOptionsDialogTitle" = "Options";
+"postOptionsDialogMessage" = "Pick an option";
+"postOptionReport" = "Report inappropriate content";
 
+//YourProfile
+
+"yourProfileTitle" = "Your profile";
+
+//CommunityUserProfile
+
+"communityUserPlantsHeader" = "User's plants";
+"communityUserNoPlants" = "This user doesn't have any plants";
 
 
 

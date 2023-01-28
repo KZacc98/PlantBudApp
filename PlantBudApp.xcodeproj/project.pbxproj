@@ -196,6 +196,15 @@
 		EFC1F98E295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F98D295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift */; };
 		EFC1F991295E3BB300112EFC /* BadgeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F990295E3BB300112EFC /* BadgeCell.swift */; };
 		EFC1F993295E3D3200112EFC /* BadgeCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC1F992295E3D3200112EFC /* BadgeCellConfigurator.swift */; };
+		EFC2FEA7298584300068C528 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC2FEA6298584300068C528 /* UserProfileViewModel.swift */; };
+		EFC2FEA9298584520068C528 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC2FEA8298584520068C528 /* UserProfileViewController.swift */; };
+		EFC2FEAB298593920068C528 /* CommunityUserProfile.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EFC2FEAA298593920068C528 /* CommunityUserProfile.graphql */; };
+		EFC2FEAE298594E50068C528 /* CommunityUserPlantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC2FEAD298594E50068C528 /* CommunityUserPlantData.swift */; };
+		EFC2FEB0298595300068C528 /* CommunityUserProfileData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC2FEAF298595300068C528 /* CommunityUserProfileData.swift */; };
+		EFC2FEB22985A0B30068C528 /* userprofile_leaves.json in Resources */ = {isa = PBXBuildFile; fileRef = EFC2FEB12985A0B30068C528 /* userprofile_leaves.json */; };
+		EFC2FEB62985B4790068C528 /* NoPlantsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC2FEB52985B4780068C528 /* NoPlantsCell.swift */; };
+		EFC2FEB82985B4860068C528 /* NoPlantsCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC2FEB72985B4860068C528 /* NoPlantsCellConfigurator.swift */; };
+		EFC2FEBA2985BD060068C528 /* not_found.json in Resources */ = {isa = PBXBuildFile; fileRef = EFC2FEB92985BD060068C528 /* not_found.json */; };
 		EFC93261297059A000B3057C /* CommentTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93260297059A000B3057C /* CommentTextFieldCell.swift */; };
 		EFC93263297059AD00B3057C /* CommentTextFieldCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC93262297059AD00B3057C /* CommentTextFieldCellConfigurator.swift */; };
 		EFC932662970886A00B3057C /* AnimationFillerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC932652970886900B3057C /* AnimationFillerCell.swift */; };
@@ -207,8 +216,8 @@
 		EFC932732970A5AC00B3057C /* LoginCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC932722970A5AC00B3057C /* LoginCellConfigurator.swift */; };
 		EFC932792970D45400B3057C /* ProfileViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC932782970D45400B3057C /* ProfileViewControllerFactory.swift */; };
 		EFC9327B2970D46600B3057C /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9327A2970D46600B3057C /* ProfileCoordinator.swift */; };
-		EFC9327D2970D48B00B3057C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9327C2970D48B00B3057C /* ProfileViewModel.swift */; };
-		EFC9327F2970D49700B3057C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9327E2970D49700B3057C /* ProfileViewController.swift */; };
+		EFC9327D2970D48B00B3057C /* YourProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9327C2970D48B00B3057C /* YourProfileViewModel.swift */; };
+		EFC9327F2970D49700B3057C /* YourProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9327E2970D49700B3057C /* YourProfileViewController.swift */; };
 		EFDFF45D294B91DE00B4F5F1 /* PlantCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFF45C294B91DE00B4F5F1 /* PlantCellData.swift */; };
 		EFDFF45F294BADB100B4F5F1 /* User.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EFDFF45E294BADB100B4F5F1 /* User.graphql */; };
 		EFDFF464294BB01D00B4F5F1 /* UserRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDFF463294BB01D00B4F5F1 /* UserRemote.swift */; };
@@ -441,6 +450,15 @@
 		EFC1F98D295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentBadgeCellConfigurator.swift; sourceTree = "<group>"; };
 		EFC1F990295E3BB300112EFC /* BadgeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
 		EFC1F992295E3D3200112EFC /* BadgeCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC2FEA6298584300068C528 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		EFC2FEA8298584520068C528 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		EFC2FEAA298593920068C528 /* CommunityUserProfile.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = CommunityUserProfile.graphql; sourceTree = "<group>"; };
+		EFC2FEAD298594E50068C528 /* CommunityUserPlantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityUserPlantData.swift; sourceTree = "<group>"; };
+		EFC2FEAF298595300068C528 /* CommunityUserProfileData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityUserProfileData.swift; sourceTree = "<group>"; };
+		EFC2FEB12985A0B30068C528 /* userprofile_leaves.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = userprofile_leaves.json; sourceTree = "<group>"; };
+		EFC2FEB52985B4780068C528 /* NoPlantsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPlantsCell.swift; sourceTree = "<group>"; };
+		EFC2FEB72985B4860068C528 /* NoPlantsCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPlantsCellConfigurator.swift; sourceTree = "<group>"; };
+		EFC2FEB92985BD060068C528 /* not_found.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = not_found.json; sourceTree = "<group>"; };
 		EFC93260297059A000B3057C /* CommentTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextFieldCell.swift; sourceTree = "<group>"; };
 		EFC93262297059AD00B3057C /* CommentTextFieldCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextFieldCellConfigurator.swift; sourceTree = "<group>"; };
 		EFC932652970886900B3057C /* AnimationFillerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFillerCell.swift; sourceTree = "<group>"; };
@@ -452,8 +470,8 @@
 		EFC932722970A5AC00B3057C /* LoginCellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCellConfigurator.swift; sourceTree = "<group>"; };
 		EFC932782970D45400B3057C /* ProfileViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerFactory.swift; sourceTree = "<group>"; };
 		EFC9327A2970D46600B3057C /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
-		EFC9327C2970D48B00B3057C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		EFC9327E2970D49700B3057C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EFC9327C2970D48B00B3057C /* YourProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourProfileViewModel.swift; sourceTree = "<group>"; };
+		EFC9327E2970D49700B3057C /* YourProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourProfileViewController.swift; sourceTree = "<group>"; };
 		EFDFF45C294B91DE00B4F5F1 /* PlantCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCellData.swift; sourceTree = "<group>"; };
 		EFDFF45E294BADB100B4F5F1 /* User.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = User.graphql; sourceTree = "<group>"; };
 		EFDFF463294BB01D00B4F5F1 /* UserRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRemote.swift; sourceTree = "<group>"; };
@@ -519,6 +537,7 @@
 				EFDFF45E294BADB100B4F5F1 /* User.graphql */,
 				EF190C5D294FC6EA0091573D /* Badges.graphql */,
 				EF8C9991296C8CE800AEB012 /* Communities.graphql */,
+				EFC2FEAA298593920068C528 /* CommunityUserProfile.graphql */,
 				EF194C532974BA3F00A8734A /* CareRoutines.graphql */,
 			);
 			path = GraphQL;
@@ -1501,6 +1520,8 @@
 		EFBA28A729298F560034DCA9 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				EFC2FEB92985BD060068C528 /* not_found.json */,
+				EFC2FEB12985A0B30068C528 /* userprofile_leaves.json */,
 				EFC9326D2970A44B00B3057C /* app_login.json */,
 				EFC9326B29709D1F00B3057C /* girl_community.json */,
 				EFC1F97C295CD43B00112EFC /* monstera_leaf.json */,
@@ -1815,6 +1836,53 @@
 			path = BadgeCell;
 			sourceTree = "<group>";
 		};
+		EFC2FEA4298582A70068C528 /* YourProfile */ = {
+			isa = PBXGroup;
+			children = (
+				EF9824DC297B6C1F00924460 /* Views */,
+				EFC9327C2970D48B00B3057C /* YourProfileViewModel.swift */,
+				EFC9327E2970D49700B3057C /* YourProfileViewController.swift */,
+			);
+			path = YourProfile;
+			sourceTree = "<group>";
+		};
+		EFC2FEA5298584200068C528 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				EFC2FEB32985B44C0068C528 /* Views */,
+				EFC2FEAC298594CB0068C528 /* Models */,
+				EFC2FEA6298584300068C528 /* UserProfileViewModel.swift */,
+				EFC2FEA8298584520068C528 /* UserProfileViewController.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		EFC2FEAC298594CB0068C528 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EFC2FEAD298594E50068C528 /* CommunityUserPlantData.swift */,
+				EFC2FEAF298595300068C528 /* CommunityUserProfileData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EFC2FEB32985B44C0068C528 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFC2FEB42985B4530068C528 /* NoPlantsCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EFC2FEB42985B4530068C528 /* NoPlantsCell */ = {
+			isa = PBXGroup;
+			children = (
+				EFC2FEB52985B4780068C528 /* NoPlantsCell.swift */,
+				EFC2FEB72985B4860068C528 /* NoPlantsCellConfigurator.swift */,
+			);
+			path = NoPlantsCell;
+			sourceTree = "<group>";
+		};
 		EFC9325F2970597C00B3057C /* CommentTextFieldCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1871,9 +1939,8 @@
 		EFC932772970D43B00B3057C /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EF9824DC297B6C1F00924460 /* Views */,
-				EFC9327C2970D48B00B3057C /* ProfileViewModel.swift */,
-				EFC9327E2970D49700B3057C /* ProfileViewController.swift */,
+				EFC2FEA5298584200068C528 /* UserProfile */,
+				EFC2FEA4298582A70068C528 /* YourProfile */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -2128,8 +2195,10 @@
 				EF8C9992296C8CE800AEB012 /* Communities.graphql in Resources */,
 				EFC1F97D295CD43B00112EFC /* monstera_leaf.json in Resources */,
 				EFBA2881292986520034DCA9 /* LaunchScreen.storyboard in Resources */,
+				EFC2FEBA2985BD060068C528 /* not_found.json in Resources */,
 				EFAA5B62293E6FA20082484D /* NoticiaText-Bold.ttf in Resources */,
 				EFAA5B60293E6FA20082484D /* NoticiaText-Italic.ttf in Resources */,
+				EFC2FEAB298593920068C528 /* CommunityUserProfile.graphql in Resources */,
 				EFBA28AE292995260034DCA9 /* Localizable.strings in Resources */,
 				EFC9326E2970A44B00B3057C /* app_login.json in Resources */,
 				EFBA287E292986520034DCA9 /* Assets.xcassets in Resources */,
@@ -2143,6 +2212,7 @@
 				EF9CFDD82932878A00FD0239 /* Login.graphql in Resources */,
 				EF194C542974BA3F00A8734A /* CareRoutines.graphql in Resources */,
 				EFA7B16A2944D2EF008EE8E9 /* Plants.graphql in Resources */,
+				EFC2FEB22985A0B30068C528 /* userprofile_leaves.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2189,6 +2259,7 @@
 				EF9CFDA8293272CD00FD0239 /* LoginTextInputCellConfigurator.swift in Sources */,
 				EF68F74B294912AC00B2A08E /* RoutineStepDomain.swift in Sources */,
 				EFFA5945292A7000003A8F23 /* Assets.swift in Sources */,
+				EFC2FEB82985B4860068C528 /* NoPlantsCellConfigurator.swift in Sources */,
 				EFA7B16C2944D703008EE8E9 /* PlantCell.swift in Sources */,
 				EF1D1823296B3D37000A12E4 /* PlantTypeCellConfigurator.swift in Sources */,
 				EF9CFDCB29327A3000FD0239 /* LoginCredentials.swift in Sources */,
@@ -2214,6 +2285,7 @@
 				EF3E36DD296DEF590089186A /* CommentRemote.swift in Sources */,
 				EFC1F9532958D45900112EFC /* PlantDetailsHeaderCellConfigurator.swift in Sources */,
 				EF9CFD9B2932649800FD0239 /* MainButtonCell.swift in Sources */,
+				EFC2FEB0298595300068C528 /* CommunityUserProfileData.swift in Sources */,
 				EF9CFDC32932769B00FD0239 /* EmailValidator.swift in Sources */,
 				EF9CFDA52932712300FD0239 /* AppVersionLabel.swift in Sources */,
 				EFFA5942292A6ED9003A8F23 /* UIDevice+Extension.swift in Sources */,
@@ -2275,6 +2347,7 @@
 				EF9CFD8F2932573100FD0239 /* EmptyDataContentView.swift in Sources */,
 				EFC1F970295A69CC00112EFC /* RoutineStepCellData.swift in Sources */,
 				EFAA5B8B293E86C80082484D /* CommunityListViewModel.swift in Sources */,
+				EFC2FEA9298584520068C528 /* UserProfileViewController.swift in Sources */,
 				EFC1F96D29592D5A00112EFC /* RoutineStepCellConfigurator.swift in Sources */,
 				EFF52391292A52A60014A32B /* UIButton+Extension.swift in Sources */,
 				EF9824EC297C2FF100924460 /* RegisterViewController.swift in Sources */,
@@ -2298,7 +2371,7 @@
 				EFC1F987295CF67400112EFC /* MessageOfTheDayCell.swift in Sources */,
 				EFFA594A292A71C4003A8F23 /* UIViewController+Extension.swift in Sources */,
 				EFC1F989295CF73100112EFC /* MessageOfTheDayCellConfigurator.swift in Sources */,
-				EFC9327D2970D48B00B3057C /* ProfileViewModel.swift in Sources */,
+				EFC9327D2970D48B00B3057C /* YourProfileViewModel.swift in Sources */,
 				EF1D17FC296A2D7E000A12E4 /* AddViewControllerFactory.swift in Sources */,
 				EF9CFDAF293273D700FD0239 /* TextInputCellData.swift in Sources */,
 				EF62CE86296F65FA002BABA4 /* PostDetailsViewController.swift in Sources */,
@@ -2312,11 +2385,12 @@
 				EF1D181B296B03DE000A12E4 /* AddCareRoutineViewModel.swift in Sources */,
 				EFF5238F292A52580014A32B /* NSLayoutConstraint+Extension.swift in Sources */,
 				EF1D17FA296A2CD9000A12E4 /* AddCoordinator.swift in Sources */,
+				EFC2FEB62985B4790068C528 /* NoPlantsCell.swift in Sources */,
 				EFA7B1702944D814008EE8E9 /* PlantCellConfigurator.swift in Sources */,
 				EF21598B297A12B30062712D /* PickerInputCellConfigurator.swift in Sources */,
 				EFFA5951292A7281003A8F23 /* ToastView.swift in Sources */,
 				EFAA5B73293E7DBE0082484D /* PlantListViewModel.swift in Sources */,
-				EFC9327F2970D49700B3057C /* ProfileViewController.swift in Sources */,
+				EFC9327F2970D49700B3057C /* YourProfileViewController.swift in Sources */,
 				EF190C6A294FCEDD0091573D /* UserBadgeDomain.swift in Sources */,
 				EFC93268297088E900B3057C /* AnimationFillerCellConfigurator.swift in Sources */,
 				EF21598D297A12CD0062712D /* PickerInputCell.swift in Sources */,
@@ -2337,6 +2411,7 @@
 				EF8C99A9296CB33F00AEB012 /* PostRemote.swift in Sources */,
 				EFF52395292A52E10014A32B /* UIImageView+Extension.swift in Sources */,
 				EF8C99AF296CB3DD00AEB012 /* PostDomain.swift in Sources */,
+				EFC2FEAE298594E50068C528 /* CommunityUserPlantData.swift in Sources */,
 				EF215985297A11A40062712D /* FrequencyPickerDelegate.swift in Sources */,
 				EF9824DF297B6C5900924460 /* ProfilePictureCell.swift in Sources */,
 				EF190C64294FC9870091573D /* BadgeRemote.swift in Sources */,
@@ -2361,6 +2436,7 @@
 				EF44C99A294BE56F00CD1075 /* PlantDetailsViewController.swift in Sources */,
 				EFC1F95929591AE700112EFC /* PlantDetailsTypeInfoCell.swift in Sources */,
 				EF1D1800296A47FA000A12E4 /* AddViewController.swift in Sources */,
+				EFC2FEA7298584300068C528 /* UserProfileViewModel.swift in Sources */,
 				EFFA593C292A6DD2003A8F23 /* InformationDialogInterface.swift in Sources */,
 				EF1D180A296AFE3A000A12E4 /* AddPlantViewModel.swift in Sources */,
 				EF8C9999296C961600AEB012 /* CommunityCell.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ProfileViewModel.swift
+//  YourProfileViewModel.swift
 //  PlantBudApp
 //
 //  Created by Kamil Zachara on 13/01/2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileViewModel {
+final class YourProfileViewModel {
     
     //MARK: - Binding closures
     

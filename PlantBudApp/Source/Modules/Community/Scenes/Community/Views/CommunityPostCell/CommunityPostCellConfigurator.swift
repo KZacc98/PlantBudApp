@@ -13,7 +13,7 @@ final class CommunityPostCellConfigurator {
     
     private let data: CommunityPostCellData
     
-    let profilePicturePlaceholder: String = "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"
+    let profilePicturePlaceholder: String = "https://res.cloudinary.com/dv1dmymg2/image/upload/v1674924697/PlantBuddy/Placeholders/UserImagePlaceholderLight_hthfkm.png"
     
     // MARK: - Initialization
     
@@ -42,7 +42,7 @@ final class CommunityPostCellConfigurator {
     }
     
     @objc private func didPressUserHeader(tapGestureRecognizer: UITapGestureRecognizer) {
-        data.didPressComment?()
+        data.didPressUserHeader?()
     }
 }
 
@@ -161,4 +161,5 @@ struct CommunityPostCellData {
     let didPressPostOptions: (() -> Void)?
     let didPressUpVote: (() -> Void)?
     let didPressDownVote: (() -> Void)?
+    let didPressUserHeader: (() -> Void)?
 }

@@ -11,9 +11,9 @@ final class ProfileViewControllerFactory {
     
     // MARK: - Factory methods
     
-    func makeProfileViewController() -> ProfileViewController {
-        let viewController = ProfileViewController()
-        viewController.viewModel = ProfileViewModel()
+    func makeProfileViewController() -> YourProfileViewController {
+        let viewController = YourProfileViewController()
+        viewController.viewModel = YourProfileViewModel()
         
         return viewController
     }

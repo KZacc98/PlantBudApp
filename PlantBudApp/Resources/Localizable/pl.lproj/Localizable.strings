@@ -11,6 +11,7 @@
 "yes" = "Tak";
 "no" = "Nie";
 "done" = "Zakończ";
+"back" = "Wróć";
 
 //TabBar
 "tabBarOptionHome" = "Dom";
@@ -141,4 +142,17 @@
 "noCommentsPlaceholder" = "Skomentuj jako pierwszy";
 "postPoints" = "Punkty: ";
 "postDetailsTitle" = "Szczegóły";
+
+"postOptionsDialogTitle" = "Opcje";
+"postOptionsDialogMessage" = "Wybierz opcje";
+"postOptionReport" = "Zgłoś nieodpowiednią zawartość";
+
+//YourProfile
+
+"yourProfileTitle" = "Twój profil";
+
+//CommunityUserProfile
+
+"communityUserPlantsHeader" = "Rośliny użytkownika";
+"communityUserNoPlants" = "Ten użytkownik nie posiada żadnych roślin";
 

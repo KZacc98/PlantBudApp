@@ -16,6 +16,7 @@ final class CommunityViewModel {
     public var onError: ((Error) -> ())?
     public var didPressPostDetails: ((PostDomain, [CommentDomain]) -> Void)?
     public var didPressPostOptions: (() -> Void)?
+    public var didPressUserHeader: ((String) -> Void)?
 
     //MARK: Private properties
     
@@ -103,6 +104,10 @@ final class CommunityViewModel {
                     guard let self = self else { return }
                     self.didPressPostDetails?(post, postComments)
                 }
+                let didPressUserHeader: () -> Void = { [weak self] in
+                    guard let self = self else { return }
+                    self.didPressUserHeader?(post.userName)
+                }
                 
                 return CommunityPostCellConfigurator(data: makeCommunityPostCellData(
                     postDomain: post,
@@ -110,19 +115,21 @@ final class CommunityViewModel {
                     didPressComment: didPressComment,
                     didPressPostOptions: {
                         DialogManager.showConfirmationDialog(
-                            title: "OPTIONS",
-                            message: "post options below",
-                            cancelButtonTitle: "Back",
-                            otherButtonTitles: ["Report inappropriate content"],
-                            acceptBlock: {
-                                Logger.info("OPTION1")
+                            title: "postOptionsDialogTitle".localized,
+                            message: "postOptionsDialogMessage".localized,
+                            cancelButtonTitle: "back".localized,
+                            otherButtonTitles: ["postOptionReport".localized],
+                            acceptBlock: { [weak self] in
+                                self?.reportPost(postId: post.id)
+                                Logger.info("\(posts.debugDescription) reported by: \(String(describing: UserContext.shared.userProfile?.id))")
                             },
                             rejectBlock: {
-                                Logger.info("OPTION2")
+                                Logger.info("Option dialog closed")
                             })
                     },
                     didPressUpVote: didPressUpVote,
-                    didPressDownVote: didPressDownVote
+                    didPressDownVote: didPressDownVote,
+                    didPressUserHeader: didPressUserHeader
                 ))
             }
             sectionSequence = SectionSequence(
@@ -150,6 +157,16 @@ final class CommunityViewModel {
         }
     }
 
+    private func reportPost(postId: Int) {
+        Network.performMutation(mutation: UpdatePostFlagMutation(postId: postId, flag: "offfensive")) { result in
+            switch result {
+            case .success(let success):
+                Logger.info("\(success)")
+            case .failure(let failure):
+                Logger.error("\(failure)")
+            }
+        }
+    }
     
     private func postUpvote(postId: Int) {
         UIAppDelegate?.showLoadingIndicator()
@@ -413,17 +430,19 @@ final class CommunityViewModel {
         didPressComment: (() -> Void)?,
         didPressPostOptions: (() -> Void)?,
         didPressUpVote: (() -> Void)?,
-        didPressDownVote: (() -> Void)?
+        didPressDownVote: (() -> Void)?,
+        didPressUserHeader: (() -> Void)?
     ) -> CommunityPostCellData {
         return CommunityPostCellData(
             postUser: UserContentDataDomain(remote: UserContentDataRemote(userName: postDomain.userName)),
             postDomain: postDomain,
-            commentUser: UserContentDataDomain(remote: UserContentDataRemote(userName: comment.first?.userName ?? "dupa")),
+            commentUser: UserContentDataDomain(remote: UserContentDataRemote(userName: comment.first?.userName ?? "")),
             comments: comment,
             didPressComment: didPressComment,
             didPressPostOptions: didPressPostOptions,
             didPressUpVote: didPressUpVote,
-            didPressDownVote: didPressDownVote
+            didPressDownVote: didPressDownVote,
+            didPressUserHeader: didPressUserHeader
         )
     }
     

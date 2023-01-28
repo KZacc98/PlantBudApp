@@ -32,6 +32,14 @@ final class CommunityViewControllerFactory {
         
         return viewController
     }
+    
+    func makeUserProfileViewController(username: String) -> UserProfileViewController {
+        let viewController = UserProfileViewController()
+        viewController.title = username
+        viewController.viewModel = UserProfileViewModel(username: username)
+        
+        return viewController
+    }
   
 }
 
