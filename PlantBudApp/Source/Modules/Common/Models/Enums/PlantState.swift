@@ -32,4 +32,23 @@ enum PlantState: String, Codable {
             return 3.0
         }
     }
+    
+    func caseNameWithEmoji() -> String {
+        switch self {
+        case .thriving:
+            return "plantStateThriving".localized
+        case .good:
+            return "plantStateGood".localized
+        case .needsAttention:
+            return "plantStateNeedsAttention".localized
+        case .thirsty:
+            return  "plantStateThirsty".localized
+        case .forgotten:
+            return "plantStateForgotten".localized
+        case .dead:
+            return "plantStateDead".localized
+        case .default:
+            return "plantStateDefault".localized
+        }
+    }
 }

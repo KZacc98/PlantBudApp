@@ -41,9 +41,7 @@ class RegisterViewModel {
     
 
     private lazy var nameInputCellConfigurator: LoginTextInputCellConfigurator = {
-        let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet.symbols)
-                                                          .union(CharacterSet.punctuationCharacters)
-                                                          .union(CharacterSet.whitespaces)
+        let allowedCharacters = CharacterSet.letters
         let data = TextInputCellData(title: "nameInputText".localized,
                                      placeHolder: "nameInputPlaceholder".localized,
                                      text: registerCredentials.name,
@@ -72,7 +70,6 @@ class RegisterViewModel {
     private lazy var userNameInputCellConfigurator: LoginTextInputCellConfigurator = {
         let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet.symbols)
                                                           .union(CharacterSet.punctuationCharacters)
-                                                          .union(CharacterSet.whitespaces)
         let data = TextInputCellData(title: "usernameInputText".localized,
                                      placeHolder: "usernameInputPlaceholder".localized,
                                      text: registerCredentials.username,
@@ -98,17 +95,18 @@ class RegisterViewModel {
         return configurator
     }()
     
-    private lazy var emailInputCellConfigurator: LoginTextInputCellConfigurator = {
+    private lazy var emailInputCellConfigurator: TextInputCellConfigurator = {
         let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet.symbols)
                                                           .union(CharacterSet.punctuationCharacters)
         let data = TextInputCellData(title: "emailInputText".localized,
                                      placeHolder: "emailInputPlaceholder".localized,
                                      text: registerCredentials.email,
                                      isSecureTextEntry: false,
-                                     validator: TextValidator(minimumLength: 3,
-                                                              maximumLength: 254,
-                                                              allowedCharacters: allowedCharacters))
-        let configurator = LoginTextInputCellConfigurator(data: data)
+                                     validator: EmailValidator(
+                                        minimumLength: 0,
+                                        maximumLength: 256,
+                                        allowedCharacters: allowedCharacters))
+        let configurator = TextInputCellConfigurator(data: data)
         let textFieldDidEndEditing: (String?) -> () = { [weak self, weak configurator] text in
             guard let configurator = configurator else { return }
             configurator.data.text = text
@@ -130,9 +128,13 @@ class RegisterViewModel {
         let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet.symbols)
                                                           .union(CharacterSet.punctuationCharacters)
                                                           .union(CharacterSet.whitespaces)
-        let validator = TextValidator(minimumLength: 4,
-                                      maximumLength: 254,
-                                      allowedCharacters: allowedCharacters)
+        let validator = PasswordValidator(
+            minimumLength: 8,
+            maximumLength: 256,
+            allowedCharacters: allowedCharacters,
+            password: "",
+            valueShouldBeEqual: false
+        )
         let data = TextInputCellData(title: "passwordInputText".localized,
                                      placeHolder: "passwordPlaceholder".localized,
                                      text: registerCredentials.password,
@@ -150,7 +152,6 @@ class RegisterViewModel {
         configurator.data.textfieldDidEndEditing = textFieldDidEndEditing
 
         configurator.didBecomeFirstResponder = { [weak self] input in
-            //self?.currentFirstResponderInput = input
         }
 
         return configurator
@@ -158,6 +159,13 @@ class RegisterViewModel {
     
     private lazy var registerButtonCellConfigurator: MainButtonCellConfigurator = {
         let didPressButton: () -> () = { [weak self] in
+            guard
+                let registerCredentials = self?.registerCredentials,
+                registerCredentials.username?.isEmpty == false,
+                registerCredentials.email?.isEmpty == false,
+                registerCredentials.name?.isEmpty == false,
+                registerCredentials.password?.isEmpty == false
+            else { return }
             self?.register()
             Logger.error("REGISTER")
         }
@@ -165,7 +173,7 @@ class RegisterViewModel {
                                         left: 12,
                                         bottom: -24.deviceSizeAware,
                                         right: -12)
-        let data = MainButtonCellData(title: "Register",
+        let data = MainButtonCellData(title: "registerButtonTitle".localized,
                                       buttonInsets: buttonInsets,
                                       didPressButton: didPressButton)
 
@@ -177,7 +185,7 @@ class RegisterViewModel {
     init(tableViewInterface: TableViewControllerInterface) {
         
         self.tableViewInterface = tableViewInterface
-        self.registerCredentials = RegisterCredentials(name: "test",username: "test", email: "test@test.pl", password: "test")
+        self.registerCredentials = RegisterCredentials(name: "",username: "", email: "", password: "")
     }
 
     //MARK: - Access methods
@@ -237,7 +245,8 @@ class RegisterViewModel {
 
     public func validate(completion: (([Error], [IndexPath]) -> Void)? = nil) {
         let inputs: [ValidableInputViewConfigurator] = [nameInputCellConfigurator,
-                                                        passwordInputCellConfigurator]
+                                                        emailInputCellConfigurator,
+                                                        userNameInputCellConfigurator]
         ValidationManager.validate(validableInputViewConfigurators: inputs,
                                    sectionSequence: sectionSequence,
                                    completion: completion)

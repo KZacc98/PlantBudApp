@@ -16,12 +16,8 @@ public struct ApplicationError {
     
     // MARK: - Processing errors
     
-    static var jsonDecodingError: Error {
-        return self.processingError(1004, [NSLocalizedDescriptionKey: "errorDecodingDataFailed".localized])
-    }
-    
     static var unknownError: Error {
-        return self.processingError(1005, [NSLocalizedDescriptionKey: "Jebło"])
+        return self.processingError(1005, [NSLocalizedDescriptionKey: "Error Unknown"])
     }
     
     // MARK: - Validation errors
@@ -31,7 +27,7 @@ public struct ApplicationError {
     }
     
     static var validationInvalidValueError: Error {
-        return self.validationError(2002, [NSLocalizedDescriptionKey: "Podana wartośc jest nieprawidłowa"])
+        return self.validationError(2002, [NSLocalizedDescriptionKey: "validationInvalidValue".localized])
     }
     
     static var validationTooShortValueError: Error {
@@ -41,33 +37,9 @@ public struct ApplicationError {
     static var validationTooLongValueError: Error {
         return self.validationError(2004, [NSLocalizedDescriptionKey: "validationTooLongValue".localized])
     }
-
-    static var validationNoRatingError: Error {
-        return  self.validationError(2005, [NSLocalizedDescriptionKey: "validationNoRating".localized])
-    }
-    
-    static var validationRequiredFieldEmpty: Error {
-        return self.validationError(2006, [NSLocalizedDescriptionKey: "validationRequiredFieldEmpty".localized])
-    }
-    
-    static var validationSelectedCityNoResults: Error {
-        return self.validationError(2007, [NSLocalizedDescriptionKey: "validationSelectedCityNoResults".localized])
-    }
-    
-    static var validationRequiredAgreementsNotSelected: Error {
-        return self.validationError(2008, [NSLocalizedDescriptionKey: "validationRequiredAgreementsNotSelected".localized])
-    }
-    
-    static var validationPaymentDataEmpty: Error {
-        return self.validationError(2009, [NSLocalizedDescriptionKey: "validationPaymentDataEmpty".localized])
-    }
     
     static var validationInvalidEmailError: Error {
         return self.validationError(2010, [NSLocalizedDescriptionKey: "validationInvalidEmailError".localized])
-    }
-    
-    static var validationPromoCodeEmpty: Error {
-        return self.validationError(2011, [NSLocalizedDescriptionKey: "validationPromoCodeEmpty".localized])
     }
     
     static var validationPasswordMustBeEqual: Error {
@@ -92,14 +64,6 @@ public struct ApplicationError {
     
     static var validationSpecialSignRequired: Error {
         return self.validationError(2017, [NSLocalizedDescriptionKey: "validationSpecialSignRequired".localized])
-    }
-    
-    static var validationPasswordProcessingError: Error {
-        return self.validationError(2018, [NSLocalizedDescriptionKey: "validationPasswordProcessingError".localized])
-    }
-    
-    static var addPersonNameIsEmptyError: Error {
-        return self.validationError(2019, [NSLocalizedDescriptionKey: "exclusions.addPerson.nameIsEmpty.error".localized])
     }
 }
 

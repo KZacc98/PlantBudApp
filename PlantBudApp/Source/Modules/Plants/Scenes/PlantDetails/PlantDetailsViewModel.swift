@@ -146,6 +146,7 @@ final class PlantDetailsViewModel {
                 cancelButtonTitle: "no".localized,
                 otherButtonTitles: ["yes".localized],
                 acceptBlock: {
+                    #warning("Dodaj obsluge usuwania bez rutyny")
                     guard let plant = self?.plant, let careRoutineId = self?.careRoutine?.careRoutineId else { return }
                     self?.deletePlant(plant: plant, careRoutineId: careRoutineId)
                 },
@@ -228,9 +229,14 @@ final class PlantDetailsViewModel {
         let cellConfigurators = routineSteps.map {
             RoutineStepCellConfigurator(data: makeRoutineStepCellData(step: $0))
         }
-        let headerCellConfigurator = PlantDetailsHeaderCellConfigurator(data: makePlantDetailsCellData(plant: self.plant))
+        let headerCellConfigurator = PlantDetailsHeaderCellConfigurator(data: PlantDetailsCellData(
+            imageUrl: URL(string: self.plant.plantData.plantImage)!,
+            plantName: self.plant.plantData.plantName,
+            plantState: self.plant.plantData.plantState,
+            plantType: self.plant.plantTypeData,
+            didTapPlant: {}))
         
-        let typeInfoCellConfigurator = PlantDetailsTypeInfoCellConfigurator(data: makePlantDetailsTypeInfoCellData(plant: self.plant))
+        let typeInfoCellConfigurator = PlantTypeCellConfigurator(data: makeTypeInfoCellData(plantTypeDomain: self.plant.plantTypeData))
         
         let headerData = MainSectionHeaderData(
             title: "careRoutineHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
@@ -242,18 +248,23 @@ final class PlantDetailsViewModel {
         sectionSequence = SectionSequence(
             sections: [
                 SingleColumnSection(cellConfigurators: [headerCellConfigurator]),
-                SingleColumnSection(cellConfigurators: [typeInfoCellConfigurator]),
                 SingleColumnSection(cellConfigurators: cellConfigurators, headerConfigurator: headerConfigurator),
                 SingleColumnSection(cellConfigurators: [addCareRoutineButtonCellConfigurator]),
+                SingleColumnSection(cellConfigurators: [typeInfoCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [deletePlantButtonCellConfigurator], headerConfigurator: deleteHeaderConfigurator)
             ]
         )
     }
     
     public func buildEmptySections() { //TODO: SPrawdz czy tego w ogole jeszcze uzywasz
-        let headerCellConfigurator = PlantDetailsHeaderCellConfigurator(data: makePlantDetailsCellData(plant: self.plant))
+        let headerCellConfigurator = PlantDetailsHeaderCellConfigurator(data: PlantDetailsCellData(
+            imageUrl: URL(string: self.plant.plantData.plantImage)!,
+            plantName: self.plant.plantData.plantName,
+            plantState: self.plant.plantData.plantState,
+            plantType: self.plant.plantTypeData,
+            didTapPlant: {}))
         
-        let typeInfoCellConfigurator = PlantDetailsTypeInfoCellConfigurator(data: makePlantDetailsTypeInfoCellData(plant: self.plant))
+        let typeInfoCellConfigurator = PlantTypeCellConfigurator(data: makeTypeInfoCellData(plantTypeDomain: self.plant.plantTypeData))
         
         let headerData = MainSectionHeaderData(
             title: "careRoutineHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
@@ -265,9 +276,9 @@ final class PlantDetailsViewModel {
         sectionSequence = SectionSequence(
             sections: [
                 SingleColumnSection(cellConfigurators: [headerCellConfigurator]),
-                SingleColumnSection(cellConfigurators: [typeInfoCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [], headerConfigurator: headerConfigurator),
                 SingleColumnSection(cellConfigurators: [addCareRoutineButtonCellConfigurator]),
+                SingleColumnSection(cellConfigurators: [typeInfoCellConfigurator]),
                 SingleColumnSection(cellConfigurators: [deletePlantButtonCellConfigurator], headerConfigurator: deleteHeaderConfigurator)
             ]
         )
@@ -284,7 +295,7 @@ final class PlantDetailsViewModel {
         }
         
         let didHoldCell: () -> Void = { [weak self] in
-            DialogManager.showConfirmationDialog(message: "test edit")
+            DialogManager.showConfirmationDialog(title: "Edycja", message: "Czy chcesz edytować krok\n \(step.description)?")
         }
         
         let data = RoutineStepCellData(step: step, didPressCheckbox: didPressCheckbox, didHoldCell: didHoldCell)
@@ -292,17 +303,16 @@ final class PlantDetailsViewModel {
         return data
     }
     
-    private func makePlantDetailsCellData(plant: Plant) -> PlantDetailsCellData {
-        let didTapPlant: () -> Void = {
-            Logger.info("TAP")
+    private func makeTypeInfoCellData(plantTypeDomain: PlantTypeDomain) -> PlantTypeCellData {
+        let didTapPlantType: () -> Void = { [weak self] in
+            Logger.info("TAP \(plantTypeDomain.species)")
         }
         
-        let data = PlantDetailsCellData(
-            imageUrl: URL(string: plant.plantData.plantImage) ?? URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png")!,
-            plantName: plant.plantData.plantName,
-            plantState: PlantState(rawValue: plant.plantData.plantState.rawValue) ?? .default,
-            plantType: plant.plantTypeData,
-            didTapPlant: didTapPlant)
+        let data = PlantTypeCellData(
+            imageUrl: (URL(string: plantTypeDomain.plantTypeImage) ?? URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"))! ,
+            plantType: plantTypeDomain,
+            didTapPlantType: didTapPlantType
+        )
         
         return data
     }
@@ -323,7 +333,10 @@ final class PlantDetailsViewModel {
     
     func prepareSteps(steps: [RoutineStepDomain]){
         let currentDate = Date()
-        let filteredArray = steps.filter { $0.completedAt.addingTimeInterval(TimeInterval($0.stepFrequency.days * 24 * 60 * 60)) <= currentDate }
+        let filteredArray = steps.filter { step in
+            guard let dueDate = Calendar.current.date(byAdding: .day, value: step.stepFrequency.days, to: step.completedAt) else {return false}
+            return dueDate <= Date()
+        }
         let ids = filteredArray.map { $0.id }
         let dispatchGroup = DispatchGroup()
         // Fetch data1

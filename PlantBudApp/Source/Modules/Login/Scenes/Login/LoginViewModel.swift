@@ -82,7 +82,7 @@ class LoginViewModel {
                                       maximumLength: 254,
                                       allowedCharacters: allowedCharacters)
         let data = TextInputCellData(title: "passwordInputText".localized,
-                                     placeHolder: "loginPasswordPlaceHolder".localized,
+                                     placeHolder: "passwordInputText".localized,
                                      text: loginCredentials.password,
                                      isSecureTextEntry: true,
                                      validator: validator)
@@ -128,7 +128,7 @@ class LoginViewModel {
                                         left: 12,
                                         bottom: -24.deviceSizeAware,
                                         right: -12)
-        let data = MainButtonCellData(title: "Register",
+        let data = MainButtonCellData(title: "registerButtonTitle".localized,
                                       buttonInsets: buttonInsets,
                                       didPressButton: didPressButton)
 
@@ -140,7 +140,7 @@ class LoginViewModel {
     init(tableViewInterface: TableViewControllerInterface) {
         
         self.tableViewInterface = tableViewInterface
-        self.loginCredentials = LoginCredentials(username: "ghuitson0@cmu.edu", password: "tewwigz44")
+        self.loginCredentials = LoginCredentials(username: "", password: "")
     }
 
     //MARK: - Access methods

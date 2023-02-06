@@ -46,8 +46,8 @@ class DialogManager {
     
     static func showConfirmationDialog(title: String? = nil,
                                        message: String,
-                                       cancelButtonTitle: String = "no",
-                                       otherButtonTitles: [String] = ["yes"],
+                                       cancelButtonTitle: String = "no".localized,
+                                       otherButtonTitles: [String] = ["yes".localized],
                                        acceptBlock: (() -> Void)? = nil,
                                        rejectBlock: (() -> Void)? = nil) {
         

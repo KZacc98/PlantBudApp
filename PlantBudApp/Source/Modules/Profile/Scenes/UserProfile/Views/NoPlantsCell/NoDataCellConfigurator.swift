@@ -7,31 +7,32 @@
 
 import UIKit
 
-final class NoPlantsCellConfigurator {
+final class NoDataCellConfigurator {
     
     // MARK: - Private properties
     
-    private let fill: String?
+    private let message: String
     
     // MARK: - Initialization
     
-    init(fill: String?) {
-        self.fill = fill
+    init(message: String) {
+        self.message = message
     }
 }
 
 // MARK: - ReusableViewConfiguratorInterface
 
-extension NoPlantsCellConfigurator: ReusableViewConfiguratorInterface {
+extension NoDataCellConfigurator: ReusableViewConfiguratorInterface {
     var type: AnyClass {
-        return NoPlantsCell.self
+        return NoDataCell.self
     }
     
     func configure(view: UIView) {
-        guard let view = view as? NoPlantsCell else { return }
+        guard let view = view as? NoDataCell else { return }
         
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
+        view.infoLabel.text = message
     }
     
     func layoutHeight(relativeTo size: CGSize) -> CGFloat {

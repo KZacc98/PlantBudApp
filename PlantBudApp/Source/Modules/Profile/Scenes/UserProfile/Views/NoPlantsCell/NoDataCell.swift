@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-final class NoPlantsCell: UITableViewCell {
+final class NoDataCell: UITableViewCell {
     
     // MARK: - Public properties
     
@@ -51,7 +51,6 @@ final class NoPlantsCell: UITableViewCell {
         label.textColor = Color.brandBlack
         label.font = Font.noticiaRegular(size: 24)
         label.textAlignment = .center
-        label.text = "communityUserNoPlants".localized
         label.numberOfLines = 0
         labelContainer.addSubviewsUsingAutoLayout(label)
         
@@ -80,7 +79,8 @@ final class NoPlantsCell: UITableViewCell {
     private func setupAutoLayout() {
         contentView.fill(
             with: mainBackgroundView,
-            to: contentView.safeAreaLayoutGuide
+            to: contentView.safeAreaLayoutGuide,
+            insets: UIEdgeInsets(top: 0, left: 0, bottom: -24, right: 0)
         )
         animationsContainer.topAnchor.constrain(anchor: mainBackgroundView.topAnchor)
         animationsContainer.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor)

@@ -67,7 +67,7 @@ final class CommentCell: UITableViewCell {
         label.font = Font.noticiaRegular(size: 12)
         label.textColor = Color.brandBlack
         label.textAlignment = .natural
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         label.text = "COMMENT TEST salkdhsak sdalkasdj;laskdjsad;lk sad;lkfjsadhhj sad;lkfjsadl;kfj sadl;kfjsadlkfyuieuiewuf nbsadf;sadoilfaopsidfhjasdf  sadf;lsakdfjl;aksdjfl;kasd  asdl;fkjasdlfuuoiejnasdlkf;lsadi"
         commentCell.addSubviewsUsingAutoLayout(label)

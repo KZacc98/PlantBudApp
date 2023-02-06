@@ -16,7 +16,6 @@ final class RoutineStepCell: UITableViewCell {
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
-        view.setShadow(shadowOpacity: 1)
         view.layer.cornerRadius = 12
         contentView.addSubviewsUsingAutoLayout(view)
         
@@ -46,7 +45,7 @@ final class RoutineStepCell: UITableViewCell {
     
     public lazy var dueDateLabelLabel: UILabel = {
         let label = UILabel()
-        label.font = Font.noticiaRegular(size: 16)
+        label.font = Font.noticiaRegular(size: 12)
         label.textColor = Color.brandWhite
         label.textAlignment = .center
         label.numberOfLines = 0

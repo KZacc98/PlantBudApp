@@ -13,6 +13,24 @@
 "done" = "Zakończ";
 "back" = "Wróć";
 
+//Logout
+"logoutDialogTitle" = "Wylogowanie";
+"logoutDialogMessage" = "Czy chcesz się wylogować?";
+"logoutButtonTitle" = "Wyloguj się";
+
+//Errors
+"validationEmptyValue" = "Pole nie może być puste";
+"validationInvalidValue" = "Podana wartośc jest nieprawidłowa";
+"validationTooShortValue" = "Podana warość jest za krótka";
+"validationTooLongValue" = "Podana wartość jest za długa";
+"validationInvalidEmailError" = "Podany adres email jest nieprawidłowy";
+"validationPasswordMustBeEqual" = "Hasła muszą być takie same";
+"validationPasswordCantBeEqual" = "Nowe hasło musi być inne";
+"validationDigitRequired" = "Hasło musi zawierać przynajmniej 1 cyfrę";
+"validationLetterRequired" = "Hasło musi zawierać przynajmniej 1 literę";
+"validationUpperCasedLetterRequired" = "Hasło musi zawierać przynajmniej 1 wielką literę";
+"validationSpecialSignRequired" = "Hasło musi zawierać przynajmniej 1 znak specjalny";
+
 //TabBar
 "tabBarOptionHome" = "Dom";
 "tabBarOptionLeaf" = "Rośliny";
@@ -33,8 +51,9 @@
 //Register
 
 "registerTitle" = "Zarejestruj się";
+"registerButtonTitle" = "Zarejestruj się";
 "nameInputText" = "Name";
-"nameInputPlaceholder" = "Twoje imię i nazwisko";
+"nameInputPlaceholder" = "Twoje imię";
 "usernameInputText" = "Nazwa użytkownika";
 "usernameInputPlaceholder" = "Twoja nazwa użytkownika";
 "emailInputText" = "E-Mail";
@@ -48,13 +67,14 @@
 "plantStatsHeaderLabel" = "Podsumowanie";
 "messageOfTheDayHeaderLabel" = "Wiadomość dnia";
 "currentPlantMeanState" = "Stan twoich roślin";
+"plantStatsNoPlants" = "Nie posiadasz żadnych roslin, nie możemy przygotować podsumowania.😔";
 
 //ScoreMessages
 "noMessage" = "Wystąpił błąd podczas pobierania wiadomości";
 
     //Perfect
 
-    "perfectScore1" = "Twoje rośliny zawsze wyglądają tak zdrowo i żywo - widać, że masz prawdziwy zielony kciuk! Kontynuuj doskonałą pracę z ich pielęgnacją.";
+    "perfectScore1" = "Twoje rośliny zawsze wyglądają tak zdrowo i żywo - widać, że masz do nich świetne podejście! Kontynuuj doskonałą pracę z ich pielęgnacją.";
     "perfectScore2" = "Jestem nieustannie zdumiony troską i uwagą, jaką poświęcasz swoim roślinom. Twoja ciężka praca naprawdę się opłaca - wyglądają fantastycznie! Trzymaj się tej wspaniałej pracy.";
     "perfectScore3" = "Muszę powiedzieć, że Twoje rośliny są jednymi z najbardziej zadbanych jakie kiedykolwiek widziałem. Twoje poświęcenie dla ich zdrowia naprawdę się opłaca - wyglądają niesamowicie! Trzymaj się fantastycznej pracy.";
 
@@ -76,6 +96,24 @@
     "regular2" = "Twoje rośliny wyglądają ogólnie świetnie, ale zauważyłem, że niektóre z nich stają się trochę legendarne. Czy rozważałeś ich przycinanie, aby zachęcić je do nowego wzrostu i utrzymać ich najlepszy wygląd? To prosty, ale skuteczny sposób na poprawę ich zdrowia i wyglądu.";
     "regular3" = "Naprawdę doceniam troskę i uwagę, jaką poświęcasz swoim roślinom, ale czy pomyślałeś o ich rotacji, aby zapewnić im wszystkim równą ilość światła słonecznego? To może zrobić dużą różnicę w ich wzroście i ogólnym zdrowiu. Kontynuujcie wspaniałą pracę i nie bójcie się eksperymentować i próbować nowych rzeczy!";
 
+//PlantState
+
+"plantStateThriving" = "Żyje pełnią życia 🌿";
+"plantStateGood" = "Jest dobrze 🌞";
+"plantStateNeedsAttention" = "Potrzebuje uwagi 🩺";
+"plantStateThirsty" = "Spragniona 💦";
+"plantStateForgotten" = "Zapomniana 🫥";
+"plantStateDead" = "W zaświatch 💀";
+"plantStateDefault" = "Jest ok 😁";
+//Multiple
+"plantStateThrivingMulti" =" Żyją pełnią życia 🌿";
+"plantStateGoodMulti" = "Jest dobrze 🌞";
+"plantStateNeedsAttentionMulti" = "Potrzebują uwagi 🩺";
+"plantStateThirstyMulti" = "Są spragnione 💦";
+"plantStateForgottenMulti" = "Zapomniane 🫥";
+"plantStateDeadMulti" = "W zaświatch 💀";
+"plantSTateDefaultMultiple" = "Bez statusu? 🤔";
+
 //MessageOfTheDay
 
 "messageOfTheDay1" = "Nasze rośliny może nie mówią, ale na pewno śpiewają \nKiedy dajemy im opiekę, która sprawia, że ich liście nabierają skrzydeł. \nPodlewamy i nawozimy, przycinamy i chronimy, aby nasze rośliny mogły się rozwijać, a nigdy nie zaniedbać.";
@@ -85,6 +123,8 @@
 //PlantList
 
 "plantListTitle" = "Rośliny";
+"plantListPointerHeaderMessage" = "Możesz to zrobić tutaj!";
+"plantListNoPlants" = "Wygląda na to że nie masz jeszcze żadnych roślin.😰\n Może dodamy je teraz?";
 
 //AddPlant
 
@@ -132,12 +172,16 @@
 "badgesTitle" = "Odznaki";
 "newestBadgeHeaderLabel" = "Najnowsza odznaka";
 "allBadgesHeaderLabel" = "Wszystkie odznaki";
+"noBadges" = "Nie masz żadnych odznak, możesz je zdobyć dbając o swoje rośliny lub za aktywność w społecznościach";
 
 //Communities
 
 "communitiesListTitle" = "Społeczności";
 "userCommunitiesHeaderTitle" = "Twoje społeczności";
 "allCommunitiesHeaderTitle" = "Wszystkie społeczności";
+"joinCommunityDialogTitle" = "Dołącz do społeczności";
+"joinCommunityDialogMessage" = "Czy chcesz dołączyć do tej społeczności?";
+"joinCommunityButtonTitle" = "Dołącz";
 
 "noCommentsPlaceholder" = "Skomentuj jako pierwszy";
 "postPoints" = "Punkty: ";

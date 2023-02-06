@@ -39,8 +39,7 @@ extension PlantTypeCellConfigurator: ReusableViewConfiguratorInterface {
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
         view.plantSpeciesLabel.text = data.plantType.species
-        view.plantTypeLabel.text = data.plantType.type.description
-        view.plantInfoLabel.text = data.plantType.description
+        view.plantInfoLabel.text = data.plantType.description.replacingOccurrences(of: "\\n", with: "\n")
         view.plantImage.setImage(with: data.imageUrl)
         
         view.mainBackgroundView.gestureRecognizers?.forEach {

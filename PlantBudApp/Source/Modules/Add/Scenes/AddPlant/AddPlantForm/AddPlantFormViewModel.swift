@@ -137,7 +137,7 @@ final class AddPlantFormViewModel {
         Network.shared.apollo.store.clearCache()
         Network.performMutation(mutation: AddPlantMutation(object: Plant_insert_input(
             createdAt: timestamp,
-            plantImage: "https://res.cloudinary.com/dv1dmymg2/image/upload/v1673187625/PlantBuddy/PlantTypes/template_primary_tofeqr.jpg",
+            plantImage: plantType.plantTypeImage,
             plantName: plantName,
             plantPlacement: "default",
             plantState: "default",

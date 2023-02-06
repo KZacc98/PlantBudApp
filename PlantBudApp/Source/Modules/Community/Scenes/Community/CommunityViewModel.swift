@@ -39,9 +39,9 @@ final class CommunityViewModel {
     private lazy var joinCommunityButton: MainButtonCellConfigurator = {
         let didPressButton: () -> () = { [weak self] in
             DialogManager.showConfirmationDialog(
-                title: "Join community",
-                message: "U really wanna Join this community",
-                cancelButtonTitle: "nah",
+                title: "joinCommunityDialogTitle".localized,
+                message: "joinCommunityDialogMessage".localized,
+                cancelButtonTitle: "no".localized,
                 acceptBlock: {
                     guard let communityId = self?.communityDomain.id else { return }
                     Logger.info("JoinCommunity request")
@@ -57,7 +57,7 @@ final class CommunityViewModel {
                                         left: 12,
                                         bottom: -24.deviceSizeAware,
                                         right: -12)
-        let data = MainButtonCellData(title: "Join Community".uppercased(),
+        let data = MainButtonCellData(title: "joinCommunityButtonTitle".localized,
                                       buttonInsets: buttonInsets,
                                       didPressButton: didPressButton)
         

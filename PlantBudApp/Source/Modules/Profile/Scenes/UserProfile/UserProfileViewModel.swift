@@ -134,7 +134,7 @@ final class UserProfileViewModel {
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
         
         if plants.isEmpty{
-            let configurator = NoPlantsCellConfigurator(fill: "")
+            let configurator = NoDataCellConfigurator(message: "communityUserNoPlants".localized)
             return SingleColumnSection(cellConfigurators: [configurator], headerConfigurator: headerConfigurator)
         } else {
             let cellConfigurators = self.communityUserPlants.map { plant in

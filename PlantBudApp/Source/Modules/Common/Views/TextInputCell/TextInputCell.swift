@@ -66,6 +66,7 @@ class TextInputCell: UITableViewCell {
 //        label.font = 
         label.textColor = .red
         label.isHidden = true
+        label.adjustsFontSizeToFitWidth = true
         mainBackgroundView.addSubviewsUsingAutoLayout(label)
 
         return label

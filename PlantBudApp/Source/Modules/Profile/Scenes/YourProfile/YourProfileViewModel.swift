@@ -26,9 +26,9 @@ final class YourProfileViewModel {
     private lazy var logoutButton: MainButtonCellConfigurator = {
         let didPressButton: () -> () = { [weak self] in
             DialogManager.showConfirmationDialog(
-                title: "Logout",
-                message: "U really wanna logout",
-                cancelButtonTitle: "nah",
+                title: "logoutDialogTitle".localized,
+                message: "logoutDialogMessage".localized,
+                cancelButtonTitle: "yes".localized,
                 acceptBlock: {
                     UIAppDelegate?.applicationCoordinator?.logout()
                 },
@@ -42,7 +42,7 @@ final class YourProfileViewModel {
                                         left: 12,
                                         bottom: -24.deviceSizeAware,
                                         right: -12)
-        let data = MainButtonCellData(title: "Logout".uppercased(),
+        let data = MainButtonCellData(title: "logoutButtonTitle".localized,
                                       buttonInsets: buttonInsets,
                                       didPressButton: didPressButton)
         

@@ -13,6 +13,24 @@
 "done" = "Done";
 "back" = "Back";
 
+//Logout
+"logoutDialogTitle" = "Logout";
+"logoutDialogMessage" = "Do you want to logout?";
+"logoutButtonTitle" = "Logout";
+
+//Errors
+"validationEmptyValue" = "Field cannot be empty";
+"validationInvalidValue" = "The provided value is invalid";
+"validationTooShortValue" = "The provided value is too short";
+"validationTooLongValue" = "The provided value is too long";
+"validationInvalidEmailError" = "The provided email address is invalid";
+"validationPasswordMustBeEqual" = "Passwords must be the same";
+"validationPasswordCantBeEqual" = "The new password must be different";
+"validationDigitRequired" = "Password must contain at least 1 digit";
+"validationLetterRequired" = "Password must contain at least 1 letter";
+"validationUpperCasedLetterRequired" = "Password must contain at least 1 uppercase letter";
+"validationSpecialSignRequired" = "Password must contain at least 1 special character";
+
 //TabBar
 "tabBarOptionHome" = "Home";
 "tabBarOptionLeaf" = "Plants";
@@ -33,6 +51,7 @@
 //Register
 
 "registerTitle" = "Sign up";
+"registerButtonTitle" = "Sign up";
 "nameInputText" = "Name";
 "nameInputPlaceholder" = "Your name";
 "usernameInputText" = "Username";
@@ -48,6 +67,7 @@
 "plantStatsHeaderLabel" = "Summary";
 "messageOfTheDayHeaderLabel" = "Message of the day";
 "currentPlantMeanState" = "State of your plants";
+"plantStatsNoPlants" = "You have no plants there is nothing to summarise.😔";
 
 //ScoreMessages
 "noMessage" = "An error ocurred when fetching message";
@@ -68,6 +88,25 @@
 "regular2" = "Your plants are looking great overall, but I've noticed that some of them are getting a little leggy. Have you considered pruning them to encourage new growth and keep them looking their best? It's a simple but effective way to improve their health and appearance.";
 "regular3" = "I really appreciate the care and attention you give to your plants, but have you thought about rotating them to ensure they all get an equal amount of sunlight? It can make a big difference in their growth and overall health. Keep up the great work, and don't be afraid to experiment and try new things!";
 
+//PlantState
+
+"plantStateThriving" = "Thriving 🌿";
+"plantStateGood" = "Good 🌞";
+"plantStateNeedsAttention" = "Needs Attention 🩺";
+"plantStateThirsty" = "Thirsty 💦";
+"plantStateForgotten" = "Forgotten 🫥";
+"plantStateDead" = "Dead 💀";
+"plantStateDefault" = "Doing okay 😁";
+//Multiple
+"plantStateThrivingMulti" = "Thriving 🌿";
+"plantStateGoodMulti" = "Good 🌞";
+"plantStateNeedsAttentionMulti" = "Theycould use some attention 🩺";
+"plantStateThirstyMulti" = "They're all thirsty 💦";
+"plantStateForgottenMulti" = "You forgot about them? 🫥";
+"plantStateDeadMulti" = "They're all dead 💀";
+"plantSTateDefaultMultiple" = "No status 🤔";
+
+
 //MessageOfTheDay
 
 "messageOfTheDay1" = "Our plants may not speak, but they surely do sing \nWhen we give them the care that makes their leaves take wing. \nWe water and fertilize, prune and protect \nSo that our plants can thrive, and never neglect.";
@@ -77,6 +116,8 @@
 //PlantList
 
 "plantListTitle" = "Plants";
+"plantListPointerHeaderMessage" = "You can do that here!";
+"plantListNoPlants" = "It looks like you dont have any plants 😰.\n Maybe lets add some?";
 
 //AddPlant
 
@@ -125,12 +166,16 @@
 "badgesTitle" = "Badges";
 "newestBadgeHeaderLabel" = "Newest badge";
 "allBadgesHeaderLabel" = "All badges";
+"noBadges" = "You dont have any badges, you can earn them by caring for your plants or for activity within communities";
 
 //Communities
 
 "communitiesListTitle" = "Communities";
 "userCommunitiesHeaderTitle" = "Your communities";
 "allCommunitiesHeaderTitle" = "All communities";
+"joinCommunityDialogTitle" = "Join community";
+"joinCommunityDialogMessage" = "Do you want to join this community?";
+"joinCommunityButtonTitle" = "Join community";
 
 "noCommentsPlaceholder" = "Be the first to comment";
 "postPoints" = "Points: ";

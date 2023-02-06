@@ -40,7 +40,7 @@ extension PlantCellConfigurator: ReusableViewConfiguratorInterface {
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
         view.plantNameLabel.text = data.plantName
-        view.plantStateLabel.text = data.plantState.rawValue
+        view.plantStateLabel.text = data.plantState.caseNameWithEmoji()
         view.plantImage.setImage(with: data.imageUrl)
         view.mainBackgroundView.gestureRecognizers?.forEach {
             view.mainBackgroundView.removeGestureRecognizer($0)

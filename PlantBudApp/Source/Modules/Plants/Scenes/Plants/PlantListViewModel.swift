@@ -118,32 +118,25 @@ final class PlantListViewModel {
     }
     
     public func buildSections(plants: [Plant]) {
-        let cellConfigurators = plants.map { plant in
-            PlantCellConfigurator(data: makePlantCellData(plant: plant))
+        let cellConfigurators: [any ReusableViewConfiguratorInterface]
+        if plants.isEmpty == false {
+            cellConfigurators = plants.map { plant in
+                PlantCellConfigurator(data: makePlantCellData(plant: plant))
+            }
+        } else {
+            cellConfigurators = [
+                AnimationPointerHeaderCellConfigurator(info: "plantListPointerHeaderMessage".localized),
+                NoDataCellConfigurator(message: "plantListNoPlants".localized)
+            ]
         }
         
         sectionSequence = SectionSequence(
             sections: [
                 SingleColumnSection(cellConfigurators: cellConfigurators)
-                //                makeHelloHeaderSection(),
-                //                makePlantsSection(plantDomains: plantDomains!)
-            ])
-    }
-    
-    public func buildEmptySections() {
-        sectionSequence = SectionSequence(
-            sections: [
-                makeHelloHeaderSection(),
             ])
     }
     
     //MARK: - Private methods
-    
-    private func makeHelloHeaderSection() -> SingleColumnSection {
-        let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "PLANTS"))
-        
-        return SingleColumnSection(cellConfigurators: [configurator])
-    }
     
     private func makePlantCellData(plant: Plant) -> PlantCellData {
         let didTapPlant: () -> Void = { [weak self] in

@@ -15,6 +15,8 @@ final class Color {
     static let brandWhite: UIColor = UIColor().hexColor(hex: "#F6F7F8")
     static let darkGray: UIColor = UIColor.gray
     static let red: UIColor = UIColor.red
+    static let brandWarning: UIColor = UIColor().hexColor(hex: "#FFC700") //pomaranczowy
+    static let brandAlert: UIColor = UIColor().hexColor(hex: "#E30B0B") //czerwony
     
 }
 

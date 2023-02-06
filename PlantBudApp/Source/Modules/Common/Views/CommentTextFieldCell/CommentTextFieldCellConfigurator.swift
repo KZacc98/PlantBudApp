@@ -38,7 +38,7 @@ extension CommentTextFieldCellConfigurator: ReusableViewConfiguratorInterface {
 
         view.selectionStyle = .none
         view.commentTextView.text = data.text
-        view.userProfileImageView.setImage(with: URL(string: profilePicturePlaceholder))
+        view.userProfileImageView.setImage(with: URL(string: UserContext.shared.userProfile?.profilePicture ?? profilePicturePlaceholder))
         view.commentTextView.returnKeyType = data.returnTypeKey
         view.commentTextView.autocapitalizationType = data.autoCapitalizationType
         view.setTextViewHeight(height: data.textViewHeight)

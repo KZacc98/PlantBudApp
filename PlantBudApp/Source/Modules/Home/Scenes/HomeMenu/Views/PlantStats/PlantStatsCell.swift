@@ -41,6 +41,7 @@ final class PlantStatsCell: UITableViewCell {
         label.textAlignment = .natural
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
         mainBackgroundView.addSubviewsUsingAutoLayout(label)
         
         return label
@@ -52,7 +53,7 @@ final class PlantStatsCell: UITableViewCell {
         label.textColor = Color.brandWhite
         label.text = "currentPlantMeanState".localized
         label.textAlignment = .natural
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
         mainBackgroundView.addSubviewsUsingAutoLayout(label)
         
@@ -103,16 +104,16 @@ final class PlantStatsCell: UITableViewCell {
         
         plantsStateLabel.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: 12)
         plantsStateLabel.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 12)
-        plantsStateLabel.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -12)
+        plantsStateLabel.trailingAnchor.constrain(anchor: animationView.leadingAnchor)
         
         plantsMeanStateLabel.topAnchor.constrain(anchor: plantsStateLabel.bottomAnchor, constant: 12)
         plantsMeanStateLabel.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 12)
-        plantsMeanStateLabel.trailingAnchor.constrain(anchor: animationView.leadingAnchor, constant: 12)
+        plantsMeanStateLabel.trailingAnchor.constrain(anchor: animationView.leadingAnchor)
         
         plantsMeanStateCommentLabel.topAnchor.constrain(anchor: plantsMeanStateLabel.bottomAnchor, constant: 12)
         plantsMeanStateCommentLabel.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -12)
         plantsMeanStateCommentLabel.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 12)
-        plantsMeanStateCommentLabel.trailingAnchor.constrain(anchor: animationView.leadingAnchor, constant: 12)
+        plantsMeanStateCommentLabel.trailingAnchor.constrain(anchor: animationView.leadingAnchor)
         
         animationView.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor)
         animationView.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: 50)

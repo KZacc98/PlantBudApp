@@ -41,6 +41,7 @@ final class PlantTypeCell: UITableViewCell {
         label.textAlignment = .natural
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
         mainBackgroundView.addSubviewsUsingAutoLayout(label)
         
         return label
@@ -58,23 +59,18 @@ final class PlantTypeCell: UITableViewCell {
         return label
     }()
     
-    public lazy var plantInfoLabel: UILabel = {
-        let label = UILabel()
-        label.font = Font.noticiaItalic(size: 15)
-        label.textColor = Color.brandWhite
+    public lazy var plantInfoLabel: UITextView = {
+        let label = UITextView()
+        label.font = Font.noticiaRegular(size: 16)
+        label.textColor = Color.brandBlack
         label.textAlignment = .natural
-        label.numberOfLines = 0
-        label.lineBreakMode = .byWordWrapping
+        label.isEditable = false
+        label.setShadow(cornerRadius: 12)
+        label.backgroundColor = Color.brandWhite
         mainBackgroundView.addSubviewsUsingAutoLayout(label)
         
         return label
     }()
-    
-    // MARK: - Selectors
-    
-//    @objc private func didPressButton(_ sender: UIButton) {
-//        didPressButton?()
-//    }
     
     // MARK: - Initialization
     
@@ -117,6 +113,7 @@ final class PlantTypeCell: UITableViewCell {
         plantInfoLabel.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 12)
         plantInfoLabel.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -12)
         plantInfoLabel.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -12)
+        plantInfoLabel.heightAnchor.constrain(constant: UIScreen.main.bounds.height/2.5)
     }
 }
 

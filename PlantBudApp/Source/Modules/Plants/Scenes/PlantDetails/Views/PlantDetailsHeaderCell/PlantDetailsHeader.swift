@@ -34,12 +34,12 @@ final class PlantDetailsHeader: UITableViewCell {
         
     }()
     
-    public lazy var imageViewChinGradient: UIView = {
+    public lazy var separatorView: UIView = {
         let gradientView = UIView()
-        gradientView.backgroundColor = Color.brandWhite
-        
-        mainBackgroundView.addSubviewsUsingAutoLayout(gradientView)
-        
+        gradientView.backgroundColor = Color.brandGreen.withAlphaComponent(0.5)
+        gradientView.translatesAutoresizingMaskIntoConstraints = false
+//        mainBackgroundView.addSubviewsUsingAutoLayout(gradientView)
+
         return gradientView
     }()
     
@@ -47,21 +47,22 @@ final class PlantDetailsHeader: UITableViewCell {
         let label = UILabel()
         label.font = Font.noticiaRegular(size: 24)
         label.textColor = Color.brandBlack
-        label.textAlignment = .natural
+        label.textAlignment = .center
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
-        imageViewChinGradient.addSubviewsUsingAutoLayout(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+//        imageViewChinGradient.addSubviewsUsingAutoLayout(label)
         
         return label
     }()
     
     lazy var stackView: UIStackView = {
-        let view = UIStackView(arrangedSubviews: [plantStateLabel])
+        let view = UIStackView(arrangedSubviews: [plantNameLabel, separatorView, plantStateLabel])
         view.distribution = .fill
         view.alignment = .fill
         view.spacing = 10
         view.axis = .vertical
-        view.setShadow(shadowOpacity: 0.5)
+        view.setShadow(cornerRadius: 12, shadowOpacity: 0.5)
         view.backgroundColor = Color.brandWhite
         view.isLayoutMarginsRelativeArrangement = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -74,9 +75,10 @@ final class PlantDetailsHeader: UITableViewCell {
         let label = UILabel()
         label.font = Font.noticiaRegular(size: 24)
         label.textColor = Color.brandBlack
-        label.textAlignment = .natural
+        label.textAlignment = .center
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -111,20 +113,20 @@ final class PlantDetailsHeader: UITableViewCell {
         )
         
         plantImage.topAnchor.constrain(anchor: mainBackgroundView.topAnchor, constant: plantImage.frame.height / 4)
-        plantImage.bottomAnchor.constrain(anchor: stackView.topAnchor)
+        plantImage.bottomAnchor.constrain(anchor: stackView.topAnchor, constant: 30)
         plantImage.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor)
         plantImage.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor)
         
         plantImage.widthAnchor.constrain(anchor: mainBackgroundView.widthAnchor)
         plantImage.heightAnchor.constrain(anchor: plantImage.widthAnchor)
         
-        plantNameLabel.centerXAnchor.constrain(anchor: imageViewChinGradient.centerXAnchor)
-        plantNameLabel.centerYAnchor.constrain(anchor: imageViewChinGradient.centerYAnchor)
+        separatorView.leadingAnchor.constrain(anchor: stackView.leadingAnchor, constant: 12)
+        separatorView.trailingAnchor.constrain(anchor: stackView.trailingAnchor, constant: -12)
+        separatorView.heightAnchor.constrain(constant: 2)
         
-        imageViewChinGradient.leadingAnchor.constrain(anchor: plantImage.leadingAnchor)
-        imageViewChinGradient.trailingAnchor.constrain(anchor: plantImage.trailingAnchor)
-        imageViewChinGradient.heightAnchor.constrain(anchor: plantNameLabel.heightAnchor)
-        imageViewChinGradient.bottomAnchor.constrain(anchor: plantImage.bottomAnchor, constant: -20)
+        plantNameLabel.topAnchor.constrain(anchor: stackView.topAnchor, constant: 6)
+        
+        plantStateLabel.bottomAnchor.constrain(anchor: stackView.bottomAnchor, constant: -6)
         
         stackView.leadingAnchor.constrain(anchor: mainBackgroundView.leadingAnchor, constant: 16)
         stackView.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -16)

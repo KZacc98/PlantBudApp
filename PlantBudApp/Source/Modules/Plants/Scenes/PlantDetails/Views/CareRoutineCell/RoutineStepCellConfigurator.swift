@@ -66,11 +66,59 @@ extension RoutineStepCellConfigurator: ReusableViewConfiguratorInterface {
         view.selectionStyle = .none
         view.stepLabel.text = data.step.description
         view.backgroundColor = Color.brandWhite
-        view.mainBackgroundView.backgroundColor = data.step.isCompleted ? Color.brandGreen : Color.red
-        view.mainBackgroundView.isUserInteractionEnabled = !data.step.isCompleted
-        view.stepLabel.textColor = data.step.isCompleted ? Color.brandWhite : Color.brandBlack
-        view.dueDateLabelLabel.text = "Great job come back: \(dueDateString)"
-        view.dueDateLabelLabel.isHidden = !data.step.isCompleted
+        view.mainBackgroundView.backgroundColor = Color.brandWhite
+        view.mainBackgroundView.isUserInteractionEnabled = true
+        view.stepLabel.textColor = Color.brandBlack
+        view.dueDateLabelLabel.isHidden = true
+        
+        if let dueDate = dueDate{
+            switch data.step.isCompleted {
+            case true:
+                view.mainBackgroundView.backgroundColor = Color.brandGreen
+                view.mainBackgroundView.setShadow(cornerRadius: 12, shadowOpacity: 1, shadowColor: Color.brandGreen)
+                view.mainBackgroundView.isUserInteractionEnabled = false
+                view.stepLabel.textColor = Color.brandWhite
+                view.dueDateLabelLabel.textColor = Color.brandWhite
+                view.dueDateLabelLabel.text = "Świetna robota!\nPlanowana data wykonania: \n \(dueDateString)"
+                view.dueDateLabelLabel.isHidden = false
+            case false:
+                view.stepLabel.textColor = Color.brandBlack
+                view.dueDateLabelLabel.textColor = Color.brandBlack
+                switch dueDate.isInToday {
+                case true:
+                    view.mainBackgroundView.backgroundColor = Color.brandWhite
+                    view.mainBackgroundView.setShadow(cornerRadius: 12, shadowOpacity: 0.5, shadowColor: Color.brandBlack)
+                    view.mainBackgroundView.isUserInteractionEnabled = true
+                    view.dueDateLabelLabel.isHidden = true
+                case false:
+                    if dueDate.isInTomorrow {
+                        view.mainBackgroundView.backgroundColor = Color.brandWhite
+                        view.mainBackgroundView.isUserInteractionEnabled = false
+                        view.mainBackgroundView.layer.borderWidth = 1
+                        view.mainBackgroundView.layer.borderColor = Color.brandBlack.withAlphaComponent(0.3).cgColor
+                        view.dueDateLabelLabel.text = "Przygotuj się:\n \(dueDateString)\n to dzień wykonania tej czynności"
+                        view.dueDateLabelLabel.isHidden = false
+                    } else if dueDate.isInYesterday {
+                        view.mainBackgroundView.backgroundColor = Color.brandWhite
+                        view.mainBackgroundView.setShadow(cornerRadius: 12, shadowOpacity: 1, shadowColor: Color.brandWarning)
+                        view.mainBackgroundView.isUserInteractionEnabled = true
+                        view.dueDateLabelLabel.text = "Planowana data wykonania: \n \(dueDateString)"
+                        view.dueDateLabelLabel.isHidden = false
+                    } else if dueDate < Date().adding(.day, value: 2){
+                        view.mainBackgroundView.backgroundColor = Color.brandWhite
+                        view.mainBackgroundView.setShadow(cornerRadius: 12, shadowOpacity: 1, shadowColor: Color.brandAlert)
+                        view.mainBackgroundView.isUserInteractionEnabled = true
+                        view.dueDateLabelLabel.text = "Krok pominięty!\nPlanowana data wykonania: \n \(dueDateString)"
+                        view.dueDateLabelLabel.isHidden = false
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        
         view.mainBackgroundView.gestureRecognizers?.forEach {
             view.mainBackgroundView.removeGestureRecognizer($0)
         }

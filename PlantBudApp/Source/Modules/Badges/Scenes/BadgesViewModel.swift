@@ -99,18 +99,30 @@ final class BadgesViewModel {
             // Use data1, data2, and data3 here
             self.userBadges = userBadges
             self.displayBadges = allBadges
-            UIAppDelegate?.hideLoadingIndicator()
         }
 
     }
 
     public func buildSections() {
-        guard let badge = self.badges?.first, let badges = self.displayBadges else {return}
-        sectionSequence = SectionSequence(
-            sections: [
-                makeCurrentBadgeSection(badge: badge),
-                makeBadgesSection(badges: badges)
-        ])
+        let cellConfigurators: [any ReusableViewConfiguratorInterface]
+        if let badge = self.badges?.last, let badges = self.displayBadges {
+            sectionSequence = SectionSequence(
+                sections: [
+                    makeCurrentBadgeSection(badge: badge),
+                    makeBadgesSection(badges: badges)
+                ])
+        } else {
+            let headerData = MainSectionHeaderData(
+                title: "allBadgesHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+            let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
+            cellConfigurators = [
+                NoDataCellConfigurator(message: "noBadges".localized)
+            ]
+            sectionSequence = SectionSequence(
+                sections: [SingleColumnSection(cellConfigurators: cellConfigurators, headerConfigurator: headerConfigurator),
+                           makeBadgesSection(badges: self.displayBadges!)])
+        }
+        UIAppDelegate?.hideLoadingIndicator()
     }
     
     //MARK: - Private methods

@@ -42,9 +42,8 @@ extension PlantStatsCellConfigurator: ReusableViewConfiguratorInterface {
         
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
-        view.plantsMeanStateLabel.text = "\(mean)"
+        view.plantsMeanStateLabel.text = mean.stateWithEmoji()
         view.plantsMeanStateCommentLabel.text = stateMessage
-//        view.didPressButton = data.didPressButton
     }
     
     func layoutHeight(relativeTo size: CGSize) -> CGFloat {

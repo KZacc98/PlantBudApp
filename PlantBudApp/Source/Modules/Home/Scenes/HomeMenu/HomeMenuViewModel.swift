@@ -159,18 +159,17 @@ final class HomeMenuViewModel {
     }
     
     private func makePlantsStatsSection(plants: [PlantDomain]?) -> SingleColumnSection {
-        if let plants = plants {
-            let headerData = MainSectionHeaderData(
-                title: "plantStatsHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
-            let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
-            
+        let headerData = MainSectionHeaderData(
+            title: "plantStatsHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+        let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
+        
+        if let plants = plants, plants.isEmpty == false {
             let configurator = PlantStatsCellConfigurator(data: PlantStatsCellData(plants: plants))
             
             return SingleColumnSection(cellConfigurators: [configurator], headerConfigurator: headerConfigurator)
         } else {
-            let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "title"))
-
-            return SingleColumnSection(cellConfigurators: [configurator])
+            let configurator = NoDataCellConfigurator(message: "plantStatsNoPlants".localized)
+            return SingleColumnSection(cellConfigurators: [configurator], headerConfigurator: headerConfigurator)
         }
     }
     

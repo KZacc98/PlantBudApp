@@ -35,11 +35,10 @@ extension PlantDetailsHeaderCellConfigurator: ReusableViewConfiguratorInterface 
     
     func configure(view: UIView) {
         guard let view = view as? PlantDetailsHeader else { return }
-        
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
         view.plantNameLabel.text = data.plantName
-        view.plantStateLabel.text = data.plantState.rawValue
+        view.plantStateLabel.text = data.plantState.caseNameWithEmoji()
         view.plantImage.setImage(with: data.imageUrl)
         view.plantImage.gestureRecognizers?.forEach {
             view.plantImage.removeGestureRecognizer($0)
@@ -48,10 +47,6 @@ extension PlantDetailsHeaderCellConfigurator: ReusableViewConfiguratorInterface 
             UITapGestureRecognizer(
                 target: self,
                 action: #selector(didTapPlant(tapGestureRecognizer:))))
-        
-        //        view.plantImageView.imageView.setRoundedImage(with: data.imageUrl, cornerRadius: view.frame.size.width / 2)
-        //        view.plantImageView.imageView.makeRounded()
-        //        view.didPressButton = data.didPressButton
     }
     
     func layoutHeight(relativeTo size: CGSize) -> CGFloat {
