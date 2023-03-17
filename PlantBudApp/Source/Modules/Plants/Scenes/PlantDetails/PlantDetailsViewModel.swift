@@ -219,7 +219,6 @@ final class PlantDetailsViewModel {
                     DialogManager.showErrorDialog(with: error)
                     UIAppDelegate?.hideLoadingIndicator()
                 }
-                
             }
         }
     }

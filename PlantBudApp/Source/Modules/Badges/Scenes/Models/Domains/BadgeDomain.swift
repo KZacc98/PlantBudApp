@@ -23,4 +23,14 @@ struct BadgeDomain: Codable {
         self.createdAt = remote.createdAt
         self.updatedAt = remote.updatedAt
     }
+    
+    init(id: Int, badgeName: String, points: Int, badgeDescription: String, badgeImage: String, createdAt: String, updatedAt: String) {
+        self.id = id
+        self.badgeName = badgeName
+        self.points = points
+        self.badgeDescription = badgeDescription
+        self.badgeImage = badgeImage
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
 }

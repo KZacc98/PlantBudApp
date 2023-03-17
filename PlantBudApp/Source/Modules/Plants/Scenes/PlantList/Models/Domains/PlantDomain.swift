@@ -25,4 +25,14 @@ struct PlantDomain {
         self.createdAt = remote.createdAt
         self.updatedAt = remote.updatedAt ?? ""
     }
+    init(id: Int, plantName: String, plantState: PlantState, plantPlacement: PlantPlacement, plantImage: String, plantTypeId: Int, createdAt: String, updatedAt: String) {
+        self.id = id
+        self.plantName = plantName
+        self.plantState = plantState
+        self.plantPlacement = plantPlacement
+        self.plantImage = plantImage
+        self.plantTypeId = plantTypeId
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
 }

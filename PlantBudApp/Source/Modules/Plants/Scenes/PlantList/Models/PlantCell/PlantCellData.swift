@@ -7,7 +7,17 @@
 
 import Foundation
 
-struct PlantCellData {
+struct PlantCellData: Equatable {
+    static func == (lhs: PlantCellData, rhs: PlantCellData) -> Bool {
+        if lhs.imageUrl == rhs.imageUrl &&
+            lhs.plantName == rhs.plantName &&
+            lhs.plantState == rhs.plantState {
+            return true
+        } else  {
+            return false
+        }
+    }
+    
     let imageUrl: URL
     let plantName: String
     let plantState: PlantState

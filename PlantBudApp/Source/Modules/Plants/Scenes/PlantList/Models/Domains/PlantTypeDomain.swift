@@ -21,4 +21,12 @@ struct PlantTypeDomain {
         self.type = remote.type ?? ""
         self.createdAt = remote.createdAt
     }
+    init(id: Int, species: String, description: String, plantTypeImage: String, type: String, createdAt: String?) {
+        self.id = id
+        self.species = species
+        self.description = description
+        self.plantTypeImage = plantTypeImage
+        self.type = type
+        self.createdAt = createdAt
+    }
 }
