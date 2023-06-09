@@ -51,7 +51,6 @@
 		EF46985B299175AB0035504F /* PlantBudAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF46985A299175AB0035504F /* PlantBudAppTests.swift */; };
 		EF469861299175E70035504F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6947C82948EE2D006E56F1 /* API.swift */; };
 		EF469862299175E70035504F /* schema.json in Sources */ = {isa = PBXBuildFile; fileRef = EF9CFDE2293293DA00FD0239 /* schema.json */; };
-		EF469863299175E70035504F /* filler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77D8C2293FD5E700F5807F /* filler.swift */; };
 		EF469864299175E70035504F /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = EFBA28B0292995260034DCA9 /* Localizable.strings */; };
 		EF469865299175E70035504F /* NoticiaText-Bold.ttf in Sources */ = {isa = PBXBuildFile; fileRef = EFAA5B5E293E6FA20082484D /* NoticiaText-Bold.ttf */; };
 		EF469866299175E70035504F /* NoticiaText-BoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = EFAA5B5D293E6FA20082484D /* NoticiaText-BoldItalic.ttf */; };
@@ -70,7 +69,6 @@
 		EF469873299175E70035504F /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = EFBA287D292986520034DCA9 /* Assets.xcassets */; };
 		EF469874299175E70035504F /* DialogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C998D296C7F4100AEB012 /* DialogManager.swift */; };
 		EF469875299175E70035504F /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C998F296C7F6300AEB012 /* WindowManager.swift */; };
-		EF469876299175E70035504F /* networkfiller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77D8C4293FD5FD00F5807F /* networkfiller.swift */; };
 		EF469877299175E70035504F /* ProfileViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC932782970D45400B3057C /* ProfileViewControllerFactory.swift */; };
 		EF469878299175E70035504F /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC9327A2970D46600B3057C /* ProfileCoordinator.swift */; };
 		EF469879299175E70035504F /* NoDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC2FEB52985B4780068C528 /* NoDataCell.swift */; };
@@ -321,8 +319,6 @@
 		EF68F74B294912AC00B2A08E /* RoutineStepDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF68F74A294912AC00B2A08E /* RoutineStepDomain.swift */; };
 		EF6947C92948EE2D006E56F1 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6947C82948EE2D006E56F1 /* API.swift */; };
 		EF77D8BC293FC91F00F5807F /* LottieProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = EF77D8BB293FC91F00F5807F /* LottieProgressHUD */; };
-		EF77D8C3293FD5E700F5807F /* filler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77D8C2293FD5E700F5807F /* filler.swift */; };
-		EF77D8C5293FD5FD00F5807F /* networkfiller.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77D8C4293FD5FD00F5807F /* networkfiller.swift */; };
 		EF8C998E296C7F4100AEB012 /* DialogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C998D296C7F4100AEB012 /* DialogManager.swift */; };
 		EF8C9990296C7F6300AEB012 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C998F296C7F6300AEB012 /* WindowManager.swift */; };
 		EF8C9992296C8CE800AEB012 /* Communities.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EF8C9991296C8CE800AEB012 /* Communities.graphql */; };
@@ -589,8 +585,6 @@
 		EF68F7482949113400B2A08E /* RoutineStepRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepRemote.swift; sourceTree = "<group>"; };
 		EF68F74A294912AC00B2A08E /* RoutineStepDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineStepDomain.swift; sourceTree = "<group>"; };
 		EF6947C82948EE2D006E56F1 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		EF77D8C2293FD5E700F5807F /* filler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filler.swift; sourceTree = "<group>"; };
-		EF77D8C4293FD5FD00F5807F /* networkfiller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = networkfiller.swift; sourceTree = "<group>"; };
 		EF77D8C8293FD61D00F5807F /* templatesfiller */ = {isa = PBXFileReference; lastKnownFileType = text; path = templatesfiller; sourceTree = "<group>"; };
 		EF77D8CA293FD62700F5807F /* datafiller */ = {isa = PBXFileReference; lastKnownFileType = text; path = datafiller; sourceTree = "<group>"; };
 		EF77D8CE293FD65B00F5807F /* loginworker */ = {isa = PBXFileReference; lastKnownFileType = text; path = loginworker; sourceTree = "<group>"; };
@@ -1828,9 +1822,7 @@
 				EFBA28A429298F2A0034DCA9 /* Configuration */,
 				EFBA28A529298F350034DCA9 /* Resources */,
 				EFBA28A629298F410034DCA9 /* Source */,
-				EFBA2882292986520034DCA9 /* Info.plist */,
 				EF190C5C294FC6C90091573D /* GraphQL */,
-				EF9CFDE02932900600FD0239 /* Network.swift */,
 			);
 			path = PlantBudApp;
 			sourceTree = "<group>";
@@ -1838,7 +1830,7 @@
 		EFBA28A429298F2A0034DCA9 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				EF77D8C2293FD5E700F5807F /* filler.swift */,
+				EFBA2882292986520034DCA9 /* Info.plist */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -1975,7 +1967,7 @@
 		EFBA28B8292998790034DCA9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EF77D8C4293FD5FD00F5807F /* networkfiller.swift */,
+				EF9CFDE02932900600FD0239 /* Network.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -2632,7 +2624,6 @@
 			files = (
 				EF469861299175E70035504F /* API.swift in Sources */,
 				EF469862299175E70035504F /* schema.json in Sources */,
-				EF469863299175E70035504F /* filler.swift in Sources */,
 				EF469864299175E70035504F /* Localizable.strings in Sources */,
 				EF46996C29917D940035504F /* PlantDetailsTests.swift in Sources */,
 				EF469865299175E70035504F /* NoticiaText-Bold.ttf in Sources */,
@@ -2652,7 +2643,6 @@
 				EF469873299175E70035504F /* Assets.xcassets in Sources */,
 				EF469874299175E70035504F /* DialogManager.swift in Sources */,
 				EF469875299175E70035504F /* WindowManager.swift in Sources */,
-				EF469876299175E70035504F /* networkfiller.swift in Sources */,
 				EF469877299175E70035504F /* ProfileViewControllerFactory.swift in Sources */,
 				EF469878299175E70035504F /* ProfileCoordinator.swift in Sources */,
 				EF469879299175E70035504F /* NoDataCell.swift in Sources */,
@@ -2974,7 +2964,6 @@
 				EFC1F98E295DDA2100112EFC /* CurrentBadgeCellConfigurator.swift in Sources */,
 				EF9CFDE12932900600FD0239 /* Network.swift in Sources */,
 				EFDFF46C294BB98A00B4F5F1 /* UserProfileCellConfigurator.swift in Sources */,
-				EF77D8C3293FD5E700F5807F /* filler.swift in Sources */,
 				EFC1F96B29592C7800112EFC /* RoutineStepCell.swift in Sources */,
 				EF9CFD7C29324C0500FD0239 /* SingleColumnViewInterface.swift in Sources */,
 				EF9CFD722932467500FD0239 /* AnimationHeaderData.swift in Sources */,
@@ -3012,7 +3001,6 @@
 				EFC1F98C295DD9C500112EFC /* CurrentBadgeCell.swift in Sources */,
 				EFDFF464294BB01D00B4F5F1 /* UserRemote.swift in Sources */,
 				EF9CFD8729324CE600FD0239 /* SectionSequence.swift in Sources */,
-				EF77D8C5293FD5FD00F5807F /* networkfiller.swift in Sources */,
 				EFC93263297059AD00B3057C /* CommentTextFieldCellConfigurator.swift in Sources */,
 				EFC1F991295E3BB300112EFC /* BadgeCell.swift in Sources */,
 				EFA7B17C2945237A008EE8E9 /* PlantRemote.swift in Sources */,
@@ -3318,7 +3306,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GGJL3D3J9M;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PlantBudApp/Info.plist;
+				INFOPLIST_FILE = PlantBudApp/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -3345,7 +3333,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GGJL3D3J9M;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PlantBudApp/Info.plist;
+				INFOPLIST_FILE = PlantBudApp/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -3425,7 +3413,7 @@
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 4.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

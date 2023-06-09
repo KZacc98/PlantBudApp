@@ -74,8 +74,8 @@ final class AddCareRoutineViewModel {
             maximumCommentTextLength: 499,
             returnTypeKey: .done,
             didPressAddStep: didPressAddStep,
-            textViewDidChange: {text in Logger.error("\(text)")},
-            textViewDidEndEditing: {text in Logger.error("EDITING END \(text)")},
+            textViewDidChange: nil,
+            textViewDidEndEditing: nil,
             textViewShouldChangeInRange: makeTextViewShouldChangeInRange(commentTextLenght: 499))
         let commentCellConfigurator = AddRoutineStepCellConfigurator(data: commentCellData)
         
@@ -287,15 +287,9 @@ final class AddCareRoutineViewModel {
             ])
     }
     
-    //MARK: - Private methods
-    
-    
     // MARK: - Selectors
     
     @objc private func didTapDone(sender: UIBarButtonItem) {
         hideKeyboard?()
     }
-    
 }
-
-

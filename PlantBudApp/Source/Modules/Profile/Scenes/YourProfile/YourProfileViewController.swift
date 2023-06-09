@@ -62,7 +62,6 @@ extension YourProfileViewController {
             }
         }
     }
-    
 }
 
 //MARK: - Setup
@@ -99,6 +98,3 @@ extension YourProfileViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
     }
 }
-
-
-

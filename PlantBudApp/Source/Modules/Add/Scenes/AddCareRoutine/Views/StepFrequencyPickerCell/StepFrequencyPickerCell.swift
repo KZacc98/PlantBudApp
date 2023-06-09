@@ -27,7 +27,6 @@ final class StepFrequencyPickerCell: UITableViewCell {
 
         return view
     }()
-        //daily
     
     lazy var dailyButtonContainer: SquareButton = {
         let view = SquareButton()
@@ -36,14 +35,13 @@ final class StepFrequencyPickerCell: UITableViewCell {
         return view
     }()
     
-    //weekly
     lazy var weeklyButtonContainer: SquareButton = {
         let view = SquareButton()
         mainBackgroundView.addSubviewsUsingAutoLayout(view)
 
         return view
     }()
-    //monthly
+    
     lazy var monthlyButtonContainer: SquareButton = {
         let view = SquareButton()
         mainBackgroundView.addSubviewsUsingAutoLayout(view)
@@ -92,25 +90,3 @@ final class StepFrequencyPickerCell: UITableViewCell {
 
     }
 }
-
-////MARK: - UITextViewDelegate
-//
-//extension StepFrequencyPickerCell: UITextViewDelegate {
-//    public func textViewDidChange(_ textView: UITextView) {
-//        textViewDidChange?(textView.text)
-//    }
-//
-//    public func textViewDidEndEditing(_ textView: UITextView) {
-//        textViewDidEndEditing?(textView.text)
-//    }
-//
-//    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//        if let shouldChange = textViewShouldChangeInRange?(textView, range, text) {
-//            return shouldChange
-//        } else {
-//            return true
-//        }
-//    }
-//}
-
-

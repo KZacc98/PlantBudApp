@@ -64,8 +64,6 @@ extension AddRoutineStepCellConfigurator: ReusableViewConfiguratorInterface {
     }
 }
 
-import UIKit
-
 struct AddRoutineStepCellData {
     var text: String?
     var placeholder: String?

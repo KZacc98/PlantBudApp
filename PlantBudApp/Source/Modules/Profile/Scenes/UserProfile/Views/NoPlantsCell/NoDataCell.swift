@@ -57,9 +57,6 @@ final class NoDataCell: UITableViewCell {
         return label
     }()
     
-    
-    
-    
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -101,6 +98,3 @@ final class NoDataCell: UITableViewCell {
         animationView.trailingAnchor.constrain(anchor: animationsContainer.trailingAnchor)
     }
 }
-
-
-

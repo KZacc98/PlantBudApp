@@ -49,16 +49,9 @@ final class YourProfileViewModel {
         return MainButtonCellConfigurator(data: data)
     }()
     
-    //MARK: - Initialization
-    
-//    init(plant: Plant) {
-//        self.plant = plant
-//    }
-    
     //MARK: - Access methods
     
     public func loadData(refresh: Bool = false) {
-//        UIAppDelegate?.showLoadingIndicator()
         buildSections()
     }
     
@@ -71,7 +64,6 @@ final class YourProfileViewModel {
         )
     }
 
-    
     //MARK: - Private methods
     
     private func makeProfilePictureSection() -> SingleColumnSection {
@@ -80,9 +72,4 @@ final class YourProfileViewModel {
         return SingleColumnSection(cellConfigurators: [configurator])
         
     }
-    // MARK: - Selectors
-    
 }
-
-
-
