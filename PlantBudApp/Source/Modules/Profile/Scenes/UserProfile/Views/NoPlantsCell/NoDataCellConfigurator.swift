@@ -39,4 +39,3 @@ extension NoDataCellConfigurator: ReusableViewConfiguratorInterface {
         return UITableView.automaticDimension
     }
 }
-

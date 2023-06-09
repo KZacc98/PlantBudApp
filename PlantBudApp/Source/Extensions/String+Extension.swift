@@ -11,18 +11,11 @@ extension String: LocalizedError {
     public var errorDescription: String? { return self }
     
     var localized: String {
-        var preferred = "-"
-        if let pl = NSLocale.preferredLanguages.first, let pref = pl.split(separator: "-").first { preferred = String(pref) }
-        
-        guard let _ = Bundle.main.path(forResource: preferred, ofType: "lproj") else {
-            guard let en_path = Bundle.main.path(forResource: "en", ofType: "lproj"), let languageBundle = Bundle(path: en_path) else {
-                return NSLocalizedString(self, tableName: nil, bundle: .main, value: "", comment: "")
-            }
-            
-            return languageBundle.localizedString(forKey: self, value: self, table: nil)
-        }
-        
-        return NSLocalizedString(self, comment: "")
+        let preferred = NSLocale.preferredLanguages.first?.split(separator: "-").first.flatMap {
+            String($0) } ?? "en"
+        let languageBundle = Bundle.main.path(forResource: preferred, ofType: "lproj").flatMap {
+            Bundle(path: $0) } ?? Bundle.main
+        return languageBundle.localizedString(forKey: self, value: self, table: nil)
     }
     
     var asNSString: NSString {

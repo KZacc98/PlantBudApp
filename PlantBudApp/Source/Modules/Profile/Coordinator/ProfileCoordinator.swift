@@ -15,13 +15,11 @@ final class ProfileCoordinator: TabBarItemCoordinator {
     
     // MARK: - Initialization
     
-    init(tabBarItem: UITabBarItem,
-         viewControllerFactory: ProfileViewControllerFactory = ProfileViewControllerFactory()
-         //         user: UserPanelDomain? = nil
+    init(
+        tabBarItem: UITabBarItem,
+        viewControllerFactory: ProfileViewControllerFactory = ProfileViewControllerFactory()
     ) {
-        
         self.viewControllerFactory = viewControllerFactory
-        //        self.user = user
         super.init(tabBarItem: tabBarItem)
     }
     
@@ -30,11 +28,8 @@ final class ProfileCoordinator: TabBarItemCoordinator {
     override func start(animated: Bool = false, completion: (() -> ())? = nil) {
         guard isStarted == false else { return }
         routeMenu(animated: animated)
-        //        setupNavigationController()
         super.start()
     }
-    
-    // MARK: - Public methods
     
     // MARK: - Private methods
     
@@ -43,15 +38,6 @@ final class ProfileCoordinator: TabBarItemCoordinator {
         
         navigationController?.setViewControllers([viewController], animated: animated)
     }
-//
-//    private func pushPlantDetails(plant: Plant) {
-//        let viewController = viewControllerFactory.makePlantDetailsViewController(plant: plant)
-//        
-//        viewController.viewModel.onDeletePlantSuccess = { [weak self] in
-//            self?.navigationController?.popViewController(animated: true)
-//        }
-//        navigationController?.pushViewController(viewController, animated: true)
-//    }
 }
 
 /// MARK: - UINavigationControllerDelegate
@@ -61,6 +47,3 @@ extension ProfileCoordinator: UINavigationControllerDelegate {
         Logger.error("PLANTS")
     }
 }
-
-
-

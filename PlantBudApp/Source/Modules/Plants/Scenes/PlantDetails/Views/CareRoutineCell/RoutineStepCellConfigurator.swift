@@ -42,20 +42,6 @@ extension RoutineStepCellConfigurator: ReusableViewConfiguratorInterface {
     func configure(view: UIView) {
         guard let view = view as? RoutineStepCell else { return }
         
-        
-//        if data.step .stepFrequency.days == 0 {
-//                return true
-//            } else {
-//                guard
-//                    let stepDueDate = Calendar.current.date(byAdding: .day, value: step.stepFrequency.days, to: step.completedAt)
-//                else {
-//                    return false
-//                }
-//                return (!step.isCompleted && (step.completedAt < stepDueDate))
-//            }
-//        })
-        
-        
         let formatter = DateFormatter()
         let locale = Locale.current
         formatter.dateStyle = .full
@@ -114,10 +100,6 @@ extension RoutineStepCellConfigurator: ReusableViewConfiguratorInterface {
                 }
             }
         }
-        
-        
-        
-        
         
         view.mainBackgroundView.gestureRecognizers?.forEach {
             view.mainBackgroundView.removeGestureRecognizer($0)

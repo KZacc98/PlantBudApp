@@ -17,16 +17,10 @@ final class UserProfileViewModel {
     
     //MARK: Private properties
     
-    let profilePicturePlaceholder = "https://res.cloudinary.com/dv1dmymg2/image/upload/v1674924697/PlantBuddy/Placeholders/UserImagePlaceholderLight_hthfkm.png"
-    
-    private var username: String {
-        didSet {
-            //self.loadData()
-        }
-    }
-    
+    private var username: String
     private var communityUserProfile: CommunityUserProfileData?
     private var communityUserPlants: [CommunityUserPlantData] = []
+    let profilePicturePlaceholder = "https://res.cloudinary.com/dv1dmymg2/image/upload/v1674924697/PlantBuddy/Placeholders/UserImagePlaceholderLight_hthfkm.png"
     
     private var sectionSequence: SectionSequence = SectionSequence() {
         didSet {
@@ -55,8 +49,6 @@ final class UserProfileViewModel {
             profilePicture = profilePicturePlaceholder
         }
         
-        
-        
         sectionSequence = SectionSequence(
             sections: [
                 makeProfilePictureSection(imageUrl: profilePicture),
@@ -64,7 +56,6 @@ final class UserProfileViewModel {
             ]
         )
     }
-
     
     //MARK: - Private methods
     
@@ -79,8 +70,9 @@ final class UserProfileViewModel {
         Network.fetchData(query: FetchCommunityUserProfileQuery(username: username)) { result in
             switch result {
             case .success(let data):
-                communityUserProfile = CommunityUserProfileData(profilePicture: data.user.first?.profilePicture,
-                                                                points: data.user.first?.points)
+                communityUserProfile = CommunityUserProfileData(
+                    profilePicture: data.user.first?.profilePicture,
+                    points: data.user.first?.points)
                 communityUserId = data.user.first?.id
             case .failure(let error):
                 Logger.error("ERROR: \(error)")
@@ -119,16 +111,13 @@ final class UserProfileViewModel {
         }
     }
     
-    
     private func makeProfilePictureSection(imageUrl: String) -> SingleColumnSection {
         let configurator = ProfilePictureCellConfigurator(imageUrl: imageUrl)
         
         return SingleColumnSection(cellConfigurators: [configurator])
-        
     }
     
     private func makePlantsSection(plants: [CommunityUserPlantData]) -> SingleColumnSection {
-        
         let headerData = MainSectionHeaderData(
             title: "communityUserPlantsHeader".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
@@ -147,16 +136,7 @@ final class UserProfileViewModel {
                 ))
             }
             
-            
             return SingleColumnSection(cellConfigurators: cellConfigurators, headerConfigurator: headerConfigurator)
         }
     }
-    
-    
-    // MARK: - Selectors
-    
 }
-
-
-
-

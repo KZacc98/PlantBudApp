@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct SingleColumnSection: SectionInterface {
+struct SingleColumnSection: SectionInterface, Equatable {
+    static func == (lhs: SingleColumnSection, rhs: SingleColumnSection) -> Bool {
+        return lhs.cellConfigurators.count == rhs.cellConfigurators.count
+    }
+    
     var cellConfigurators: [ReusableViewConfiguratorInterface]
     var headerConfigurator: ReusableViewConfiguratorInterface?
     var footerConfigurator: ReusableViewConfiguratorInterface?

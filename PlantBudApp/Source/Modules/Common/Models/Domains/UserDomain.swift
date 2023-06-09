@@ -36,6 +36,21 @@ struct UserDomain {
         self.createdAt = remote.createdAt ?? ""
         self.updatedAt = remote.updatedAt ?? ""
     }
+    
+    init(id: Int, name: String, userName: String, profilePicture: String, email: String, gender: Gender, phoneNumber: String, points: Int, active: Bool, userType: UserType, createdAt: String, updatedAt: String) {
+        self.id = id
+        self.name = name
+        self.userName = userName
+        self.profilePicture = profilePicture
+        self.email = email
+        self.gender = gender
+        self.phoneNumber = phoneNumber
+        self.points = points
+        self.active = active
+        self.userType = userType
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
 }
 
 enum Gender: String, Codable {
