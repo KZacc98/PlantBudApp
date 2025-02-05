@@ -25,7 +25,6 @@ final class AddViewControllerFactory {
         return viewController
     }
     
-    
     func makeAddPlantFormViewController(plantType: PlantTypeDomain) -> AddPlantFormViewController {
         let viewController = AddPlantFormViewController()
         viewController.viewModel = AddPlantFormViewModel(plantType: plantType, tableViewInterface: viewController)
@@ -34,5 +33,3 @@ final class AddViewControllerFactory {
         return viewController
     }
 }
-
-

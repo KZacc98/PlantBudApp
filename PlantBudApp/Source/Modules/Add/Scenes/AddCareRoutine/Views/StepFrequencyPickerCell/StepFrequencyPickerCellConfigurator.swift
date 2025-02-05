@@ -56,7 +56,6 @@ extension StepFrequencyPickerCellConfigurator: ReusableViewConfiguratorInterface
                 target: self,
                 action: #selector(didPressDailyButton(tapGestureRecognizer:))))
         
-        
         view.weeklyButtonContainer.buttonLabel.text = "Weekly"
         view.weeklyButtonContainer.isUserInteractionEnabled = true
         view.weeklyButtonContainer.gestureRecognizers?.forEach {
@@ -85,12 +84,3 @@ extension StepFrequencyPickerCellConfigurator: ReusableViewConfiguratorInterface
         return UITableView.automaticDimension
     }
 }
-
-struct StepFrequencyPickerCellData {
-    let didPressDailyButton: (() -> Void)?
-    let didPressWeeklyButton: (() -> Void)?
-    let didPressMonthlyButton: (() -> Void)?
-}
-
-
-

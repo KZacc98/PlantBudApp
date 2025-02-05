@@ -17,11 +17,9 @@ final class AddCoordinator: TabBarItemCoordinator {
     
     init(tabBarItem: UITabBarItem,
          viewControllerFactory: AddViewControllerFactory = AddViewControllerFactory()
-         //         user: UserPanelDomain? = nil
     ) {
         
         self.viewControllerFactory = viewControllerFactory
-        //        self.user = user
         super.init(tabBarItem: tabBarItem)
     }
     
@@ -30,17 +28,10 @@ final class AddCoordinator: TabBarItemCoordinator {
     override func start(animated: Bool = false, completion: (() -> ())? = nil) {
         guard isStarted == false else { return }
         routeMenu(animated: animated)
-        //        setupNavigationController()
         super.start()
     }
     
-    // MARK: - Public methods
-    
     // MARK: - Private methods
-    
-    //    private func setupNavigationController() {
-    //        navigationController?.delegate = self
-    //    }
     
     private func routeMenu(animated: Bool) {
         let viewController = viewControllerFactory.makeAddViewController()
@@ -57,9 +48,7 @@ final class AddCoordinator: TabBarItemCoordinator {
     }
     
     private func pushAddCareRoutine() {
-//        let viewController = viewControllerFactory.makeAddCareRoutineViewController()
-//
-//        navigationController?.pushViewController(viewController, animated: true)
+
     }
     
     private func pushAddPlant() {
@@ -67,8 +56,6 @@ final class AddCoordinator: TabBarItemCoordinator {
         viewController.viewModel.onPlantTypePressed = { [weak self] plantTypeDomain in
             viewController.makeToast(with: "PlantTypeSpecies: \(plantTypeDomain.species)")
             self?.pushAddPlantForm(plantType: plantTypeDomain)
-            
-            Logger.info("lkjsdhfasdlkjhfkljasdhf")
         }
 
         navigationController?.pushViewController(viewController, animated: true)
@@ -82,17 +69,6 @@ final class AddCoordinator: TabBarItemCoordinator {
             self?.navigationController?.popViewController(animated: false)
         }
         
-        
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
-
-/// MARK: - UINavigationControllerDelegate
-
-extension AddCoordinator: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        Logger.error("ADD")
-    }
-}
-
-

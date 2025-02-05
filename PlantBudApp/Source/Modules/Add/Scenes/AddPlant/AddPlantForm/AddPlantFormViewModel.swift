@@ -47,16 +47,12 @@ final class AddPlantFormViewModel {
             guard let configurator = configurator else { return }
             configurator.data.text = text
             self?.plantName = text
-            Logger.info(text ?? "DEEWOsdlkjfhasdlkf")
+            Logger.info(text ?? "")
             ValidationManager.validate(validableInputViewConfigurator: configurator,
                                        sectionSequence: self?.sectionSequence,
                                        tableViewInterface: self?.tableViewInterface)
         }
         configurator.data.textfieldDidEndEditing = textFieldDidEndEditing
-
-//        configurator.didBecomeFirstResponder = { [weak self] input in
-//            self?.currentFirstResponderInput = input
-//        }
 
         return configurator
     }()
@@ -98,24 +94,6 @@ final class AddPlantFormViewModel {
                                    completion: completion)
     }
     
-    
-    public func loadData(refresh: Bool = false) {
-//        UIAppDelegate?.showLoadingIndicator()
-        
-//        fetchPlantsWithTypes()
-    }
-    
-//    public func buildSections(plants: [Plant]) {
-//
-//
-//        sectionSequence = SectionSequence(
-//            sections: [
-//                SingleColumnSection(cellConfigurators: cellConfigurators)
-//                //                makeAddButton(),
-//                //                makePlantsSection(plantDomains: plantDomains!)
-//            ])
-//    }
-    
     public func buildEmptySections() {
         sectionSequence = SectionSequence(
             sections: [
@@ -130,9 +108,7 @@ final class AddPlantFormViewModel {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         let timestamp = dateFormatter.string(from: Date())
-        print(timestamp)  // Output: 2022-12-11T15:43:59.337Z
         
-        // Fetch data1
         dispatchGroup.enter()
         Network.shared.apollo.store.clearCache()
         Network.performMutation(mutation: AddPlantMutation(object: Plant_insert_input(
@@ -147,34 +123,16 @@ final class AddPlantFormViewModel {
         ))) { result in
             switch result {
             case .success(let data):
-                // Use the `data` object to access the results of the mutation
-                Logger.info("TUTAJ KURWA ############################")
                 Logger.info("\(data.insertPlantOne.debugDescription)")
                 self.onAddPlantSuccess?()
             case .failure(let error):
-                // Handle the error
-                Logger.info("TUTAJ KURWA ############################")
-                Logger.info("Jebło \(error)")
+                Logger.error("error \(error)")
             }
             dispatchGroup.leave()
         }
         
-        // Run a block of code when all requests are completed
         dispatchGroup.notify(queue: .main) {
-//            self.loadData()
             UIAppDelegate?.hideLoadingIndicator()
         }
     }
-    
-    
-    //MARK: - Private methods
-    
-    
-    
-    
-    // MARK: - Selectors
-    
 }
-
-
-

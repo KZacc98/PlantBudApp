@@ -55,5 +55,3 @@ extension PlantTypeCellConfigurator: ReusableViewConfiguratorInterface {
         return UITableView.automaticDimension
     }
 }
-
-

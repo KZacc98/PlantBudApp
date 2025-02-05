@@ -16,10 +16,8 @@ final class AddCareRoutineViewModel {
     public var onAddPlantPressed: (() -> Void)?
     public var onAddCareRoutinePressed: (() -> Void)?
     public var onError: ((Error) -> ())?
-    
     public var onFrequencyListShouldBeginEditing: (() -> (Bool))?
     public var onFrequencySelected: ((StepFrequency) -> ())?
-    
     public var hideKeyboard: (() -> ())?
     
     //MARK: Private properties
@@ -196,8 +194,6 @@ final class AddCareRoutineViewModel {
         let dispatchGroup = DispatchGroup()
         var careRoutineId: Int?
 
-        
-        // Fetch data1
         dispatchGroup.enter()
         Network.performMutation(mutation: CreateCareRoutineMutation(plantId: plantId)) { result in
             switch result {
@@ -209,7 +205,6 @@ final class AddCareRoutineViewModel {
             dispatchGroup.leave()
         }
         
-        // Run a block of code when all requests are completed
         dispatchGroup.notify(queue: .main) {
             guard let careRoutineId = careRoutineId else { return }
             let timestamp = Network.getTimestamp()
@@ -222,17 +217,14 @@ final class AddCareRoutineViewModel {
             ))) { result in
                 switch result {
                 case .success(let success):
-//                    careRoutineId = success.insertCareRoutineOne?.id
                     Logger.info("\(success.insertRoutineStepOne?.description)")
                     self.onRoutineAdded?()
                     UIAppDelegate?.hideLoadingIndicator()
                 case .failure(let failure):
                     Logger.error("\(failure)")
                 }
-                
             }
         }
-
     }
     
     func addRoutineStep(plantId: Int, stepDescription: String, frequency: String) {
@@ -240,8 +232,6 @@ final class AddCareRoutineViewModel {
         let dispatchGroup = DispatchGroup()
         var careRoutineId: Int?
 
-        
-        // Fetch data1
         dispatchGroup.enter()
         Network.fetchData(query: FetchPlantCareRoutineIdQuery(plantId: plantId)) { result in
             switch result {
@@ -253,7 +243,6 @@ final class AddCareRoutineViewModel {
             dispatchGroup.leave()
         }
         
-        // Run a block of code when all requests are completed
         dispatchGroup.notify(queue: .main) {
             guard let careRoutineId = careRoutineId else { return }
             let timestamp = Network.getTimestamp()
@@ -276,7 +265,6 @@ final class AddCareRoutineViewModel {
                 
             }
         }
-
     }
     
     public func buildEmptySections() {

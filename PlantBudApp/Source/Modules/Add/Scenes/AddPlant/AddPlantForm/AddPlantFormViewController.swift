@@ -33,17 +33,8 @@ final class AddPlantFormViewController: BaseTableViewController, TableViewContro
         setupTableView()
         bindViewModel()
         addBackButton()
-        viewModel.loadData()
         viewModel.buildEmptySections()
-        
     }
-    
-    // MARK: - Selectors
-    
-    override func refreshData(_ refreshControl: UIRefreshControl) {
-        viewModel.loadData()
-    }
-
 }
 
 //MARK: - Data binding
@@ -64,7 +55,6 @@ extension AddPlantFormViewController {
             self?.viewModel.validate { [weak self] errors, indexPaths in
                 self?.tableView.reloadRows(at: indexPaths, with: .none)
                 if errors.isEmpty {
-//                    UIAppDelegate?.showLoadingIndicator()
                     self?.viewModel.makeAddPlantRequest(plantName: plantName, plantType: plantType)
                 } else if let firstIndexPath = indexPaths.first {
                     self?.tableView.scrollToRow(at: firstIndexPath, at: .middle, animated: true)
@@ -72,15 +62,13 @@ extension AddPlantFormViewController {
             }
         }
     }
-    
-    
 }
 
 //MARK: - Setup
 
 extension AddPlantFormViewController {
     private func setupView() {
-        view.backgroundColor = Color.brandWhite //kolor ViewControllera
+        view.backgroundColor = Color.brandWhite
     }
     
     private func setupEmptyDataView(with type: EmptyDataType = .none) {
@@ -100,14 +88,8 @@ extension AddPlantFormViewController {
         tableView.delegate  = self.dataSource
         tableView.dataSource = self.dataSource
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Color.brandWhite //KOLOR TŁA PO STARCIE
-        tableView.refreshControl = refreshControl
+        tableView.backgroundColor = Color.brandWhite
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
     }
 }
-
-
-
-
-

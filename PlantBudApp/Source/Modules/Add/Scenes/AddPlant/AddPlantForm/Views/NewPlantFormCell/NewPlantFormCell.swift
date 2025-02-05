@@ -11,8 +11,6 @@ final class NewPlantFormCell: UITableViewCell {
     
     // MARK: - Public properties
     
-    public var didPressButton: (() -> ())?
-    
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandGreen
@@ -70,12 +68,6 @@ final class NewPlantFormCell: UITableViewCell {
         return label
     }()
     
-    // MARK: - Selectors
-    
-//    @objc private func didPressButton(_ sender: UIButton) {
-//        didPressButton?()
-//    }
-    
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -119,5 +111,3 @@ final class NewPlantFormCell: UITableViewCell {
         plantInfoLabel.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -12)
     }
 }
-
-

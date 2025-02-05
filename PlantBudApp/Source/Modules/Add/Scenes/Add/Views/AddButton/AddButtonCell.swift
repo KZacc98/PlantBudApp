@@ -16,7 +16,6 @@ final class AddButtonCell: UITableViewCell {
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
-//        view.clipsToBounds = true
         contentView.addSubviewsUsingAutoLayout(view)
         
         return view
@@ -25,7 +24,6 @@ final class AddButtonCell: UITableViewCell {
     public lazy var buttonContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
-//        view.clipsToBounds = true
         contentView.addSubviewsUsingAutoLayout(view)
         
         return view
@@ -62,9 +60,6 @@ final class AddButtonCell: UITableViewCell {
         
         return label
     }()
-    
-    
-    
     
     // MARK: - Initialization
     
@@ -108,9 +103,5 @@ final class AddButtonCell: UITableViewCell {
         buttonNameLabel.topAnchor.constrain(anchor: button.bottomAnchor, constant: 12)
         buttonNameLabel.leadingAnchor.constrain(anchor: buttonContainerView.leadingAnchor)
         buttonNameLabel.trailingAnchor.constrain(anchor: buttonContainerView.trailingAnchor)
-        
     }
 }
-
-
-

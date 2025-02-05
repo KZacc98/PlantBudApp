@@ -4,7 +4,7 @@
 //
 //  Created by Kamil Zachara on 08/01/2023.
 //
-#warning("Do wywalenia")
+
 import UIKit
 
 final class AddPlantViewModel {
@@ -32,19 +32,11 @@ final class AddPlantViewModel {
     
     let placeholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"
     
-    //MARK: - Initialization
-    
-    
-    
     //MARK: - Access methods
-    
-    
     
     public func loadData(refresh: Bool = false) {
         UIAppDelegate?.showLoadingIndicator()
         fetchPlantTypes()
-        
-//        fetchPlantsWithTypes()
     }
     
     public func buildSections(plantTypeDomains: [PlantTypeDomain]?) {
@@ -57,8 +49,6 @@ final class AddPlantViewModel {
         sectionSequence = SectionSequence(
             sections: [
                 SingleColumnSection(cellConfigurators: typeInfoCellConfigurators)
-                //                makeAddButton(),
-                //                makePlantsSection(plantDomains: plantDomains!)
             ])
     }
     
@@ -74,10 +64,7 @@ final class AddPlantViewModel {
     private func fetchPlantTypes(){
         let dispatchGroup = DispatchGroup()
         var plantTypeDomains: [PlantTypeDomain]?
-//        var data2: DataType2?
-//        var data3: DataType3?
-        
-        // Fetch data1
+
         dispatchGroup.enter()
         Network.fetchData(query: FetchPlantTypesQuery()) { result in
             switch result {
@@ -98,33 +85,7 @@ final class AddPlantViewModel {
             dispatchGroup.leave()
         }
         
-//        // Fetch data2
-//        dispatchGroup.enter()
-//        Network.fetchData(query: Query2()) { result in
-//            switch result {
-//            case .success(let data):
-//                data2 = data
-//            case .failure(let error):
-//                Logger.error("ERROR: \(error)")
-//            }
-//            dispatchGroup.leave()
-//        }
-//
-//        // Fetch data3
-//        dispatchGroup.enter()
-//        Network.fetchData(query: Query3()) { result in
-//            switch result {
-//            case .success(let data):
-//                data3 = data
-//            case .failure(let error):
-//                Logger.error("ERROR: \(error)")
-//            }
-//            dispatchGroup.leave()
-//        }
-//
-        // Run a block of code when all requests are completed
         dispatchGroup.notify(queue: .main) {
-            // Use data1, data2, and data3 here
             Logger.info("\(plantTypeDomains)")
             self.plantTypeDomains = plantTypeDomains
             UIAppDelegate?.hideLoadingIndicator()
@@ -132,31 +93,8 @@ final class AddPlantViewModel {
 
     }
     
-//    private func makeAddButton() -> SingleColumnSection {
-//        let didPressButton: () -> Void = { [weak self] in
-//            guard let self = self else { return }
-//            Logger.info("TAP ADD")
-//            self.onAddPlantPressed?()
-//        }
-//        let configurator = AddButtonCellConfigurator(data: AddButtonCellData(SFSymbolName: "plus", buttonName: "Add plant", didPressButton: didPressButton))
-//
-//        return SingleColumnSection(cellConfigurators: [configurator])
-//    }
-//
-//    private func makeAddCareRoutineButton() -> SingleColumnSection {
-//        let didPressButton: () -> Void = { [weak self] in
-//            guard let self = self else { return }
-//            Logger.info("TAP ADD ROUTINE")
-//            self.onAddCareRoutinePressed?()
-//        }
-//        let configurator = AddButtonCellConfigurator(data: AddButtonCellData(SFSymbolName: "checkmark.seal", buttonName: "Add care routine", didPressButton: didPressButton))
-//
-//        return SingleColumnSection(cellConfigurators: [configurator])
-//    }
-    
     private func makeTypeInfoCellData(plantTypeDomain: PlantTypeDomain) -> PlantTypeCellData {
         let didTapPlantType: () -> Void = { [weak self] in
-//            guard let self = self else { return }
             self?.onPlantTypePressed?(plantTypeDomain)
             Logger.info("TAP \(plantTypeDomain.species)")
             
@@ -171,16 +109,9 @@ final class AddPlantViewModel {
         return data
     }
     
-    
-    
     private func makeHelloHeaderSection() -> SingleColumnSection {
         let configurator = HelloHeaderCellConfigurator(data: TestViewCellData(title: "ADDPLANT"))
 
         return SingleColumnSection(cellConfigurators: [configurator])
     }
-    
-    // MARK: - Selectors
-    
 }
-
-

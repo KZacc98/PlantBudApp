@@ -32,18 +32,9 @@ final class AddViewController: BaseTableViewController {
         setupNavigationBar()
         setupEmptyDataView()
         setupTableView()
-        viewModel.loadData()
         bindViewModel()
         viewModel.buildEmptySections()
-        
     }
-    
-    // MARK: - Selectors
-    
-    override func refreshData(_ refreshControl: UIRefreshControl) {
-        viewModel.loadData()
-    }
-
 }
 
 //MARK: - Data binding
@@ -59,30 +50,17 @@ extension AddViewController {
                 self?.refreshControl.endRefreshing()
             }
         }
-        
-//        viewModel.onFetchSuccess = { [weak self] in
-//            self?.viewModel.buildSections()
-//        }
     }
-    
-    
 }
 
 //MARK: - Setup
 
 extension AddViewController {
     private func setupView() {
-        view.backgroundColor = Color.brandWhite//kolor ViewControllera
+        view.backgroundColor = Color.brandWhite
     }
     
     private func setupNavigationBar() {
-//        let userButtonBar = UIBarButtonItem(image: Assets.Common.user,
-//                                            style: .plain,
-//                                            target: self,
-//                                            action: #selector(didPressUserButton(sender:)))
-//        userButtonBar.accessibilityLabel = "userSideMenuAccessibilityLabel".localized
-//        userButtonBar.tintColor = Color.brandGreen
-//        navigationItem.rightBarButtonItem = userButtonBar
         title = "Add"
     }
     
@@ -103,13 +81,9 @@ extension AddViewController {
         tableView.delegate  = self.dataSource
         tableView.dataSource = self.dataSource
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Color.brandWhite //KOLOR TŁA PO STARCIE
-        tableView.refreshControl = refreshControl
+        tableView.backgroundColor = Color.brandWhite
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
         tableView.isScrollEnabled = false
     }
 }
-
-
-

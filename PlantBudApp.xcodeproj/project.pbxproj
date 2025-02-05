@@ -11,6 +11,14 @@
 		EF11731E2D53C63A008114FB /* UserProfileCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11731C2D53C63A008114FB /* UserProfileCellData.swift */; };
 		EF1173202D53C76A008114FB /* PlantStatsCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11731F2D53C76A008114FB /* PlantStatsCellData.swift */; };
 		EF1173212D53C76A008114FB /* PlantStatsCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11731F2D53C76A008114FB /* PlantStatsCellData.swift */; };
+		EF1173232D53CDF1008114FB /* PickerInputCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1173222D53CDF1008114FB /* PickerInputCellData.swift */; };
+		EF1173242D53CDF1008114FB /* PickerInputCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1173222D53CDF1008114FB /* PickerInputCellData.swift */; };
+		EF1173262D53CE87008114FB /* StepFrequencyPickerCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1173252D53CE87008114FB /* StepFrequencyPickerCellData.swift */; };
+		EF1173272D53CE87008114FB /* StepFrequencyPickerCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1173252D53CE87008114FB /* StepFrequencyPickerCellData.swift */; };
+		EF1173292D53CEC0008114FB /* AddRoutineStepCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1173282D53CEC0008114FB /* AddRoutineStepCellData.swift */; };
+		EF11732A2D53CEC0008114FB /* AddRoutineStepCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1173282D53CEC0008114FB /* AddRoutineStepCellData.swift */; };
+		EF11732C2D53D517008114FB /* AddButtonCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11732B2D53D517008114FB /* AddButtonCellData.swift */; };
+		EF11732D2D53D517008114FB /* AddButtonCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11732B2D53D517008114FB /* AddButtonCellData.swift */; };
 		EF15767D29354BFE0015FCEE /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */; };
 		EF190C5B294CE34E0091573D /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C5A294CE34E0091573D /* Plant.swift */; };
 		EF190C5E294FC6EA0091573D /* Badges.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EF190C5D294FC6EA0091573D /* Badges.graphql */; };
@@ -527,6 +535,10 @@
 /* Begin PBXFileReference section */
 		EF11731C2D53C63A008114FB /* UserProfileCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCellData.swift; sourceTree = "<group>"; };
 		EF11731F2D53C76A008114FB /* PlantStatsCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatsCellData.swift; sourceTree = "<group>"; };
+		EF1173222D53CDF1008114FB /* PickerInputCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerInputCellData.swift; sourceTree = "<group>"; };
+		EF1173252D53CE87008114FB /* StepFrequencyPickerCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFrequencyPickerCellData.swift; sourceTree = "<group>"; };
+		EF1173282D53CEC0008114FB /* AddRoutineStepCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineStepCellData.swift; sourceTree = "<group>"; };
+		EF11732B2D53D517008114FB /* AddButtonCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddButtonCellData.swift; sourceTree = "<group>"; };
 		EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		EF190C5A294CE34E0091573D /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		EF190C5D294FC6EA0091573D /* Badges.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Badges.graphql; sourceTree = "<group>"; };
@@ -904,6 +916,7 @@
 		EF194C4D2974AF7B00A8734A /* AddRoutineStepCell */ = {
 			isa = PBXGroup;
 			children = (
+				EF1173282D53CEC0008114FB /* AddRoutineStepCellData.swift */,
 				EF194C49297485B200A8734A /* AddRoutineStepCell.swift */,
 				EF194C4B29748B5B00A8734A /* AddRoutineStepCellConfigurator.swift */,
 			);
@@ -913,6 +926,7 @@
 		EF194C4E2974AF8B00A8734A /* StepFrequencyPickerCell */ = {
 			isa = PBXGroup;
 			children = (
+				EF1173252D53CE87008114FB /* StepFrequencyPickerCellData.swift */,
 				EF194C4F2974AFD400A8734A /* StepFrequencyPickerCell.swift */,
 				EF194C512974AFE900A8734A /* StepFrequencyPickerCellConfigurator.swift */,
 			);
@@ -966,6 +980,7 @@
 		EF1D1802296A4B70000A12E4 /* AddButton */ = {
 			isa = PBXGroup;
 			children = (
+				EF11732B2D53D517008114FB /* AddButtonCellData.swift */,
 				EF1D1803296A4B80000A12E4 /* AddButtonCell.swift */,
 				EF1D1805296A4CE5000A12E4 /* AddButtonCellConfigurator.swift */,
 			);
@@ -1072,6 +1087,7 @@
 		EF215989297A129F0062712D /* PickerInputCell */ = {
 			isa = PBXGroup;
 			children = (
+				EF1173222D53CDF1008114FB /* PickerInputCellData.swift */,
 				EF21598A297A12B30062712D /* PickerInputCellConfigurator.swift */,
 				EF21598C297A12CD0062712D /* PickerInputCell.swift */,
 			);
@@ -2672,6 +2688,7 @@
 				EF469888299175E70035504F /* AddRoutineStepCellConfigurator.swift in Sources */,
 				EF469889299175E70035504F /* AddCareRoutineViewModel.swift in Sources */,
 				EF46988A299175E70035504F /* FrequencyPickerDelegate.swift in Sources */,
+				EF1173232D53CDF1008114FB /* PickerInputCellData.swift in Sources */,
 				EF46988B299175E70035504F /* AddCareRoutineViewController.swift in Sources */,
 				EF46988C299175E70035504F /* NewPlantFormCell.swift in Sources */,
 				EF46988D299175E70035504F /* AddPlantFormViewModel.swift in Sources */,
@@ -2698,6 +2715,7 @@
 				EF4698A2299175E70035504F /* CommunityContent.swift in Sources */,
 				EF4698A3299175E70035504F /* CommunityUserRemote.swift in Sources */,
 				EF4698A4299175E70035504F /* PostRemote.swift in Sources */,
+				EF11732A2D53CEC0008114FB /* AddRoutineStepCellData.swift in Sources */,
 				EF4698A5299175E70035504F /* CommentRemote.swift in Sources */,
 				EF4698A6299175E70035504F /* UserContentDataRemote.swift in Sources */,
 				EF4698A7299175E70035504F /* CommunityUserDomain.swift in Sources */,
@@ -2713,6 +2731,7 @@
 				EF4698B1299175E70035504F /* CommunityRemote.swift in Sources */,
 				EF4698B2299175E70035504F /* CommunityDomain.swift in Sources */,
 				EF4698B3299175E70035504F /* CommunityCell.swift in Sources */,
+				EF1173272D53CE87008114FB /* StepFrequencyPickerCellData.swift in Sources */,
 				EF4698B4299175E70035504F /* CommunityCellConfigurator.swift in Sources */,
 				EF4698B5299175E70035504F /* filler in Sources */,
 				EF4698B6299175E70035504F /* CommunityListViewController.swift in Sources */,
@@ -2824,6 +2843,7 @@
 				EF46991D299175E80035504F /* TableViewControllerInterface.swift in Sources */,
 				EF46991E299175E80035504F /* SingleColumnViewInterface.swift in Sources */,
 				EF46991F299175E80035504F /* SingleColumnViewControllerInterface.swift in Sources */,
+				EF11732D2D53D517008114FB /* AddButtonCellData.swift in Sources */,
 				EF469920299175E80035504F /* SingleColumnSection.swift in Sources */,
 				EF469921299175E80035504F /* BaseTableViewController.swift in Sources */,
 				EF469922299175E80035504F /* BaseTableViewDataSource.swift in Sources */,
@@ -2950,6 +2970,7 @@
 				EF1D1804296A4B80000A12E4 /* AddButtonCell.swift in Sources */,
 				EF9CFDAB2932730B00FD0239 /* TextInputCell.swift in Sources */,
 				EFFA5948292A70AA003A8F23 /* Color.swift in Sources */,
+				EF11732C2D53D517008114FB /* AddButtonCellData.swift in Sources */,
 				EF194C4C29748B5B00A8734A /* AddRoutineStepCellConfigurator.swift in Sources */,
 				EF8C999E296CAAFA00AEB012 /* CommunityViewModel.swift in Sources */,
 				EF9CFD9329325DE700FD0239 /* EmptyDataType.swift in Sources */,
@@ -2995,6 +3016,7 @@
 				EFC1F9502958CF3000112EFC /* PlantDetailsHeader.swift in Sources */,
 				EFFA592D292A6BE9003A8F23 /* Coordinator.swift in Sources */,
 				EF194C522974AFE900A8734A /* StepFrequencyPickerCellConfigurator.swift in Sources */,
+				EF1173262D53CE87008114FB /* StepFrequencyPickerCellData.swift in Sources */,
 				EF9824E1297B6CE100924460 /* ProfilePictureCellConfigurator.swift in Sources */,
 				EF9CFD8F2932573100FD0239 /* EmptyDataContentView.swift in Sources */,
 				EFC1F970295A69CC00112EFC /* RoutineStepCellData.swift in Sources */,
@@ -3054,6 +3076,7 @@
 				EFFA5930292A6C25003A8F23 /* Logger.swift in Sources */,
 				EFA7B17329450D22008EE8E9 /* PaddedImageView.swift in Sources */,
 				EFFA5937292A6D7D003A8F23 /* ViewControllerInterface.swift in Sources */,
+				EF1173292D53CEC0008114FB /* AddRoutineStepCellData.swift in Sources */,
 				EFFA595B292A8928003A8F23 /* AnimationHeaderConfigurator.swift in Sources */,
 				EF9CFDEE293404BB00FD0239 /* TabBarCoordinator.swift in Sources */,
 				EFFA5939292A6D94003A8F23 /* TransitionHelper.swift in Sources */,
@@ -3075,6 +3098,7 @@
 				EF6947C92948EE2D006E56F1 /* API.swift in Sources */,
 				EFC1F97B295CC3E700112EFC /* PlantStatsCellConfigurator.swift in Sources */,
 				EFC1F979295CC38900112EFC /* PlantStatsCell.swift in Sources */,
+				EF1173242D53CDF1008114FB /* PickerInputCellData.swift in Sources */,
 				EF8C999B296C963400AEB012 /* CommunityCellConfigurator.swift in Sources */,
 				EF8C99B8296CC99900AEB012 /* CommunityPostCell.swift in Sources */,
 				EFC1F95B29591F8600112EFC /* PlantDetailsTypeInfoCellConfigurator.swift in Sources */,

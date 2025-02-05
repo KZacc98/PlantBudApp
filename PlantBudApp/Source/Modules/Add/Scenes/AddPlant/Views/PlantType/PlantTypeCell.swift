@@ -116,4 +116,3 @@ final class PlantTypeCell: UITableViewCell {
         plantInfoLabel.heightAnchor.constrain(constant: UIScreen.main.bounds.height/2.5)
     }
 }
-

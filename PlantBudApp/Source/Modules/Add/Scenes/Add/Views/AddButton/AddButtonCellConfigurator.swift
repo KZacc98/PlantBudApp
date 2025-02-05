@@ -24,7 +24,6 @@ final class AddButtonCellConfigurator {
     @objc private func didPressButton(tapGestureRecognizer: UITapGestureRecognizer) {
         data.didPressButton?()
     }
-    
 }
 
 // MARK: - ReusableViewConfiguratorInterface
@@ -38,11 +37,9 @@ extension AddButtonCellConfigurator: ReusableViewConfiguratorInterface {
         guard let view = view as? AddButtonCell else { return }
         
         view.selectionStyle = .none
-//        view.stepLabel.text = data.title
         view.backgroundColor = Color.brandWhite
         view.buttonImage.image = UIImage(systemName: data.SFSymbolName)
         view.buttonNameLabel.text = data.buttonName
-//        view.mainBackgroundView.backgroundColor = data.check ? Color.red : Color.brandGreen
         view.button.gestureRecognizers?.forEach {
             view.mainBackgroundView.removeGestureRecognizer($0)
         }
@@ -56,17 +53,3 @@ extension AddButtonCellConfigurator: ReusableViewConfiguratorInterface {
         return UITableView.automaticDimension
     }
 }
-
-struct AddButtonCellData {
-    let SFSymbolName: String
-    let buttonName: String
-    let didPressButton: (() -> Void)?
-    
-    init(SFSymbolName: String, buttonName: String, didPressButton: (() -> Void)?) {
-        self.SFSymbolName = SFSymbolName
-        self.buttonName = buttonName
-        self.didPressButton = didPressButton
-    }
-}
-
-

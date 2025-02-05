@@ -43,7 +43,6 @@ final class AddPlantViewController: BaseTableViewController {
     override func refreshData(_ refreshControl: UIRefreshControl) {
         viewModel.loadData()
     }
-
 }
 
 //MARK: - Data binding
@@ -59,20 +58,14 @@ extension AddPlantViewController {
                 self?.refreshControl.endRefreshing()
             }
         }
-        
-//        viewModel.onFetchSuccess = { [weak self] in
-//            self?.viewModel.buildSections()
-//        }
     }
-    
-    
 }
 
 //MARK: - Setup
 
 extension AddPlantViewController {
     private func setupView() {
-        view.backgroundColor = Color.brandWhite //kolor ViewControllera
+        view.backgroundColor = Color.brandWhite
     }
     
     private func setupNavigationBar() {
@@ -102,7 +95,3 @@ extension AddPlantViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
     }
 }
-
-
-
-
