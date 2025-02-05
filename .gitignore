@@ -15,6 +15,10 @@ xcuserdata/
 *.moved-aside
 *.xcuserstate
 *.xcscmblueprint
+*.xccheckout
+xcuserdata/
+xcshareddata/xcschemes/*
+
 
 # Swift Package Manager
 .build/
