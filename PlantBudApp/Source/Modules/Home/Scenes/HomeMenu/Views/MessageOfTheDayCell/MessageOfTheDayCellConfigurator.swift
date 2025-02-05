@@ -38,11 +38,9 @@ extension MessageOfTheDayCellConfigurator: ReusableViewConfiguratorInterface {
         view.selectionStyle = .none
         view.backgroundColor = Color.brandWhite
         view.plantsMeanStateCommentLabel.text = messageOfTheDay.randomElement() ?? "NO MESSAGE"
-//        view.didPressButton = data.didPressButton
     }
     
     func layoutHeight(relativeTo size: CGSize) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
 }

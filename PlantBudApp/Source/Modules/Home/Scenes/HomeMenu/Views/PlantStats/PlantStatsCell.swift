@@ -12,8 +12,6 @@ final class PlantStatsCell: UITableViewCell {
     
     // MARK: - Public properties
     
-    //public var didPressButton: (() -> ())?
-    
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandGreen
@@ -73,12 +71,6 @@ final class PlantStatsCell: UITableViewCell {
         return label
     }()
     
-    // MARK: - Selectors
-    
-//    @objc private func didPressButton(_ sender: UIButton) {
-//        didPressButton?()
-//    }
-    
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -119,8 +111,5 @@ final class PlantStatsCell: UITableViewCell {
         animationView.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: 50)
         animationView.widthAnchor.constrain(constant: 200)
         animationView.heightAnchor.constrain(constant: 100)
-        
     }
 }
-
-

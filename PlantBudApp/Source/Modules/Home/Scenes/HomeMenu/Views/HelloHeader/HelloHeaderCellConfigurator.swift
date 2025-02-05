@@ -33,7 +33,6 @@ extension HelloHeaderCellConfigurator: ReusableViewConfiguratorInterface {
         view.selectionStyle = .none
         view.helloLabel.text = data.title
         view.helloLabel.adjustsFontSizeToFitWidth = true
-//        view.didPressButton = data.didPressButton
     }
     
     func layoutHeight(relativeTo size: CGSize) -> CGFloat {
@@ -43,6 +42,4 @@ extension HelloHeaderCellConfigurator: ReusableViewConfiguratorInterface {
 
 struct TestViewCellData {
     let title: String
-//    let didPre
 }
-

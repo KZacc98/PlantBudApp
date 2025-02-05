@@ -116,7 +116,10 @@ final class HomeMenuViewModel {
     public func buildSections() {
         sectionSequence = SectionSequence(
             sections: [
-                makeUserProfileSection(name: user?.name ?? "TEST", plantCount: plants?.count.description ?? "no plants", profilePicture: user?.profilePicture),
+                makeUserProfileSection(
+                    name: user?.name ?? "TEST",
+                    plantCount: plants?.count.description ?? "no plants",
+                    profilePicture: user?.profilePicture),
                 makePlantsStatsSection(plants: self.plants),
                 makeMessageOfTheDaySection()
             ])
@@ -139,7 +142,7 @@ final class HomeMenuViewModel {
                 data: UserProfileCellData(
                     name: String(format: "userProfileCellName".localized, name),
                     plantCount: plantCount,
-                    profilePictureUrl: profilePicture ?? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
+                    profilePictureUrl: profilePicture
                 ))
             
             return SingleColumnSection(cellConfigurators: [configurator])
@@ -147,7 +150,8 @@ final class HomeMenuViewModel {
     
     private func makePlantsStatsSection(plants: [PlantDomain]?) -> SingleColumnSection {
         let headerData = MainSectionHeaderData(
-            title: "plantStatsHeaderLabel".localized, insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
+            title: "plantStatsHeaderLabel".localized,
+            insets: UIEdgeInsets(top: 0, left: 0, bottom: -2, right: 0))
         let headerConfigurator = MainSectionHeaderConfigurator(data: headerData)
         
         if let plants = plants, plants.isEmpty == false {
@@ -157,7 +161,9 @@ final class HomeMenuViewModel {
         } else {
             let configurator = NoDataCellConfigurator(message: "plantStatsNoPlants".localized)
             
-            return SingleColumnSection(cellConfigurators: [configurator], headerConfigurator: headerConfigurator)
+            return SingleColumnSection(
+                cellConfigurators: [configurator],
+                headerConfigurator: headerConfigurator)
         }
     }
     
@@ -169,8 +175,8 @@ final class HomeMenuViewModel {
         
         let configurator = MessageOfTheDayCellConfigurator(data: "")
         
-        return SingleColumnSection(cellConfigurators: [configurator], headerConfigurator: headerConfigurator)
-        
+        return SingleColumnSection(
+            cellConfigurators: [configurator],
+            headerConfigurator: headerConfigurator)
     }
 }
-

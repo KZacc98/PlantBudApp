@@ -11,9 +11,6 @@ final class UserProfileCell: UITableViewCell {
     
     // MARK: - Public properties
     
-    //public var didPressButton: (() -> ())?
-    
-    
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
@@ -115,9 +112,6 @@ final class UserProfileCell: UITableViewCell {
         plantsCountContainer.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -36)
         plantsCountContainer.topAnchor.constrain(anchor: helloLabel.bottomAnchor, constant: 12)
         plantsCountContainer.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor, constant: -12)
-        
-
-        
     }
 }
 

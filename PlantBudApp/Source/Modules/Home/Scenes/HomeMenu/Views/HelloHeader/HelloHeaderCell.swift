@@ -11,8 +11,6 @@ final class HelloHeaderCell: UITableViewCell {
     
     // MARK: - Public properties
     
-    //public var didPressButton: (() -> ())?
-    
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
@@ -45,18 +43,10 @@ final class HelloHeaderCell: UITableViewCell {
         button.backgroundColor = Color.white
         button.setTitle("P".uppercased(), for: .normal)
         button.setTitleColor(Color.black, for: .normal)
-//        button.helloLabel?.font = 
-//        button.addTarget(self, action: #selector(didPressButton(_:)), for: .touchUpInside)
         mainBackgroundView.addSubviewsUsingAutoLayout(button)
 
         return button
     }()
-    
-    // MARK: - Selectors
-    
-//    @objc private func didPressButton(_ sender: UIButton) {
-//        didPressButton?()
-//    }
     
     // MARK: - Initialization
     
@@ -90,4 +80,3 @@ final class HelloHeaderCell: UITableViewCell {
         button.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: -6)
     }
 }
-

@@ -25,4 +25,3 @@ final class HomeViewControllerFactory {
         return viewController
     }
 }
-

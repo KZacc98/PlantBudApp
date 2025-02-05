@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF11731D2D53C63A008114FB /* UserProfileCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11731C2D53C63A008114FB /* UserProfileCellData.swift */; };
+		EF11731E2D53C63A008114FB /* UserProfileCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11731C2D53C63A008114FB /* UserProfileCellData.swift */; };
+		EF1173202D53C76A008114FB /* PlantStatsCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11731F2D53C76A008114FB /* PlantStatsCellData.swift */; };
+		EF1173212D53C76A008114FB /* PlantStatsCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF11731F2D53C76A008114FB /* PlantStatsCellData.swift */; };
 		EF15767D29354BFE0015FCEE /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */; };
 		EF190C5B294CE34E0091573D /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF190C5A294CE34E0091573D /* Plant.swift */; };
 		EF190C5E294FC6EA0091573D /* Badges.graphql in Resources */ = {isa = PBXBuildFile; fileRef = EF190C5D294FC6EA0091573D /* Badges.graphql */; };
@@ -521,6 +525,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF11731C2D53C63A008114FB /* UserProfileCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileCellData.swift; sourceTree = "<group>"; };
+		EF11731F2D53C76A008114FB /* PlantStatsCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatsCellData.swift; sourceTree = "<group>"; };
 		EF15767C29354BFE0015FCEE /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		EF190C5A294CE34E0091573D /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		EF190C5D294FC6EA0091573D /* Badges.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Badges.graphql; sourceTree = "<group>"; };
@@ -2140,6 +2146,7 @@
 		EFC1F977295CC37400112EFC /* PlantStats */ = {
 			isa = PBXGroup;
 			children = (
+				EF11731F2D53C76A008114FB /* PlantStatsCellData.swift */,
 				EFC1F978295CC38900112EFC /* PlantStatsCell.swift */,
 				EFC1F97A295CC3E700112EFC /* PlantStatsCellConfigurator.swift */,
 			);
@@ -2337,6 +2344,7 @@
 		EFDFF468294BB72700B4F5F1 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				EF11731C2D53C63A008114FB /* UserProfileCellData.swift */,
 				EFDFF469294BB74500B4F5F1 /* UserProfileCell.swift */,
 				EFDFF46B294BB98A00B4F5F1 /* UserProfileCellConfigurator.swift */,
 			);
@@ -2645,6 +2653,7 @@
 				EF469875299175E70035504F /* WindowManager.swift in Sources */,
 				EF469877299175E70035504F /* ProfileViewControllerFactory.swift in Sources */,
 				EF469878299175E70035504F /* ProfileCoordinator.swift in Sources */,
+				EF11731D2D53C63A008114FB /* UserProfileCellData.swift in Sources */,
 				EF469879299175E70035504F /* NoDataCell.swift in Sources */,
 				EF46987A299175E70035504F /* NoDataCellConfigurator.swift in Sources */,
 				EF46987B299175E70035504F /* CommunityUserPlantData.swift in Sources */,
@@ -2744,6 +2753,7 @@
 				EF4698D9299175E70035504F /* RoutineStepDomain.swift in Sources */,
 				EF4698DA299175E70035504F /* PlantRemote.swift in Sources */,
 				EF4698DB299175E70035504F /* PlantTypeRemote.swift in Sources */,
+				EF1173202D53C76A008114FB /* PlantStatsCellData.swift in Sources */,
 				EF4698DC299175E70035504F /* CareRoutineRemote.swift in Sources */,
 				EF4698DD299175E70035504F /* RoutineStepRemote.swift in Sources */,
 				EF4698DE299175E70035504F /* PlantCell.swift in Sources */,
@@ -2908,6 +2918,7 @@
 				EFC1F9562959057700112EFC /* PlantDetailsCellData.swift in Sources */,
 				EFAA5B8F293E887A0082484D /* CommunityViewControllerFactory.swift in Sources */,
 				EF9824E4297C2BBE00924460 /* AppIconHeaderCell.swift in Sources */,
+				EF1173212D53C76A008114FB /* PlantStatsCellData.swift in Sources */,
 				EFA7B18329464050008EE8E9 /* PlantTypeRemote.swift in Sources */,
 				EF1D1821296B3D2B000A12E4 /* PlantTypeCell.swift in Sources */,
 				EF9CFDC5293276C700FD0239 /* PasswordValidator.swift in Sources */,
@@ -2957,6 +2968,7 @@
 				EF9CFDAD2932737800FD0239 /* TextInputCellConfigurator.swift in Sources */,
 				EFBA28B22929957B0034DCA9 /* String+Extension.swift in Sources */,
 				EF9CFE012934091400FD0239 /* HomeMenuViewController.swift in Sources */,
+				EF11731E2D53C63A008114FB /* UserProfileCellData.swift in Sources */,
 				EF194C4A297485B200A8734A /* AddRoutineStepCell.swift in Sources */,
 				EF194C4729746F8D00A8734A /* StepFrequency.swift in Sources */,
 				EFC1F976295CC02900112EFC /* UserContext.swift in Sources */,

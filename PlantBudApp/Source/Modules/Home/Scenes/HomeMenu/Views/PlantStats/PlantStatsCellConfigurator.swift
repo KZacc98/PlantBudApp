@@ -100,9 +100,3 @@ extension PlantStatsCellConfigurator: ReusableViewConfiguratorInterface {
     }
     
 }
-
-struct PlantStatsCellData {
-    let plants: [PlantDomain]
-}
-
-

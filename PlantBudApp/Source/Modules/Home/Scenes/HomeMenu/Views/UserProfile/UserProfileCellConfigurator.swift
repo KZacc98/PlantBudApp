@@ -36,18 +36,9 @@ extension UserProfileCellConfigurator: ReusableViewConfiguratorInterface {
         view.plantsNumberLabel.text = data.plantCount
         view.helloLabel.adjustsFontSizeToFitWidth = true
         view.profilePictureImageView.setImage(with: URL(string: data.profilePictureUrl))
-//        view.didPressButton = data.didPressButton
     }
     
     func layoutHeight(relativeTo size: CGSize) -> CGFloat {
         return UITableView.automaticDimension
     }
 }
-
-struct UserProfileCellData {
-    let name: String
-    let plantCount: String
-    let profilePictureUrl: String
-}
-
-

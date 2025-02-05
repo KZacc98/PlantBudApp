@@ -12,8 +12,6 @@ final class MessageOfTheDayCell: UITableViewCell {
     
     // MARK: - Public properties
     
-    //public var didPressButton: (() -> ())?
-    
     public lazy var mainBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = Color.brandWhite
@@ -46,12 +44,6 @@ final class MessageOfTheDayCell: UITableViewCell {
         return label
     }()
     
-    // MARK: - Selectors
-    
-//    @objc private func didPressButton(_ sender: UIButton) {
-//        didPressButton?()
-//    }
-    
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -72,23 +64,11 @@ final class MessageOfTheDayCell: UITableViewCell {
         contentView.fill(
             with: mainBackgroundView,
             to: contentView.safeAreaLayoutGuide,
-            insets: UIEdgeInsets(top: 12, left: 12, bottom: -12, right: -12)
-        )
+            insets: UIEdgeInsets(top: 12, left: 12, bottom: -12, right: -12))
         
         mainBackgroundView.fill(
             with: plantsMeanStateCommentLabel,
             to: mainBackgroundView.safeAreaLayoutGuide,
             insets: UIEdgeInsets(top: 12, left: 12, bottom: -12, right: -12))
-        
-        
-        //        animationView.bottomAnchor.constrain(anchor: mainBackgroundView.bottomAnchor)
-        //        animationView.trailingAnchor.constrain(anchor: mainBackgroundView.trailingAnchor, constant: 50)
-        //        animationView.widthAnchor.constrain(constant: 200)
-        //        animationView.heightAnchor.constrain(constant: 100)
-        
     }
 }
-
-
-
-
