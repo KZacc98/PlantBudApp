@@ -15,9 +15,8 @@ final class ProfileCoordinator: TabBarItemCoordinator {
     
     // MARK: - Initialization
     
-    init(
-        tabBarItem: UITabBarItem,
-        viewControllerFactory: ProfileViewControllerFactory = ProfileViewControllerFactory()
+    init(tabBarItem: UITabBarItem,
+         viewControllerFactory: ProfileViewControllerFactory = ProfileViewControllerFactory()
     ) {
         self.viewControllerFactory = viewControllerFactory
         super.init(tabBarItem: tabBarItem)
@@ -37,13 +36,5 @@ final class ProfileCoordinator: TabBarItemCoordinator {
         let viewController = viewControllerFactory.makeProfileViewController()
         
         navigationController?.setViewControllers([viewController], animated: animated)
-    }
-}
-
-/// MARK: - UINavigationControllerDelegate
-
-extension ProfileCoordinator: UINavigationControllerDelegate {
-    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        Logger.error("PLANTS")
     }
 }

@@ -68,7 +68,7 @@ extension YourProfileViewController {
 
 extension YourProfileViewController {
     private func setupView() {
-        view.backgroundColor = Color.brandWhite //kolor ViewControllera
+        view.backgroundColor = Color.brandWhite
     }
     
     private func setupNavigationBar() {
@@ -92,7 +92,7 @@ extension YourProfileViewController {
         tableView.delegate  = self.dataSource
         tableView.dataSource = self.dataSource
         tableView.separatorStyle = .none
-        tableView.backgroundColor = Color.brandWhite //KOLOR TŁA PO STARCIE
+        tableView.backgroundColor = Color.brandWhite
         tableView.refreshControl = refreshControl
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)

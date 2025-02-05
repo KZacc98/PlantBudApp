@@ -40,5 +40,3 @@ extension ProfilePictureCellConfigurator: ReusableViewConfiguratorInterface {
         return UITableView.automaticDimension
     }
 }
-
-

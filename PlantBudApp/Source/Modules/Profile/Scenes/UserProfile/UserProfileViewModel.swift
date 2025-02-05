@@ -20,13 +20,14 @@ final class UserProfileViewModel {
     private var username: String
     private var communityUserProfile: CommunityUserProfileData?
     private var communityUserPlants: [CommunityUserPlantData] = []
-    let profilePicturePlaceholder = "https://res.cloudinary.com/dv1dmymg2/image/upload/v1674924697/PlantBuddy/Placeholders/UserImagePlaceholderLight_hthfkm.png"
     
     private var sectionSequence: SectionSequence = SectionSequence() {
         didSet {
             onSectionSequenceChange?(sectionSequence)
         }
     }
+    
+    let profilePicturePlaceholder = "https://res.cloudinary.com/dv1dmymg2/image/upload/v1674924697/PlantBuddy/Placeholders/UserImagePlaceholderLight_hthfkm.png"
     
     //MARK: - Initialization
     
@@ -65,7 +66,6 @@ final class UserProfileViewModel {
         var communityUserId: Int?
         var communityUserPlants: [CommunityUserPlantData]?
         
-        // Fetch data1
         dispatchGroup.enter()
         Network.fetchData(query: FetchCommunityUserProfileQuery(username: username)) { result in
             switch result {
@@ -132,7 +132,9 @@ final class UserProfileViewModel {
                     plantName: plant.plantName ?? "",
                     plantState: plant.plantState ?? .default,
                     plantType: nil,
-                    didTapPlant: {Logger.info("\(plant.plantName) Tapped")}
+                    didTapPlant: {
+                        Logger.info("\(plant.plantName ?? "") Tapped")
+                    }
                 ))
             }
             
